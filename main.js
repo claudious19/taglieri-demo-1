@@ -407,10 +407,17 @@ const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 
+const updateNavbarScrollState = () => {
+  if (!navbar.classList.contains('menu-open')) {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }
+};
+
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  updateNavbarScrollState();
   updateActiveNav();
 });
+updateNavbarScrollState();
 
 function updateActiveNav() {
   let current = '';
@@ -431,9 +438,11 @@ const navLinksEl = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       navLinksEl.classList.toggle('open');
-      navbar.classList.toggle('menu-open', navLinksEl.classList.contains('open'));
-      hamburger.setAttribute('aria-expanded', String(navLinksEl.classList.contains('open')));
-      document.body.style.overflow = navLinksEl.classList.contains('open') ? 'hidden' : '';
+      const menuIsOpen = navLinksEl.classList.contains('open');
+      navbar.classList.toggle('menu-open', menuIsOpen);
+      navbar.classList.toggle('scrolled', !menuIsOpen && window.scrollY > 60);
+      hamburger.setAttribute('aria-expanded', String(menuIsOpen));
+      document.body.style.overflow = menuIsOpen ? 'hidden' : '';
     });
 
 navLinksEl.querySelectorAll('a').forEach(link => {
@@ -441,6 +450,7 @@ navLinksEl.querySelectorAll('a').forEach(link => {
         hamburger.classList.remove('open');
         navLinksEl.classList.remove('open');
         navbar.classList.remove('menu-open');
+        updateNavbarScrollState();
         hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
   });
