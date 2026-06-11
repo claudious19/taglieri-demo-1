@@ -34,6 +34,13 @@ const translations = {
     "gallery.item4.name": "Tagliere Medio",
     "gallery.item5.name": "Tagliere Personalizzato",
     "gallery.item6.name": "Tagliere Ovale Piccolo",
+    "process.label": "Dentro la bottega",
+    "process.title": "Dal legno al <em>tagliere</em>",
+    "process.sub": "Ogni forma nasce dalla selezione del legno, passa dal banco di lavoro e viene rifinita a mano.",
+    "process.step1": "Scelta delle forme",
+    "process.step2": "Lavorazione in bottega",
+    "process.step3": "Selezione del legno",
+    "process.step4": "Sagomatura a mano",
     "pricing.label": "Investimento",
     "pricing.sub": "Ogni pezzo è unico — i prezzi variano in base al legno, alle dimensioni e alla complessità. Questi sono range indicativi.",
     "pricing.from": "da",
@@ -109,6 +116,13 @@ const translations = {
     "gallery.item4.name": "Medium Cutting Board",
     "gallery.item5.name": "Custom Cutting Board",
     "gallery.item6.name": "Small Oval Cutting Board",
+    "process.label": "Inside the workshop",
+    "process.title": "From wood to <em>cutting board</em>",
+    "process.sub": "Each shape begins with selecting the wood, passes through the workbench, and is finished by hand.",
+    "process.step1": "Choosing the shapes",
+    "process.step2": "Workshop crafting",
+    "process.step3": "Wood selection",
+    "process.step4": "Shaped by hand",
     "pricing.label": "Investment",
     "pricing.sub": "Each piece is unique — prices vary based on wood type, size, and complexity. These are indicative ranges.",
     "pricing.from": "from",
@@ -184,6 +198,13 @@ const translations = {
     "gallery.item4.name": "Mittleres Schneidebrett",
     "gallery.item5.name": "Personalisierte Schneidebrett",
     "gallery.item6.name": "Kleines ovales Schneidebrett",
+    "process.label": "In der Werkstatt",
+    "process.title": "Vom Holz zum <em>Schneidebrett</em>",
+    "process.sub": "Jede Form beginnt mit der Auswahl des Holzes, entsteht an der Werkbank und wird von Hand vollendet.",
+    "process.step1": "Auswahl der Formen",
+    "process.step2": "Arbeit in der Werkstatt",
+    "process.step3": "Holzauswahl",
+    "process.step4": "Von Hand geformt",
     "pricing.label": "Investition",
     "pricing.sub": "Jedes Stück ist einzigartig — die Preise variieren je nach Holzart, Größe und Komplexität. Dies sind Richtwerte.",
     "pricing.from": "ab",
@@ -259,6 +280,13 @@ const translations = {
     "gallery.item4.name": "Planche Moyenne",
     "gallery.item5.name": "Planche Personnalisée",
     "gallery.item6.name": "Petite Planche Ovale",
+    "process.label": "Dans l'atelier",
+    "process.title": "Du bois à la <em>planche</em>",
+    "process.sub": "Chaque forme naît de la sélection du bois, passe par l'établi et reçoit une finition à la main.",
+    "process.step1": "Choix des formes",
+    "process.step2": "Travail en atelier",
+    "process.step3": "Sélection du bois",
+    "process.step4": "Façonnage à la main",
     "pricing.label": "Investissement",
     "pricing.sub": "Chaque pièce est unique — les prix varient selon le bois, les dimensions et la complexité. Ce sont des fourchettes indicatives.",
     "pricing.from": "à partir de",
@@ -400,17 +428,21 @@ function updateActiveNav() {
 const hamburger = document.getElementById('hamburger');
 const navLinksEl = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinksEl.classList.toggle('open');
-  document.body.style.overflow = navLinksEl.classList.contains('open') ? 'hidden' : '';
-});
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinksEl.classList.toggle('open');
+      navbar.classList.toggle('menu-open', navLinksEl.classList.contains('open'));
+      hamburger.setAttribute('aria-expanded', String(navLinksEl.classList.contains('open')));
+      document.body.style.overflow = navLinksEl.classList.contains('open') ? 'hidden' : '';
+    });
 
 navLinksEl.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinksEl.classList.remove('open');
-    document.body.style.overflow = '';
+        hamburger.classList.remove('open');
+        navLinksEl.classList.remove('open');
+        navbar.classList.remove('menu-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
   });
 });
 

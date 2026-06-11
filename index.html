@@ -16,9 +16,9 @@
        ========================================= */
 
     :root {
-      --cream:    #f5ede0;
-      --parchment:#ede0cc;
-      --linen:    #e8d8c0;
+      --cream:    #eadcc7;
+      --parchment:#dfccb0;
+      --linen:    #d2b996;
       --walnut:   #6b3e26;
       --walnut-dark: #4a2912;
       --walnut-mid:  #8b5e3c;
@@ -78,7 +78,7 @@
     }
 
     #navbar.scrolled {
-      background: rgba(245, 237, 224, 0.95);
+      background: rgba(243, 230, 211, 0.96);
       backdrop-filter: blur(12px);
       box-shadow: 0 1px 0 var(--linen);
     }
@@ -100,7 +100,11 @@
       color: var(--walnut-dark);
       text-decoration: none;
       letter-spacing: 0.02em;
+      transition: color 0.3s;
     }
+
+    #navbar:not(.scrolled) .nav-logo { color: var(--cream); }
+    #navbar.scrolled .nav-logo { color: var(--walnut-dark); }
 
     .logo-mark {
       color: var(--gold);
@@ -146,6 +150,11 @@
       color: var(--gold);
     }
 
+    #navbar:not(.scrolled) .nav-link { color: var(--cream); }
+    #navbar.scrolled .nav-link { color: var(--walnut-dark); }
+    #navbar .nav-link:hover,
+    #navbar .nav-link.active { color: var(--gold); }
+
     .nav-link:hover::after,
     .nav-link.active::after {
       width: 100%;
@@ -171,9 +180,53 @@
       transform-origin: center;
     }
 
+    #navbar:not(.scrolled) .hamburger span { background: var(--cream); }
+    #navbar.scrolled .hamburger span { background: var(--walnut-dark); }
+
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (min-width: 1025px) {
+      #navbar {
+        top: 14px;
+        left: clamp(1rem, 3vw, 2.5rem);
+        right: clamp(1rem, 3vw, 2.5rem);
+        height: 60px;
+        padding: 0 clamp(1rem, 2vw, 1.5rem);
+        border: 1px solid rgba(245,237,224,0.2);
+        border-radius: 18px;
+        background: rgba(42,31,20,0.62);
+        backdrop-filter: blur(16px) saturate(120%);
+        box-shadow: 0 12px 32px rgba(24,16,10,0.18);
+      }
+      #navbar.scrolled {
+        background: rgba(234,220,199,0.93);
+        border-color: rgba(74,41,18,0.14);
+        box-shadow: 0 10px 30px rgba(74,41,18,0.14);
+      }
+      .nav-links { gap: 0.35rem; }
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0.55rem 0.8rem;
+        border-radius: 10px;
+        transition: color 0.25s, background 0.25s, transform 0.25s;
+      }
+      .nav-link::after { display: none; }
+      #navbar:not(.scrolled) .nav-link:hover,
+      #navbar:not(.scrolled) .nav-link.active {
+        color: var(--cream);
+        background: rgba(255,255,255,0.12);
+      }
+      #navbar.scrolled .nav-link:hover,
+      #navbar.scrolled .nav-link.active {
+        color: var(--walnut-dark);
+        background: rgba(107,62,38,0.1);
+      }
+      .nav-link:hover { transform: translateY(-1px); }
+    }
 
     .section {
       padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
@@ -235,10 +288,22 @@
     .hero-bg {
       position: absolute;
       inset: 0;
+      background: var(--charcoal);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 70% 50%, #3d2510 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 20% 80%, #5a3520 0%, transparent 50%),
-        var(--charcoal);
+        linear-gradient(90deg, rgba(42,31,20,0.94) 0%, rgba(42,31,20,0.72) 42%, rgba(42,31,20,0.2) 75%, rgba(42,31,20,0.42) 100%),
+        linear-gradient(0deg, rgba(42,31,20,0.6), transparent 45%);
+    }
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
     }
 
     .wood-ring {
@@ -363,10 +428,12 @@
       overflow: hidden;
       box-shadow: 20px 20px 0 var(--linen);
     }
-    .about-img-placeholder svg {
+    .about-img-placeholder img {
       width: 100%;
       height: 100%;
       display: block;
+      object-fit: cover;
+      object-position: center 45%;
     }
     .about-img-tag {
       position: absolute;
@@ -469,12 +536,10 @@
     .img-placeholder {
       width: 100%;
       height: 100%;
-      transition: transform 0.6s var(--transition);
-    }
-    .img-placeholder svg {
-      width: 100%;
-      height: 100%;
       display: block;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s var(--transition);
     }
     .gallery-overlay {
       position: absolute;
@@ -518,6 +583,52 @@
       font-size: 0.82rem;
       color: var(--text-muted);
       font-style: normal;
+    }
+
+    .process {
+      background: var(--cream);
+      min-height: auto;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: clamp(180px, 24vw, 320px);
+      gap: 1rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .process-photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--linen);
+    }
+    .process-photo:nth-child(1),
+    .process-photo:nth-child(4) { grid-column: span 7; }
+    .process-photo:nth-child(2),
+    .process-photo:nth-child(3) { grid-column: span 5; }
+    .process-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.7s var(--transition);
+    }
+    .process-photo:nth-child(2) img { object-position: center 58%; }
+    .process-photo:hover img { transform: scale(1.035); }
+    .process-photo figcaption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 0.45rem 0.75rem;
+      background: rgba(42,31,20,0.78);
+      color: var(--cream);
+      border-radius: 3px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
     }
 
     .pricing {
@@ -901,20 +1012,37 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-item.large { grid-row: span 1; }
       .gallery-item.large .gallery-img { aspect-ratio: 4/3; height: auto; }
+      .process-grid { grid-auto-rows: clamp(190px, 34vw, 300px); }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
       .pricing-card.featured { transform: none; }
       .maintenance-steps { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       #navbar { justify-content: space-between; }
+      #navbar.menu-open {
+        height: 100dvh;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: calc((var(--nav-h) - 32px) / 2);
+        background: rgba(42, 31, 20, 0.99);
+        backdrop-filter: none;
+        box-shadow: none;
+      }
+      #navbar.menu-open .nav-logo { color: var(--cream); }
+      #navbar.menu-open .hamburger span { background: var(--cream); }
       .nav-left { gap: 0.6rem; }
       .nav-logo { font-size: 1rem; }
+      .nav-left,
+      .nav-right {
+        position: relative;
+        z-index: 200;
+      }
       .nav-right { margin-left: auto; }
       .hamburger { display: flex; }
       .nav-links {
-        position: fixed;
+        position: absolute;
         inset: 0;
-        background: rgba(42, 31, 20, 0.97);
+        background: transparent;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -924,13 +1052,45 @@
         z-index: 150;
       }
       .nav-links.open { transform: translateX(0); }
+      .nav-links li { width: min(78vw, 300px); }
       .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
         font-size: 1.2rem;
         color: var(--cream);
+        padding: 0.8rem 1.4rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      }
+      .nav-link::after { display: none; }
+      #navbar.menu-open .nav-link:hover,
+      #navbar.menu-open .nav-link:focus-visible,
+      #navbar.menu-open .nav-link.active {
+        color: var(--cream);
+        background: rgba(196,150,74,0.18);
+        border-color: rgba(232,201,154,0.38);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+        transform: translateX(5px);
+        outline: none;
+      }
+      #navbar.menu-open .nav-link:active {
+        transform: translateX(5px) scale(0.98);
       }
       .hero-badge { display: none; }
       .wood-ring { display: none; }
+      .hero-image { object-position: 62% center; }
       .gallery-grid { grid-template-columns: 1fr; }
+      .process-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+      .process-photo:nth-child(n) {
+        grid-column: auto;
+        aspect-ratio: 4/3;
+      }
       .maintenance-steps { grid-template-columns: 1fr; }
       .maint-tip { flex-direction: column; }
       .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -970,7 +1130,7 @@
       </div>
     </div>
     <div class="nav-right">
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -987,6 +1147,7 @@
   <!-- HERO -->
   <section id="home" class="section hero">
     <div class="hero-bg">
+      <img class="hero-image" src="images/hero-collection.jpg" alt="Collezione di taglieri artigianali in legno" width="2048" height="1265" fetchpriority="high" />
       <div class="wood-ring r1"></div>
       <div class="wood-ring r2"></div>
       <div class="wood-ring r3"></div>
@@ -1009,20 +1170,7 @@
       <div class="about-img-col">
         <div class="about-img-frame">
           <div class="about-img-placeholder">
-            <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="300" height="400" fill="#c4956a" rx="4"/>
-              <path d="M0 80 Q150 60 300 80" stroke="#b07d52" stroke-width="1.5" fill="none" opacity="0.6"/>
-              <path d="M0 120 Q150 105 300 115" stroke="#b07d52" stroke-width="1" fill="none" opacity="0.5"/>
-              <path d="M0 160 Q150 145 300 155" stroke="#b07d52" stroke-width="1.5" fill="none" opacity="0.6"/>
-              <path d="M0 200 Q150 185 300 200" stroke="#b07d52" stroke-width="1" fill="none" opacity="0.4"/>
-              <path d="M0 240 Q150 225 300 238" stroke="#b07d52" stroke-width="1.5" fill="none" opacity="0.5"/>
-              <path d="M0 280 Q150 265 300 278" stroke="#b07d52" stroke-width="1" fill="none" opacity="0.6"/>
-              <path d="M0 320 Q150 305 300 318" stroke="#b07d52" stroke-width="1.5" fill="none" opacity="0.4"/>
-              <ellipse cx="150" cy="200" rx="45" ry="55" fill="#9e6a3a" opacity="0.3"/>
-              <ellipse cx="150" cy="200" rx="30" ry="38" fill="#9e6a3a" opacity="0.2"/>
-              <ellipse cx="150" cy="200" rx="15" ry="20" fill="#9e6a3a" opacity="0.2"/>
-              <text x="150" y="370" text-anchor="middle" fill="#f5ede0" font-family="Georgia" font-size="13" opacity="0.7">Noce · Ciliegio · Acero</text>
-            </svg>
+            <img src="images/workshop-portrait.jpg" alt="Banco da lavoro di Roberto con tavole e taglieri in preparazione" width="1080" height="1920" loading="lazy" decoding="async" />
           </div>
           <div class="about-img-tag">Est. 2018</div>
         </div>
@@ -1056,12 +1204,27 @@
       <button class="filter-btn" data-filter="speciale" data-i18n="gallery.special">Speciale</button>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item reveal" data-cat="rettangolare"><div class="gallery-img"><div class="img-placeholder"><svg viewBox="0 0 400 300" fill="none"><rect width="400" height="300" fill="#8b5e3c" rx="6"/><path d="M0 50 Q200 35 400 50" stroke="#7a5030" stroke-width="2" fill="none" opacity="0.7"/><path d="M0 90 Q200 78 400 88" stroke="#7a5030" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M0 130 Q200 120 400 128" stroke="#7a5030" stroke-width="2" fill="none" opacity="0.7"/><path d="M0 170 Q200 158 400 168" stroke="#7a5030" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 210 Q200 200 400 208" stroke="#7a5030" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 250 Q200 238 400 248" stroke="#7a5030" stroke-width="1.5" fill="none" opacity="0.7"/></svg></div><div class="gallery-overlay"><span>Noce Americano</span><small>45 × 30 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item1.name">Tagliere Grande</strong><em>Noce Americano</em></div></div>
-      <div class="gallery-item reveal" data-cat="ovale"><div class="gallery-img"><div class="img-placeholder"><svg viewBox="0 0 400 300" fill="none"><rect width="400" height="300" fill="#e8c99a" rx="6"/><path d="M0 45 Q200 32 400 45" stroke="#d4b07a" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 85 Q200 74 400 83" stroke="#d4b07a" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 125 Q200 114 400 123" stroke="#d4b07a" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 165 Q200 155 400 163" stroke="#d4b07a" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 205 Q200 195 400 203" stroke="#d4b07a" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 245 Q200 235 400 243" stroke="#d4b07a" stroke-width="1.5" fill="none" opacity="0.5"/></svg></div><div class="gallery-overlay"><span>Acero</span><small>38 × 24 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item2.name">Tagliere Ovale</strong><em>Acero</em></div></div>
-      <div class="gallery-item reveal large" data-cat="speciale"><div class="gallery-img"><div class="img-placeholder"><svg viewBox="0 0 400 300" fill="none"><rect width="400" height="300" fill="#a0522d" rx="6"/><path d="M0 40 Q200 28 400 40" stroke="#8b4513" stroke-width="2" fill="none" opacity="0.7"/><path d="M0 80 Q200 68 400 80" stroke="#8b4513" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M0 120 Q200 110 400 120" stroke="#8b4513" stroke-width="2" fill="none" opacity="0.7"/><path d="M0 160 Q200 150 400 160" stroke="#8b4513" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 200 Q200 190 400 200" stroke="#8b4513" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 240 Q200 230 400 240" stroke="#8b4513" stroke-width="1.5" fill="none" opacity="0.7"/><ellipse cx="200" cy="150" rx="60" ry="70" fill="#7a3a1a" opacity="0.25"/></svg></div><div class="gallery-overlay"><span>Ciliegio Selvatico</span><small data-i18n="gallery.special.ed">Edizione Speciale</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item3.name">Tagliere con Manico</strong><em>Ciliegio Selvatico</em></div></div>
-      <div class="gallery-item reveal" data-cat="rettangolare"><div class="gallery-img"><div class="img-placeholder"><svg viewBox="0 0 400 300" fill="none"><rect width="400" height="300" fill="#c8a97a" rx="6"/><path d="M0 55 Q200 42 400 55" stroke="#b0904a" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 95 Q200 84 400 93" stroke="#b0904a" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 135 Q200 124 400 133" stroke="#b0904a" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 175 Q200 165 400 173" stroke="#b0904a" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 215 Q200 205 400 213" stroke="#b0904a" stroke-width="2" fill="none" opacity="0.6"/></svg></div><div class="gallery-overlay"><span>Rovere</span><small>40 × 28 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item4.name">Tagliere Medio</strong><em>Rovere</em></div></div>
-      <div class="gallery-item reveal" data-cat="speciale"><div class="gallery-img"><div class="img-placeholder"><svg viewBox="0 0 400 300" fill="none"><rect width="400" height="300" fill="#6b4c35" rx="6"/><path d="M0 35 Q200 22 400 35" stroke="#5a3c25" stroke-width="2" fill="none" opacity="0.7"/><path d="M0 75 Q200 62 400 75" stroke="#5a3c25" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M0 115 Q200 104 400 113" stroke="#5a3c25" stroke-width="2" fill="none" opacity="0.7"/><path d="M0 155 Q200 144 400 153" stroke="#5a3c25" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 195 Q200 184 400 193" stroke="#5a3c25" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 235 Q200 224 400 233" stroke="#5a3c25" stroke-width="1.5" fill="none" opacity="0.7"/></svg></div><div class="gallery-overlay"><span>Noce Europeo</span><small data-i18n="gallery.engraved">Con incisione</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item5.name">Tagliere Personalizzato</strong><em>Noce Europeo</em></div></div>
-      <div class="gallery-item reveal" data-cat="ovale"><div class="gallery-img"><div class="img-placeholder"><svg viewBox="0 0 400 300" fill="none"><rect width="400" height="300" fill="#dbb88a" rx="6"/><path d="M0 50 Q200 38 400 50" stroke="#c4a060" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 90 Q200 80 400 89" stroke="#c4a060" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 130 Q200 120 400 129" stroke="#c4a060" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 170 Q200 160 400 169" stroke="#c4a060" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M0 210 Q200 200 400 209" stroke="#c4a060" stroke-width="2" fill="none" opacity="0.6"/><path d="M0 250 Q200 240 400 249" stroke="#c4a060" stroke-width="1.5" fill="none" opacity="0.5"/></svg></div><div class="gallery-overlay"><span>Frassino</span><small>35 × 22 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item6.name">Tagliere Ovale Piccolo</strong><em>Frassino</em></div></div>
+      <div class="gallery-item reveal" data-cat="rettangolare"><div class="gallery-img"><img class="img-placeholder" src="images/board-serving.jpg" alt="Tagliere lungo artigianale con manico in rovere" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>45 × 30 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item1.name">Tagliere Grande</strong><em>Rovere</em></div></div>
+      <div class="gallery-item reveal" data-cat="ovale"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-tall.jpg" alt="Tagliere alto in rovere con venatura naturale" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>38 × 24 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item2.name">Tagliere Ovale</strong><em>Rovere</em></div></div>
+      <div class="gallery-item reveal large" data-cat="speciale"><div class="gallery-img"><img class="img-placeholder" src="images/board-live-edge.jpg" alt="Tagliere artigianale con manico e bordo naturale" width="1080" height="1920" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere Massello</span><small data-i18n="gallery.special.ed">Edizione Speciale</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item3.name">Tagliere con Manico</strong><em>Rovere Massello</em></div></div>
+      <div class="gallery-item reveal" data-cat="rettangolare"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-wide.jpg" alt="Tagliere largo in rovere con incisione artigianale" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>40 × 28 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item4.name">Tagliere Medio</strong><em>Rovere</em></div></div>
+      <div class="gallery-item reveal" data-cat="speciale"><div class="gallery-img"><img class="img-placeholder" src="images/brand-detail.jpg" alt="Dettaglio dell'incisione Hand Made by Roby" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Firma di Roby</span><small data-i18n="gallery.engraved">Con incisione</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item5.name">Tagliere Personalizzato</strong><em>Incisione artigianale</em></div></div>
+      <div class="gallery-item reveal" data-cat="ovale"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-slim.jpg" alt="Tagliere sottile in rovere con manico" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>35 × 22 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item6.name">Tagliere Ovale Piccolo</strong><em>Rovere</em></div></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process" aria-labelledby="process-title">
+    <div class="section-header">
+      <p class="section-label reveal" data-i18n="process.label">Dentro la bottega</p>
+      <h2 class="section-title reveal" id="process-title" data-i18n="process.title">Dal legno al <em>tagliere</em></h2>
+      <p class="section-sub reveal" data-i18n="process.sub">Ogni forma nasce dalla selezione del legno, passa dal banco di lavoro e viene rifinita a mano.</p>
+    </div>
+    <div class="process-grid">
+      <figure class="process-photo reveal"><img src="images/process-variety.jpg" alt="Quattro forme diverse di taglieri grezzi appoggiate in bottega" width="2035" height="1080" loading="lazy" decoding="async" /><figcaption data-i18n="process.step1">Scelta delle forme</figcaption></figure>
+      <figure class="process-photo reveal"><img src="images/process-workbench.jpg" alt="Banco da falegname con tavole, utensili e segatura" width="1080" height="1920" loading="lazy" decoding="async" /><figcaption data-i18n="process.step2">Lavorazione in bottega</figcaption></figure>
+      <figure class="process-photo reveal"><img src="images/process-stock.jpg" alt="Tavole e sagome di legno selezionate per nuovi taglieri" width="1599" height="899" loading="lazy" decoding="async" /><figcaption data-i18n="process.step3">Selezione del legno</figcaption></figure>
+      <figure class="process-photo reveal"><img src="images/process-shaping.jpg" alt="Serie di taglieri appena sagomati sul banco di lavoro" width="2048" height="914" loading="lazy" decoding="async" /><figcaption data-i18n="process.step4">Sagomatura a mano</figcaption></figure>
     </div>
   </section>
 
@@ -1129,6 +1292,7 @@
         "about.stat1": "Pezzi creati", "about.stat2": "Anni di esperienza", "about.stat3": "Fatto a mano",
         "gallery.label": "Le mie creazioni", "gallery.all": "Tutti", "gallery.rect": "Rettangolare", "gallery.oval": "Ovale", "gallery.special": "Speciale", "gallery.special.ed": "Edizione Speciale", "gallery.engraved": "Con incisione",
         "gallery.item1.name": "Tagliere Grande", "gallery.item2.name": "Tagliere Ovale", "gallery.item3.name": "Tagliere con Manico", "gallery.item4.name": "Tagliere Medio", "gallery.item5.name": "Tagliere Personalizzato", "gallery.item6.name": "Tagliere Ovale Piccolo",
+        "process.label": "Dentro la bottega", "process.title": "Dal legno al <em>tagliere</em>", "process.sub": "Ogni forma nasce dalla selezione del legno, passa dal banco di lavoro e viene rifinita a mano.", "process.step1": "Scelta delle forme", "process.step2": "Lavorazione in bottega", "process.step3": "Selezione del legno", "process.step4": "Sagomatura a mano",
         "pricing.label": "Investimento", "pricing.sub": "Ogni pezzo è unico — i prezzi variano in base al legno, alle dimensioni e alla complessità. Questi sono i range orientativi.", "pricing.from": "da", "pricing.popular": "Più richiesto",
         "pricing.s.title": "Piccolo", "pricing.s.desc": "Taglieri compatti, perfetti per pane, formaggi e antipasti. Dimensioni fino a 30 × 20 cm.", "pricing.s.f1": "✦ Acero o Frassino", "pricing.s.f2": "✦ Finitura con olio naturale", "pricing.s.f3": "✦ Bordi levigati a mano",
         "pricing.m.title": "Medio", "pricing.m.desc": "Il formato ideale per uso quotidiano. Dimensioni tra 30 × 20 cm e 45 × 30 cm.", "pricing.m.f1": "✦ Noce, Ciliegio o Rovere", "pricing.m.f2": "✦ Finitura con olio di lino", "pricing.m.f3": "✦ Personalizzazione disponibile", "pricing.m.f4": "✦ Piedini antiscivolo",
@@ -1150,6 +1314,7 @@
         "about.stat1": "Pieces created", "about.stat2": "Years of experience", "about.stat3": "Handmade",
         "gallery.label": "My creations", "gallery.all": "All", "gallery.rect": "Rectangular", "gallery.oval": "Oval", "gallery.special": "Special", "gallery.special.ed": "Special Edition", "gallery.engraved": "With engraving",
         "gallery.item1.name": "Large Cutting Board", "gallery.item2.name": "Oval Cutting Board", "gallery.item3.name": "Cutting Board with Handle", "gallery.item4.name": "Medium Cutting Board", "gallery.item5.name": "Custom Cutting Board", "gallery.item6.name": "Small Oval Cutting Board",
+        "process.label": "Inside the workshop", "process.title": "From wood to <em>cutting board</em>", "process.sub": "Each shape begins with selecting the wood, passes through the workbench, and is finished by hand.", "process.step1": "Choosing the shapes", "process.step2": "Workshop crafting", "process.step3": "Wood selection", "process.step4": "Shaped by hand",
         "pricing.label": "Investment", "pricing.sub": "Each piece is unique — prices vary based on wood type, size, and complexity. These are indicative ranges.", "pricing.from": "from", "pricing.popular": "Most requested",
         "pricing.s.title": "Small", "pricing.s.desc": "Compact boards, perfect for bread, cheese, and appetizers. Dimensions up to 30 × 20 cm.", "pricing.s.f1": "✦ Maple or Ash", "pricing.s.f2": "✦ Natural oil finish", "pricing.s.f3": "✦ Hand-sanded edges",
         "pricing.m.title": "Medium", "pricing.m.desc": "The ideal size for daily use. Dimensions between 30 × 20 cm and 45 × 30 cm.", "pricing.m.f1": "✦ Walnut, Cherry or Oak", "pricing.m.f2": "✦ Linseed oil finish", "pricing.m.f3": "✦ Customization available", "pricing.m.f4": "✦ Non-slip feet",
@@ -1171,6 +1336,7 @@
         "about.stat1": "Stücke gefertigt", "about.stat2": "Jahre Erfahrung", "about.stat3": "Handgefertigt",
         "gallery.label": "Meine Kreationen", "gallery.all": "Alle", "gallery.rect": "Rechteckig", "gallery.oval": "Oval", "gallery.special": "Spezial", "gallery.special.ed": "Sonderausgabe", "gallery.engraved": "Mit Gravur",
         "gallery.item1.name": "Großes Schneidebrett", "gallery.item2.name": "Ovale Schneidebrett", "gallery.item3.name": "Schneidebrett mit Griff", "gallery.item4.name": "Mittleres Schneidebrett", "gallery.item5.name": "Personalisierte Schneidebrett", "gallery.item6.name": "Kleines ovales Schneidebrett",
+        "process.label": "In der Werkstatt", "process.title": "Vom Holz zum <em>Schneidebrett</em>", "process.sub": "Jede Form beginnt mit der Auswahl des Holzes, entsteht an der Werkbank und wird von Hand vollendet.", "process.step1": "Auswahl der Formen", "process.step2": "Arbeit in der Werkstatt", "process.step3": "Holzauswahl", "process.step4": "Von Hand geformt",
         "pricing.label": "Investition", "pricing.sub": "Jedes Stück ist einzigartig — die Preise variieren je nach Holzart, Größe und Komplexität. Dies sind Richtwerte.", "pricing.from": "ab", "pricing.popular": "Am gefragtesten",
         "pricing.s.title": "Klein", "pricing.s.desc": "Kompakte Bretter, perfekt für Brot, Käse und Vorspeisen. Maße bis zu 30 × 20 cm.", "pricing.s.f1": "✦ Ahorn oder Esche", "pricing.s.f2": "✦ Naturöl-Finish", "pricing.s.f3": "✦ Handgeschliffene Kanten",
         "pricing.m.title": "Mittel", "pricing.m.desc": "Das ideale Format für den täglichen Gebrauch. Maße zwischen 30 × 20 cm und 45 × 30 cm.", "pricing.m.f1": "✦ Walnuss, Kirsche oder Eiche", "pricing.m.f2": "✦ Leinöl-Finish", "pricing.m.f3": "✦ Personalisierung möglich", "pricing.m.f4": "✦ Rutschfeste Füße",
@@ -1192,6 +1358,7 @@
         "about.stat1": "Pièces créées", "about.stat2": "Années d'expérience", "about.stat3": "Fait main",
         "gallery.label": "Mes créations", "gallery.all": "Tous", "gallery.rect": "Rectangulaire", "gallery.oval": "Ovale", "gallery.special": "Spécial", "gallery.special.ed": "Édition Spéciale", "gallery.engraved": "Avec gravure",
         "gallery.item1.name": "Grande Planche", "gallery.item2.name": "Planche Ovale", "gallery.item3.name": "Planche avec Poignée", "gallery.item4.name": "Planche Moyenne", "gallery.item5.name": "Planche Personnalisée", "gallery.item6.name": "Petite Planche Ovale",
+        "process.label": "Dans l'atelier", "process.title": "Du bois à la <em>planche</em>", "process.sub": "Chaque forme naît de la sélection du bois, passe par l'établi et reçoit une finition à la main.", "process.step1": "Choix des formes", "process.step2": "Travail en atelier", "process.step3": "Sélection du bois", "process.step4": "Façonnage à la main",
         "pricing.label": "Investissement", "pricing.sub": "Chaque pièce est unique — les prix varient selon le bois, les dimensions et la complexité. Ce sont des fourchettes indicatives.", "pricing.from": "à partir de", "pricing.popular": "Le plus demandé",
         "pricing.s.title": "Petit", "pricing.s.desc": "Planches compactes, parfaites pour le pain, le fromage et les apéritifs. Dimensions jusqu'à 30 × 20 cm.", "pricing.s.f1": "✦ Érable ou Frêne", "pricing.s.f2": "✦ Fini à l'huile naturelle", "pricing.s.f3": "✦ Bords polis à la main",
         "pricing.m.title": "Moyen", "pricing.m.desc": "Le format idéal pour un usage quotidien. Dimensions entre 30 × 20 cm et 45 × 30 cm.", "pricing.m.f1": "✦ Noyer, Cerisier ou Chêne", "pricing.m.f2": "✦ Fini à l'huile de lin", "pricing.m.f3": "✦ Personnalisation disponible", "pricing.m.f4": "✦ Pieds antidérapants",
@@ -1281,12 +1448,16 @@
       hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('open');
         navLinksEl.classList.toggle('open');
+        navbar.classList.toggle('menu-open', navLinksEl.classList.contains('open'));
+        hamburger.setAttribute('aria-expanded', String(navLinksEl.classList.contains('open')));
         document.body.style.overflow = navLinksEl.classList.contains('open') ? 'hidden' : '';
       });
       navLinksEl.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           hamburger.classList.remove('open');
           navLinksEl.classList.remove('open');
+          navbar.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
           document.body.style.overflow = '';
         });
       });
