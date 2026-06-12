@@ -229,8 +229,15 @@
     }
 
     .section {
-      padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
-      min-height: 100vh;
+      /* FIX: le sezioni normali non devono comportarsi come slide fullscreen.
+         Prima: padding enorme + min-height: 100vh + centratura verticale.
+         Effetto: il sito sembrava zoomato anche al 100%.
+      */
+      padding: clamp(3.5rem, 6vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+    }
+
+    .section-fullscreen {
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -265,6 +272,45 @@
 
     .section-header .section-sub { margin: 0 auto 3rem; }
 
+    @media (min-width: 1025px) {
+      .gallery,
+      .process,
+      .engraving,
+      .pricing,
+      .maintenance,
+      .contact {
+        min-height: auto;
+      }
+    }
+
+    @media (max-height: 800px) and (min-width: 1025px) {
+      .section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        margin-bottom: 1rem;
+      }
+
+      .section-header {
+        margin-bottom: 2rem;
+      }
+
+      .section-header .section-sub {
+        margin-bottom: 2rem;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 6vw, 5.5rem);
+      }
+
+      .hero-sub {
+        margin-bottom: 1.75rem;
+      }
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(32px);
@@ -278,7 +324,7 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       background: var(--charcoal);
@@ -466,7 +512,7 @@
     .gallery {
       background: var(--parchment);
       min-height: auto;
-      padding-bottom: clamp(5rem, 10vw, 9rem);
+      padding-bottom: clamp(3.5rem, 6vw, 6rem);
     }
     .gallery-filters {
       display: flex;
@@ -618,38 +664,49 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.5rem;
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto 2rem;
-      align-items: start;
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: stretch;
     }
     .engraving-card {
+      display: flex;
+      min-width: 0;
+      height: 100%;
+      flex-direction: column;
       overflow: hidden;
       background: var(--cream);
-      border: 1px solid rgba(107,62,38,0.12);
+      border: 1px solid rgba(107,62,38,0.2);
       border-radius: var(--radius);
       box-shadow: 0 14px 34px rgba(74,41,18,0.08);
     }
     .engraving-card.recommended {
       border-color: rgba(126,142,88,0.55);
       box-shadow: 0 18px 42px rgba(79,96,45,0.14);
-      transform: translateY(-0.5rem);
     }
     .engraving-media {
       position: relative;
       display: grid;
       place-items: center;
       width: 100%;
-      aspect-ratio: 4/3;
-      padding: 1rem;
+      height: clamp(210px, 22vw, 285px);
+      padding: clamp(0.8rem, 1.6vw, 1.15rem);
       margin: 0;
+      overflow: hidden;
       background: #fffdf8;
       border-bottom: 1px solid var(--linen);
     }
     .engraving-media img {
-      width: 100%;
-      height: 100%;
+      width: auto;
+      max-width: calc(100% - 1rem);
+      height: auto;
+      max-height: calc(100% - 1rem);
+      box-sizing: border-box;
       display: block;
       object-fit: contain;
+      background: #fffdf8;
+      border: 1px solid rgba(76,48,29,0.28);
+      border-radius: 3px;
+      box-shadow: 0 8px 20px rgba(62,39,24,0.12);
     }
     .engraving-status {
       position: absolute;
@@ -668,7 +725,12 @@
     .engraving-status.bad { background: #8d493e; }
     .engraving-status.caution { background: #a26d2f; }
     .engraving-status.good { background: #647447; }
-    .engraving-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+    .engraving-card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 1.4rem 1.5rem 1.6rem;
+    }
     .engraving-card-body h3 {
       margin-bottom: 0.65rem;
       color: var(--walnut-dark);
@@ -683,12 +745,13 @@
     }
     .engraving-tips {
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1080px;
+      margin: 1.5rem auto 0;
       padding: clamp(1.5rem, 3vw, 2.2rem);
       background: var(--walnut-dark);
       color: var(--cream);
       border-radius: var(--radius);
+      box-shadow: 0 16px 34px rgba(42,31,20,0.15);
     }
     .engraving-tips h3 {
       margin-bottom: 1.2rem;
@@ -735,10 +798,44 @@
       font-size: 0.82rem;
     }
 
+    .engraving-showcase { width: 100%; max-width: 1200px; margin: 2rem auto 0; padding-top: clamp(2.5rem, 5vw, 4.5rem); }
+    .engraving-showcase-heading { max-width: 720px; margin: 0 auto 2rem; text-align: center; }
+    .engraving-showcase-heading .section-label { margin-bottom: 0.65rem; }
+    .engraving-showcase-heading h3 {
+      margin-bottom: 0.8rem; color: var(--walnut); font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.08;
+    }
+    .engraving-showcase-heading h3 em { color: var(--warm-brown); }
+    .engraving-showcase-heading p:last-child { color: var(--text-muted); line-height: 1.7; }
+    .engraving-placeholder-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+    .engraving-placeholder {
+      overflow: hidden; background: var(--cream); border: 1px solid rgba(76,48,29,0.16);
+      border-radius: 18px; box-shadow: 0 16px 36px rgba(62,39,24,0.08);
+    }
+    .engraving-placeholder-media {
+      display: flex; aspect-ratio: 4 / 3; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.75rem; color: var(--warm-brown);
+      background: linear-gradient(135deg, rgba(255,255,255,0.42), transparent),
+        repeating-linear-gradient(45deg, rgba(125,82,48,0.055) 0 10px, transparent 10px 20px);
+      border-bottom: 1px dashed rgba(76,48,29,0.25); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .engraving-placeholder-icon {
+      display: grid; width: 64px; height: 64px; place-items: center; color: var(--cream);
+      background: var(--walnut); border-radius: 50%; font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem; font-weight: 600;
+    }
+    .engraving-placeholder-copy { padding: 1.35rem 1.4rem 1.5rem; }
+    .engraving-placeholder-copy h4 {
+      margin-bottom: 0.45rem; color: var(--walnut); font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 600;
+    }
+    .engraving-placeholder-copy p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
+
     .pricing {
       background: var(--walnut-dark);
       min-height: auto;
-      padding-bottom: clamp(5rem, 10vw, 9rem);
+      padding-bottom: clamp(3.5rem, 6vw, 6rem);
     }
     .pricing .section-label { color: var(--maple); }
     .pricing .section-title { color: var(--cream); }
@@ -835,7 +932,7 @@
     .maintenance {
       background: var(--cream);
       min-height: auto;
-      padding-bottom: clamp(5rem, 10vw, 9rem);
+      padding-bottom: clamp(3.5rem, 6vw, 6rem);
     }
     .maintenance-steps {
       display: grid;
@@ -935,14 +1032,133 @@
     .contact {
       background: var(--parchment);
       min-height: auto;
-      padding-bottom: clamp(5rem, 10vw, 9rem);
+      padding-bottom: clamp(3.5rem, 6vw, 6rem);
       text-align: center;
     }
-    .contact-inner { max-width: 700px; margin: 0 auto; }
+    .contact-inner { max-width: 1180px; margin: 0 auto; }
     .contact-sub {
       color: var(--text-muted);
       margin-bottom: 3rem;
       font-size: 1rem;
+    }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 1.5rem;
+      align-items: start;
+      text-align: left;
+    }
+    .contact-form-card {
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      background: var(--cream);
+      border: 1px solid var(--linen);
+      border-radius: 12px;
+      box-shadow: 0 18px 45px rgba(74,41,18,0.09);
+    }
+    .contact-form-heading { margin-bottom: 1.8rem; }
+    .contact-form-heading h3 {
+      margin-bottom: 0.45rem;
+      color: var(--walnut-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 3vw, 2.15rem);
+      line-height: 1.1;
+    }
+    .contact-form-heading p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+    .contact-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group[hidden],
+    .engraving-upload-note[hidden] { display: none; }
+    .form-group label {
+      color: var(--walnut-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.78rem 0.9rem;
+      color: var(--text);
+      background: #fffdf8;
+      border: 1px solid rgba(107,62,38,0.2);
+      border-radius: 7px;
+      font: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(196,150,74,0.16);
+      outline: none;
+    }
+    .form-help {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+    .wood-price-note,
+    .engraving-upload-note {
+      padding: 0.75rem 0.9rem;
+      color: #684a2a;
+      background: rgba(196,150,74,0.13);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+    .whatsapp-submit {
+      grid-column: 1 / -1;
+      min-height: 52px;
+      padding: 0.9rem 1.4rem;
+      color: #fff;
+      background: #276a48;
+      border: 0;
+      border-radius: 7px;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .whatsapp-submit:hover {
+      background: #1f583b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(39,106,72,0.24);
+    }
+    .whatsapp-submit:focus-visible {
+      outline: 3px solid rgba(39,106,72,0.25);
+      outline-offset: 3px;
+    }
+    .contact-privacy {
+      grid-column: 1 / -1;
+      color: var(--text-muted);
+      font-size: 0.73rem;
+      line-height: 1.5;
+      text-align: center;
     }
     .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
     .contact-item {
@@ -1117,6 +1333,9 @@
       .engraving-grid { grid-template-columns: 1fr; max-width: 620px; }
       .engraving-card.recommended { transform: none; }
       .engraving-tips ul { grid-template-columns: 1fr; }
+      .engraving-tips { max-width: 620px; }
+      .engraving-placeholder-grid { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; }
+      .contact-layout { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
       .pricing-card.featured { transform: none; }
       .maintenance-steps { grid-template-columns: repeat(2, 1fr); }
@@ -1238,8 +1457,954 @@
           linear-gradient(0deg, rgba(42,31,20,0.72) 0%, transparent 48%, rgba(42,31,20,0.24) 100%);
       }
       .hero-title { font-size: 3rem; }
+      .engraving-media { height: clamp(190px, 68vw, 250px); }
+      .engraving-media img {
+        max-width: calc(100% - 0.5rem);
+        max-height: calc(100% - 0.5rem);
+      }
+      .contact-form { grid-template-columns: 1fr; }
+      .form-group.full,
+      .whatsapp-submit,
+      .contact-privacy { grid-column: 1; }
       .about-stats { grid-template-columns: 1fr; gap: 1.5rem; }
       .pricing-grid { max-width: 100%; }
+    }
+  
+
+    /* =========================================================
+       MATHEMATICAL VIEWPORT FIT FIX
+       Goal: avoid the 100% zoom feeling in Edge and on low-height screens.
+       Formula used on desktop:
+       usable vertical space = 100dvh - navbar - browser/edge safety margin
+       ========================================================= */
+
+    :root {
+      --edge-safe-y: clamp(18px, 3dvh, 34px);
+      --desktop-nav-visible-h: 88px; /* 60px navbar + 14px top offset + 14px safety */
+      --usable-view-h: calc(100dvh - var(--desktop-nav-visible-h) - var(--edge-safe-y));
+      --section-pad-y: clamp(2rem, 5dvh, 4.25rem);
+      --section-pad-x: clamp(1.25rem, 4vw, 3.5rem);
+      --tight-gap: clamp(1rem, 2.2dvh, 1.75rem);
+      --title-fit: clamp(2.15rem, 4.2vw, 3.45rem);
+      --copy-fit: clamp(0.88rem, 1.35vw, 0.98rem);
+    }
+
+    html { scroll-padding-top: 0; }
+
+    /*
+      ANCHOR LANDING FIX
+      Mathematical rule:
+      sectionTopAfterScroll = sectionTop - scrollY
+      To prevent the previous section from appearing above the floating navbar,
+      force sectionTopAfterScroll <= 0 by scrolling to sectionTop + anchorOverlap.
+      The extra top padding keeps the section heading below the fixed navbar.
+    */
+    :root {
+      --anchor-overlap: 2px;
+      --section-anchor-pad-top: max(var(--section-pad-y), calc(var(--desktop-nav-visible-h) + 0.75rem));
+    }
+
+    section[id] {
+      scroll-margin-top: 0;
+    }
+
+    .section:not(.hero) {
+      padding-top: var(--section-anchor-pad-top);
+    }
+
+    .section {
+      padding: var(--section-pad-y) var(--section-pad-x);
+      min-height: auto;
+    }
+
+    .section-title {
+      font-size: var(--title-fit);
+      margin-bottom: clamp(0.85rem, 1.8dvh, 1.35rem);
+    }
+
+    .section-sub {
+      font-size: var(--copy-fit);
+      line-height: 1.58;
+      margin-bottom: var(--tight-gap);
+    }
+
+    .section-header {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .section-header .section-sub {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .hero {
+      min-height: 100dvh;
+      padding-top: calc(var(--desktop-nav-visible-h) + var(--edge-safe-y));
+      padding-bottom: var(--edge-safe-y);
+    }
+
+    .hero-content {
+      padding-top: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6.8vw, 6.25rem);
+      margin-bottom: clamp(0.9rem, 2dvh, 1.35rem);
+    }
+
+    .hero-eyebrow {
+      margin-bottom: clamp(0.75rem, 2dvh, 1.25rem);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+      line-height: 1.55;
+      margin-bottom: clamp(1.3rem, 3dvh, 2rem);
+    }
+
+    .scroll-cue {
+      bottom: max(1rem, var(--edge-safe-y));
+    }
+
+    .gallery,
+    .pricing,
+    .maintenance,
+    .contact {
+      padding-bottom: var(--section-pad-y);
+    }
+
+    .about-grid,
+    .engraving-grid,
+    .pricing-grid,
+    .maintenance-steps,
+    .contact-layout {
+      gap: var(--tight-gap);
+    }
+
+    .about-grid {
+      max-height: none;
+    }
+
+    .about-img-frame {
+      max-width: min(360px, 28vw);
+      max-height: calc(var(--usable-view-h) - 2rem);
+    }
+
+    .about-body {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .about-body p {
+      font-size: var(--copy-fit);
+      line-height: 1.58;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-stats {
+      padding-top: clamp(1rem, 2dvh, 1.5rem);
+      gap: clamp(0.75rem, 1.8dvh, 1.25rem);
+    }
+
+    .stat-num {
+      font-size: clamp(2rem, 4vw, 2.55rem);
+    }
+
+    .gallery-filters {
+      margin-bottom: var(--tight-gap);
+      gap: 0.55rem;
+    }
+
+    .filter-btn {
+      padding: 0.42rem 1.05rem;
+      font-size: 0.74rem;
+    }
+
+    .gallery-grid {
+      column-gap: 1rem;
+    }
+
+    .gallery-item {
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 1025px) {
+      .gallery-img {
+        max-height: min(360px, 46dvh);
+      }
+
+      .gallery-img .img-placeholder {
+        width: 100%;
+        height: 100%;
+        max-height: min(360px, 46dvh);
+        object-fit: cover;
+      }
+    }
+
+    .engraving-grid,
+    .engraving-placeholder-grid,
+    .pricing-grid,
+    .maintenance-steps {
+      align-items: stretch;
+    }
+
+    .engraving-media {
+      aspect-ratio: 16 / 10;
+      padding: clamp(0.55rem, 1.5dvh, 0.9rem);
+    }
+
+    .engraving-card-body,
+    .engraving-placeholder-copy {
+      padding: clamp(1rem, 2.2dvh, 1.25rem);
+    }
+
+    .engraving-card-body h3,
+    .engraving-placeholder-copy h4 {
+      font-size: clamp(1.2rem, 2.3vw, 1.38rem);
+      margin-bottom: 0.45rem;
+    }
+
+    .engraving-card-body p,
+    .engraving-placeholder-copy p {
+      font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+      line-height: 1.5;
+    }
+
+    .engraving-tips {
+      padding: clamp(1rem, 2.5dvh, 1.6rem);
+    }
+
+    .engraving-tips h3 {
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.25rem, 2.6vw, 1.45rem);
+    }
+
+    .engraving-tips ul {
+      gap: 0.8rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .engraving-tips li {
+      font-size: clamp(0.78rem, 1.1vw, 0.84rem);
+      line-height: 1.45;
+    }
+
+    .engraving-showcase {
+      margin-top: var(--tight-gap);
+      padding-top: clamp(1.5rem, 3dvh, 2.5rem);
+    }
+
+    .engraving-showcase-heading {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .engraving-placeholder-media {
+      aspect-ratio: 16 / 10;
+    }
+
+    .pricing-grid {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .pricing-card {
+      padding: clamp(1.35rem, 3dvh, 2rem) clamp(1.15rem, 2.5vw, 1.6rem);
+    }
+
+    .pricing-wood-badge {
+      font-size: 1.55rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .pricing-card h3 {
+      font-size: clamp(1.45rem, 2.8vw, 1.7rem);
+      margin-bottom: 0.45rem;
+    }
+
+    .pricing-desc,
+    .pricing-range {
+      margin-bottom: 0.9rem;
+    }
+
+    .price-amount {
+      font-size: clamp(2rem, 4vw, 2.35rem);
+    }
+
+    .pricing-features {
+      gap: 0.42rem;
+    }
+
+    .pricing-features li,
+    .pricing-note {
+      font-size: clamp(0.78rem, 1.1vw, 0.84rem);
+      line-height: 1.45;
+    }
+
+    .maintenance-steps {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .maint-step {
+      padding: clamp(1.2rem, 2.6dvh, 1.65rem) clamp(1rem, 2vw, 1.35rem);
+    }
+
+    .maint-num {
+      font-size: clamp(2.7rem, 5vw, 3.45rem);
+      top: 0.75rem;
+      right: 1rem;
+    }
+
+    .maint-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .maint-step h3 {
+      font-size: clamp(1.15rem, 2.2vw, 1.3rem);
+      margin-bottom: 0.45rem;
+    }
+
+    .maint-step p {
+      font-size: clamp(0.78rem, 1.1vw, 0.84rem);
+      line-height: 1.48;
+      margin-bottom: 0.75rem;
+    }
+
+    .maint-tip {
+      padding: clamp(1.1rem, 2.5dvh, 1.6rem) clamp(1.25rem, 3vw, 2rem);
+      gap: 1rem;
+    }
+
+    .maint-tip p {
+      font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+      line-height: 1.55;
+    }
+
+    .contact-sub {
+      margin-bottom: var(--tight-gap);
+      font-size: var(--copy-fit);
+    }
+
+    .contact-form-card {
+      padding: clamp(1.2rem, 3dvh, 2rem);
+    }
+
+    .contact-form-heading {
+      margin-bottom: var(--tight-gap);
+    }
+
+    .contact-form {
+      gap: clamp(0.75rem, 1.7dvh, 1rem);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      min-height: 42px;
+      padding: 0.62rem 0.8rem;
+    }
+
+    .form-group textarea {
+      min-height: 86px;
+    }
+
+    .whatsapp-submit {
+      min-height: 46px;
+      padding: 0.72rem 1.2rem;
+    }
+
+    .contact-methods {
+      gap: 0.75rem;
+    }
+
+    .contact-item {
+      padding: clamp(1rem, 2.3dvh, 1.25rem) clamp(1.15rem, 2.5vw, 1.5rem);
+      gap: 1rem;
+    }
+
+    .footer {
+      padding-top: clamp(1.8rem, 4dvh, 2.5rem);
+      padding-bottom: clamp(1.8rem, 4dvh, 2.5rem);
+    }
+
+    @media (min-width: 1025px) and (max-height: 850px) {
+      :root {
+        --edge-safe-y: clamp(22px, 4dvh, 42px);
+        --section-pad-y: clamp(1.45rem, 3.6dvh, 2.7rem);
+        --tight-gap: clamp(0.75rem, 1.8dvh, 1.2rem);
+        --title-fit: clamp(1.95rem, 3.6vw, 2.9rem);
+        --copy-fit: 0.86rem;
+      }
+
+      body { line-height: 1.55; }
+
+      .hero-title {
+        font-size: clamp(2.65rem, 5.7vw, 4.9rem);
+      }
+
+      .btn-primary {
+        padding: 0.72rem 1.75rem;
+      }
+
+      .scroll-line {
+        height: 32px;
+      }
+
+      .about-grid {
+        grid-template-columns: 0.8fr 1.4fr;
+      }
+
+      .about-img-frame {
+        max-width: min(300px, 24vw);
+      }
+
+      .engraving-grid,
+      .pricing-grid,
+      .maintenance-steps {
+        gap: 0.9rem;
+      }
+
+      .engraving-media,
+      .engraving-placeholder-media {
+        aspect-ratio: 16 / 9;
+      }
+
+      .pricing-card.featured,
+      .engraving-card.recommended {
+        transform: none;
+      }
+
+      .contact-layout {
+        grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.55fr);
+      }
+    }
+
+    @media (min-width: 1025px) and (max-height: 720px) {
+      :root {
+        --edge-safe-y: 44px;
+        --section-pad-y: 1.25rem;
+        --tight-gap: 0.75rem;
+        --title-fit: clamp(1.75rem, 3.2vw, 2.45rem);
+        --copy-fit: 0.82rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.35rem, 5vw, 4.2rem);
+      }
+
+      .hero-sub {
+        margin-bottom: 1rem;
+      }
+
+      .section-label {
+        margin-bottom: 0.45rem;
+      }
+
+      .about-img-frame {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        max-width: 980px;
+      }
+
+      .engraving-tips ul {
+        grid-template-columns: 1fr;
+      }
+
+      .maintenance-steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .maint-bar,
+      .maint-step small {
+        display: none;
+      }
+
+      .contact-methods {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      :root {
+        --section-pad-y: clamp(2.5rem, 7svh, 4.5rem);
+        --section-pad-x: clamp(1.1rem, 5vw, 2rem);
+        --tight-gap: clamp(1rem, 3svh, 1.75rem);
+      }
+
+      :root {
+        --section-anchor-pad-top: max(var(--section-pad-y), calc(var(--nav-h) + 0.75rem));
+      }
+
+      html { scroll-padding-top: 0; }
+
+      .section {
+        padding: var(--section-pad-y) var(--section-pad-x);
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding-top: var(--nav-h);
+      }
+
+      .gallery-img .img-placeholder {
+        object-fit: contain;
+      }
+    }
+
+
+
+    /* =========================================================
+       ENGRAVING + GIFT IDEAS FIT
+       Two independent snap stops. Content is scaled smaller while
+       preserving original aspect ratios and grid geometry.
+       ========================================================= */
+
+    @media (min-width: 1025px) {
+      #engraving,
+      #gift-ideas {
+        padding-top: calc(var(--desktop-nav-visible-h) + clamp(0.75rem, 1.8dvh, 1.35rem));
+        padding-bottom: clamp(1.35rem, 2.8dvh, 2.4rem);
+      }
+
+      #engraving .section-header,
+      #gift-ideas .section-header {
+        max-width: 820px;
+        margin: 0 auto clamp(1rem, 2.2dvh, 1.6rem);
+      }
+
+      #engraving .section-label,
+      #gift-ideas .section-label {
+        margin-bottom: 0.45rem;
+        font-size: clamp(0.62rem, 0.82vw, 0.72rem);
+      }
+
+      #engraving .section-title,
+      #gift-ideas .section-title {
+        margin-bottom: 0.65rem;
+        font-size: clamp(2rem, 3.45vw, 2.85rem);
+        line-height: 1.04;
+      }
+
+      #engraving .section-sub,
+      #gift-ideas .section-sub,
+      #gift-ideas .engraving-showcase-heading p:last-child {
+        max-width: 76ch;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+        font-size: clamp(0.82rem, 0.98vw, 0.92rem);
+        line-height: 1.5;
+      }
+
+      #engraving .engraving-grid,
+      #gift-ideas .engraving-placeholder-grid {
+        max-width: min(980px, 78vw);
+        gap: clamp(0.8rem, 1.5dvh, 1.15rem);
+      }
+
+      #engraving .engraving-grid {
+        margin-bottom: clamp(0.95rem, 2dvh, 1.35rem);
+      }
+
+      #engraving .engraving-card.recommended {
+        transform: translateY(-0.25rem);
+      }
+
+      #engraving .engraving-card,
+      #gift-ideas .engraving-placeholder {
+        border-radius: 10px;
+      }
+
+      #engraving .engraving-media,
+      #gift-ideas .engraving-placeholder-media {
+        aspect-ratio: 4 / 3;
+        height: auto;
+        padding: clamp(0.55rem, 1.1dvh, 0.85rem);
+      }
+
+      #engraving .engraving-media img {
+        width: auto;
+        max-width: calc(100% - 1rem);
+        height: auto;
+        max-height: calc(100% - 1rem);
+        box-sizing: border-box;
+        object-fit: contain;
+      }
+
+      #engraving .engraving-card-body,
+      #gift-ideas .engraving-placeholder-copy {
+        padding: clamp(0.8rem, 1.55dvh, 1.1rem) clamp(0.9rem, 1.4vw, 1.15rem);
+      }
+
+      #engraving .engraving-card-body h3,
+      #gift-ideas .engraving-placeholder-copy h4 {
+        margin-bottom: 0.35rem;
+        font-size: clamp(1.12rem, 1.6vw, 1.35rem);
+        line-height: 1.08;
+      }
+
+      #engraving .engraving-card-body p,
+      #gift-ideas .engraving-placeholder-copy p {
+        font-size: clamp(0.76rem, 0.9vw, 0.86rem);
+        line-height: 1.42;
+      }
+
+      #engraving .engraving-status {
+        top: 0.55rem;
+        left: 0.55rem;
+        padding: 0.35rem 0.58rem;
+        font-size: 0.6rem;
+      }
+
+      #engraving .engraving-tips {
+        max-width: min(980px, 78vw);
+        padding: clamp(0.9rem, 1.8dvh, 1.25rem) clamp(1rem, 1.7vw, 1.35rem);
+      }
+
+      #engraving .engraving-tips h3 {
+        margin-bottom: 0.65rem;
+        font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+        line-height: 1.08;
+      }
+
+      #engraving .engraving-tips ul {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(0.65rem, 1.35dvh, 0.95rem);
+        margin-bottom: 0.75rem;
+      }
+
+      #engraving .engraving-tips li {
+        padding-left: 1.8rem;
+        font-size: clamp(0.74rem, 0.86vw, 0.82rem);
+        line-height: 1.38;
+      }
+
+      #engraving .engraving-tips li::before {
+        width: 1.28rem;
+        height: 1.28rem;
+        font-size: 0.6rem;
+      }
+
+      #engraving .engraving-note {
+        padding-top: 0.65rem;
+        font-size: clamp(0.72rem, 0.85vw, 0.8rem);
+        line-height: 1.42;
+      }
+
+      #gift-ideas .engraving-showcase {
+        max-width: none;
+        margin: 0 auto;
+        padding-top: 0;
+      }
+
+      #gift-ideas .engraving-showcase-heading {
+        margin-bottom: clamp(1rem, 2.2dvh, 1.5rem);
+      }
+
+      #gift-ideas .engraving-placeholder-icon {
+        width: clamp(44px, 5.2dvh, 58px);
+        height: clamp(44px, 5.2dvh, 58px);
+        font-size: clamp(1.15rem, 2.1dvh, 1.45rem);
+      }
+    }
+
+    @media (min-width: 1025px) and (max-height: 760px) {
+      #engraving,
+      #gift-ideas {
+        padding-top: calc(var(--desktop-nav-visible-h) + 0.55rem);
+        padding-bottom: 1rem;
+      }
+
+      #engraving .section-header,
+      #gift-ideas .section-header {
+        margin-bottom: 0.8rem;
+      }
+
+      #engraving .section-title,
+      #gift-ideas .section-title {
+        font-size: clamp(1.75rem, 3vw, 2.35rem);
+        margin-bottom: 0.45rem;
+      }
+
+      #engraving .section-sub,
+      #gift-ideas .section-sub,
+      #gift-ideas .engraving-showcase-heading p:last-child {
+        font-size: clamp(0.76rem, 0.9vw, 0.84rem);
+        line-height: 1.38;
+      }
+
+      #engraving .engraving-grid,
+      #gift-ideas .engraving-placeholder-grid,
+      #engraving .engraving-tips {
+        max-width: min(900px, 76vw);
+      }
+
+      #engraving .engraving-card-body,
+      #gift-ideas .engraving-placeholder-copy {
+        padding: 0.7rem 0.82rem;
+      }
+
+      #engraving .engraving-card-body h3,
+      #gift-ideas .engraving-placeholder-copy h4 {
+        font-size: clamp(1rem, 1.35vw, 1.16rem);
+      }
+
+      #engraving .engraving-card-body p,
+      #gift-ideas .engraving-placeholder-copy p {
+        font-size: clamp(0.68rem, 0.78vw, 0.76rem);
+        line-height: 1.32;
+      }
+
+      #engraving .engraving-tips {
+        padding: 0.75rem 0.9rem;
+      }
+
+      #engraving .engraving-tips h3 {
+        margin-bottom: 0.45rem;
+        font-size: clamp(1rem, 1.45vw, 1.18rem);
+      }
+
+      #engraving .engraving-tips ul {
+        gap: 0.55rem;
+        margin-bottom: 0.55rem;
+      }
+
+      #engraving .engraving-tips li {
+        font-size: clamp(0.66rem, 0.76vw, 0.74rem);
+        line-height: 1.26;
+      }
+
+      #engraving .engraving-note {
+        font-size: clamp(0.66rem, 0.74vw, 0.74rem);
+        line-height: 1.3;
+      }
+    }
+
+    /* =========================================================
+       STRUCTURED MANUAL SCROLL
+       Native page scroll stays available inside #gallery.
+       Every other section behaves like a controlled stop.
+       ========================================================= */
+
+    html.structured-scroll-enabled,
+    html.structured-scroll-enabled body {
+      overscroll-behavior-y: contain;
+    }
+
+    section[id] {
+      scroll-snap-stop: always;
+    }
+
+    #gallery {
+      scroll-snap-stop: normal;
+    }
+
+
+    /* =========================================================
+       FINAL LAYOUT PATCH
+       - Navbar labels must never wrap on desktop.
+       - Engraving and Gift Ideas are full snap stops.
+       - Gift Ideas content is centered and isolated from Pricing.
+       - Image/card proportions are kept; only scale is reduced.
+       ========================================================= */
+
+    @media (min-width: 1025px) {
+      #navbar {
+        column-gap: clamp(0.35rem, 0.8vw, 0.9rem);
+      }
+
+      .nav-left {
+        min-width: 0;
+      }
+
+      .nav-logo {
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        min-width: 0;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        gap: clamp(0.12rem, 0.35vw, 0.32rem);
+      }
+
+      .nav-links li {
+        flex: 0 0 auto;
+      }
+
+      .nav-link {
+        white-space: nowrap;
+        word-break: keep-all;
+        overflow-wrap: normal;
+        min-height: 34px;
+        padding: 0.45rem clamp(0.42rem, 0.58vw, 0.68rem);
+        font-size: clamp(0.62rem, 0.68vw, 0.76rem);
+        letter-spacing: clamp(0.035em, 0.055vw, 0.075em);
+        line-height: 1;
+      }
+
+      .nav-right {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1520px) {
+      .nav-logo span:last-child {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1180px) {
+      .lang-current {
+        width: 46px;
+        padding-inline: 0.45rem;
+      }
+
+      .lang-code {
+        display: none;
+      }
+
+      .nav-link {
+        padding-inline: 0.34rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.03em;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      #engraving,
+      #gift-ideas {
+        min-height: calc(100dvh + 2px);
+        background-clip: padding-box;
+      }
+
+      #engraving {
+        padding-top: calc(var(--desktop-nav-visible-h) + clamp(1.25rem, 3dvh, 2.35rem));
+        padding-bottom: clamp(2rem, 4dvh, 3.25rem);
+      }
+
+      #engraving .engraving-grid,
+      #engraving .engraving-tips {
+        max-width: min(1040px, 82vw);
+      }
+
+      #engraving .engraving-media {
+        aspect-ratio: 4 / 3;
+        max-height: min(26dvh, 245px);
+      }
+
+      #engraving .engraving-media img {
+        object-fit: contain;
+      }
+
+      #gift-ideas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: calc(var(--desktop-nav-visible-h) + clamp(1rem, 2.2dvh, 1.7rem));
+        padding-bottom: clamp(2.25rem, 5dvh, 4rem);
+        overflow: hidden;
+      }
+
+      #gift-ideas .engraving-showcase {
+        width: 100%;
+        max-width: min(1040px, 82vw);
+        margin-inline: auto;
+      }
+
+      #gift-ideas .engraving-showcase-heading {
+        max-width: 760px;
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      #gift-ideas .engraving-placeholder-grid {
+        width: 100%;
+        max-width: min(980px, 78vw);
+        margin-inline: auto;
+        justify-content: center;
+        justify-items: center;
+        align-items: start;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      #gift-ideas .engraving-placeholder {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      #gift-ideas .engraving-placeholder-media {
+        aspect-ratio: 4 / 3;
+        max-height: min(24dvh, 220px);
+      }
+
+      #gift-ideas + #pricing {
+        margin-top: 0;
+      }
+    }
+
+    @media (min-width: 1025px) and (max-height: 760px) {
+      #engraving {
+        padding-top: calc(var(--desktop-nav-visible-h) + 0.9rem);
+        padding-bottom: 1.35rem;
+      }
+
+      #engraving .engraving-media {
+        max-height: min(23dvh, 185px);
+      }
+
+      #gift-ideas {
+        padding-top: calc(var(--desktop-nav-visible-h) + 0.75rem);
+        padding-bottom: 1.5rem;
+      }
+
+      #gift-ideas .engraving-placeholder {
+        max-width: 270px;
+      }
+
+      #gift-ideas .engraving-placeholder-media {
+        max-height: min(22dvh, 170px);
+      }
+    }
+
+    /* Final engraving image sizing: preserve every source image completely. */
+    #engraving .engraving-media {
+      display: flex;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      aspect-ratio: auto;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow: visible;
+      background: #fffdf8;
+    }
+
+    #engraving .engraving-media img {
+      width: auto;
+      max-width: min(100%, 310px);
+      height: auto;
+      max-height: 260px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    @media (max-width: 480px) {
+      #engraving .engraving-media {
+        height: auto;
+        max-height: none;
+        padding: 0.75rem;
+      }
+
+      #engraving .engraving-media img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 230px;
+      }
     }
   </style>
 </head>
@@ -1276,6 +2441,7 @@
       <li><a href="#about" class="nav-link" data-i18n="nav.about">Chi sono</a></li>
       <li><a href="#gallery" class="nav-link" data-i18n="nav.gallery">Galleria</a></li>
       <li><a href="#engraving" class="nav-link" data-i18n="nav.engraving">Incisione laser</a></li>
+      <li><a href="#gift-ideas" class="nav-link" data-i18n="nav.gifts">Idee regalo</a></li>
       <li><a href="#pricing" class="nav-link" data-i18n="nav.pricing">Prezzi</a></li>
       <li><a href="#maintenance" class="nav-link" data-i18n="nav.maintenance">Manutenzione</a></li>
       <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contatti</a></li>
@@ -1291,10 +2457,10 @@
       <div class="wood-ring r3"></div>
     </div>
     <div class="hero-content">
-      <p class="hero-eyebrow reveal" data-i18n="hero.eyebrow">Artigianato fatto a mano · Svizzera</p>
-      <h1 class="hero-title reveal"><em>I Taglieri</em><br />di Roby</h1>
-      <p class="hero-sub reveal" data-i18n="hero.sub">Ogni pezzo è unico. Ogni venatura racconta una storia.</p>
-      <a href="#gallery" class="btn-primary reveal" data-i18n="hero.cta">Scopri le creazioni</a>
+      <p class="hero-eyebrow reveal" data-i18n="hero.eyebrow">Regali fatti a mano · Incisione laser · Svizzera</p>
+      <h1 class="hero-title reveal" data-i18n="hero.title"><em>TaRegali personalizzati</em><br />in legno</h1>
+      <p class="hero-sub reveal" data-i18n="hero.sub">Taglieri artigianali con nomi, dediche, date, loghi o immagini: un regalo unico, creato per durare.</p>
+      <a href="#engraving" class="btn-primary reveal" data-i18n="hero.cta">Scopri le incisioni</a>
     </div>
     <div class="scroll-cue">
       <span data-i18n="hero.scroll">Scorri</span>
@@ -1408,11 +2574,11 @@
       <article class="engraving-card reveal">
         <figure class="engraving-media">
           <img src="images/example_bad_engraving_tree.jpg" alt="Albero nero molto dettagliato con radici e rami sottili" data-i18n-alt="engraving.detail.alt" width="540" height="360" loading="lazy" decoding="async" />
-          <figcaption class="engraving-status caution" data-i18n="engraving.detail.status">Attenzione ai dettagli</figcaption>
+          <figcaption class="engraving-status bad" data-i18n="engraving.detail.status">Non adatta</figcaption>
         </figure>
         <div class="engraving-card-body">
-          <h3 data-i18n="engraving.detail.title">Dettagli da preservare</h3>
-          <p data-i18n="engraving.detail.desc">Linee molto sottili e piccoli spazi possono fondersi durante la conversione o su incisioni ridotte. Indica quali elementi sono essenziali: l'immagine verrà semplificata solo dove serve.</p>
+          <h3 data-i18n="engraving.detail.title">Immagine non adatta</h3>
+          <p data-i18n="engraving.detail.desc">Questa immagine non è adatta all'incisione perché i dettagli e i contorni non sono marcati abbastanza. Durante la lavorazione le linee sottili rischierebbero di confondersi e il risultato perderebbe leggibilità.</p>
         </div>
       </article>
 
@@ -1428,15 +2594,49 @@
       </article>
     </div>
 
-    <aside class="engraving-tips reveal" aria-labelledby="engraving-tips-title">
-      <h3 id="engraving-tips-title" data-i18n="engraving.tips.title">Come puoi consegnare l'immagine</h3>
-      <ul>
-        <li data-i18n="engraving.tip1">Una silhouette già pronta, preferibilmente in SVG o PNG ad alta risoluzione.</li>
-        <li data-i18n="engraving.tip2">Una foto normale in cui i contorni e i dettagli desiderati restino distinguibili anche senza colore.</li>
-        <li data-i18n="engraving.tip3">Qualsiasi foto normale: la valuto io e ti comunico se è adatta o se necessita di modifiche.</li>
-      </ul>
-      <p class="engraving-note" data-i18n="engraving.note">Non devi convertire o modificare la foto da solo. Prima dell'incisione verifico che il passaggio al bianco e nero conservi gli elementi che vuoi vedere sul legno.</p>
-    </aside>
+  </section>
+
+  <!-- GIFT IDEAS -->
+  <section id="gift-ideas" class="section engraving gift-ideas" aria-labelledby="gift-ideas-title">
+    <div class="engraving-showcase reveal">
+      <div class="engraving-showcase-heading section-header">
+        <p class="section-label" data-i18n="engraving.examples.label">Idee regalo</p>
+        <h2 class="section-title" id="gift-ideas-title" data-i18n="engraving.examples.title">Esempi di <em>incisioni personalizzate</em></h2>
+        <p class="section-sub" data-i18n="engraving.examples.sub">Questi spazi sono pronti per mostrare fotografie di lavori reali. Sostituisci ogni segnaposto con l'immagine dell'incisione mantenendo titolo e descrizione.</p>
+      </div>
+      <div class="engraving-placeholder-grid">
+        <article class="engraving-placeholder">
+          <div class="engraving-placeholder-media" role="img" data-i18n-aria="engraving.example1.aria" aria-label="Spazio per una fotografia di un tagliere con nomi, data o dedica">
+            <span class="engraving-placeholder-icon" aria-hidden="true">Aa</span>
+            <span data-i18n="engraving.placeholder">Foto incisione</span>
+          </div>
+          <div class="engraving-placeholder-copy">
+            <h4 data-i18n="engraving.example1.title">Nomi, date e dediche</h4>
+            <p data-i18n="engraving.example1.desc">Per matrimoni, anniversari, compleanni, nascite e momenti da ricordare.</p>
+          </div>
+        </article>
+        <article class="engraving-placeholder">
+          <div class="engraving-placeholder-media" role="img" data-i18n-aria="engraving.example2.aria" aria-label="Spazio per una fotografia di un tagliere con logo o illustrazione">
+            <span class="engraving-placeholder-icon" aria-hidden="true">✦</span>
+            <span data-i18n="engraving.placeholder">Foto incisione</span>
+          </div>
+          <div class="engraving-placeholder-copy">
+            <h4 data-i18n="engraving.example2.title">Loghi e immagini</h4>
+            <p data-i18n="engraving.example2.desc">Per aziende, ristoranti, associazioni, famiglie e illustrazioni personali.</p>
+          </div>
+        </article>
+        <article class="engraving-placeholder">
+          <div class="engraving-placeholder-media" role="img" data-i18n-aria="engraving.example3.aria" aria-label="Spazio per una fotografia di una confezione regalo personalizzata">
+            <span class="engraving-placeholder-icon" aria-hidden="true">□</span>
+            <span data-i18n="engraving.placeholder">Foto incisione</span>
+          </div>
+          <div class="engraving-placeholder-copy">
+            <h4 data-i18n="engraving.example3.title">Regali per occasioni speciali</h4>
+            <p data-i18n="engraving.example3.desc">Un oggetto utile e personale, creato su misura per chi lo riceve.</p>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
   <!-- PRICING -->
@@ -1475,11 +2675,81 @@
     <div class="contact-inner">
       <p class="section-label reveal" data-i18n="contact.label">Parliamoci</p>
       <h2 class="section-title reveal" data-i18n="nav.contact">Contatti</h2>
-      <p class="contact-sub reveal" data-i18n="contact.sub">Interessato a un pezzo? Hai domande? Scrivi o chiamami direttamente — rispondo sempre entro 24 ore.</p>
-      <div class="contact-methods reveal">
-        <a href="mailto:roby@taglieri.ch" class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><span>roby@taglieri.ch</span></div></a>
-        <a href="https://instagram.com" target="_blank" class="contact-item"><span class="contact-icon">◈</span><div><strong>Instagram</strong><span>@itaglieridi_roby</span></div></a>
-        <a href="tel:+41791234567" class="contact-item"><span class="contact-icon">◎</span><div><strong data-i18n="contact.phone">Telefono</strong><span>+41 79 123 45 67</span></div></a>
+      <p class="contact-sub reveal" data-i18n="contact.sub">Compila il modulo: verrà preparato un messaggio con tutti i dettagli e si aprirà direttamente la chat WhatsApp di Roby.</p>
+      <div class="contact-layout">
+        <div class="contact-form-card reveal">
+          <div class="contact-form-heading">
+            <h3 data-i18n="contact.form.title">Richiedi il tuo regalo personalizzato</h3>
+            <p data-i18n="contact.form.intro">Scegli tagliere, legno e incisione. Potrai controllare e modificare la richiesta prima di inviarla su WhatsApp.</p>
+          </div>
+          <form class="contact-form" id="whatsapp-order-form">
+            <div class="form-group">
+              <label for="customer-first-name" data-i18n="contact.firstName">Nome</label>
+              <input id="customer-first-name" name="firstName" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="form-group">
+              <label for="customer-last-name" data-i18n="contact.lastName">Cognome</label>
+              <input id="customer-last-name" name="lastName" type="text" autocomplete="family-name" required />
+            </div>
+            <div class="form-group full">
+              <label for="customer-email" data-i18n="contact.email">Email di backup</label>
+              <input id="customer-email" name="email" type="email" autocomplete="email" required data-i18n-placeholder="contact.email.placeholder" placeholder="nome@esempio.ch" />
+              <small class="form-help" data-i18n="contact.email.help">Viene inclusa nel messaggio come contatto alternativo nel caso WhatsApp non dovesse funzionare.</small>
+            </div>
+            <div class="form-group">
+              <label for="board-size" data-i18n="contact.size">Misura del tagliere</label>
+              <select id="board-size" name="size" required>
+                <option value="" selected disabled data-i18n="contact.choose">Seleziona</option>
+                <option value="small" data-i18n="contact.size.small">Piccola</option>
+                <option value="medium" data-i18n="contact.size.medium">Media</option>
+                <option value="pizza" data-i18n="contact.size.pizza">Pizza al metro</option>
+                <option value="large" data-i18n="contact.size.large">Grande</option>
+                <option value="custom" data-i18n="contact.size.custom">Personalizzata</option>
+              </select>
+            </div>
+            <div class="form-group" id="custom-size-group" hidden>
+              <label for="custom-size" data-i18n="contact.customSize">Misura personalizzata</label>
+              <input id="custom-size" name="customSize" type="text" data-i18n-placeholder="contact.customSize.placeholder" placeholder="es. 60 × 30 cm" />
+            </div>
+            <div class="form-group">
+              <label for="wood-type" data-i18n="contact.wood">Tipo di legno</label>
+              <select id="wood-type" name="wood" required>
+                <option value="" selected disabled data-i18n="contact.choose">Seleziona</option>
+                <option value="oak" data-i18n="contact.wood.oak">Rovere</option>
+                <option value="walnut" data-i18n="contact.wood.walnut">Noce</option>
+                <option value="cherry" data-i18n="contact.wood.cherry">Ciliegio</option>
+                <option value="maple" data-i18n="contact.wood.maple">Acero</option>
+                <option value="ash" data-i18n="contact.wood.ash">Frassino</option>
+                <option value="specific" data-i18n="contact.wood.specific">Altro legno specifico</option>
+              </select>
+            </div>
+            <div class="form-group" id="custom-wood-group" hidden>
+              <label for="custom-wood" data-i18n="contact.customWood">Legno desiderato</label>
+              <input id="custom-wood" name="customWood" type="text" data-i18n-placeholder="contact.customWood.placeholder" placeholder="Indica il tipo di legno" />
+            </div>
+            <p class="wood-price-note form-group full" data-i18n="contact.wood.note">Il prezzo può variare in base al tipo e alla disponibilità del legno, soprattutto per richieste specifiche.</p>
+            <div class="form-group full">
+              <label for="engraving-request" data-i18n="contact.engraving">Desideri un'incisione?</label>
+              <select id="engraving-request" name="engraving" required>
+                <option value="" selected disabled data-i18n="contact.choose">Seleziona</option>
+                <option value="no" data-i18n="contact.no">No</option>
+                <option value="yes" data-i18n="contact.yes">Sì</option>
+              </select>
+            </div>
+            <p class="engraving-upload-note form-group full" id="engraving-upload-note" hidden data-i18n="contact.engraving.note">Dopo l'apertura di WhatsApp, aggiungi manualmente nella chat la foto o il file da incidere.</p>
+            <div class="form-group full">
+              <label for="order-notes" data-i18n="contact.notes">Altri dettagli</label>
+              <textarea id="order-notes" name="notes" data-i18n-placeholder="contact.notes.placeholder" placeholder="Forma, utilizzo, scadenza desiderata o altre richieste"></textarea>
+            </div>
+            <button class="whatsapp-submit" type="submit" data-i18n="contact.submit">Prepara il messaggio WhatsApp</button>
+            <p class="contact-privacy" data-i18n="contact.privacy">I dati non vengono salvati: servono soltanto a comporre il messaggio che aprirai su WhatsApp.</p>
+          </form>
+        </div>
+        <div class="contact-methods reveal">
+          <a href="mailto:roby@taglieri.ch" class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><span>roby@taglieri.ch</span></div></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-icon">◈</span><div><strong>Instagram</strong><span>@itaglieridi_roby</span></div></a>
+          <a href="tel:+41791234567" class="contact-item"><span class="contact-icon">◎</span><div><strong data-i18n="contact.phone">Telefono</strong><span>+41 79 123 45 67</span></div></a>
+        </div>
       </div>
     </div>
   </section>
@@ -1488,7 +2758,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand"><span class="logo-mark">✦</span><span>I Taglieri di Roby</span></div>
-      <p class="footer-tagline" data-i18n="footer.tagline">Artigianato in legno fatto a mano · Svizzera</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Regali personalizzati in legno & incisioni laser · Svizzera</p>
       <p class="footer-copy" data-i18n="footer.copy">© 2025 Roberto — Tutti i diritti riservati</p>
     </div>
   </footer>
@@ -1497,16 +2767,17 @@
     // ✦ Complete Translations with ALL languages ✦
     const translations = {
       it: {
-        "nav.home": "Home", "nav.about": "Chi sono", "nav.gallery": "Galleria", "nav.engraving": "Incisione laser", "nav.pricing": "Prezzi", "nav.maintenance": "Manutenzione", "nav.contact": "Contatti",
-        "hero.eyebrow": "Artigianato fatto a mano · Svizzera", "hero.sub": "Ogni pezzo è unico. Ogni venatura racconta una storia.", "hero.cta": "Scopri le creazioni", "hero.scroll": "Scorri",
-        "about.title": "Passione per il<br/><em>legno naturale</em>", "about.p1": "Mi chiamo Roberto, e da anni trasformo il legno in oggetti di uso quotidiano con le mie mani. Ogni tagliere che creo nasce da un pezzo selezionato con cura — noce, ciliegio, acero o rovere — scelto per la bellezza della sua venatura e la qualità del suo grano.", "about.p2": "Non lavoro in serie. Ogni pezzo è pensato, sagomato e rifinito individualmente. Il legno ha una sua voce, e io mi limito ad ascoltarla.",
+        "nav.home": "Home", "nav.about": "Chi sono", "nav.gallery": "Galleria", "nav.engraving": "Incisione laser", "nav.gifts": "Idee regalo", "nav.pricing": "Prezzi", "nav.maintenance": "Manutenzione", "nav.contact": "Contatti",
+        "hero.eyebrow": "Regali fatti a mano · Incisione laser · Svizzera", "hero.title": "<em>Regali personalizzati</em><br />in legno", "hero.sub": "Taglieri artigianali con nomi, dediche, date, loghi o immagini: un regalo unico, creato per durare.", "hero.cta": "Scopri le incisioni", "hero.scroll": "Scorri",
+        "about.title": "Artigianato per<br/><em>momenti speciali</em>", "about.p1": "Mi chiamo Roberto e trasformo legni selezionati in regali personali. Ogni tagliere può essere progettato per una persona o un'occasione e completato con un'incisione realizzata su misura.", "about.p2": "Matrimoni, compleanni, anniversari, nascite o regali aziendali: ogni pezzo viene sagomato, inciso e rifinito individualmente, mai prodotto in serie.",
         "about.stat1": "Pezzi creati", "about.stat2": "Anni di esperienza", "about.stat3": "Fatto a mano",
         "gallery.label": "Le mie creazioni", "gallery.all": "Tutti", "gallery.handle": "Con manico", "gallery.nohandle": "Senza manico", "gallery.meterpizza": "Pizza al metro", "gallery.upcycled": "Upcycled", "gallery.engraved": "Con incisione",
         "gallery.item1.name": "Tagliere Grande", "gallery.item2.name": "Tagliere Ovale", "gallery.item3.name": "Tagliere con Manico", "gallery.item4.name": "Tagliere Medio", "gallery.item5.name": "Tagliere Personalizzato", "gallery.item6.name": "Tagliere Ovale Piccolo",
         "process.label": "Dentro la bottega", "process.title": "Dal legno al <em>tagliere</em>", "process.sub": "Ogni forma nasce dalla selezione del legno, passa dal banco di lavoro e viene rifinita a mano.", "process.step1": "Scelta delle forme", "process.step2": "Lavorazione in bottega", "process.step3": "Selezione del legno", "process.step4": "Sagomatura a mano",
-        "engraving.label": "Personalizzazione", "engraving.title": "Quali immagini <em>incidono meglio?</em>", "engraving.sub": "Puoi inviare una silhouette già pronta oppure una fotografia normale. Il laser traduce l'immagine in bianco e nero: l'importante è che, dopo la conversione, i dettagli che desideri incidere rimangano riconoscibili. In caso di dubbio, valuto io la foto prima della lavorazione.",
+        "engraving.label": "Incisioni & regali", "engraving.title": "La tua idea diventa un <em>regalo personale</em>", "engraving.sub": "Nomi, date, dediche, loghi e immagini possono trasformare un tagliere in un ricordo unico. Puoi inviare una silhouette o una foto normale: verifico io che i dettagli importanti restino riconoscibili nella conversione in bianco e nero.",
+        "engraving.examples.label": "Idee regalo", "engraving.examples.title": "Esempi di <em>incisioni personalizzate</em>", "engraving.examples.sub": "Questi spazi sono pronti per mostrare fotografie di lavori reali e aiutare ogni cliente a immaginare il proprio regalo.", "engraving.placeholder": "Foto incisione", "engraving.example1.title": "Nomi, date e dediche", "engraving.example1.desc": "Per matrimoni, anniversari, compleanni, nascite e momenti da ricordare.", "engraving.example1.aria": "Spazio per una fotografia di un tagliere con nomi, data o dedica", "engraving.example2.title": "Loghi e immagini", "engraving.example2.desc": "Per aziende, ristoranti, associazioni, famiglie e illustrazioni personali.", "engraving.example2.aria": "Spazio per una fotografia di un tagliere con logo o illustrazione", "engraving.example3.title": "Regali per occasioni speciali", "engraving.example3.desc": "Un oggetto utile e personale, creato su misura per chi lo riceve.", "engraving.example3.aria": "Spazio per una fotografia di una confezione regalo personalizzata",
         "engraving.color.status": "Da valutare", "engraving.color.title": "Fotografia normale", "engraving.color.desc": "Puoi inviarla così com'è. Prima dell'incisione viene valutata in bianco e nero per verificare che soggetto, contorni e dettagli importanti restino leggibili senza dipendere dai colori.", "engraving.color.alt": "Fotografia a colori molto dettagliata di un ulivo",
-        "engraving.detail.status": "Attenzione ai dettagli", "engraving.detail.title": "Dettagli da preservare", "engraving.detail.desc": "Linee molto sottili e piccoli spazi possono fondersi durante la conversione o su incisioni ridotte. Indica quali elementi sono essenziali: l'immagine verrà semplificata solo dove serve.", "engraving.detail.alt": "Albero nero molto dettagliato con radici e rami sottili",
+        "engraving.detail.status": "Non adatta", "engraving.detail.title": "Immagine non adatta", "engraving.detail.desc": "Questa immagine non è adatta all'incisione perché i dettagli e i contorni non sono marcati abbastanza. Durante la lavorazione le linee sottili rischierebbero di confondersi e il risultato perderebbe leggibilità.", "engraving.detail.alt": "Albero nero molto dettagliato con radici e rami sottili",
         "engraving.good.status": "Consigliata", "engraving.good.title": "Silhouette già pronta", "engraving.good.desc": "Una silhouette in bianco e nero, con contorni chiari e forme ben separate, è già pronta per essere adattata all'incisione. È ideale per loghi, simboli, scritte e illustrazioni.", "engraving.good.alt": "Silhouette nera e bianca di un albero con forme pulite",
         "engraving.tips.title": "Come puoi consegnare l'immagine", "engraving.tip1": "Una silhouette già pronta, preferibilmente in SVG o PNG ad alta risoluzione.", "engraving.tip2": "Una foto normale in cui i contorni e i dettagli desiderati restino distinguibili anche senza colore.", "engraving.tip3": "Qualsiasi foto normale: la valuto io e ti comunico se è adatta o se necessita di modifiche.", "engraving.note": "Non devi convertire o modificare la foto da solo. Prima dell'incisione verifico che il passaggio al bianco e nero conservi gli elementi che vuoi vedere sul legno.",
         "pricing.label": "Investimento", "pricing.sub": "Ogni pezzo è unico — i prezzi variano in base al legno, alle dimensioni e alla complessità. Questi sono i range orientativi.", "pricing.from": "da", "pricing.popular": "Più richiesto",
@@ -1520,20 +2791,27 @@
         "maint.3.title": "Oliatura", "maint.3.desc": "Ogni 4-6 settimane, applica un sottile strato di olio di lino o olio minerale alimentare con un panno morbido. Lascia assorbire una notte intera.", "maint.3.freq": "Ogni 4–6 settimane",
         "maint.4.title": "Rigenerazione", "maint.4.desc": "Se il legno si segna con il tempo, levigalo delicatamente con carta vetrata fine (grana 220) seguendo la venatura, poi riapplica l'olio. Tornerà come nuovo.", "maint.4.freq": "Quando necessario",
         "maint.tip.label": "Consiglio di Roby:", "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita. Con le giuste cure, migliorerà con il tempo, proprio come il vino.",
-        "contact.label": "Parliamoci", "contact.sub": "Interessato a un pezzo? Hai domande? Scrivi o chiamami direttamente — rispondo sempre entro 24 ore.", "contact.phone": "Telefono",
-        "footer.tagline": "Artigianato in legno fatto a mano · Svizzera", "footer.copy": "© 2025 Roberto — Tutti i diritti riservati"
+        "contact.label": "Parliamoci", "contact.sub": "Compila il modulo: verrà preparato un messaggio con tutti i dettagli e si aprirà direttamente la chat WhatsApp di Roby.", "contact.phone": "Telefono",
+        "contact.form.title": "Richiedi il tuo regalo personalizzato", "contact.form.intro": "Scegli tagliere, legno e incisione. Potrai controllare e modificare la richiesta prima di inviarla su WhatsApp.", "contact.firstName": "Nome", "contact.lastName": "Cognome",
+        "contact.email": "Email di backup", "contact.email.placeholder": "nome@esempio.ch", "contact.email.help": "Viene inclusa nel messaggio come contatto alternativo nel caso WhatsApp non dovesse funzionare.", "contact.choose": "Seleziona",
+        "contact.size": "Misura del tagliere", "contact.size.small": "Piccola", "contact.size.medium": "Media", "contact.size.pizza": "Pizza al metro", "contact.size.large": "Grande", "contact.size.custom": "Personalizzata", "contact.customSize": "Misura personalizzata", "contact.customSize.placeholder": "es. 60 × 30 cm",
+        "contact.wood": "Tipo di legno", "contact.wood.oak": "Rovere", "contact.wood.walnut": "Noce", "contact.wood.cherry": "Ciliegio", "contact.wood.maple": "Acero", "contact.wood.ash": "Frassino", "contact.wood.specific": "Altro legno specifico", "contact.customWood": "Legno desiderato", "contact.customWood.placeholder": "Indica il tipo di legno", "contact.wood.note": "Il prezzo può variare in base al tipo e alla disponibilità del legno, soprattutto per richieste specifiche.",
+        "contact.engraving": "Desideri un'incisione?", "contact.no": "No", "contact.yes": "Sì", "contact.engraving.note": "Dopo l'apertura di WhatsApp, aggiungi manualmente nella chat la foto o il file da incidere.", "contact.notes": "Altri dettagli", "contact.notes.placeholder": "Forma, utilizzo, scadenza desiderata o altre richieste", "contact.submit": "Prepara il messaggio WhatsApp", "contact.privacy": "I dati non vengono salvati: servono soltanto a comporre il messaggio che aprirai su WhatsApp.",
+        "contact.whatsapp.greeting": "Ciao Roby!", "contact.whatsapp.intro": "Vorrei richiedere informazioni per un regalo personalizzato con incisione.", "contact.whatsapp.name": "Nome e cognome", "contact.whatsapp.email": "Email di backup", "contact.whatsapp.size": "Misura", "contact.whatsapp.wood": "Legno", "contact.whatsapp.engraving": "Incisione", "contact.whatsapp.notes": "Altri dettagli", "contact.whatsapp.attachment": "Aggiungerò manualmente in questa chat la foto o il file per l'incisione.",
+        "footer.tagline": "Regali personalizzati in legno & incisioni laser · Svizzera", "footer.copy": "© 2025 Roberto — Tutti i diritti riservati"
       },
       en: {
-        "nav.home": "Home", "nav.about": "About me", "nav.gallery": "Gallery", "nav.engraving": "Laser engraving", "nav.pricing": "Pricing", "nav.maintenance": "Care", "nav.contact": "Contact",
-        "hero.eyebrow": "Handcrafted artisanry · Switzerland", "hero.sub": "Every piece is unique. Every grain tells a story.", "hero.cta": "Discover the creations", "hero.scroll": "Scroll",
-        "about.title": "Passion for<br/><em>natural wood</em>", "about.p1": "My name is Roberto, and for years I have been transforming wood into everyday objects with my own hands. Each cutting board is born from a carefully selected piece — walnut, cherry, maple, or oak — chosen for the beauty of its grain and the quality of the wood.", "about.p2": "I don't work in series. Each piece is conceived, shaped, and finished individually. The wood has its own voice, and I simply listen to it.",
+        "nav.home": "Home", "nav.about": "About me", "nav.gallery": "Gallery", "nav.engraving": "Laser engraving", "nav.gifts": "Gift ideas", "nav.pricing": "Pricing", "nav.maintenance": "Care", "nav.contact": "Contact",
+        "hero.eyebrow": "Handmade gifts · Laser engraving · Switzerland", "hero.title": "<em>Personalized gifts</em><br />in wood", "hero.sub": "Handcrafted cutting boards with names, dedications, dates, logos, or images: a unique gift made to last.", "hero.cta": "Discover engraving", "hero.scroll": "Scroll",
+        "about.title": "Craftsmanship for<br/><em>special moments</em>", "about.p1": "My name is Roberto, and I turn selected woods into personal gifts. Each cutting board can be designed for a person or occasion and completed with a custom engraving.", "about.p2": "Weddings, birthdays, anniversaries, births, or corporate gifts: every piece is shaped, engraved, and finished individually, never mass-produced.",
         "about.stat1": "Pieces created", "about.stat2": "Years of experience", "about.stat3": "Handmade",
         "gallery.label": "My creations", "gallery.all": "All", "gallery.handle": "With handle", "gallery.nohandle": "Without handle", "gallery.meterpizza": "Meter pizza", "gallery.upcycled": "Upcycled", "gallery.engraved": "With engraving",
         "gallery.item1.name": "Large Cutting Board", "gallery.item2.name": "Oval Cutting Board", "gallery.item3.name": "Cutting Board with Handle", "gallery.item4.name": "Medium Cutting Board", "gallery.item5.name": "Custom Cutting Board", "gallery.item6.name": "Small Oval Cutting Board",
         "process.label": "Inside the workshop", "process.title": "From wood to <em>cutting board</em>", "process.sub": "Each shape begins with selecting the wood, passes through the workbench, and is finished by hand.", "process.step1": "Choosing the shapes", "process.step2": "Workshop crafting", "process.step3": "Wood selection", "process.step4": "Shaped by hand",
-        "engraving.label": "Customization", "engraving.title": "Which images <em>engrave best?</em>", "engraving.sub": "You can send a ready-made silhouette or a normal photograph. The laser translates the image into black and white, so the important point is that the details you want engraved remain recognizable after conversion. When in doubt, I assess the photo before production.",
+        "engraving.label": "Engraving & gifts", "engraving.title": "Your idea becomes a <em>personal gift</em>", "engraving.sub": "Names, dates, dedications, logos, and images can turn a cutting board into a unique keepsake. Send a silhouette or a normal photo: I check that important details remain recognizable after conversion to black and white.",
+        "engraving.examples.label": "Gift ideas", "engraving.examples.title": "Examples of <em>personalized engravings</em>", "engraving.examples.sub": "These spaces are ready for photos of real work, helping each customer picture their own gift.", "engraving.placeholder": "Engraving photo", "engraving.example1.title": "Names, dates, and dedications", "engraving.example1.desc": "For weddings, anniversaries, birthdays, births, and moments worth remembering.", "engraving.example1.aria": "Space for a photo of a cutting board with names, a date, or a dedication", "engraving.example2.title": "Logos and images", "engraving.example2.desc": "For companies, restaurants, associations, families, and personal illustrations.", "engraving.example2.aria": "Space for a photo of a cutting board engraved with a logo or illustration", "engraving.example3.title": "Gifts for special occasions", "engraving.example3.desc": "A useful, personal object made especially for the person receiving it.", "engraving.example3.aria": "Space for a photo of personalized gift packaging",
         "engraving.color.status": "To be assessed", "engraving.color.title": "Normal photograph", "engraving.color.desc": "You can send it as it is. Before engraving, it is assessed in black and white to ensure that the subject, outlines, and important details remain readable without relying on color.", "engraving.color.alt": "Highly detailed color photograph of an olive tree",
-        "engraving.detail.status": "Mind the details", "engraving.detail.title": "Details to preserve", "engraving.detail.desc": "Very thin lines and small gaps may merge during conversion or in a small engraving. Tell me which elements are essential so the image is simplified only where necessary.", "engraving.detail.alt": "Highly detailed black tree with thin roots and branches",
+        "engraving.detail.status": "Not suitable", "engraving.detail.title": "Unsuitable image", "engraving.detail.desc": "This image is not suitable for engraving because its details and outlines are not defined strongly enough. The thin lines could merge during engraving, making the final result difficult to read.", "engraving.detail.alt": "Highly detailed black tree with thin roots and branches",
         "engraving.good.status": "Recommended", "engraving.good.title": "Ready-made silhouette", "engraving.good.desc": "A black-and-white silhouette with clear outlines and well-separated shapes is already suitable for adapting to engraving. It is ideal for logos, symbols, lettering, and illustrations.", "engraving.good.alt": "Black-and-white tree silhouette with clean shapes",
         "engraving.tips.title": "How you can provide your image", "engraving.tip1": "A ready-made silhouette, preferably as an SVG or high-resolution PNG.", "engraving.tip2": "A normal photo whose outlines and desired details remain distinguishable without color.", "engraving.tip3": "Any normal photo: I assess it and tell you whether it is suitable or needs adjustments.", "engraving.note": "You do not need to convert or edit the photo yourself. Before engraving, I check that the black-and-white conversion preserves the elements you want to see on the wood.",
         "pricing.label": "Investment", "pricing.sub": "Each piece is unique — prices vary based on wood type, size, and complexity. These are indicative ranges.", "pricing.from": "from", "pricing.popular": "Most requested",
@@ -1547,20 +2825,27 @@
         "maint.3.title": "Oiling", "maint.3.desc": "Every 4–6 weeks, apply a thin layer of linseed oil or food-grade mineral oil.", "maint.3.freq": "Every 4–6 weeks",
         "maint.4.title": "Regeneration", "maint.4.desc": "If the wood shows signs of wear, gently sand it with fine abrasive paper (220 grit) following the grain, then reapply oil.", "maint.4.freq": "When necessary",
         "maint.tip.label": "Roby's tip:", "maint.tip.text": "A wooden cutting board is not just a kitchen tool — it's a companion for life.",
-        "contact.label": "Let's talk", "contact.sub": "Interested in a piece? Have questions? Write or call me directly.", "contact.phone": "Phone",
-        "footer.tagline": "Handcrafted woodwork · Switzerland", "footer.copy": "© 2025 Roberto — All rights reserved"
+        "contact.label": "Let's talk", "contact.sub": "Complete the form to prepare a message with all the details and open Roby's WhatsApp chat directly.", "contact.phone": "Phone",
+        "contact.form.title": "Request your personalized gift", "contact.form.intro": "Choose the board, wood, and engraving. You can review and edit the request before sending it on WhatsApp.", "contact.firstName": "First name", "contact.lastName": "Last name",
+        "contact.email": "Backup email", "contact.email.placeholder": "name@example.ch", "contact.email.help": "It is included as an alternative contact in case the customer's WhatsApp does not work.", "contact.choose": "Select",
+        "contact.size": "Cutting board size", "contact.size.small": "Small", "contact.size.medium": "Medium", "contact.size.pizza": "Meter pizza", "contact.size.large": "Large", "contact.size.custom": "Custom", "contact.customSize": "Custom size", "contact.customSize.placeholder": "e.g. 60 × 30 cm",
+        "contact.wood": "Wood type", "contact.wood.oak": "Oak", "contact.wood.walnut": "Walnut", "contact.wood.cherry": "Cherry", "contact.wood.maple": "Maple", "contact.wood.ash": "Ash", "contact.wood.specific": "Another specific wood", "contact.customWood": "Requested wood", "contact.customWood.placeholder": "Enter the wood type", "contact.wood.note": "The price may vary depending on the type and availability of the wood, especially for specific requests.",
+        "contact.engraving": "Would you like an engraving?", "contact.no": "No", "contact.yes": "Yes", "contact.engraving.note": "After WhatsApp opens, manually attach the photo or file to be engraved in the chat.", "contact.notes": "Other details", "contact.notes.placeholder": "Shape, intended use, preferred deadline, or other requests", "contact.submit": "Prepare WhatsApp message", "contact.privacy": "Your data is not stored. It is used only to compose the message you will open in WhatsApp.",
+        "contact.whatsapp.greeting": "Hello Roby!", "contact.whatsapp.intro": "I would like information about a personalized engraved gift.", "contact.whatsapp.name": "Full name", "contact.whatsapp.email": "Backup email", "contact.whatsapp.size": "Size", "contact.whatsapp.wood": "Wood", "contact.whatsapp.engraving": "Engraving", "contact.whatsapp.notes": "Other details", "contact.whatsapp.attachment": "I will manually attach the engraving photo or file in this chat.",
+        "footer.tagline": "Personalized wooden gifts & laser engraving · Switzerland", "footer.copy": "© 2025 Roberto — All rights reserved"
       },
       de: {
-        "nav.home": "Startseite", "nav.about": "Über mich", "nav.gallery": "Galerie", "nav.engraving": "Lasergravur", "nav.pricing": "Preise", "nav.maintenance": "Pflege", "nav.contact": "Kontakt",
-        "hero.eyebrow": "Handgefertigte Handwerkskunst · Schweiz", "hero.sub": "Jedes Stück ist einzigartig. Jede Maserung erzählt eine Geschichte.", "hero.cta": "Entdecken Sie die Kreationen", "hero.scroll": "Scrollen",
-        "about.title": "Leidenschaft für<br/><em>Naturholz</em>", "about.p1": "Ich bin Roberto und verwandle seit Jahren Holz mit meinen eigenen Händen in Gebrauchsgegenstände. Jedes Schneidebrett entsteht aus einem sorgfältig ausgewählten Stück — Walnuss, Kirsche, Ahorn oder Eiche — ausgewählt für die Schönheit seiner Maserung und die Qualität des Holzes.", "about.p2": "Ich arbeite nicht in Serie. Jedes Stück wird individuell konzipiert, geformt und veredelt. Das Holz hat seine eigene Stimme, und ich höre ihr einfach zu.",
+        "nav.home": "Startseite", "nav.about": "Über mich", "nav.gallery": "Galerie", "nav.engraving": "Lasergravur", "nav.gifts": "Geschenkideen", "nav.pricing": "Preise", "nav.maintenance": "Pflege", "nav.contact": "Kontakt",
+        "hero.eyebrow": "Handgefertigte Geschenke · Lasergravur · Schweiz", "hero.title": "<em>Persönliche Geschenke</em><br />aus Holz", "hero.sub": "Handgefertigte Schneidebretter mit Namen, Widmungen, Daten, Logos oder Bildern: ein Geschenk, das bleibt.", "hero.cta": "Gravuren entdecken", "hero.scroll": "Scrollen",
+        "about.title": "Handwerk für<br/><em>besondere Momente</em>", "about.p1": "Ich bin Roberto und verwandle ausgewählte Hölzer in persönliche Geschenke. Jedes Schneidebrett kann für eine bestimmte Person oder einen Anlass gestaltet und mit einer individuellen Gravur ergänzt werden.", "about.p2": "Hochzeit, Geburtstag, Jubiläum, Geburt oder Firmengeschenk: Jedes Stück wird einzeln geformt, graviert und veredelt, niemals in Serie produziert.",
         "about.stat1": "Stücke gefertigt", "about.stat2": "Jahre Erfahrung", "about.stat3": "Handgefertigt",
         "gallery.label": "Meine Kreationen", "gallery.all": "Alle", "gallery.handle": "Mit Griff", "gallery.nohandle": "Ohne Griff", "gallery.meterpizza": "Meterpizza", "gallery.upcycled": "Upcycled", "gallery.engraved": "Mit Gravur",
         "gallery.item1.name": "Großes Schneidebrett", "gallery.item2.name": "Ovale Schneidebrett", "gallery.item3.name": "Schneidebrett mit Griff", "gallery.item4.name": "Mittleres Schneidebrett", "gallery.item5.name": "Personalisierte Schneidebrett", "gallery.item6.name": "Kleines ovales Schneidebrett",
         "process.label": "In der Werkstatt", "process.title": "Vom Holz zum <em>Schneidebrett</em>", "process.sub": "Jede Form beginnt mit der Auswahl des Holzes, entsteht an der Werkbank und wird von Hand vollendet.", "process.step1": "Auswahl der Formen", "process.step2": "Arbeit in der Werkstatt", "process.step3": "Holzauswahl", "process.step4": "Von Hand geformt",
-        "engraving.label": "Personalisierung", "engraving.title": "Welche Bilder lassen sich <em>am besten gravieren?</em>", "engraving.sub": "Du kannst eine fertige Silhouette oder ein normales Foto senden. Der Laser übersetzt das Bild in Schwarz und Weiß. Entscheidend ist, dass die gewünschten Details nach der Umwandlung erkennbar bleiben. Im Zweifelsfall prüfe ich das Foto vor der Bearbeitung.",
+        "engraving.label": "Gravur & Geschenke", "engraving.title": "Deine Idee wird zum <em>persönlichen Geschenk</em>", "engraving.sub": "Namen, Daten, Widmungen, Logos und Bilder machen aus einem Schneidebrett ein einzigartiges Erinnerungsstück. Sende eine Silhouette oder ein normales Foto: Ich prüfe, ob wichtige Details bei der Umwandlung in Schwarz-Weiß erhalten bleiben.",
+        "engraving.examples.label": "Geschenkideen", "engraving.examples.title": "Beispiele für <em>persönliche Gravuren</em>", "engraving.examples.sub": "Diese Flächen sind für Fotos echter Arbeiten vorbereitet und helfen Kunden, sich ihr eigenes Geschenk vorzustellen.", "engraving.placeholder": "Gravurfoto", "engraving.example1.title": "Namen, Daten und Widmungen", "engraving.example1.desc": "Für Hochzeiten, Jubiläen, Geburtstage, Geburten und besondere Erinnerungen.", "engraving.example1.aria": "Platz für ein Foto eines Schneidebretts mit Namen, Datum oder Widmung", "engraving.example2.title": "Logos und Bilder", "engraving.example2.desc": "Für Unternehmen, Restaurants, Vereine, Familien und persönliche Illustrationen.", "engraving.example2.aria": "Platz für ein Foto eines Schneidebretts mit graviertem Logo oder Bild", "engraving.example3.title": "Geschenke für besondere Anlässe", "engraving.example3.desc": "Ein nützlicher, persönlicher Gegenstand, eigens für den Beschenkten gefertigt.", "engraving.example3.aria": "Platz für ein Foto einer personalisierten Geschenkverpackung",
         "engraving.color.status": "Wird geprüft", "engraving.color.title": "Normales Foto", "engraving.color.desc": "Du kannst es unverändert senden. Vor der Gravur wird es in Schwarz und Weiß geprüft, damit Motiv, Konturen und wichtige Details auch ohne Farben gut erkennbar bleiben.", "engraving.color.alt": "Detailreiches Farbfoto eines Olivenbaums",
-        "engraving.detail.status": "Details beachten", "engraving.detail.title": "Details, die erhalten bleiben sollen", "engraving.detail.desc": "Sehr dünne Linien und kleine Zwischenräume können bei der Umwandlung oder einer kleinen Gravur zusammenlaufen. Teile mir mit, welche Elemente wichtig sind, damit nur das Nötige vereinfacht wird.", "engraving.detail.alt": "Sehr detaillierter schwarzer Baum mit dünnen Wurzeln und Ästen",
+        "engraving.detail.status": "Nicht geeignet", "engraving.detail.title": "Ungeeignetes Bild", "engraving.detail.desc": "Dieses Bild ist für eine Gravur nicht geeignet, weil Details und Konturen nicht deutlich genug ausgeprägt sind. Die feinen Linien könnten bei der Gravur ineinanderlaufen und das Ergebnis wäre schwer lesbar.", "engraving.detail.alt": "Sehr detaillierter schwarzer Baum mit dünnen Wurzeln und Ästen",
         "engraving.good.status": "Empfohlen", "engraving.good.title": "Fertige Silhouette", "engraving.good.desc": "Eine schwarz-weiße Silhouette mit klaren Konturen und gut getrennten Formen kann direkt für die Gravur angepasst werden. Sie eignet sich ideal für Logos, Symbole, Schriftzüge und Illustrationen.", "engraving.good.alt": "Schwarz-weiße Baumsilhouette mit klaren Formen",
         "engraving.tips.title": "So kannst du dein Bild einreichen", "engraving.tip1": "Eine fertige Silhouette, vorzugsweise als SVG oder hochauflösendes PNG.", "engraving.tip2": "Ein normales Foto, dessen Konturen und gewünschte Details auch ohne Farbe erkennbar bleiben.", "engraving.tip3": "Ein beliebiges normales Foto: Ich prüfe, ob es geeignet ist oder angepasst werden muss.", "engraving.note": "Du musst das Foto nicht selbst umwandeln oder bearbeiten. Vor der Gravur prüfe ich, ob bei der Schwarz-Weiß-Umwandlung die gewünschten Elemente erhalten bleiben.",
         "pricing.label": "Investition", "pricing.sub": "Jedes Stück ist einzigartig — die Preise variieren je nach Holzart, Größe und Komplexität. Dies sind Richtwerte.", "pricing.from": "ab", "pricing.popular": "Am gefragtesten",
@@ -1574,20 +2859,27 @@
         "maint.3.title": "Ölen", "maint.3.desc": "Alle 4–6 Wochen eine dünne Schicht Leinöl oder lebensmittelechtes Mineralöl auftragen.", "maint.3.freq": "Alle 4–6 Wochen",
         "maint.4.title": "Regenerierung", "maint.4.desc": "Wenn das Holz Abnutzungserscheinungen zeigt, vorsichtig mit feinem Schleifpapier (Körnung 220) entlang der Maserung schleifen und anschließend neu ölen.", "maint.4.freq": "Bei Bedarf",
         "maint.tip.label": "Robys Tipp:", "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
-        "contact.label": "Sprechen wir", "contact.sub": "Interesse an einem Stück? Haben Sie Fragen? Schreiben oder rufen Sie mich direkt an.", "contact.phone": "Telefon",
-        "footer.tagline": "Handgefertigte Holzkunst · Schweiz", "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten"
+        "contact.label": "Sprechen wir", "contact.sub": "Füllen Sie das Formular aus: Eine Nachricht mit allen Angaben wird vorbereitet und Robys WhatsApp-Chat direkt geöffnet.", "contact.phone": "Telefon",
+        "contact.form.title": "Persönliches Geschenk anfragen", "contact.form.intro": "Wähle Brett, Holz und Gravur. Die Anfrage kann vor dem Senden über WhatsApp geprüft und geändert werden.", "contact.firstName": "Vorname", "contact.lastName": "Nachname",
+        "contact.email": "E-Mail als Ersatzkontakt", "contact.email.placeholder": "name@beispiel.ch", "contact.email.help": "Sie wird als alternativer Kontakt angegeben, falls WhatsApp beim Kunden nicht funktionieren sollte.", "contact.choose": "Auswählen",
+        "contact.size": "Größe des Schneidebretts", "contact.size.small": "Klein", "contact.size.medium": "Mittel", "contact.size.pizza": "Meterpizza", "contact.size.large": "Groß", "contact.size.custom": "Nach Maß", "contact.customSize": "Individuelle Maße", "contact.customSize.placeholder": "z. B. 60 × 30 cm",
+        "contact.wood": "Holzart", "contact.wood.oak": "Eiche", "contact.wood.walnut": "Walnuss", "contact.wood.cherry": "Kirsche", "contact.wood.maple": "Ahorn", "contact.wood.ash": "Esche", "contact.wood.specific": "Andere bestimmte Holzart", "contact.customWood": "Gewünschte Holzart", "contact.customWood.placeholder": "Holzart angeben", "contact.wood.note": "Der Preis kann je nach Holzart und Verfügbarkeit variieren, besonders bei speziellen Wünschen.",
+        "contact.engraving": "Möchten Sie eine Gravur?", "contact.no": "Nein", "contact.yes": "Ja", "contact.engraving.note": "Fügen Sie nach dem Öffnen von WhatsApp das Foto oder die Datei für die Gravur manuell im Chat hinzu.", "contact.notes": "Weitere Angaben", "contact.notes.placeholder": "Form, Verwendungszweck, gewünschter Termin oder andere Wünsche", "contact.submit": "WhatsApp-Nachricht vorbereiten", "contact.privacy": "Die Daten werden nicht gespeichert. Sie dienen nur zum Erstellen der Nachricht, die in WhatsApp geöffnet wird.",
+        "contact.whatsapp.greeting": "Hallo Roby!", "contact.whatsapp.intro": "Ich interessiere mich für ein personalisiertes Geschenk mit Gravur.", "contact.whatsapp.name": "Vor- und Nachname", "contact.whatsapp.email": "E-Mail als Ersatzkontakt", "contact.whatsapp.size": "Größe", "contact.whatsapp.wood": "Holz", "contact.whatsapp.engraving": "Gravur", "contact.whatsapp.notes": "Weitere Angaben", "contact.whatsapp.attachment": "Ich füge das Foto oder die Datei für die Gravur manuell in diesem Chat hinzu.",
+        "footer.tagline": "Personalisierte Holzgeschenke & Lasergravuren · Schweiz", "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten"
       },
       fr: {
         "nav.home": "Accueil", "nav.about": "À propos", "nav.gallery": "Galerie", "nav.engraving": "Gravure laser", "nav.pricing": "Tarifs", "nav.maintenance": "Entretien", "nav.contact": "Contact",
-        "hero.eyebrow": "Artisanat fait main · Suisse", "hero.sub": "Chaque pièce est unique. Chaque veine raconte une histoire.", "hero.cta": "Découvrir les créations", "hero.scroll": "Défiler",
-        "about.title": "Passion pour le<br/><em>bois naturel</em>", "about.p1": "Je m'appelle Roberto et depuis des années, je transforme le bois en objets du quotidien de mes propres mains. Chaque planche à découper naît d'une pièce soigneusement sélectionnée — noyer, cerisier, érable ou chêne — choisie pour la beauté de son grain et la qualité du bois.", "about.p2": "Je ne travaille pas en série. Chaque pièce est conçue, façonnée et finie individuellement. Le bois a sa propre voix, et je me contente de l'écouter.",
+        "hero.eyebrow": "Cadeaux faits main · Gravure laser · Suisse", "hero.title": "<em>Cadeaux personnalisés</em><br />en bois", "hero.sub": "Des planches artisanales avec noms, dédicaces, dates, logos ou images : un cadeau unique fait pour durer.", "hero.cta": "Découvrir les gravures", "hero.scroll": "Défiler",
+        "about.title": "Un savoir-faire pour<br/><em>les moments précieux</em>", "about.p1": "Je m'appelle Roberto et je transforme des bois sélectionnés en cadeaux personnels. Chaque planche peut être conçue pour une personne ou une occasion et complétée par une gravure sur mesure.", "about.p2": "Mariage, anniversaire, naissance ou cadeau d'entreprise : chaque pièce est façonnée, gravée et finie individuellement, jamais produite en série.",
         "about.stat1": "Pièces créées", "about.stat2": "Années d'expérience", "about.stat3": "Fait main",
         "gallery.label": "Mes créations", "gallery.all": "Tous", "gallery.handle": "Avec poignée", "gallery.nohandle": "Sans poignée", "gallery.meterpizza": "Pizza au mètre", "gallery.upcycled": "Upcyclé", "gallery.engraved": "Avec gravure",
         "gallery.item1.name": "Grande Planche", "gallery.item2.name": "Planche Ovale", "gallery.item3.name": "Planche avec Poignée", "gallery.item4.name": "Planche Moyenne", "gallery.item5.name": "Planche Personnalisée", "gallery.item6.name": "Petite Planche Ovale",
         "process.label": "Dans l'atelier", "process.title": "Du bois à la <em>planche</em>", "process.sub": "Chaque forme naît de la sélection du bois, passe par l'établi et reçoit une finition à la main.", "process.step1": "Choix des formes", "process.step2": "Travail en atelier", "process.step3": "Sélection du bois", "process.step4": "Façonnage à la main",
-        "engraving.label": "Personnalisation", "engraving.title": "Quelles images se <em>gravent le mieux ?</em>", "engraving.sub": "Vous pouvez envoyer une silhouette déjà prête ou une photographie normale. Le laser traduit l'image en noir et blanc : l'essentiel est que les détails souhaités restent reconnaissables après la conversion. En cas de doute, j'évalue la photo avant la réalisation.",
+        "engraving.label": "Gravure & cadeaux", "engraving.title": "Votre idée devient un <em>cadeau personnel</em>", "engraving.sub": "Noms, dates, dédicaces, logos et images transforment une planche en souvenir unique. Envoyez une silhouette ou une photo normale : je vérifie que les détails importants restent reconnaissables après la conversion en noir et blanc.",
+        "engraving.examples.label": "Idées cadeaux", "engraving.examples.title": "Exemples de <em>gravures personnalisées</em>", "engraving.examples.sub": "Ces espaces sont prêts à accueillir des photos de réalisations et à aider chaque client à imaginer son cadeau.", "engraving.placeholder": "Photo de gravure", "engraving.example1.title": "Noms, dates et dédicaces", "engraving.example1.desc": "Pour les mariages, anniversaires, naissances et les moments à ne pas oublier.", "engraving.example1.aria": "Espace pour une photo de planche avec noms, date ou dédicace", "engraving.example2.title": "Logos et images", "engraving.example2.desc": "Pour les entreprises, restaurants, associations, familles et illustrations personnelles.", "engraving.example2.aria": "Espace pour une photo de planche gravée avec un logo ou une illustration", "engraving.example3.title": "Cadeaux pour occasions spéciales", "engraving.example3.desc": "Un objet utile et personnel, créé spécialement pour la personne qui le reçoit.", "engraving.example3.aria": "Espace pour une photo d'un emballage cadeau personnalisé",
         "engraving.color.status": "À évaluer", "engraving.color.title": "Photographie normale", "engraving.color.desc": "Vous pouvez l'envoyer telle quelle. Avant la gravure, elle est évaluée en noir et blanc afin de vérifier que le sujet, les contours et les détails importants restent lisibles sans dépendre des couleurs.", "engraving.color.alt": "Photographie en couleurs très détaillée d'un olivier",
-        "engraving.detail.status": "Attention aux détails", "engraving.detail.title": "Détails à préserver", "engraving.detail.desc": "Les lignes très fines et les petits espaces peuvent fusionner lors de la conversion ou sur une petite gravure. Indiquez les éléments essentiels afin de ne simplifier l'image que lorsque cela est nécessaire.", "engraving.detail.alt": "Arbre noir très détaillé avec de fines racines et branches",
+        "engraving.detail.status": "Non adaptée", "engraving.detail.title": "Image non adaptée", "engraving.detail.desc": "Cette image ne convient pas à la gravure, car ses détails et ses contours ne sont pas assez marqués. Les lignes fines risqueraient de se confondre pendant la gravure et le résultat manquerait de lisibilité.", "engraving.detail.alt": "Arbre noir très détaillé avec de fines racines et branches",
         "engraving.good.status": "Recommandée", "engraving.good.title": "Silhouette déjà prête", "engraving.good.desc": "Une silhouette en noir et blanc, aux contours nets et aux formes bien séparées, est déjà adaptée à la préparation de la gravure. Elle convient parfaitement aux logos, symboles, textes et illustrations.", "engraving.good.alt": "Silhouette d'arbre en noir et blanc aux formes nettes",
         "engraving.tips.title": "Comment fournir votre image", "engraving.tip1": "Une silhouette déjà prête, de préférence au format SVG ou PNG haute résolution.", "engraving.tip2": "Une photo normale dont les contours et les détails souhaités restent reconnaissables sans couleur.", "engraving.tip3": "N'importe quelle photo normale : je vérifie si elle convient ou si elle nécessite des adaptations.", "engraving.note": "Vous n'avez pas besoin de convertir ou modifier la photo vous-même. Avant la gravure, je vérifie que la conversion en noir et blanc conserve les éléments que vous souhaitez voir sur le bois.",
         "pricing.label": "Investissement", "pricing.sub": "Chaque pièce est unique — les prix varient selon le bois, les dimensions et la complexité. Ce sont des fourchettes indicatives.", "pricing.from": "à partir de", "pricing.popular": "Le plus demandé",
@@ -1601,8 +2893,14 @@
         "maint.3.title": "Huilage", "maint.3.desc": "Toutes les 4 à 6 semaines, appliquez une fine couche d'huile de lin ou d'huile minérale alimentaire.", "maint.3.freq": "Toutes les 4 à 6 semaines",
         "maint.4.title": "Régénération", "maint.4.desc": "Si le bois montre des signes d'usure, poncez-le délicatement avec du papier abrasif fin (grain 220) en suivant le grain, puis réappliquez l'huile.", "maint.4.freq": "Si nécessaire",
         "maint.tip.label": "Conseil de Roby :", "maint.tip.text": "Une planche à découper en bois n'est pas seulement un outil de cuisine — c'est un compagnon de vie.",
-        "contact.label": "Parlons-en", "contact.sub": "Intéressé par une pièce ? Des questions ? Écrivez-moi ou appelez-moi directement.", "contact.phone": "Téléphone",
-        "footer.tagline": "Artisanat du bois fait main · Suisse", "footer.copy": "© 2025 Roberto — Tous droits réservés"
+        "contact.label": "Parlons-en", "contact.sub": "Remplissez le formulaire : un message contenant tous les détails sera préparé et la discussion WhatsApp de Roby s'ouvrira directement.", "contact.phone": "Téléphone",
+        "contact.form.title": "Demandez votre cadeau personnalisé", "contact.form.intro": "Choisissez la planche, le bois et la gravure. Vous pourrez vérifier et modifier la demande avant de l'envoyer sur WhatsApp.", "contact.firstName": "Prénom", "contact.lastName": "Nom",
+        "contact.email": "E-mail de secours", "contact.email.placeholder": "nom@exemple.ch", "contact.email.help": "Il est inclus comme contact alternatif si le WhatsApp du client ne fonctionne pas.", "contact.choose": "Sélectionner",
+        "contact.size": "Dimensions de la planche", "contact.size.small": "Petite", "contact.size.medium": "Moyenne", "contact.size.pizza": "Pizza au mètre", "contact.size.large": "Grande", "contact.size.custom": "Sur mesure", "contact.customSize": "Dimensions personnalisées", "contact.customSize.placeholder": "p. ex. 60 × 30 cm",
+        "contact.wood": "Type de bois", "contact.wood.oak": "Chêne", "contact.wood.walnut": "Noyer", "contact.wood.cherry": "Cerisier", "contact.wood.maple": "Érable", "contact.wood.ash": "Frêne", "contact.wood.specific": "Autre bois spécifique", "contact.customWood": "Bois souhaité", "contact.customWood.placeholder": "Indiquez le type de bois", "contact.wood.note": "Le prix peut varier selon le type et la disponibilité du bois, surtout pour une demande spécifique.",
+        "contact.engraving": "Souhaitez-vous une gravure ?", "contact.no": "Non", "contact.yes": "Oui", "contact.engraving.note": "Après l'ouverture de WhatsApp, ajoutez manuellement dans la discussion la photo ou le fichier à graver.", "contact.notes": "Autres détails", "contact.notes.placeholder": "Forme, utilisation, délai souhaité ou autres demandes", "contact.submit": "Préparer le message WhatsApp", "contact.privacy": "Les données ne sont pas enregistrées. Elles servent uniquement à composer le message ouvert dans WhatsApp.",
+        "contact.whatsapp.greeting": "Bonjour Roby !", "contact.whatsapp.intro": "Je souhaite obtenir des informations pour un cadeau personnalisé avec gravure.", "contact.whatsapp.name": "Nom complet", "contact.whatsapp.email": "E-mail de secours", "contact.whatsapp.size": "Dimensions", "contact.whatsapp.wood": "Bois", "contact.whatsapp.engraving": "Gravure", "contact.whatsapp.notes": "Autres détails", "contact.whatsapp.attachment": "J'ajouterai manuellement dans cette discussion la photo ou le fichier pour la gravure.",
+        "footer.tagline": "Cadeaux personnalisés en bois & gravure laser · Suisse", "footer.copy": "© 2025 Roberto — Tous droits réservés"
       }
     };
 
@@ -1641,6 +2939,16 @@
         document.querySelectorAll('[data-i18n-alt]').forEach(image => {
           const key = image.getAttribute('data-i18n-alt');
           if (t[key] !== undefined) image.alt = t[key];
+        });
+
+        document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+          const key = element.getAttribute('data-i18n-aria');
+          if (t[key] !== undefined) element.setAttribute('aria-label', t[key]);
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(field => {
+          const key = field.getAttribute('data-i18n-placeholder');
+          if (t[key] !== undefined) field.placeholder = t[key];
         });
 
         document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
@@ -1754,17 +3062,327 @@
       });
     });
 
-    // Smooth scroll
+    // WhatsApp order form
+    const whatsappOrderForm = document.getElementById('whatsapp-order-form');
+    const boardSizeSelect = document.getElementById('board-size');
+    const customSizeGroup = document.getElementById('custom-size-group');
+    const customSizeInput = document.getElementById('custom-size');
+    const woodTypeSelect = document.getElementById('wood-type');
+    const customWoodGroup = document.getElementById('custom-wood-group');
+    const customWoodInput = document.getElementById('custom-wood');
+    const engravingSelect = document.getElementById('engraving-request');
+    const engravingUploadNote = document.getElementById('engraving-upload-note');
+
+    const setConditionalField = (select, expectedValue, container, input) => {
+      const isActive = select.value === expectedValue;
+      container.hidden = !isActive;
+      if (input) {
+        input.required = isActive;
+        if (!isActive) input.value = '';
+      }
+    };
+
+    if (whatsappOrderForm) {
+      boardSizeSelect.addEventListener('change', () => {
+        setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
+      });
+
+      woodTypeSelect.addEventListener('change', () => {
+        setConditionalField(woodTypeSelect, 'specific', customWoodGroup, customWoodInput);
+      });
+
+      engravingSelect.addEventListener('change', () => {
+        engravingUploadNote.hidden = engravingSelect.value !== 'yes';
+      });
+
+      whatsappOrderForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!whatsappOrderForm.reportValidity()) return;
+
+        const t = translations[currentLang] || translations.it;
+        const data = new FormData(whatsappOrderForm);
+        const sizeKeys = {
+          small: 'contact.size.small',
+          medium: 'contact.size.medium',
+          pizza: 'contact.size.pizza',
+          large: 'contact.size.large',
+          custom: 'contact.size.custom',
+        };
+        const woodKeys = {
+          oak: 'contact.wood.oak',
+          walnut: 'contact.wood.walnut',
+          cherry: 'contact.wood.cherry',
+          maple: 'contact.wood.maple',
+          ash: 'contact.wood.ash',
+          specific: 'contact.wood.specific',
+        };
+
+        const sizeValue = data.get('size');
+        const woodValue = data.get('wood');
+        const engravingValue = data.get('engraving');
+        const sizeLabel = sizeValue === 'custom'
+          ? `${t[sizeKeys[sizeValue]]}: ${data.get('customSize')}`
+          : t[sizeKeys[sizeValue]];
+        const woodLabel = woodValue === 'specific'
+          ? `${t[woodKeys[woodValue]]}: ${data.get('customWood')}`
+          : t[woodKeys[woodValue]];
+
+        const messageLines = [
+          t['contact.whatsapp.greeting'],
+          '',
+          t['contact.whatsapp.intro'],
+          `${t['contact.whatsapp.name']}: ${data.get('firstName')} ${data.get('lastName')}`,
+          `${t['contact.whatsapp.email']}: ${data.get('email')}`,
+          `${t['contact.whatsapp.size']}: ${sizeLabel}`,
+          `${t['contact.whatsapp.wood']}: ${woodLabel}`,
+          `${t['contact.whatsapp.engraving']}: ${engravingValue === 'yes' ? t['contact.yes'] : t['contact.no']}`,
+        ];
+
+        const notes = String(data.get('notes') || '').trim();
+        if (notes) messageLines.push(`${t['contact.whatsapp.notes']}: ${notes}`);
+        if (engravingValue === 'yes') {
+          messageLines.push('', t['contact.whatsapp.attachment']);
+        }
+
+        const whatsappUrl = `https://wa.me/41791234567?text=${encodeURIComponent(messageLines.join('\n'))}`;
+        const whatsappWindow = window.open('about:blank', '_blank');
+        if (whatsappWindow) {
+          whatsappWindow.opener = null;
+          whatsappWindow.location.href = whatsappUrl;
+        } else {
+          window.location.href = whatsappUrl;
+        }
+      });
+    }
+
+    // Smooth scroll: align every target section at the viewport top.
+    // This guarantees the area above the floating navbar belongs to the new section, not the previous one.
+    const getRootPxVar = (name, fallback = 0) => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const value = parseFloat(raw);
+      return Number.isFinite(value) ? value : fallback;
+    };
+
+    const getHashTarget = (hash) => {
+      if (!hash || hash === '#') return null;
+      try {
+        return document.getElementById(decodeURIComponent(hash.slice(1)));
+      } catch (_) {
+        return document.getElementById(hash.slice(1));
+      }
+    };
+
+    const scrollSectionCleanly = (target, updateHash = true) => {
+      const absoluteTop = target.getBoundingClientRect().top + window.scrollY;
+      const overlap = getRootPxVar('--anchor-overlap', 2);
+      const top = Math.max(0, Math.round(absoluteTop + overlap));
+
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      if (updateHash && target.id && history.pushState) {
+        history.pushState(null, '', `#${target.id}`);
+      }
+    };
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
-        const target = document.querySelector(anchor.getAttribute('href'));
+        const target = getHashTarget(anchor.getAttribute('href'));
         if (target) {
           e.preventDefault();
-          const offset = navbar ? navbar.offsetHeight : 72;
-          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+          scrollSectionCleanly(target);
         }
       });
     });
+
+    window.addEventListener('load', () => {
+      const target = getHashTarget(window.location.hash);
+      if (target) {
+        requestAnimationFrame(() => scrollSectionCleanly(target, false));
+      }
+    });
+
+    // Structured manual scroll: one physical gesture = one section stop.
+    // Exception: #gallery keeps native scrolling while there is gallery content above/below.
+    // The important part is the lock: wheel/trackpad fires many events per gesture, so we must
+    // ignore all follow-up events until the smooth scroll has settled.
+    const structuredScroll = (() => {
+      const sections = Array.from(document.querySelectorAll('section[id]'));
+      const freeSection = document.getElementById('gallery');
+      if (!sections.length) return;
+
+      document.documentElement.classList.add('structured-scroll-enabled');
+
+      const WHEEL_THRESHOLD = 82;
+      const TOUCH_THRESHOLD = 64;
+      const EDGE_EPSILON = 10;
+      const LOCK_TIMEOUT = 1350;
+      const SETTLE_FRAMES_REQUIRED = 8;
+      const SETTLE_DELTA = 0.75;
+
+      let wheelAccum = 0;
+      let isSnapping = false;
+      let unlockTimer = null;
+      let touchStartY = null;
+      let touchLocked = false;
+
+      const isInteractive = (el) => Boolean(el?.closest?.(
+        'input, textarea, select, button, a, [contenteditable="true"], .lang-dropdown, .gallery-filters'
+      ));
+
+      const normalizeWheelDelta = (event) => {
+        if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
+        if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight;
+        return event.deltaY;
+      };
+
+      const canUseNativeGalleryScroll = (deltaY) => {
+        if (!freeSection) return false;
+        const rect = freeSection.getBoundingClientRect();
+        const visible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!visible) return false;
+
+        if (deltaY > 0) return rect.bottom > window.innerHeight + EDGE_EPSILON;
+        if (deltaY < 0) return rect.top < -EDGE_EPSILON;
+        return false;
+      };
+
+      const getActiveIndex = () => {
+        const viewportProbe = Math.min(window.innerHeight * 0.35, 260);
+        let bestIndex = 0;
+        let bestScore = Infinity;
+
+        sections.forEach((section, index) => {
+          const rect = section.getBoundingClientRect();
+          const containsProbe = rect.top <= viewportProbe && rect.bottom > viewportProbe;
+          const score = containsProbe ? 0 : Math.abs(rect.top);
+          if (score < bestScore) {
+            bestScore = score;
+            bestIndex = index;
+          }
+        });
+
+        return bestIndex;
+      };
+
+      const releaseSnapLockWhenSettled = () => {
+        clearTimeout(unlockTimer);
+
+        let lastY = window.scrollY;
+        let stableFrames = 0;
+        const startedAt = performance.now();
+
+        const tick = () => {
+          const currentY = window.scrollY;
+          if (Math.abs(currentY - lastY) <= SETTLE_DELTA) {
+            stableFrames += 1;
+          } else {
+            stableFrames = 0;
+          }
+          lastY = currentY;
+
+          if (stableFrames >= SETTLE_FRAMES_REQUIRED || performance.now() - startedAt > LOCK_TIMEOUT) {
+            isSnapping = false;
+            wheelAccum = 0;
+            return;
+          }
+
+          requestAnimationFrame(tick);
+        };
+
+        unlockTimer = setTimeout(() => {
+          isSnapping = false;
+          wheelAccum = 0;
+        }, LOCK_TIMEOUT + 150);
+
+        requestAnimationFrame(tick);
+      };
+
+      const snapByDirection = (direction) => {
+        if (!direction || isSnapping) return;
+
+        const currentIndex = getActiveIndex();
+        const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+        if (targetIndex === currentIndex) {
+          wheelAccum = 0;
+          return;
+        }
+
+        isSnapping = true;
+        wheelAccum = 0;
+        scrollSectionCleanly(sections[targetIndex], true);
+        releaseSnapLockWhenSettled();
+      };
+
+      window.addEventListener('wheel', (event) => {
+        if (isInteractive(event.target)) return;
+        if (event.ctrlKey || event.metaKey) return;
+
+        const deltaY = normalizeWheelDelta(event);
+
+        if (isSnapping) {
+          event.preventDefault();
+          return;
+        }
+
+        if (canUseNativeGalleryScroll(deltaY)) {
+          wheelAccum = 0;
+          return;
+        }
+
+        event.preventDefault();
+        wheelAccum += deltaY;
+
+        if (Math.abs(wheelAccum) >= WHEEL_THRESHOLD) {
+          snapByDirection(Math.sign(wheelAccum));
+        }
+      }, { passive: false });
+
+      window.addEventListener('touchstart', (event) => {
+        if (isInteractive(event.target) || isSnapping) {
+          touchStartY = null;
+          return;
+        }
+        touchStartY = event.touches[0]?.clientY ?? null;
+        touchLocked = false;
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (event) => {
+        if (touchStartY === null || touchLocked) return;
+        const currentY = event.touches[0]?.clientY ?? touchStartY;
+        const deltaY = touchStartY - currentY;
+
+        if (canUseNativeGalleryScroll(deltaY)) return;
+
+        if (Math.abs(deltaY) >= TOUCH_THRESHOLD) {
+          event.preventDefault();
+          touchLocked = true;
+          snapByDirection(Math.sign(deltaY));
+        }
+      }, { passive: false });
+
+      window.addEventListener('touchend', () => {
+        touchStartY = null;
+        touchLocked = false;
+      }, { passive: true });
+
+      window.addEventListener('keydown', (event) => {
+        if (isInteractive(event.target)) return;
+        if (isSnapping) {
+          event.preventDefault();
+          return;
+        }
+
+        const downKeys = ['ArrowDown', 'PageDown', 'Space'];
+        const upKeys = ['ArrowUp', 'PageUp'];
+        const direction = downKeys.includes(event.code) ? 1 : upKeys.includes(event.code) ? -1 : 0;
+        if (!direction) return;
+
+        if (canUseNativeGalleryScroll(direction)) return;
+
+        event.preventDefault();
+        snapByDirection(direction);
+      });
+    })();
 
     // Count-up stats
     const stats = document.querySelectorAll('.stat-num');

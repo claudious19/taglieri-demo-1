@@ -12,13 +12,14 @@ const translations = {
     "nav.pricing": "Prezzi",
     "nav.maintenance": "Manutenzione",
     "nav.contact": "Contatti",
-    "hero.eyebrow": "Artigianato fatto a mano · Svizzera",
-    "hero.sub": "Ogni pezzo è unico. Ogni venatura racconta una storia.",
-    "hero.cta": "Scopri le creazioni",
+    "hero.eyebrow": "Regali fatti a mano · Incisione laser · Svizzera",
+    "hero.title": "<em>Regali personalizzati</em><br />in legno",
+    "hero.sub": "Taglieri artigianali con nomi, dediche, date, loghi o immagini: un regalo unico, creato per durare.",
+    "hero.cta": "Scopri le incisioni",
     "hero.scroll": "Scorri",
-    "about.title": "Passione per il<br/><em>legno naturale</em>",
-    "about.p1": "Mi chiamo Roberto e da anni trasformo il legno in oggetti di uso quotidiano con le mie mani. Ogni tagliere nasce da un pezzo selezionato con cura — noce, ciliegio, acero o rovere — scelto per la bellezza della venatura e la qualità del legno.",
-    "about.p2": "Non lavoro in serie. Ogni pezzo è pensato, sagomato e rifinito individualmente. Il legno ha una sua voce, e io mi limito ad ascoltarla.",
+    "about.title": "Artigianato per<br/><em>momenti speciali</em>",
+    "about.p1": "Mi chiamo Roberto e trasformo legni selezionati in regali personali. Ogni tagliere può essere progettato per una persona o un'occasione e completato con un'incisione realizzata su misura.",
+    "about.p2": "Matrimoni, compleanni, anniversari, nascite o regali aziendali: ogni pezzo viene sagomato, inciso e rifinito individualmente, mai prodotto in serie.",
     "about.stat1": "Pezzi creati",
     "about.stat2": "Anni di esperienza",
     "about.stat3": "Fatto a mano",
@@ -42,16 +43,29 @@ const translations = {
     "process.step2": "Lavorazione in bottega",
     "process.step3": "Selezione del legno",
     "process.step4": "Sagomatura a mano",
-    "engraving.label": "Personalizzazione",
-    "engraving.title": "Quali immagini <em>incidono meglio?</em>",
-    "engraving.sub": "Puoi inviare una silhouette già pronta oppure una fotografia normale. Il laser traduce l'immagine in bianco e nero: l'importante è che, dopo la conversione, i dettagli che desideri incidere rimangano riconoscibili. In caso di dubbio, valuto io la foto prima della lavorazione.",
+    "engraving.label": "Incisioni & regali",
+    "engraving.title": "La tua idea diventa un <em>regalo personale</em>",
+    "engraving.sub": "Nomi, date, dediche, loghi e immagini possono trasformare un tagliere in un ricordo unico. Puoi inviare una silhouette o una foto normale: verifico io che i dettagli importanti restino riconoscibili nella conversione in bianco e nero.",
+    "engraving.examples.label": "Idee regalo",
+    "engraving.examples.title": "Esempi di <em>incisioni personalizzate</em>",
+    "engraving.examples.sub": "Questi spazi sono pronti per mostrare fotografie di lavori reali e aiutare ogni cliente a immaginare il proprio regalo.",
+    "engraving.placeholder": "Foto incisione",
+    "engraving.example1.title": "Nomi, date e dediche",
+    "engraving.example1.desc": "Per matrimoni, anniversari, compleanni, nascite e momenti da ricordare.",
+    "engraving.example1.aria": "Spazio per una fotografia di un tagliere con nomi, data o dedica",
+    "engraving.example2.title": "Loghi e immagini",
+    "engraving.example2.desc": "Per aziende, ristoranti, associazioni, famiglie e illustrazioni personali.",
+    "engraving.example2.aria": "Spazio per una fotografia di un tagliere con logo o illustrazione",
+    "engraving.example3.title": "Regali per occasioni speciali",
+    "engraving.example3.desc": "Un oggetto utile e personale, creato su misura per chi lo riceve.",
+    "engraving.example3.aria": "Spazio per una fotografia di una confezione regalo personalizzata",
     "engraving.color.status": "Da valutare",
     "engraving.color.title": "Fotografia normale",
     "engraving.color.desc": "Puoi inviarla così com'è. Prima dell'incisione viene valutata in bianco e nero per verificare che soggetto, contorni e dettagli importanti restino leggibili senza dipendere dai colori.",
     "engraving.color.alt": "Fotografia a colori molto dettagliata di un ulivo",
-    "engraving.detail.status": "Attenzione ai dettagli",
-    "engraving.detail.title": "Dettagli da preservare",
-    "engraving.detail.desc": "Linee molto sottili e piccoli spazi possono fondersi durante la conversione o su incisioni ridotte. Indica quali elementi sono essenziali: l'immagine verrà semplificata solo dove serve.",
+    "engraving.detail.status": "Non adatta",
+    "engraving.detail.title": "Immagine non adatta",
+    "engraving.detail.desc": "Questa immagine non è adatta all'incisione perché i dettagli e i contorni non sono marcati abbastanza. Durante la lavorazione le linee sottili rischierebbero di confondersi e il risultato perderebbe leggibilità.",
     "engraving.detail.alt": "Albero nero molto dettagliato con radici e rami sottili",
     "engraving.good.status": "Consigliata",
     "engraving.good.title": "Silhouette già pronta",
@@ -101,9 +115,52 @@ const translations = {
     "maint.tip.label": "Consiglio di Roby:",
     "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita.",
     "contact.label": "Parliamoci",
-    "contact.sub": "Interessato a un pezzo? Hai domande? Scrivimi o chiamami direttamente.",
+    "contact.sub": "Compila il modulo: verrà preparato un messaggio con tutti i dettagli e si aprirà direttamente la chat WhatsApp di Roby.",
     "contact.phone": "Telefono",
-    "footer.tagline": "Artigianato in legno fatto a mano · Svizzera",
+    "contact.form.title": "Richiedi il tuo regalo personalizzato",
+    "contact.form.intro": "Scegli tagliere, legno e incisione. Potrai controllare e modificare la richiesta prima di inviarla su WhatsApp.",
+    "contact.firstName": "Nome",
+    "contact.lastName": "Cognome",
+    "contact.email": "Email di backup",
+    "contact.email.placeholder": "nome@esempio.ch",
+    "contact.email.help": "Viene inclusa nel messaggio come contatto alternativo nel caso WhatsApp non dovesse funzionare.",
+    "contact.choose": "Seleziona",
+    "contact.size": "Misura del tagliere",
+    "contact.size.small": "Piccola",
+    "contact.size.medium": "Media",
+    "contact.size.pizza": "Pizza al metro",
+    "contact.size.large": "Grande",
+    "contact.size.custom": "Personalizzata",
+    "contact.customSize": "Misura personalizzata",
+    "contact.customSize.placeholder": "es. 60 × 30 cm",
+    "contact.wood": "Tipo di legno",
+    "contact.wood.oak": "Rovere",
+    "contact.wood.walnut": "Noce",
+    "contact.wood.cherry": "Ciliegio",
+    "contact.wood.maple": "Acero",
+    "contact.wood.ash": "Frassino",
+    "contact.wood.specific": "Altro legno specifico",
+    "contact.customWood": "Legno desiderato",
+    "contact.customWood.placeholder": "Indica il tipo di legno",
+    "contact.wood.note": "Il prezzo può variare in base al tipo e alla disponibilità del legno, soprattutto per richieste specifiche.",
+    "contact.engraving": "Desideri un'incisione?",
+    "contact.no": "No",
+    "contact.yes": "Sì",
+    "contact.engraving.note": "Dopo l'apertura di WhatsApp, aggiungi manualmente nella chat la foto o il file da incidere.",
+    "contact.notes": "Altri dettagli",
+    "contact.notes.placeholder": "Forma, utilizzo, scadenza desiderata o altre richieste",
+    "contact.submit": "Prepara il messaggio WhatsApp",
+    "contact.privacy": "I dati non vengono salvati: servono soltanto a comporre il messaggio che aprirai su WhatsApp.",
+    "contact.whatsapp.greeting": "Ciao Roby!",
+    "contact.whatsapp.intro": "Vorrei richiedere informazioni per un regalo personalizzato con incisione.",
+    "contact.whatsapp.name": "Nome e cognome",
+    "contact.whatsapp.email": "Email di backup",
+    "contact.whatsapp.size": "Misura",
+    "contact.whatsapp.wood": "Legno",
+    "contact.whatsapp.engraving": "Incisione",
+    "contact.whatsapp.notes": "Altri dettagli",
+    "contact.whatsapp.attachment": "Aggiungerò manualmente in questa chat la foto o il file per l'incisione.",
+    "footer.tagline": "Regali personalizzati in legno & incisioni laser · Svizzera",
     "footer.copy": "© 2025 Roberto — Tutti i diritti riservati"
   },
 
@@ -115,13 +172,14 @@ const translations = {
     "nav.pricing": "Pricing",
     "nav.maintenance": "Care",
     "nav.contact": "Contact",
-    "hero.eyebrow": "Handcrafted artisanry · Switzerland",
-    "hero.sub": "Every piece is unique. Every grain tells a story.",
-    "hero.cta": "Discover the creations",
+    "hero.eyebrow": "Handmade gifts · Laser engraving · Switzerland",
+    "hero.title": "<em>Personalized gifts</em><br />in wood",
+    "hero.sub": "Handcrafted cutting boards with names, dedications, dates, logos, or images: a unique gift made to last.",
+    "hero.cta": "Discover engraving",
     "hero.scroll": "Scroll",
-    "about.title": "Passion for<br/><em>natural wood</em>",
-    "about.p1": "My name is Roberto, and for years I have been transforming wood into everyday objects with my own hands. Each cutting board is born from a carefully selected piece — walnut, cherry, maple, or oak — chosen for the beauty of its grain and the quality of the wood.",
-    "about.p2": "I don't work in series. Each piece is conceived, shaped, and finished individually. The wood has its own voice, and I simply listen to it.",
+    "about.title": "Craftsmanship for<br/><em>special moments</em>",
+    "about.p1": "My name is Roberto, and I turn selected woods into personal gifts. Each cutting board can be designed for a person or occasion and completed with a custom engraving.",
+    "about.p2": "Weddings, birthdays, anniversaries, births, or corporate gifts: every piece is shaped, engraved, and finished individually, never mass-produced.",
     "about.stat1": "Pieces created",
     "about.stat2": "Years of experience",
     "about.stat3": "Handmade",
@@ -145,16 +203,29 @@ const translations = {
     "process.step2": "Workshop crafting",
     "process.step3": "Wood selection",
     "process.step4": "Shaped by hand",
-    "engraving.label": "Customization",
-    "engraving.title": "Which images <em>engrave best?</em>",
-    "engraving.sub": "You can send a ready-made silhouette or a normal photograph. The laser translates the image into black and white, so the important point is that the details you want engraved remain recognizable after conversion. When in doubt, I assess the photo before production.",
+    "engraving.label": "Engraving & gifts",
+    "engraving.title": "Your idea becomes a <em>personal gift</em>",
+    "engraving.sub": "Names, dates, dedications, logos, and images can turn a cutting board into a unique keepsake. Send a silhouette or a normal photo: I check that the important details remain recognizable after conversion to black and white.",
+    "engraving.examples.label": "Gift ideas",
+    "engraving.examples.title": "Examples of <em>personalized engravings</em>",
+    "engraving.examples.sub": "These spaces are ready for photos of real work, helping each customer picture their own gift.",
+    "engraving.placeholder": "Engraving photo",
+    "engraving.example1.title": "Names, dates, and dedications",
+    "engraving.example1.desc": "For weddings, anniversaries, birthdays, births, and moments worth remembering.",
+    "engraving.example1.aria": "Space for a photo of a cutting board with names, a date, or a dedication",
+    "engraving.example2.title": "Logos and images",
+    "engraving.example2.desc": "For companies, restaurants, associations, families, and personal illustrations.",
+    "engraving.example2.aria": "Space for a photo of a cutting board engraved with a logo or illustration",
+    "engraving.example3.title": "Gifts for special occasions",
+    "engraving.example3.desc": "A useful, personal object made especially for the person receiving it.",
+    "engraving.example3.aria": "Space for a photo of personalized gift packaging",
     "engraving.color.status": "To be assessed",
     "engraving.color.title": "Normal photograph",
     "engraving.color.desc": "You can send it as it is. Before engraving, it is assessed in black and white to ensure that the subject, outlines, and important details remain readable without relying on color.",
     "engraving.color.alt": "Highly detailed color photograph of an olive tree",
-    "engraving.detail.status": "Mind the details",
-    "engraving.detail.title": "Details to preserve",
-    "engraving.detail.desc": "Very thin lines and small gaps may merge during conversion or in a small engraving. Tell me which elements are essential so the image is simplified only where necessary.",
+    "engraving.detail.status": "Not suitable",
+    "engraving.detail.title": "Unsuitable image",
+    "engraving.detail.desc": "This image is not suitable for engraving because its details and outlines are not defined strongly enough. The thin lines could merge during engraving, making the final result difficult to read.",
     "engraving.detail.alt": "Highly detailed black tree with thin roots and branches",
     "engraving.good.status": "Recommended",
     "engraving.good.title": "Ready-made silhouette",
@@ -204,9 +275,52 @@ const translations = {
     "maint.tip.label": "Roby's tip:",
     "maint.tip.text": "A wooden cutting board is not just a kitchen tool — it's a companion for life.",
     "contact.label": "Let's talk",
-    "contact.sub": "Interested in a piece? Have questions? Write or call me directly.",
+    "contact.sub": "Complete the form to prepare a message with all the details and open Roby's WhatsApp chat directly.",
     "contact.phone": "Phone",
-    "footer.tagline": "Handcrafted woodwork · Switzerland",
+    "contact.form.title": "Request your personalized gift",
+    "contact.form.intro": "Choose the board, wood, and engraving. You can review and edit the request before sending it on WhatsApp.",
+    "contact.firstName": "First name",
+    "contact.lastName": "Last name",
+    "contact.email": "Backup email",
+    "contact.email.placeholder": "name@example.ch",
+    "contact.email.help": "It is included as an alternative contact in case the customer's WhatsApp does not work.",
+    "contact.choose": "Select",
+    "contact.size": "Cutting board size",
+    "contact.size.small": "Small",
+    "contact.size.medium": "Medium",
+    "contact.size.pizza": "Meter pizza",
+    "contact.size.large": "Large",
+    "contact.size.custom": "Custom",
+    "contact.customSize": "Custom size",
+    "contact.customSize.placeholder": "e.g. 60 × 30 cm",
+    "contact.wood": "Wood type",
+    "contact.wood.oak": "Oak",
+    "contact.wood.walnut": "Walnut",
+    "contact.wood.cherry": "Cherry",
+    "contact.wood.maple": "Maple",
+    "contact.wood.ash": "Ash",
+    "contact.wood.specific": "Another specific wood",
+    "contact.customWood": "Requested wood",
+    "contact.customWood.placeholder": "Enter the wood type",
+    "contact.wood.note": "The price may vary depending on the type and availability of the wood, especially for specific requests.",
+    "contact.engraving": "Would you like an engraving?",
+    "contact.no": "No",
+    "contact.yes": "Yes",
+    "contact.engraving.note": "After WhatsApp opens, manually attach the photo or file to be engraved in the chat.",
+    "contact.notes": "Other details",
+    "contact.notes.placeholder": "Shape, intended use, preferred deadline, or other requests",
+    "contact.submit": "Prepare WhatsApp message",
+    "contact.privacy": "Your data is not stored. It is used only to compose the message you will open in WhatsApp.",
+    "contact.whatsapp.greeting": "Hello Roby!",
+    "contact.whatsapp.intro": "I would like information about a personalized engraved gift.",
+    "contact.whatsapp.name": "Full name",
+    "contact.whatsapp.email": "Backup email",
+    "contact.whatsapp.size": "Size",
+    "contact.whatsapp.wood": "Wood",
+    "contact.whatsapp.engraving": "Engraving",
+    "contact.whatsapp.notes": "Other details",
+    "contact.whatsapp.attachment": "I will manually attach the engraving photo or file in this chat.",
+    "footer.tagline": "Personalized wooden gifts & laser engraving · Switzerland",
     "footer.copy": "© 2025 Roberto — All rights reserved"
   },
 
@@ -218,13 +332,14 @@ const translations = {
     "nav.pricing": "Preise",
     "nav.maintenance": "Pflege",
     "nav.contact": "Kontakt",
-    "hero.eyebrow": "Handgefertigte Handwerkskunst · Schweiz",
-    "hero.sub": "Jedes Stück ist einzigartig. Jede Maserung erzählt eine Geschichte.",
-    "hero.cta": "Entdecken Sie die Kreationen",
+    "hero.eyebrow": "Handgefertigte Geschenke · Lasergravur · Schweiz",
+    "hero.title": "<em>Persönliche Geschenke</em><br />aus Holz",
+    "hero.sub": "Handgefertigte Schneidebretter mit Namen, Widmungen, Daten, Logos oder Bildern: ein Geschenk, das bleibt.",
+    "hero.cta": "Gravuren entdecken",
     "hero.scroll": "Scrollen",
-    "about.title": "Leidenschaft für<br/><em>Naturholz</em>",
-    "about.p1": "Ich bin Roberto und verwandle seit Jahren Holz mit meinen eigenen Händen in Gebrauchsgegenstände. Jedes Schneidebrett entsteht aus einem sorgfältig ausgewählten Stück — Walnuss, Kirsche, Ahorn oder Eiche — ausgewählt für die Schönheit seiner Maserung und die Qualität des Holzes.",
-    "about.p2": "Ich arbeite nicht in Serie. Jedes Stück wird individuell konzipiert, geformt und veredelt. Das Holz hat seine eigene Stimme, und ich höre ihr einfach zu.",
+    "about.title": "Handwerk für<br/><em>besondere Momente</em>",
+    "about.p1": "Ich bin Roberto und verwandle ausgewählte Hölzer in persönliche Geschenke. Jedes Schneidebrett kann für eine bestimmte Person oder einen Anlass gestaltet und mit einer individuellen Gravur ergänzt werden.",
+    "about.p2": "Hochzeit, Geburtstag, Jubiläum, Geburt oder Firmengeschenk: Jedes Stück wird einzeln geformt, graviert und veredelt, niemals in Serie produziert.",
     "about.stat1": "Stücke gefertigt",
     "about.stat2": "Jahre Erfahrung",
     "about.stat3": "Handgefertigt",
@@ -248,16 +363,29 @@ const translations = {
     "process.step2": "Arbeit in der Werkstatt",
     "process.step3": "Holzauswahl",
     "process.step4": "Von Hand geformt",
-    "engraving.label": "Personalisierung",
-    "engraving.title": "Welche Bilder lassen sich <em>am besten gravieren?</em>",
-    "engraving.sub": "Du kannst eine fertige Silhouette oder ein normales Foto senden. Der Laser übersetzt das Bild in Schwarz und Weiß. Entscheidend ist, dass die gewünschten Details nach der Umwandlung erkennbar bleiben. Im Zweifelsfall prüfe ich das Foto vor der Bearbeitung.",
+    "engraving.label": "Gravur & Geschenke",
+    "engraving.title": "Deine Idee wird zum <em>persönlichen Geschenk</em>",
+    "engraving.sub": "Namen, Daten, Widmungen, Logos und Bilder machen aus einem Schneidebrett ein einzigartiges Erinnerungsstück. Sende eine Silhouette oder ein normales Foto: Ich prüfe, ob wichtige Details bei der Umwandlung in Schwarz-Weiß erhalten bleiben.",
+    "engraving.examples.label": "Geschenkideen",
+    "engraving.examples.title": "Beispiele für <em>persönliche Gravuren</em>",
+    "engraving.examples.sub": "Diese Flächen sind für Fotos echter Arbeiten vorbereitet und helfen Kunden, sich ihr eigenes Geschenk vorzustellen.",
+    "engraving.placeholder": "Gravurfoto",
+    "engraving.example1.title": "Namen, Daten und Widmungen",
+    "engraving.example1.desc": "Für Hochzeiten, Jubiläen, Geburtstage, Geburten und besondere Erinnerungen.",
+    "engraving.example1.aria": "Platz für ein Foto eines Schneidebretts mit Namen, Datum oder Widmung",
+    "engraving.example2.title": "Logos und Bilder",
+    "engraving.example2.desc": "Für Unternehmen, Restaurants, Vereine, Familien und persönliche Illustrationen.",
+    "engraving.example2.aria": "Platz für ein Foto eines Schneidebretts mit graviertem Logo oder Bild",
+    "engraving.example3.title": "Geschenke für besondere Anlässe",
+    "engraving.example3.desc": "Ein nützlicher, persönlicher Gegenstand, eigens für den Beschenkten gefertigt.",
+    "engraving.example3.aria": "Platz für ein Foto einer personalisierten Geschenkverpackung",
     "engraving.color.status": "Wird geprüft",
     "engraving.color.title": "Normales Foto",
     "engraving.color.desc": "Du kannst es unverändert senden. Vor der Gravur wird es in Schwarz und Weiß geprüft, damit Motiv, Konturen und wichtige Details auch ohne Farben gut erkennbar bleiben.",
     "engraving.color.alt": "Detailreiches Farbfoto eines Olivenbaums",
-    "engraving.detail.status": "Details beachten",
-    "engraving.detail.title": "Details, die erhalten bleiben sollen",
-    "engraving.detail.desc": "Sehr dünne Linien und kleine Zwischenräume können bei der Umwandlung oder einer kleinen Gravur zusammenlaufen. Teile mir mit, welche Elemente wichtig sind, damit nur das Nötige vereinfacht wird.",
+    "engraving.detail.status": "Nicht geeignet",
+    "engraving.detail.title": "Ungeeignetes Bild",
+    "engraving.detail.desc": "Dieses Bild ist für eine Gravur nicht geeignet, weil Details und Konturen nicht deutlich genug ausgeprägt sind. Die feinen Linien könnten bei der Gravur ineinanderlaufen und das Ergebnis wäre schwer lesbar.",
     "engraving.detail.alt": "Sehr detaillierter schwarzer Baum mit dünnen Wurzeln und Ästen",
     "engraving.good.status": "Empfohlen",
     "engraving.good.title": "Fertige Silhouette",
@@ -307,9 +435,52 @@ const translations = {
     "maint.tip.label": "Robys Tipp:",
     "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
     "contact.label": "Sprechen wir",
-    "contact.sub": "Interesse an einem Stück? Haben Sie Fragen? Schreiben oder rufen Sie mich direkt an.",
+    "contact.sub": "Füllen Sie das Formular aus: Eine Nachricht mit allen Angaben wird vorbereitet und Robys WhatsApp-Chat direkt geöffnet.",
     "contact.phone": "Telefon",
-    "footer.tagline": "Handgefertigte Holzkunst · Schweiz",
+    "contact.form.title": "Persönliches Geschenk anfragen",
+    "contact.form.intro": "Wähle Brett, Holz und Gravur. Die Anfrage kann vor dem Senden über WhatsApp geprüft und geändert werden.",
+    "contact.firstName": "Vorname",
+    "contact.lastName": "Nachname",
+    "contact.email": "E-Mail als Ersatzkontakt",
+    "contact.email.placeholder": "name@beispiel.ch",
+    "contact.email.help": "Sie wird als alternativer Kontakt angegeben, falls WhatsApp beim Kunden nicht funktionieren sollte.",
+    "contact.choose": "Auswählen",
+    "contact.size": "Größe des Schneidebretts",
+    "contact.size.small": "Klein",
+    "contact.size.medium": "Mittel",
+    "contact.size.pizza": "Meterpizza",
+    "contact.size.large": "Groß",
+    "contact.size.custom": "Nach Maß",
+    "contact.customSize": "Individuelle Maße",
+    "contact.customSize.placeholder": "z. B. 60 × 30 cm",
+    "contact.wood": "Holzart",
+    "contact.wood.oak": "Eiche",
+    "contact.wood.walnut": "Walnuss",
+    "contact.wood.cherry": "Kirsche",
+    "contact.wood.maple": "Ahorn",
+    "contact.wood.ash": "Esche",
+    "contact.wood.specific": "Andere bestimmte Holzart",
+    "contact.customWood": "Gewünschte Holzart",
+    "contact.customWood.placeholder": "Holzart angeben",
+    "contact.wood.note": "Der Preis kann je nach Holzart und Verfügbarkeit variieren, besonders bei speziellen Wünschen.",
+    "contact.engraving": "Möchten Sie eine Gravur?",
+    "contact.no": "Nein",
+    "contact.yes": "Ja",
+    "contact.engraving.note": "Fügen Sie nach dem Öffnen von WhatsApp das Foto oder die Datei für die Gravur manuell im Chat hinzu.",
+    "contact.notes": "Weitere Angaben",
+    "contact.notes.placeholder": "Form, Verwendungszweck, gewünschter Termin oder andere Wünsche",
+    "contact.submit": "WhatsApp-Nachricht vorbereiten",
+    "contact.privacy": "Die Daten werden nicht gespeichert. Sie dienen nur zum Erstellen der Nachricht, die in WhatsApp geöffnet wird.",
+    "contact.whatsapp.greeting": "Hallo Roby!",
+    "contact.whatsapp.intro": "Ich interessiere mich für ein personalisiertes Geschenk mit Gravur.",
+    "contact.whatsapp.name": "Vor- und Nachname",
+    "contact.whatsapp.email": "E-Mail als Ersatzkontakt",
+    "contact.whatsapp.size": "Größe",
+    "contact.whatsapp.wood": "Holz",
+    "contact.whatsapp.engraving": "Gravur",
+    "contact.whatsapp.notes": "Weitere Angaben",
+    "contact.whatsapp.attachment": "Ich füge das Foto oder die Datei für die Gravur manuell in diesem Chat hinzu.",
+    "footer.tagline": "Personalisierte Holzgeschenke & Lasergravuren · Schweiz",
     "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten"
   },
 
@@ -321,13 +492,14 @@ const translations = {
     "nav.pricing": "Tarifs",
     "nav.maintenance": "Entretien",
     "nav.contact": "Contact",
-    "hero.eyebrow": "Artisanat fait main · Suisse",
-    "hero.sub": "Chaque pièce est unique. Chaque veine raconte une histoire.",
-    "hero.cta": "Découvrir les créations",
+    "hero.eyebrow": "Cadeaux faits main · Gravure laser · Suisse",
+    "hero.title": "<em>Cadeaux personnalisés</em><br />en bois",
+    "hero.sub": "Des planches artisanales avec noms, dédicaces, dates, logos ou images : un cadeau unique fait pour durer.",
+    "hero.cta": "Découvrir les gravures",
     "hero.scroll": "Défiler",
-    "about.title": "Passion pour le<br/><em>bois naturel</em>",
-    "about.p1": "Je m'appelle Roberto et depuis des années, je transforme le bois en objets du quotidien de mes propres mains. Chaque planche à découper naît d'une pièce soigneusement sélectionnée — noyer, cerisier, érable ou chêne — choisie pour la beauté de son grain et la qualité du bois.",
-    "about.p2": "Je ne travaille pas en série. Chaque pièce est conçue, façonnée et finie individuellement. Le bois a sa propre voix, et je me contente de l'écouter.",
+    "about.title": "Un savoir-faire pour<br/><em>les moments précieux</em>",
+    "about.p1": "Je m'appelle Roberto et je transforme des bois sélectionnés en cadeaux personnels. Chaque planche peut être conçue pour une personne ou une occasion et complétée par une gravure sur mesure.",
+    "about.p2": "Mariage, anniversaire, naissance ou cadeau d'entreprise : chaque pièce est façonnée, gravée et finie individuellement, jamais produite en série.",
     "about.stat1": "Pièces créées",
     "about.stat2": "Années d'expérience",
     "about.stat3": "Fait main",
@@ -351,16 +523,29 @@ const translations = {
     "process.step2": "Travail en atelier",
     "process.step3": "Sélection du bois",
     "process.step4": "Façonnage à la main",
-    "engraving.label": "Personnalisation",
-    "engraving.title": "Quelles images se <em>gravent le mieux ?</em>",
-    "engraving.sub": "Vous pouvez envoyer une silhouette déjà prête ou une photographie normale. Le laser traduit l'image en noir et blanc : l'essentiel est que les détails souhaités restent reconnaissables après la conversion. En cas de doute, j'évalue la photo avant la réalisation.",
+    "engraving.label": "Gravure & cadeaux",
+    "engraving.title": "Votre idée devient un <em>cadeau personnel</em>",
+    "engraving.sub": "Noms, dates, dédicaces, logos et images transforment une planche en souvenir unique. Envoyez une silhouette ou une photo normale : je vérifie que les détails importants restent reconnaissables après la conversion en noir et blanc.",
+    "engraving.examples.label": "Idées cadeaux",
+    "engraving.examples.title": "Exemples de <em>gravures personnalisées</em>",
+    "engraving.examples.sub": "Ces espaces sont prêts à accueillir des photos de réalisations et à aider chaque client à imaginer son cadeau.",
+    "engraving.placeholder": "Photo de gravure",
+    "engraving.example1.title": "Noms, dates et dédicaces",
+    "engraving.example1.desc": "Pour les mariages, anniversaires, naissances et les moments à ne pas oublier.",
+    "engraving.example1.aria": "Espace pour une photo de planche avec noms, date ou dédicace",
+    "engraving.example2.title": "Logos et images",
+    "engraving.example2.desc": "Pour les entreprises, restaurants, associations, familles et illustrations personnelles.",
+    "engraving.example2.aria": "Espace pour une photo de planche gravée avec un logo ou une illustration",
+    "engraving.example3.title": "Cadeaux pour occasions spéciales",
+    "engraving.example3.desc": "Un objet utile et personnel, créé spécialement pour la personne qui le reçoit.",
+    "engraving.example3.aria": "Espace pour une photo d'un emballage cadeau personnalisé",
     "engraving.color.status": "À évaluer",
     "engraving.color.title": "Photographie normale",
     "engraving.color.desc": "Vous pouvez l'envoyer telle quelle. Avant la gravure, elle est évaluée en noir et blanc afin de vérifier que le sujet, les contours et les détails importants restent lisibles sans dépendre des couleurs.",
     "engraving.color.alt": "Photographie en couleurs très détaillée d'un olivier",
-    "engraving.detail.status": "Attention aux détails",
-    "engraving.detail.title": "Détails à préserver",
-    "engraving.detail.desc": "Les lignes très fines et les petits espaces peuvent fusionner lors de la conversion ou sur une petite gravure. Indiquez les éléments essentiels afin de ne simplifier l'image que lorsque cela est nécessaire.",
+    "engraving.detail.status": "Non adaptée",
+    "engraving.detail.title": "Image non adaptée",
+    "engraving.detail.desc": "Cette image ne convient pas à la gravure, car ses détails et ses contours ne sont pas assez marqués. Les lignes fines risqueraient de se confondre pendant la gravure et le résultat manquerait de lisibilité.",
     "engraving.detail.alt": "Arbre noir très détaillé avec de fines racines et branches",
     "engraving.good.status": "Recommandée",
     "engraving.good.title": "Silhouette déjà prête",
@@ -410,9 +595,52 @@ const translations = {
     "maint.tip.label": "Conseil de Roby :",
     "maint.tip.text": "Une planche à découper en bois n'est pas seulement un outil de cuisine — c'est un compagnon de vie.",
     "contact.label": "Parlons-en",
-    "contact.sub": "Intéressé par une pièce ? Des questions ? Écrivez-moi ou appelez-moi directement.",
+    "contact.sub": "Remplissez le formulaire : un message contenant tous les détails sera préparé et la discussion WhatsApp de Roby s'ouvrira directement.",
     "contact.phone": "Téléphone",
-    "footer.tagline": "Artisanat du bois fait main · Suisse",
+    "contact.form.title": "Demandez votre cadeau personnalisé",
+    "contact.form.intro": "Choisissez la planche, le bois et la gravure. Vous pourrez vérifier et modifier la demande avant de l'envoyer sur WhatsApp.",
+    "contact.firstName": "Prénom",
+    "contact.lastName": "Nom",
+    "contact.email": "E-mail de secours",
+    "contact.email.placeholder": "nom@exemple.ch",
+    "contact.email.help": "Il est inclus comme contact alternatif si le WhatsApp du client ne fonctionne pas.",
+    "contact.choose": "Sélectionner",
+    "contact.size": "Dimensions de la planche",
+    "contact.size.small": "Petite",
+    "contact.size.medium": "Moyenne",
+    "contact.size.pizza": "Pizza au mètre",
+    "contact.size.large": "Grande",
+    "contact.size.custom": "Sur mesure",
+    "contact.customSize": "Dimensions personnalisées",
+    "contact.customSize.placeholder": "p. ex. 60 × 30 cm",
+    "contact.wood": "Type de bois",
+    "contact.wood.oak": "Chêne",
+    "contact.wood.walnut": "Noyer",
+    "contact.wood.cherry": "Cerisier",
+    "contact.wood.maple": "Érable",
+    "contact.wood.ash": "Frêne",
+    "contact.wood.specific": "Autre bois spécifique",
+    "contact.customWood": "Bois souhaité",
+    "contact.customWood.placeholder": "Indiquez le type de bois",
+    "contact.wood.note": "Le prix peut varier selon le type et la disponibilité du bois, surtout pour une demande spécifique.",
+    "contact.engraving": "Souhaitez-vous une gravure ?",
+    "contact.no": "Non",
+    "contact.yes": "Oui",
+    "contact.engraving.note": "Après l'ouverture de WhatsApp, ajoutez manuellement dans la discussion la photo ou le fichier à graver.",
+    "contact.notes": "Autres détails",
+    "contact.notes.placeholder": "Forme, utilisation, délai souhaité ou autres demandes",
+    "contact.submit": "Préparer le message WhatsApp",
+    "contact.privacy": "Les données ne sont pas enregistrées. Elles servent uniquement à composer le message ouvert dans WhatsApp.",
+    "contact.whatsapp.greeting": "Bonjour Roby !",
+    "contact.whatsapp.intro": "Je souhaite obtenir des informations pour un cadeau personnalisé avec gravure.",
+    "contact.whatsapp.name": "Nom complet",
+    "contact.whatsapp.email": "E-mail de secours",
+    "contact.whatsapp.size": "Dimensions",
+    "contact.whatsapp.wood": "Bois",
+    "contact.whatsapp.engraving": "Gravure",
+    "contact.whatsapp.notes": "Autres détails",
+    "contact.whatsapp.attachment": "J'ajouterai manuellement dans cette discussion la photo ou le fichier pour la gravure.",
+    "footer.tagline": "Cadeaux personnalisés en bois & gravure laser · Suisse",
     "footer.copy": "© 2025 Roberto — Tous droits réservés"
   }
 };
@@ -454,6 +682,16 @@ function applyLanguage(lang) {
     document.querySelectorAll('[data-i18n-alt]').forEach(image => {
       const key = image.getAttribute('data-i18n-alt');
       if (t[key] !== undefined) image.alt = t[key];
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+      const key = element.getAttribute('data-i18n-aria');
+      if (t[key] !== undefined) element.setAttribute('aria-label', t[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(field => {
+      const key = field.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) field.placeholder = t[key];
     });
 
     document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
@@ -602,6 +840,99 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
+// WhatsApp order form
+const whatsappOrderForm = document.getElementById('whatsapp-order-form');
+const boardSizeSelect = document.getElementById('board-size');
+const customSizeGroup = document.getElementById('custom-size-group');
+const customSizeInput = document.getElementById('custom-size');
+const woodTypeSelect = document.getElementById('wood-type');
+const customWoodGroup = document.getElementById('custom-wood-group');
+const customWoodInput = document.getElementById('custom-wood');
+const engravingSelect = document.getElementById('engraving-request');
+const engravingUploadNote = document.getElementById('engraving-upload-note');
+
+const setConditionalField = (select, expectedValue, container, input) => {
+  const isActive = select.value === expectedValue;
+  container.hidden = !isActive;
+  if (input) {
+    input.required = isActive;
+    if (!isActive) input.value = '';
+  }
+};
+
+if (whatsappOrderForm) {
+  boardSizeSelect.addEventListener('change', () => {
+    setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
+  });
+
+  woodTypeSelect.addEventListener('change', () => {
+    setConditionalField(woodTypeSelect, 'specific', customWoodGroup, customWoodInput);
+  });
+
+  engravingSelect.addEventListener('change', () => {
+    engravingUploadNote.hidden = engravingSelect.value !== 'yes';
+  });
+
+  whatsappOrderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!whatsappOrderForm.reportValidity()) return;
+
+    const t = translations[currentLang] || translations.it;
+    const data = new FormData(whatsappOrderForm);
+    const sizeKeys = {
+      small: 'contact.size.small',
+      medium: 'contact.size.medium',
+      pizza: 'contact.size.pizza',
+      large: 'contact.size.large',
+      custom: 'contact.size.custom',
+    };
+    const woodKeys = {
+      oak: 'contact.wood.oak',
+      walnut: 'contact.wood.walnut',
+      cherry: 'contact.wood.cherry',
+      maple: 'contact.wood.maple',
+      ash: 'contact.wood.ash',
+      specific: 'contact.wood.specific',
+    };
+
+    const sizeValue = data.get('size');
+    const woodValue = data.get('wood');
+    const engravingValue = data.get('engraving');
+    const sizeLabel = sizeValue === 'custom'
+      ? `${t[sizeKeys[sizeValue]]}: ${data.get('customSize')}`
+      : t[sizeKeys[sizeValue]];
+    const woodLabel = woodValue === 'specific'
+      ? `${t[woodKeys[woodValue]]}: ${data.get('customWood')}`
+      : t[woodKeys[woodValue]];
+
+    const messageLines = [
+      t['contact.whatsapp.greeting'],
+      '',
+      t['contact.whatsapp.intro'],
+      `${t['contact.whatsapp.name']}: ${data.get('firstName')} ${data.get('lastName')}`,
+      `${t['contact.whatsapp.email']}: ${data.get('email')}`,
+      `${t['contact.whatsapp.size']}: ${sizeLabel}`,
+      `${t['contact.whatsapp.wood']}: ${woodLabel}`,
+      `${t['contact.whatsapp.engraving']}: ${engravingValue === 'yes' ? t['contact.yes'] : t['contact.no']}`,
+    ];
+
+    const notes = String(data.get('notes') || '').trim();
+    if (notes) messageLines.push(`${t['contact.whatsapp.notes']}: ${notes}`);
+    if (engravingValue === 'yes') {
+      messageLines.push('', t['contact.whatsapp.attachment']);
+    }
+
+    const whatsappUrl = `https://wa.me/41791234567?text=${encodeURIComponent(messageLines.join('\n'))}`;
+    const whatsappWindow = window.open('about:blank', '_blank');
+    if (whatsappWindow) {
+      whatsappWindow.opener = null;
+      whatsappWindow.location.href = whatsappUrl;
+    } else {
+      window.location.href = whatsappUrl;
+    }
+  });
+}
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
