@@ -2193,7 +2193,7 @@
       overscroll-behavior-y: contain;
     }
 
-    section[id],
+    section,
     .footer {
       scroll-snap-stop: always;
     }
@@ -2275,12 +2275,13 @@
     }
 
     @media (min-width: 1025px) {
-      #about,
-      #engraving,
-      #gift-ideas,
-      #pricing,
-      #maintenance {
-        min-height: calc(100dvh + 2px);
+      section:not(#gallery) {
+        /*
+          The controller lands 2px inside the section:
+          visible background = section height - anchor overlap.
+          100dvh + 2px therefore leaves exactly one full viewport.
+        */
+        min-height: calc(100dvh + var(--anchor-overlap));
         background-clip: padding-box;
       }
 
@@ -3211,9 +3212,20 @@
     // The important part is the lock: wheel/trackpad fires many events per gesture, so we must
     // ignore all follow-up events until the smooth scroll has settled.
     const structuredScroll = (() => {
+      const supportsFingerScrolling =
+        navigator.maxTouchPoints > 0 ||
+        'ontouchstart' in window ||
+        window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+      // Touch-capable devices keep completely native finger scrolling.
+      if (supportsFingerScrolling) {
+        document.documentElement.classList.remove('structured-scroll-enabled');
+        return;
+      }
+
       const footer = document.querySelector('.footer');
       const sections = [
-        ...document.querySelectorAll('section[id]'),
+        ...document.querySelectorAll('section'),
         ...(footer ? [footer] : []),
       ];
       const freeSection = document.getElementById('gallery');
@@ -3222,7 +3234,6 @@
       document.documentElement.classList.add('structured-scroll-enabled');
 
       const WHEEL_THRESHOLD = 82;
-      const TOUCH_THRESHOLD = 64;
       const EDGE_EPSILON = 10;
       const LOCK_TIMEOUT = 1350;
       const SETTLE_FRAMES_REQUIRED = 8;
@@ -3231,8 +3242,6 @@
       let wheelAccum = 0;
       let isSnapping = false;
       let unlockTimer = null;
-      let touchStartY = null;
-      let touchLocked = false;
 
       const isInteractive = (el) => Boolean(el?.closest?.(
         'input, textarea, select, button, a, [contenteditable="true"], .lang-dropdown, .gallery-filters'
@@ -3350,34 +3359,6 @@
           snapByDirection(Math.sign(wheelAccum));
         }
       }, { passive: false });
-
-      window.addEventListener('touchstart', (event) => {
-        if (isInteractive(event.target) || isSnapping) {
-          touchStartY = null;
-          return;
-        }
-        touchStartY = event.touches[0]?.clientY ?? null;
-        touchLocked = false;
-      }, { passive: true });
-
-      window.addEventListener('touchmove', (event) => {
-        if (touchStartY === null || touchLocked) return;
-        const currentY = event.touches[0]?.clientY ?? touchStartY;
-        const deltaY = touchStartY - currentY;
-
-        if (canUseNativeGalleryScroll(deltaY)) return;
-
-        if (Math.abs(deltaY) >= TOUCH_THRESHOLD) {
-          event.preventDefault();
-          touchLocked = true;
-          snapByDirection(Math.sign(deltaY));
-        }
-      }, { passive: false });
-
-      window.addEventListener('touchend', () => {
-        touchStartY = null;
-        touchLocked = false;
-      }, { passive: true });
 
       window.addEventListener('keydown', (event) => {
         if (isInteractive(event.target)) return;

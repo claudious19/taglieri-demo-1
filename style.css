@@ -1613,9 +1613,7 @@ em { font-style: italic; color: var(--walnut); }
 
 /* Final engraving image sizing: preserve every source image completely. */
 @media (min-width: 1025px) {
-  #about,
-  #pricing,
-  #maintenance {
+  section:not(#gallery) {
     min-height: calc(100dvh + 2px);
     background-clip: padding-box;
   }
