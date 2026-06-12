@@ -923,7 +923,7 @@ if (whatsappOrderForm) {
       messageLines.push('', t['contact.whatsapp.attachment']);
     }
 
-    const whatsappUrl = `https://wa.me/41791234567?text=${encodeURIComponent(messageLines.join('\n'))}`;
+    const whatsappUrl = `https://wa.me/41787544017?text=${encodeURIComponent(messageLines.join('\n'))}`;
     const whatsappWindow = window.open('about:blank', '_blank');
     if (whatsappWindow) {
       whatsappWindow.opener = null;

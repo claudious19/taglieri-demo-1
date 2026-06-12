@@ -1349,6 +1349,11 @@ em { font-style: italic; color: var(--walnut); }
   gap: 1rem;
 }
 
+.contact-methods .whatsapp-submit {
+  width: 100%;
+  margin-top: 0.15rem;
+}
+
 .contact-item {
   display: flex;
   align-items: center;
@@ -1607,6 +1612,15 @@ em { font-style: italic; color: var(--walnut); }
 }
 
 /* Final engraving image sizing: preserve every source image completely. */
+@media (min-width: 1025px) {
+  #about,
+  #pricing,
+  #maintenance {
+    min-height: calc(100dvh + 2px);
+    background-clip: padding-box;
+  }
+}
+
 #engraving .engraving-media {
   display: flex;
   width: 100%;

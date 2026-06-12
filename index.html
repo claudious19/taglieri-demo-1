@@ -1161,6 +1161,7 @@
       text-align: center;
     }
     .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-methods .whatsapp-submit { width: 100%; margin-top: 0.15rem; }
     .contact-item {
       display: flex;
       align-items: center;
@@ -2192,7 +2193,8 @@
       overscroll-behavior-y: contain;
     }
 
-    section[id] {
+    section[id],
+    .footer {
       scroll-snap-stop: always;
     }
 
@@ -2273,8 +2275,11 @@
     }
 
     @media (min-width: 1025px) {
+      #about,
       #engraving,
-      #gift-ideas {
+      #gift-ideas,
+      #pricing,
+      #maintenance {
         min-height: calc(100dvh + 2px);
         background-clip: padding-box;
       }
@@ -2741,14 +2746,14 @@
               <label for="order-notes" data-i18n="contact.notes">Altri dettagli</label>
               <textarea id="order-notes" name="notes" data-i18n-placeholder="contact.notes.placeholder" placeholder="Forma, utilizzo, scadenza desiderata o altre richieste"></textarea>
             </div>
-            <button class="whatsapp-submit" type="submit" data-i18n="contact.submit">Prepara il messaggio WhatsApp</button>
             <p class="contact-privacy" data-i18n="contact.privacy">I dati non vengono salvati: servono soltanto a comporre il messaggio che aprirai su WhatsApp.</p>
           </form>
         </div>
         <div class="contact-methods reveal">
           <a href="mailto:roby@taglieri.ch" class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><span>roby@taglieri.ch</span></div></a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-icon">◈</span><div><strong>Instagram</strong><span>@itaglieridi_roby</span></div></a>
-          <a href="tel:+41791234567" class="contact-item"><span class="contact-icon">◎</span><div><strong data-i18n="contact.phone">Telefono</strong><span>+41 79 123 45 67</span></div></a>
+          <a href="tel:+41787544017" class="contact-item"><span class="contact-icon">◎</span><div><strong data-i18n="contact.phone">Telefono</strong><span>+41 78 754 40 17</span></div></a>
+          <button class="whatsapp-submit" type="submit" form="whatsapp-order-form" data-i18n="contact.submit">Prepara il messaggio WhatsApp</button>
         </div>
       </div>
     </div>
@@ -3144,7 +3149,7 @@
           messageLines.push('', t['contact.whatsapp.attachment']);
         }
 
-        const whatsappUrl = `https://wa.me/41791234567?text=${encodeURIComponent(messageLines.join('\n'))}`;
+        const whatsappUrl = `https://wa.me/41787544017?text=${encodeURIComponent(messageLines.join('\n'))}`;
         const whatsappWindow = window.open('about:blank', '_blank');
         if (whatsappWindow) {
           whatsappWindow.opener = null;
@@ -3206,7 +3211,11 @@
     // The important part is the lock: wheel/trackpad fires many events per gesture, so we must
     // ignore all follow-up events until the smooth scroll has settled.
     const structuredScroll = (() => {
-      const sections = Array.from(document.querySelectorAll('section[id]'));
+      const footer = document.querySelector('.footer');
+      const sections = [
+        ...document.querySelectorAll('section[id]'),
+        ...(footer ? [footer] : []),
+      ];
       const freeSection = document.getElementById('gallery');
       if (!sections.length) return;
 
@@ -3247,6 +3256,11 @@
       };
 
       const getActiveIndex = () => {
+        const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+        if (window.scrollY >= maxScrollY - EDGE_EPSILON) {
+          return sections.length - 1;
+        }
+
         const viewportProbe = Math.min(window.innerHeight * 0.35, 260);
         let bestIndex = 0;
         let bestScore = Infinity;
