@@ -464,21 +464,34 @@
     }
     .about-img-frame {
       position: relative;
+      width: min(100%, 420px);
       aspect-ratio: 3/4;
       max-width: 420px;
+      isolation: isolate;
+    }
+    .about-img-frame::after {
+      content: '';
+      position: absolute;
+      inset: 18px -18px -18px 18px;
+      z-index: -1;
+      background: var(--linen);
+      border-radius: 4px;
     }
     .about-img-placeholder {
       width: 100%;
       height: 100%;
+      box-sizing: border-box;
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 20px 20px 0 var(--linen);
+      background: var(--parchment);
+      border: 1px solid rgba(107,62,38,0.12);
     }
     .about-img-placeholder img {
       width: 100%;
       height: 100%;
       display: block;
       object-fit: contain;
+      object-position: center;
     }
     .about-body { margin-bottom: 2.5rem; }
     .about-body p {
@@ -1330,6 +1343,7 @@
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-img-frame { max-width: 340px; margin: 0 auto; }
+      .about-img-frame::after { inset: 12px -12px -12px 12px; }
       .gallery-grid { columns: 2; }
       .engraving-grid { grid-template-columns: 1fr; max-width: 620px; }
       .engraving-card.recommended { transform: none; }
@@ -1586,8 +1600,9 @@
     }
 
     .about-img-frame {
-      max-width: min(360px, 28vw);
-      max-height: calc(var(--usable-view-h) - 2rem);
+      width: min(360px, 28vw, calc((var(--usable-view-h) - 2rem) * 0.75));
+      max-width: none;
+      max-height: none;
     }
 
     .about-body {
