@@ -8,6 +8,7 @@ const translations = {
     "nav.home": "Home",
     "nav.about": "Chi sono",
     "nav.gallery": "Galleria",
+    "nav.engraving": "Incisione laser",
     "nav.pricing": "Prezzi",
     "nav.maintenance": "Manutenzione",
     "nav.contact": "Contatti",
@@ -23,10 +24,10 @@ const translations = {
     "about.stat3": "Fatto a mano",
     "gallery.label": "Le mie creazioni",
     "gallery.all": "Tutti",
-    "gallery.rect": "Rettangolare",
-    "gallery.oval": "Ovale",
-    "gallery.special": "Speciale",
-    "gallery.special.ed": "Edizione Speciale",
+    "gallery.handle": "Con manico",
+    "gallery.nohandle": "Senza manico",
+    "gallery.meterpizza": "Pizza al metro",
+    "gallery.upcycled": "Upcycled",
     "gallery.engraved": "Con incisione",
     "gallery.item1.name": "Tagliere Grande",
     "gallery.item2.name": "Tagliere Ovale",
@@ -41,6 +42,26 @@ const translations = {
     "process.step2": "Lavorazione in bottega",
     "process.step3": "Selezione del legno",
     "process.step4": "Sagomatura a mano",
+    "engraving.label": "Personalizzazione",
+    "engraving.title": "Quali immagini <em>incidono meglio?</em>",
+    "engraving.sub": "Il laser non stampa i colori: traduce l'immagine in zone chiare e scure. Per un risultato nitido sul legno, forme semplici e contrasti netti funzionano meglio di fotografie ricche di colori e dettagli.",
+    "engraving.color.status": "Non consigliata",
+    "engraving.color.title": "Fotografia a colori",
+    "engraving.color.desc": "Colori, ombre, sfumature e texture devono essere convertiti in un solo tono inciso. Molte informazioni si perdono e il risultato può apparire piatto o poco leggibile.",
+    "engraving.color.alt": "Fotografia a colori molto dettagliata di un ulivo",
+    "engraving.detail.status": "Da semplificare",
+    "engraving.detail.title": "Troppi dettagli sottili",
+    "engraving.detail.desc": "Anche un'immagine nera può essere troppo complessa. Rami, radici e piccoli spazi possono fondersi o scomparire, soprattutto su un'incisione di dimensioni ridotte.",
+    "engraving.detail.alt": "Albero nero molto dettagliato con radici e rami sottili",
+    "engraving.good.status": "Consigliata",
+    "engraving.good.title": "Silhouette a due colori",
+    "engraving.good.desc": "Nero e bianco netti, contorni chiari e forme ampie producono un'incisione precisa e leggibile. È il formato ideale per loghi, simboli, scritte e illustrazioni.",
+    "engraving.good.alt": "Silhouette nera e bianca di un albero con forme pulite",
+    "engraving.tips.title": "Come preparare un'immagine ideale",
+    "engraving.tip1": "Usa nero e bianco netti, senza colori, ombre o sfumature.",
+    "engraving.tip2": "Preferisci contorni spessi, forme grandi e spazi ben separati.",
+    "engraving.tip3": "Se possibile, invia un file SVG oppure un PNG ad alta risoluzione.",
+    "engraving.note": "Non serve avere già un file perfetto: prima di incidere valuto l'immagine e ti consiglio come semplificarla.",
     "pricing.label": "Investimento",
     "pricing.sub": "Ogni pezzo è unico — i prezzi variano in base al legno, alle dimensioni e alla complessità. Questi sono range indicativi.",
     "pricing.from": "da",
@@ -90,6 +111,7 @@ const translations = {
     "nav.home": "Home",
     "nav.about": "About me",
     "nav.gallery": "Gallery",
+    "nav.engraving": "Laser engraving",
     "nav.pricing": "Pricing",
     "nav.maintenance": "Care",
     "nav.contact": "Contact",
@@ -105,10 +127,10 @@ const translations = {
     "about.stat3": "Handmade",
     "gallery.label": "My creations",
     "gallery.all": "All",
-    "gallery.rect": "Rectangular",
-    "gallery.oval": "Oval",
-    "gallery.special": "Special",
-    "gallery.special.ed": "Special Edition",
+    "gallery.handle": "With handle",
+    "gallery.nohandle": "Without handle",
+    "gallery.meterpizza": "Meter pizza",
+    "gallery.upcycled": "Upcycled",
     "gallery.engraved": "With engraving",
     "gallery.item1.name": "Large Cutting Board",
     "gallery.item2.name": "Oval Cutting Board",
@@ -123,6 +145,26 @@ const translations = {
     "process.step2": "Workshop crafting",
     "process.step3": "Wood selection",
     "process.step4": "Shaped by hand",
+    "engraving.label": "Customization",
+    "engraving.title": "Which images <em>engrave best?</em>",
+    "engraving.sub": "A laser does not print colors: it translates an image into light and dark areas. Simple shapes and strong contrast produce a clearer result on wood than photographs with many colors and fine details.",
+    "engraving.color.status": "Not recommended",
+    "engraving.color.title": "Color photograph",
+    "engraving.color.desc": "Colors, shadows, gradients, and textures must be converted into a single engraved tone. Much of the information is lost, so the result can look flat or unclear.",
+    "engraving.color.alt": "Highly detailed color photograph of an olive tree",
+    "engraving.detail.status": "Needs simplifying",
+    "engraving.detail.title": "Too many fine details",
+    "engraving.detail.desc": "Even a black image can be too complex. Thin branches, roots, and small gaps may merge or disappear, especially when the engraving is small.",
+    "engraving.detail.alt": "Highly detailed black tree with thin roots and branches",
+    "engraving.good.status": "Recommended",
+    "engraving.good.title": "Two-color silhouette",
+    "engraving.good.desc": "Solid black and white, clear outlines, and broad shapes create a precise, readable engraving. This format is ideal for logos, symbols, lettering, and illustrations.",
+    "engraving.good.alt": "Black-and-white tree silhouette with clean shapes",
+    "engraving.tips.title": "How to prepare an ideal image",
+    "engraving.tip1": "Use solid black and white without colors, shadows, or gradients.",
+    "engraving.tip2": "Choose thick outlines, large shapes, and clearly separated spaces.",
+    "engraving.tip3": "When possible, send an SVG or a high-resolution PNG file.",
+    "engraving.note": "Your file does not need to be perfect: I review every image before engraving and suggest how it can be simplified.",
     "pricing.label": "Investment",
     "pricing.sub": "Each piece is unique — prices vary based on wood type, size, and complexity. These are indicative ranges.",
     "pricing.from": "from",
@@ -172,6 +214,7 @@ const translations = {
     "nav.home": "Startseite",
     "nav.about": "Über mich",
     "nav.gallery": "Galerie",
+    "nav.engraving": "Lasergravur",
     "nav.pricing": "Preise",
     "nav.maintenance": "Pflege",
     "nav.contact": "Kontakt",
@@ -187,10 +230,10 @@ const translations = {
     "about.stat3": "Handgefertigt",
     "gallery.label": "Meine Kreationen",
     "gallery.all": "Alle",
-    "gallery.rect": "Rechteckig",
-    "gallery.oval": "Oval",
-    "gallery.special": "Spezial",
-    "gallery.special.ed": "Sonderausgabe",
+    "gallery.handle": "Mit Griff",
+    "gallery.nohandle": "Ohne Griff",
+    "gallery.meterpizza": "Meterpizza",
+    "gallery.upcycled": "Upcycled",
     "gallery.engraved": "Mit Gravur",
     "gallery.item1.name": "Großes Schneidebrett",
     "gallery.item2.name": "Ovale Schneidebrett",
@@ -205,6 +248,26 @@ const translations = {
     "process.step2": "Arbeit in der Werkstatt",
     "process.step3": "Holzauswahl",
     "process.step4": "Von Hand geformt",
+    "engraving.label": "Personalisierung",
+    "engraving.title": "Welche Bilder lassen sich <em>am besten gravieren?</em>",
+    "engraving.sub": "Ein Laser druckt keine Farben, sondern übersetzt ein Bild in helle und dunkle Flächen. Einfache Formen und starke Kontraste ergeben auf Holz ein klareres Resultat als Fotos mit vielen Farben und feinen Details.",
+    "engraving.color.status": "Nicht empfohlen",
+    "engraving.color.title": "Farbfotografie",
+    "engraving.color.desc": "Farben, Schatten, Verläufe und Strukturen müssen in einen einzigen Gravurton umgewandelt werden. Dabei gehen viele Informationen verloren und das Ergebnis kann flach oder undeutlich wirken.",
+    "engraving.color.alt": "Detailreiches Farbfoto eines Olivenbaums",
+    "engraving.detail.status": "Muss vereinfacht werden",
+    "engraving.detail.title": "Zu viele feine Details",
+    "engraving.detail.desc": "Auch ein schwarzes Bild kann zu komplex sein. Dünne Äste, Wurzeln und kleine Zwischenräume können ineinanderlaufen oder verschwinden, besonders bei kleinen Gravuren.",
+    "engraving.detail.alt": "Sehr detaillierter schwarzer Baum mit dünnen Wurzeln und Ästen",
+    "engraving.good.status": "Empfohlen",
+    "engraving.good.title": "Zweifarbige Silhouette",
+    "engraving.good.desc": "Klares Schwarz und Weiß, deutliche Konturen und große Formen ergeben eine präzise, gut lesbare Gravur. Dieses Format eignet sich ideal für Logos, Symbole, Schriftzüge und Illustrationen.",
+    "engraving.good.alt": "Schwarz-weiße Baumsilhouette mit klaren Formen",
+    "engraving.tips.title": "So bereitest du ein ideales Bild vor",
+    "engraving.tip1": "Verwende klares Schwarz und Weiß ohne Farben, Schatten oder Verläufe.",
+    "engraving.tip2": "Wähle kräftige Konturen, große Formen und deutlich getrennte Flächen.",
+    "engraving.tip3": "Sende wenn möglich eine SVG-Datei oder ein hochauflösendes PNG.",
+    "engraving.note": "Die Datei muss noch nicht perfekt sein: Vor der Gravur prüfe ich jedes Bild und empfehle, wie es vereinfacht werden kann.",
     "pricing.label": "Investition",
     "pricing.sub": "Jedes Stück ist einzigartig — die Preise variieren je nach Holzart, Größe und Komplexität. Dies sind Richtwerte.",
     "pricing.from": "ab",
@@ -254,6 +317,7 @@ const translations = {
     "nav.home": "Accueil",
     "nav.about": "À propos",
     "nav.gallery": "Galerie",
+    "nav.engraving": "Gravure laser",
     "nav.pricing": "Tarifs",
     "nav.maintenance": "Entretien",
     "nav.contact": "Contact",
@@ -269,10 +333,10 @@ const translations = {
     "about.stat3": "Fait main",
     "gallery.label": "Mes créations",
     "gallery.all": "Tous",
-    "gallery.rect": "Rectangulaire",
-    "gallery.oval": "Ovale",
-    "gallery.special": "Spécial",
-    "gallery.special.ed": "Édition Spéciale",
+    "gallery.handle": "Avec poignée",
+    "gallery.nohandle": "Sans poignée",
+    "gallery.meterpizza": "Pizza au mètre",
+    "gallery.upcycled": "Upcyclé",
     "gallery.engraved": "Avec gravure",
     "gallery.item1.name": "Grande Planche",
     "gallery.item2.name": "Planche Ovale",
@@ -287,6 +351,26 @@ const translations = {
     "process.step2": "Travail en atelier",
     "process.step3": "Sélection du bois",
     "process.step4": "Façonnage à la main",
+    "engraving.label": "Personnalisation",
+    "engraving.title": "Quelles images se <em>gravent le mieux ?</em>",
+    "engraving.sub": "Un laser n'imprime pas les couleurs : il traduit une image en zones claires et foncées. Des formes simples et un contraste marqué donnent un résultat plus net sur le bois que des photos riches en couleurs et en détails.",
+    "engraving.color.status": "Déconseillée",
+    "engraving.color.title": "Photographie en couleurs",
+    "engraving.color.desc": "Les couleurs, les ombres, les dégradés et les textures doivent être convertis en une seule tonalité gravée. De nombreuses informations se perdent et le résultat peut paraître plat ou peu lisible.",
+    "engraving.color.alt": "Photographie en couleurs très détaillée d'un olivier",
+    "engraving.detail.status": "À simplifier",
+    "engraving.detail.title": "Trop de détails fins",
+    "engraving.detail.desc": "Même une image noire peut être trop complexe. Les branches fines, les racines et les petits espaces peuvent fusionner ou disparaître, surtout sur une petite gravure.",
+    "engraving.detail.alt": "Arbre noir très détaillé avec de fines racines et branches",
+    "engraving.good.status": "Recommandée",
+    "engraving.good.title": "Silhouette bicolore",
+    "engraving.good.desc": "Un noir et blanc franc, des contours nets et de grandes formes produisent une gravure précise et lisible. Ce format est idéal pour les logos, symboles, textes et illustrations.",
+    "engraving.good.alt": "Silhouette d'arbre en noir et blanc aux formes nettes",
+    "engraving.tips.title": "Comment préparer une image idéale",
+    "engraving.tip1": "Utilisez un noir et blanc franc, sans couleurs, ombres ni dégradés.",
+    "engraving.tip2": "Privilégiez des contours épais, de grandes formes et des espaces bien séparés.",
+    "engraving.tip3": "Si possible, envoyez un fichier SVG ou un PNG en haute résolution.",
+    "engraving.note": "Votre fichier n'a pas besoin d'être parfait : je vérifie chaque image avant la gravure et vous conseille pour la simplifier.",
     "pricing.label": "Investissement",
     "pricing.sub": "Chaque pièce est unique — les prix varient selon le bois, les dimensions et la complexité. Ce sont des fourchettes indicatives.",
     "pricing.from": "à partir de",
@@ -341,7 +425,15 @@ const langMeta = {
   fr: { flag: '🇫🇷', code: 'FR', htmlLang: 'fr' },
 };
 
+const categoryTranslationKeys = {
+  'con-manico': 'gallery.handle',
+  'senza-manico': 'gallery.nohandle',
+  'pizza-al-metro': 'gallery.meterpizza',
+  upcycled: 'gallery.upcycled',
+};
+
 let currentLang = localStorage.getItem('lang') || 'it';
+let languageSwitchTimer;
 
 function applyLanguage(lang) {
   const t = translations[lang];
@@ -349,13 +441,32 @@ function applyLanguage(lang) {
 
   document.body.classList.add('lang-switching');
 
-  setTimeout(() => {
+  clearTimeout(languageSwitchTimer);
+  languageSwitchTimer = setTimeout(() => {
     // Update all data-i18n elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) {
         el.innerHTML = t[key];
       }
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(image => {
+      const key = image.getAttribute('data-i18n-alt');
+      if (t[key] !== undefined) image.alt = t[key];
+    });
+
+    document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
+      const key = categoryTranslationKeys[button.dataset.filter];
+      if (key && t[key] !== undefined) button.textContent = t[key];
+    });
+
+    document.querySelectorAll('.gallery-item[data-cat]').forEach(item => {
+      const key = categoryTranslationKeys[item.dataset.cat];
+      if (!key || t[key] === undefined) return;
+      item.querySelectorAll('.gallery-overlay > span, .gallery-caption > strong').forEach(label => {
+        label.textContent = t[key];
+      });
     });
 
     // Update html lang attribute

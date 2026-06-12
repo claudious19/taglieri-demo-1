@@ -302,8 +302,8 @@
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
-      object-position: center;
+      object-fit: contain;
+      object-position: right center;
     }
 
     .wood-ring {
@@ -432,8 +432,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
-      object-position: center 45%;
+      object-fit: contain;
     }
     .about-img-tag {
       position: absolute;
@@ -508,38 +507,35 @@
       color: var(--cream);
     }
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      columns: 3;
+      column-gap: 1.5rem;
       max-width: 1200px;
       margin: 0 auto;
     }
     .gallery-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      break-inside: avoid;
       border-radius: var(--radius);
       overflow: hidden;
       background: var(--linen);
       transition: opacity 0.4s, transform 0.3s var(--transition);
     }
-    .gallery-item.large { grid-row: span 2; }
     .gallery-item.hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(0.96);
+      display: none;
     }
     .gallery-img {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 4/3;
       cursor: pointer;
     }
-    .gallery-item.large .gallery-img { aspect-ratio: 4/5; height: 100%; }
     .img-placeholder {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.6s var(--transition);
+      object-fit: contain;
+      transition: filter 0.35s var(--transition);
     }
     .gallery-overlay {
       position: absolute;
@@ -567,7 +563,7 @@
       text-transform: uppercase;
       color: var(--maple);
     }
-    .gallery-img:hover .img-placeholder { transform: scale(1.05); }
+    .gallery-img:hover .img-placeholder { filter: brightness(0.78); }
     .gallery-img:hover .gallery-overlay { opacity: 1; }
     .gallery-caption {
       padding: 1rem 1.25rem;
@@ -591,8 +587,7 @@
     }
     .process-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: clamp(180px, 24vw, 320px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
       width: 100%;
       max-width: 1200px;
@@ -604,19 +599,14 @@
       border-radius: var(--radius);
       background: var(--linen);
     }
-    .process-photo:nth-child(1),
-    .process-photo:nth-child(4) { grid-column: span 7; }
-    .process-photo:nth-child(2),
-    .process-photo:nth-child(3) { grid-column: span 5; }
     .process-photo img {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
-      object-fit: cover;
-      transition: transform 0.7s var(--transition);
+      object-fit: contain;
+      transition: filter 0.35s var(--transition);
     }
-    .process-photo:nth-child(2) img { object-position: center 58%; }
-    .process-photo:hover img { transform: scale(1.035); }
+    .process-photo:hover img { filter: brightness(0.86); }
     .process-photo figcaption {
       position: absolute;
       left: 1rem;
@@ -629,6 +619,132 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       backdrop-filter: blur(6px);
+    }
+
+    .engraving {
+      background: var(--parchment);
+      min-height: auto;
+    }
+    .engraving-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      align-items: start;
+    }
+    .engraving-card {
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid rgba(107,62,38,0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 34px rgba(74,41,18,0.08);
+    }
+    .engraving-card.recommended {
+      border-color: rgba(126,142,88,0.55);
+      box-shadow: 0 18px 42px rgba(79,96,45,0.14);
+      transform: translateY(-0.5rem);
+    }
+    .engraving-media {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      aspect-ratio: 4/3;
+      padding: 1rem;
+      margin: 0;
+      background: #fffdf8;
+      border-bottom: 1px solid var(--linen);
+    }
+    .engraving-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .engraving-status {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      padding: 0.42rem 0.72rem;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+      box-shadow: 0 5px 16px rgba(42,31,20,0.18);
+    }
+    .engraving-status.bad { background: #8d493e; }
+    .engraving-status.caution { background: #a26d2f; }
+    .engraving-status.good { background: #647447; }
+    .engraving-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+    .engraving-card-body h3 {
+      margin-bottom: 0.65rem;
+      color: var(--walnut-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      line-height: 1.1;
+    }
+    .engraving-card-body p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+    .engraving-tips {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+      background: var(--walnut-dark);
+      color: var(--cream);
+      border-radius: var(--radius);
+    }
+    .engraving-tips h3 {
+      margin-bottom: 1.2rem;
+      color: var(--maple);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+    }
+    .engraving-tips ul {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      list-style: none;
+      counter-reset: engraving-tip;
+    }
+    .engraving-tips li {
+      position: relative;
+      padding-left: 2.2rem;
+      color: rgba(245,237,224,0.82);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      counter-increment: engraving-tip;
+    }
+    .engraving-tips li::before {
+      content: counter(engraving-tip);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 1.55rem;
+      height: 1.55rem;
+      color: var(--walnut-dark);
+      background: var(--maple);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .engraving-note {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(245,237,224,0.14);
+      color: rgba(245,237,224,0.62);
+      font-size: 0.82rem;
     }
 
     .pricing {
@@ -1009,13 +1125,21 @@
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-img-frame { max-width: 340px; margin: 0 auto; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-item.large { grid-row: span 1; }
-      .gallery-item.large .gallery-img { aspect-ratio: 4/3; height: auto; }
-      .process-grid { grid-auto-rows: clamp(190px, 34vw, 300px); }
+      .gallery-grid { columns: 2; }
+      .engraving-grid { grid-template-columns: 1fr; max-width: 620px; }
+      .engraving-card.recommended { transform: none; }
+      .engraving-tips ul { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
       .pricing-card.featured { transform: none; }
       .maintenance-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1025px) and (max-width: 1250px) {
+      .nav-logo span:last-child { display: none; }
+      .nav-link {
+        padding-inline: 0.55rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+      }
     }
     @media (max-width: 1024px) {
       #navbar { justify-content: space-between; }
@@ -1081,16 +1205,9 @@
       }
       .hero-badge { display: none; }
       .wood-ring { display: none; }
-      .hero-image { object-position: 62% center; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .process-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
-      }
-      .process-photo:nth-child(n) {
-        grid-column: auto;
-        aspect-ratio: 4/3;
-      }
+      .hero-image { object-position: center; }
+      .gallery-grid { columns: 1; }
+      .process-grid { grid-template-columns: 1fr; }
       .maintenance-steps { grid-template-columns: 1fr; }
       .maint-tip { flex-direction: column; }
       .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -1138,6 +1255,7 @@
       <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
       <li><a href="#about" class="nav-link" data-i18n="nav.about">Chi sono</a></li>
       <li><a href="#gallery" class="nav-link" data-i18n="nav.gallery">Galleria</a></li>
+      <li><a href="#engraving" class="nav-link" data-i18n="nav.engraving">Incisione laser</a></li>
       <li><a href="#pricing" class="nav-link" data-i18n="nav.pricing">Prezzi</a></li>
       <li><a href="#maintenance" class="nav-link" data-i18n="nav.maintenance">Manutenzione</a></li>
       <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contatti</a></li>
@@ -1199,17 +1317,37 @@
     </div>
     <div class="gallery-filters reveal">
       <button class="filter-btn active" data-filter="all" data-i18n="gallery.all">Tutti</button>
-      <button class="filter-btn" data-filter="rettangolare" data-i18n="gallery.rect">Rettangolare</button>
-      <button class="filter-btn" data-filter="ovale" data-i18n="gallery.oval">Ovale</button>
-      <button class="filter-btn" data-filter="speciale" data-i18n="gallery.special">Speciale</button>
+      <button class="filter-btn" data-filter="con-manico" data-i18n="gallery.handle">Con manico</button>
+      <button class="filter-btn" data-filter="senza-manico" data-i18n="gallery.nohandle">Senza manico</button>
+      <button class="filter-btn" data-filter="pizza-al-metro" data-i18n="gallery.meterpizza">Pizza al metro</button>
+      <button class="filter-btn" data-filter="upcycled" data-i18n="gallery.upcycled">Upcycled</button>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item reveal" data-cat="rettangolare"><div class="gallery-img"><img class="img-placeholder" src="images/board-serving.jpg" alt="Tagliere lungo artigianale con manico in rovere" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>45 × 30 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item1.name">Tagliere Grande</strong><em>Rovere</em></div></div>
-      <div class="gallery-item reveal" data-cat="ovale"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-tall.jpg" alt="Tagliere alto in rovere con venatura naturale" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>38 × 24 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item2.name">Tagliere Ovale</strong><em>Rovere</em></div></div>
-      <div class="gallery-item reveal large" data-cat="speciale"><div class="gallery-img"><img class="img-placeholder" src="images/board-live-edge.jpg" alt="Tagliere artigianale con manico e bordo naturale" width="1080" height="1920" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere Massello</span><small data-i18n="gallery.special.ed">Edizione Speciale</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item3.name">Tagliere con Manico</strong><em>Rovere Massello</em></div></div>
-      <div class="gallery-item reveal" data-cat="rettangolare"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-wide.jpg" alt="Tagliere largo in rovere con incisione artigianale" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>40 × 28 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item4.name">Tagliere Medio</strong><em>Rovere</em></div></div>
-      <div class="gallery-item reveal" data-cat="speciale"><div class="gallery-img"><img class="img-placeholder" src="images/brand-detail.jpg" alt="Dettaglio dell'incisione Hand Made by Roby" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Firma di Roby</span><small data-i18n="gallery.engraved">Con incisione</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item5.name">Tagliere Personalizzato</strong><em>Incisione artigianale</em></div></div>
-      <div class="gallery-item reveal" data-cat="ovale"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-slim.jpg" alt="Tagliere sottile in rovere con manico" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span>Rovere</span><small>35 × 22 cm</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.item6.name">Tagliere Ovale Piccolo</strong><em>Rovere</em></div></div>
+      <div class="gallery-item reveal" data-cat="con-manico"><div class="gallery-img"><img class="img-placeholder" src="images/board-serving.jpg" alt="Tagliere lungo artigianale con manico in rovere" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.handle">Con manico</span><small>Rovere massello</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.handle">Con manico</strong><em>Rovere massello</em></div></div>
+      <div class="gallery-item reveal" data-cat="con-manico"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-tall.jpg" alt="Tagliere alto in rovere con manico e venatura naturale" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.handle">Con manico</span><small>Forma naturale</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.handle">Con manico</strong><em>Forma naturale</em></div></div>
+      <div class="gallery-item reveal" data-cat="con-manico"><div class="gallery-img"><img class="img-placeholder" src="images/board-live-edge.jpg" alt="Tagliere artigianale con manico e bordo naturale" width="1080" height="1920" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.handle">Con manico</span><small>Bordo naturale</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.handle">Con manico</strong><em>Bordo naturale</em></div></div>
+      <div class="gallery-item reveal" data-cat="con-manico"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-wide.jpg" alt="Tagliere largo in rovere con manico e incisione artigianale" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.handle">Con manico</span><small data-i18n="gallery.engraved">Con incisione</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.handle">Con manico</strong><em>Incisione artigianale</em></div></div>
+      <div class="gallery-item reveal" data-cat="con-manico"><div class="gallery-img"><img class="img-placeholder" src="images/brand-detail.jpg" alt="Dettaglio dell'incisione Hand Made by Roby su un tagliere con manico" width="2048" height="914" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.handle">Con manico</span><small data-i18n="gallery.engraved">Con incisione</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.handle">Con manico</strong><em>Firma di Roby</em></div></div>
+      <div class="gallery-item reveal" data-cat="con-manico"><div class="gallery-img"><img class="img-placeholder" src="images/board-oak-slim.jpg" alt="Tagliere sottile in rovere con manico" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.handle">Con manico</span><small>Profilo sottile</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.handle">Con manico</strong><em>Profilo sottile</em></div></div>
+
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20250727-WA0007.jpg" alt="Tagliere alto senza manico con bordo naturale" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Bordo naturale</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Bordo naturale</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20250727-WA0009.jpg" alt="Tagliere rettangolare alto senza manico" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Rovere massello</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Rovere massello</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0003.jpg" alt="Coppia di taglieri chiari senza manico con bordo vivo" width="2048" height="1422" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Coppia coordinata</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Coppia coordinata</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0004.jpg" alt="Coppia di taglieri scuri senza manico" width="1920" height="1080" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Venatura intensa</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Venatura intensa</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0005.jpg" alt="Due taglieri dorati senza manico con forme naturali" width="1828" height="1950" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Forme naturali</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Forme naturali</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0006.jpg" alt="Dettaglio inferiore di due taglieri senza manico con piedini" width="1920" height="1080" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Dettaglio dei piedini</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Con piedini</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0007.jpg" alt="Due taglieri compatti senza manico in legno massello" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Formato compatto</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Formato compatto</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0011.jpg" alt="Tagliere singolo senza manico su piano scuro" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Pezzo unico</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Pezzo unico</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0013.jpg" alt="Tagliere senza manico utilizzato per servire formaggi" width="2016" height="1134" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>In tavola</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Tagliere da portata</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0014.jpg" alt="Due taglieri sagomati senza manico" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Sagomati a mano</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Sagomati a mano</em></div></div>
+      <div class="gallery-item reveal" data-cat="senza-manico"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0015.jpg" alt="Tagliere senza manico dalla forma organica" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.nohandle">Senza manico</span><small>Forma organica</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.nohandle">Senza manico</strong><em>Forma organica</em></div></div>
+
+      <div class="gallery-item reveal" data-cat="pizza-al-metro"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0009.jpg" alt="Collezione di taglieri molto lunghi per pizza al metro" width="914" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.meterpizza">Pizza al metro</span><small>Formato lungo</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.meterpizza">Pizza al metro</strong><em>Formato lungo</em></div></div>
+      <div class="gallery-item reveal" data-cat="pizza-al-metro"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0010.jpg" alt="Serie di taglieri extra lunghi per pizza al metro" width="913" height="2048" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.meterpizza">Pizza al metro</span><small>Extra lungo</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.meterpizza">Pizza al metro</strong><em>Extra lungo</em></div></div>
+
+      <div class="gallery-item reveal" data-cat="upcycled"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0012.jpg" alt="Tagliere spesso upcycled con bordo naturale" width="1920" height="1080" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.upcycled">Upcycled</span><small>Legno recuperato</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.upcycled">Upcycled</strong><em>Legno recuperato</em></div></div>
+      <div class="gallery-item reveal" data-cat="upcycled"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0016.jpg" alt="Tagliere upcycled personalizzato con incisione di un camoscio" width="2048" height="913" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.upcycled">Upcycled</span><small data-i18n="gallery.engraved">Con incisione</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.upcycled">Upcycled</strong><em>Incisione personalizzata</em></div></div>
+      <div class="gallery-item reveal" data-cat="upcycled"><div class="gallery-img"><img class="img-placeholder" src="images/IMG-20260612-WA0017.jpg" alt="Quattro vassoi upcycled in legno con maniglie metalliche" width="1080" height="1920" loading="lazy" decoding="async" /><div class="gallery-overlay"><span data-i18n="gallery.upcycled">Upcycled</span><small>Maniglie recuperate</small></div></div><div class="gallery-caption"><strong data-i18n="gallery.upcycled">Upcycled</strong><em>Vassoi da portata</em></div></div>
     </div>
   </section>
 
@@ -1226,6 +1364,60 @@
       <figure class="process-photo reveal"><img src="images/process-stock.jpg" alt="Tavole e sagome di legno selezionate per nuovi taglieri" width="1599" height="899" loading="lazy" decoding="async" /><figcaption data-i18n="process.step3">Selezione del legno</figcaption></figure>
       <figure class="process-photo reveal"><img src="images/process-shaping.jpg" alt="Serie di taglieri appena sagomati sul banco di lavoro" width="2048" height="914" loading="lazy" decoding="async" /><figcaption data-i18n="process.step4">Sagomatura a mano</figcaption></figure>
     </div>
+  </section>
+
+  <!-- LASER ENGRAVING -->
+  <section id="engraving" class="section engraving" aria-labelledby="engraving-title">
+    <div class="section-header">
+      <p class="section-label reveal" data-i18n="engraving.label">Personalizzazione</p>
+      <h2 class="section-title reveal" id="engraving-title" data-i18n="engraving.title">Quali immagini <em>incidono meglio?</em></h2>
+      <p class="section-sub reveal" data-i18n="engraving.sub">Il laser non stampa i colori: traduce l'immagine in zone chiare e scure. Per un risultato nitido sul legno, forme semplici e contrasti netti funzionano meglio di fotografie ricche di colori e dettagli.</p>
+    </div>
+
+    <div class="engraving-grid">
+      <article class="engraving-card reveal">
+        <figure class="engraving-media">
+          <img src="images/example_bad_engraving_tree_color.jpg" alt="Fotografia a colori molto dettagliata di un ulivo" data-i18n-alt="engraving.color.alt" width="600" height="450" loading="lazy" decoding="async" />
+          <figcaption class="engraving-status bad" data-i18n="engraving.color.status">Non consigliata</figcaption>
+        </figure>
+        <div class="engraving-card-body">
+          <h3 data-i18n="engraving.color.title">Fotografia a colori</h3>
+          <p data-i18n="engraving.color.desc">Colori, ombre, sfumature e texture devono essere convertiti in un solo tono inciso. Molte informazioni si perdono e il risultato può apparire piatto o poco leggibile.</p>
+        </div>
+      </article>
+
+      <article class="engraving-card reveal">
+        <figure class="engraving-media">
+          <img src="images/example_bad_engraving_tree.jpg" alt="Albero nero molto dettagliato con radici e rami sottili" data-i18n-alt="engraving.detail.alt" width="540" height="360" loading="lazy" decoding="async" />
+          <figcaption class="engraving-status caution" data-i18n="engraving.detail.status">Da semplificare</figcaption>
+        </figure>
+        <div class="engraving-card-body">
+          <h3 data-i18n="engraving.detail.title">Troppi dettagli sottili</h3>
+          <p data-i18n="engraving.detail.desc">Anche un'immagine nera può essere troppo complessa. Rami, radici e piccoli spazi possono fondersi o scomparire, soprattutto su un'incisione di dimensioni ridotte.</p>
+        </div>
+      </article>
+
+      <article class="engraving-card recommended reveal">
+        <figure class="engraving-media">
+          <img src="images/example_good_engraving_tree.jpg" alt="Silhouette nera e bianca di un albero con forme pulite" data-i18n-alt="engraving.good.alt" width="612" height="565" loading="lazy" decoding="async" />
+          <figcaption class="engraving-status good" data-i18n="engraving.good.status">Consigliata</figcaption>
+        </figure>
+        <div class="engraving-card-body">
+          <h3 data-i18n="engraving.good.title">Silhouette a due colori</h3>
+          <p data-i18n="engraving.good.desc">Nero e bianco netti, contorni chiari e forme ampie producono un'incisione precisa e leggibile. È il formato ideale per loghi, simboli, scritte e illustrazioni.</p>
+        </div>
+      </article>
+    </div>
+
+    <aside class="engraving-tips reveal" aria-labelledby="engraving-tips-title">
+      <h3 id="engraving-tips-title" data-i18n="engraving.tips.title">Come preparare un'immagine ideale</h3>
+      <ul>
+        <li data-i18n="engraving.tip1">Usa nero e bianco netti, senza colori, ombre o sfumature.</li>
+        <li data-i18n="engraving.tip2">Preferisci contorni spessi, forme grandi e spazi ben separati.</li>
+        <li data-i18n="engraving.tip3">Se possibile, invia un file SVG oppure un PNG ad alta risoluzione.</li>
+      </ul>
+      <p class="engraving-note" data-i18n="engraving.note">Non serve avere già un file perfetto: prima di incidere valuto l'immagine e ti consiglio come semplificarla.</p>
+    </aside>
   </section>
 
   <!-- PRICING -->
@@ -1286,13 +1478,18 @@
     // ✦ Complete Translations with ALL languages ✦
     const translations = {
       it: {
-        "nav.home": "Home", "nav.about": "Chi sono", "nav.gallery": "Galleria", "nav.pricing": "Prezzi", "nav.maintenance": "Manutenzione", "nav.contact": "Contatti",
+        "nav.home": "Home", "nav.about": "Chi sono", "nav.gallery": "Galleria", "nav.engraving": "Incisione laser", "nav.pricing": "Prezzi", "nav.maintenance": "Manutenzione", "nav.contact": "Contatti",
         "hero.eyebrow": "Artigianato fatto a mano · Svizzera", "hero.sub": "Ogni pezzo è unico. Ogni venatura racconta una storia.", "hero.cta": "Scopri le creazioni", "hero.scroll": "Scorri",
         "about.title": "Passione per il<br/><em>legno naturale</em>", "about.p1": "Mi chiamo Roberto, e da anni trasformo il legno in oggetti di uso quotidiano con le mie mani. Ogni tagliere che creo nasce da un pezzo selezionato con cura — noce, ciliegio, acero o rovere — scelto per la bellezza della sua venatura e la qualità del suo grano.", "about.p2": "Non lavoro in serie. Ogni pezzo è pensato, sagomato e rifinito individualmente. Il legno ha una sua voce, e io mi limito ad ascoltarla.",
         "about.stat1": "Pezzi creati", "about.stat2": "Anni di esperienza", "about.stat3": "Fatto a mano",
-        "gallery.label": "Le mie creazioni", "gallery.all": "Tutti", "gallery.rect": "Rettangolare", "gallery.oval": "Ovale", "gallery.special": "Speciale", "gallery.special.ed": "Edizione Speciale", "gallery.engraved": "Con incisione",
+        "gallery.label": "Le mie creazioni", "gallery.all": "Tutti", "gallery.handle": "Con manico", "gallery.nohandle": "Senza manico", "gallery.meterpizza": "Pizza al metro", "gallery.upcycled": "Upcycled", "gallery.engraved": "Con incisione",
         "gallery.item1.name": "Tagliere Grande", "gallery.item2.name": "Tagliere Ovale", "gallery.item3.name": "Tagliere con Manico", "gallery.item4.name": "Tagliere Medio", "gallery.item5.name": "Tagliere Personalizzato", "gallery.item6.name": "Tagliere Ovale Piccolo",
         "process.label": "Dentro la bottega", "process.title": "Dal legno al <em>tagliere</em>", "process.sub": "Ogni forma nasce dalla selezione del legno, passa dal banco di lavoro e viene rifinita a mano.", "process.step1": "Scelta delle forme", "process.step2": "Lavorazione in bottega", "process.step3": "Selezione del legno", "process.step4": "Sagomatura a mano",
+        "engraving.label": "Personalizzazione", "engraving.title": "Quali immagini <em>incidono meglio?</em>", "engraving.sub": "Il laser non stampa i colori: traduce l'immagine in zone chiare e scure. Per un risultato nitido sul legno, forme semplici e contrasti netti funzionano meglio di fotografie ricche di colori e dettagli.",
+        "engraving.color.status": "Non consigliata", "engraving.color.title": "Fotografia a colori", "engraving.color.desc": "Colori, ombre, sfumature e texture devono essere convertiti in un solo tono inciso. Molte informazioni si perdono e il risultato può apparire piatto o poco leggibile.", "engraving.color.alt": "Fotografia a colori molto dettagliata di un ulivo",
+        "engraving.detail.status": "Da semplificare", "engraving.detail.title": "Troppi dettagli sottili", "engraving.detail.desc": "Anche un'immagine nera può essere troppo complessa. Rami, radici e piccoli spazi possono fondersi o scomparire, soprattutto su un'incisione di dimensioni ridotte.", "engraving.detail.alt": "Albero nero molto dettagliato con radici e rami sottili",
+        "engraving.good.status": "Consigliata", "engraving.good.title": "Silhouette a due colori", "engraving.good.desc": "Nero e bianco netti, contorni chiari e forme ampie producono un'incisione precisa e leggibile. È il formato ideale per loghi, simboli, scritte e illustrazioni.", "engraving.good.alt": "Silhouette nera e bianca di un albero con forme pulite",
+        "engraving.tips.title": "Come preparare un'immagine ideale", "engraving.tip1": "Usa nero e bianco netti, senza colori, ombre o sfumature.", "engraving.tip2": "Preferisci contorni spessi, forme grandi e spazi ben separati.", "engraving.tip3": "Se possibile, invia un file SVG oppure un PNG ad alta risoluzione.", "engraving.note": "Non serve avere già un file perfetto: prima di incidere valuto l'immagine e ti consiglio come semplificarla.",
         "pricing.label": "Investimento", "pricing.sub": "Ogni pezzo è unico — i prezzi variano in base al legno, alle dimensioni e alla complessità. Questi sono i range orientativi.", "pricing.from": "da", "pricing.popular": "Più richiesto",
         "pricing.s.title": "Piccolo", "pricing.s.desc": "Taglieri compatti, perfetti per pane, formaggi e antipasti. Dimensioni fino a 30 × 20 cm.", "pricing.s.f1": "✦ Acero o Frassino", "pricing.s.f2": "✦ Finitura con olio naturale", "pricing.s.f3": "✦ Bordi levigati a mano",
         "pricing.m.title": "Medio", "pricing.m.desc": "Il formato ideale per uso quotidiano. Dimensioni tra 30 × 20 cm e 45 × 30 cm.", "pricing.m.f1": "✦ Noce, Ciliegio o Rovere", "pricing.m.f2": "✦ Finitura con olio di lino", "pricing.m.f3": "✦ Personalizzazione disponibile", "pricing.m.f4": "✦ Piedini antiscivolo",
@@ -1308,13 +1505,18 @@
         "footer.tagline": "Artigianato in legno fatto a mano · Svizzera", "footer.copy": "© 2025 Roberto — Tutti i diritti riservati"
       },
       en: {
-        "nav.home": "Home", "nav.about": "About me", "nav.gallery": "Gallery", "nav.pricing": "Pricing", "nav.maintenance": "Care", "nav.contact": "Contact",
+        "nav.home": "Home", "nav.about": "About me", "nav.gallery": "Gallery", "nav.engraving": "Laser engraving", "nav.pricing": "Pricing", "nav.maintenance": "Care", "nav.contact": "Contact",
         "hero.eyebrow": "Handcrafted artisanry · Switzerland", "hero.sub": "Every piece is unique. Every grain tells a story.", "hero.cta": "Discover the creations", "hero.scroll": "Scroll",
         "about.title": "Passion for<br/><em>natural wood</em>", "about.p1": "My name is Roberto, and for years I have been transforming wood into everyday objects with my own hands. Each cutting board is born from a carefully selected piece — walnut, cherry, maple, or oak — chosen for the beauty of its grain and the quality of the wood.", "about.p2": "I don't work in series. Each piece is conceived, shaped, and finished individually. The wood has its own voice, and I simply listen to it.",
         "about.stat1": "Pieces created", "about.stat2": "Years of experience", "about.stat3": "Handmade",
-        "gallery.label": "My creations", "gallery.all": "All", "gallery.rect": "Rectangular", "gallery.oval": "Oval", "gallery.special": "Special", "gallery.special.ed": "Special Edition", "gallery.engraved": "With engraving",
+        "gallery.label": "My creations", "gallery.all": "All", "gallery.handle": "With handle", "gallery.nohandle": "Without handle", "gallery.meterpizza": "Meter pizza", "gallery.upcycled": "Upcycled", "gallery.engraved": "With engraving",
         "gallery.item1.name": "Large Cutting Board", "gallery.item2.name": "Oval Cutting Board", "gallery.item3.name": "Cutting Board with Handle", "gallery.item4.name": "Medium Cutting Board", "gallery.item5.name": "Custom Cutting Board", "gallery.item6.name": "Small Oval Cutting Board",
         "process.label": "Inside the workshop", "process.title": "From wood to <em>cutting board</em>", "process.sub": "Each shape begins with selecting the wood, passes through the workbench, and is finished by hand.", "process.step1": "Choosing the shapes", "process.step2": "Workshop crafting", "process.step3": "Wood selection", "process.step4": "Shaped by hand",
+        "engraving.label": "Customization", "engraving.title": "Which images <em>engrave best?</em>", "engraving.sub": "A laser does not print colors: it translates an image into light and dark areas. Simple shapes and strong contrast produce a clearer result on wood than photographs with many colors and fine details.",
+        "engraving.color.status": "Not recommended", "engraving.color.title": "Color photograph", "engraving.color.desc": "Colors, shadows, gradients, and textures must be converted into a single engraved tone. Much of the information is lost, so the result can look flat or unclear.", "engraving.color.alt": "Highly detailed color photograph of an olive tree",
+        "engraving.detail.status": "Needs simplifying", "engraving.detail.title": "Too many fine details", "engraving.detail.desc": "Even a black image can be too complex. Thin branches, roots, and small gaps may merge or disappear, especially when the engraving is small.", "engraving.detail.alt": "Highly detailed black tree with thin roots and branches",
+        "engraving.good.status": "Recommended", "engraving.good.title": "Two-color silhouette", "engraving.good.desc": "Solid black and white, clear outlines, and broad shapes create a precise, readable engraving. This format is ideal for logos, symbols, lettering, and illustrations.", "engraving.good.alt": "Black-and-white tree silhouette with clean shapes",
+        "engraving.tips.title": "How to prepare an ideal image", "engraving.tip1": "Use solid black and white without colors, shadows, or gradients.", "engraving.tip2": "Choose thick outlines, large shapes, and clearly separated spaces.", "engraving.tip3": "When possible, send an SVG or a high-resolution PNG file.", "engraving.note": "Your file does not need to be perfect: I review every image before engraving and suggest how it can be simplified.",
         "pricing.label": "Investment", "pricing.sub": "Each piece is unique — prices vary based on wood type, size, and complexity. These are indicative ranges.", "pricing.from": "from", "pricing.popular": "Most requested",
         "pricing.s.title": "Small", "pricing.s.desc": "Compact boards, perfect for bread, cheese, and appetizers. Dimensions up to 30 × 20 cm.", "pricing.s.f1": "✦ Maple or Ash", "pricing.s.f2": "✦ Natural oil finish", "pricing.s.f3": "✦ Hand-sanded edges",
         "pricing.m.title": "Medium", "pricing.m.desc": "The ideal size for daily use. Dimensions between 30 × 20 cm and 45 × 30 cm.", "pricing.m.f1": "✦ Walnut, Cherry or Oak", "pricing.m.f2": "✦ Linseed oil finish", "pricing.m.f3": "✦ Customization available", "pricing.m.f4": "✦ Non-slip feet",
@@ -1330,13 +1532,18 @@
         "footer.tagline": "Handcrafted woodwork · Switzerland", "footer.copy": "© 2025 Roberto — All rights reserved"
       },
       de: {
-        "nav.home": "Startseite", "nav.about": "Über mich", "nav.gallery": "Galerie", "nav.pricing": "Preise", "nav.maintenance": "Pflege", "nav.contact": "Kontakt",
+        "nav.home": "Startseite", "nav.about": "Über mich", "nav.gallery": "Galerie", "nav.engraving": "Lasergravur", "nav.pricing": "Preise", "nav.maintenance": "Pflege", "nav.contact": "Kontakt",
         "hero.eyebrow": "Handgefertigte Handwerkskunst · Schweiz", "hero.sub": "Jedes Stück ist einzigartig. Jede Maserung erzählt eine Geschichte.", "hero.cta": "Entdecken Sie die Kreationen", "hero.scroll": "Scrollen",
         "about.title": "Leidenschaft für<br/><em>Naturholz</em>", "about.p1": "Ich bin Roberto und verwandle seit Jahren Holz mit meinen eigenen Händen in Gebrauchsgegenstände. Jedes Schneidebrett entsteht aus einem sorgfältig ausgewählten Stück — Walnuss, Kirsche, Ahorn oder Eiche — ausgewählt für die Schönheit seiner Maserung und die Qualität des Holzes.", "about.p2": "Ich arbeite nicht in Serie. Jedes Stück wird individuell konzipiert, geformt und veredelt. Das Holz hat seine eigene Stimme, und ich höre ihr einfach zu.",
         "about.stat1": "Stücke gefertigt", "about.stat2": "Jahre Erfahrung", "about.stat3": "Handgefertigt",
-        "gallery.label": "Meine Kreationen", "gallery.all": "Alle", "gallery.rect": "Rechteckig", "gallery.oval": "Oval", "gallery.special": "Spezial", "gallery.special.ed": "Sonderausgabe", "gallery.engraved": "Mit Gravur",
+        "gallery.label": "Meine Kreationen", "gallery.all": "Alle", "gallery.handle": "Mit Griff", "gallery.nohandle": "Ohne Griff", "gallery.meterpizza": "Meterpizza", "gallery.upcycled": "Upcycled", "gallery.engraved": "Mit Gravur",
         "gallery.item1.name": "Großes Schneidebrett", "gallery.item2.name": "Ovale Schneidebrett", "gallery.item3.name": "Schneidebrett mit Griff", "gallery.item4.name": "Mittleres Schneidebrett", "gallery.item5.name": "Personalisierte Schneidebrett", "gallery.item6.name": "Kleines ovales Schneidebrett",
         "process.label": "In der Werkstatt", "process.title": "Vom Holz zum <em>Schneidebrett</em>", "process.sub": "Jede Form beginnt mit der Auswahl des Holzes, entsteht an der Werkbank und wird von Hand vollendet.", "process.step1": "Auswahl der Formen", "process.step2": "Arbeit in der Werkstatt", "process.step3": "Holzauswahl", "process.step4": "Von Hand geformt",
+        "engraving.label": "Personalisierung", "engraving.title": "Welche Bilder lassen sich <em>am besten gravieren?</em>", "engraving.sub": "Ein Laser druckt keine Farben, sondern übersetzt ein Bild in helle und dunkle Flächen. Einfache Formen und starke Kontraste ergeben auf Holz ein klareres Resultat als Fotos mit vielen Farben und feinen Details.",
+        "engraving.color.status": "Nicht empfohlen", "engraving.color.title": "Farbfotografie", "engraving.color.desc": "Farben, Schatten, Verläufe und Strukturen müssen in einen einzigen Gravurton umgewandelt werden. Dabei gehen viele Informationen verloren und das Ergebnis kann flach oder undeutlich wirken.", "engraving.color.alt": "Detailreiches Farbfoto eines Olivenbaums",
+        "engraving.detail.status": "Muss vereinfacht werden", "engraving.detail.title": "Zu viele feine Details", "engraving.detail.desc": "Auch ein schwarzes Bild kann zu komplex sein. Dünne Äste, Wurzeln und kleine Zwischenräume können ineinanderlaufen oder verschwinden, besonders bei kleinen Gravuren.", "engraving.detail.alt": "Sehr detaillierter schwarzer Baum mit dünnen Wurzeln und Ästen",
+        "engraving.good.status": "Empfohlen", "engraving.good.title": "Zweifarbige Silhouette", "engraving.good.desc": "Klares Schwarz und Weiß, deutliche Konturen und große Formen ergeben eine präzise, gut lesbare Gravur. Dieses Format eignet sich ideal für Logos, Symbole, Schriftzüge und Illustrationen.", "engraving.good.alt": "Schwarz-weiße Baumsilhouette mit klaren Formen",
+        "engraving.tips.title": "So bereitest du ein ideales Bild vor", "engraving.tip1": "Verwende klares Schwarz und Weiß ohne Farben, Schatten oder Verläufe.", "engraving.tip2": "Wähle kräftige Konturen, große Formen und deutlich getrennte Flächen.", "engraving.tip3": "Sende wenn möglich eine SVG-Datei oder ein hochauflösendes PNG.", "engraving.note": "Die Datei muss noch nicht perfekt sein: Vor der Gravur prüfe ich jedes Bild und empfehle, wie es vereinfacht werden kann.",
         "pricing.label": "Investition", "pricing.sub": "Jedes Stück ist einzigartig — die Preise variieren je nach Holzart, Größe und Komplexität. Dies sind Richtwerte.", "pricing.from": "ab", "pricing.popular": "Am gefragtesten",
         "pricing.s.title": "Klein", "pricing.s.desc": "Kompakte Bretter, perfekt für Brot, Käse und Vorspeisen. Maße bis zu 30 × 20 cm.", "pricing.s.f1": "✦ Ahorn oder Esche", "pricing.s.f2": "✦ Naturöl-Finish", "pricing.s.f3": "✦ Handgeschliffene Kanten",
         "pricing.m.title": "Mittel", "pricing.m.desc": "Das ideale Format für den täglichen Gebrauch. Maße zwischen 30 × 20 cm und 45 × 30 cm.", "pricing.m.f1": "✦ Walnuss, Kirsche oder Eiche", "pricing.m.f2": "✦ Leinöl-Finish", "pricing.m.f3": "✦ Personalisierung möglich", "pricing.m.f4": "✦ Rutschfeste Füße",
@@ -1352,13 +1559,18 @@
         "footer.tagline": "Handgefertigte Holzkunst · Schweiz", "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten"
       },
       fr: {
-        "nav.home": "Accueil", "nav.about": "À propos", "nav.gallery": "Galerie", "nav.pricing": "Tarifs", "nav.maintenance": "Entretien", "nav.contact": "Contact",
+        "nav.home": "Accueil", "nav.about": "À propos", "nav.gallery": "Galerie", "nav.engraving": "Gravure laser", "nav.pricing": "Tarifs", "nav.maintenance": "Entretien", "nav.contact": "Contact",
         "hero.eyebrow": "Artisanat fait main · Suisse", "hero.sub": "Chaque pièce est unique. Chaque veine raconte une histoire.", "hero.cta": "Découvrir les créations", "hero.scroll": "Défiler",
         "about.title": "Passion pour le<br/><em>bois naturel</em>", "about.p1": "Je m'appelle Roberto et depuis des années, je transforme le bois en objets du quotidien de mes propres mains. Chaque planche à découper naît d'une pièce soigneusement sélectionnée — noyer, cerisier, érable ou chêne — choisie pour la beauté de son grain et la qualité du bois.", "about.p2": "Je ne travaille pas en série. Chaque pièce est conçue, façonnée et finie individuellement. Le bois a sa propre voix, et je me contente de l'écouter.",
         "about.stat1": "Pièces créées", "about.stat2": "Années d'expérience", "about.stat3": "Fait main",
-        "gallery.label": "Mes créations", "gallery.all": "Tous", "gallery.rect": "Rectangulaire", "gallery.oval": "Ovale", "gallery.special": "Spécial", "gallery.special.ed": "Édition Spéciale", "gallery.engraved": "Avec gravure",
+        "gallery.label": "Mes créations", "gallery.all": "Tous", "gallery.handle": "Avec poignée", "gallery.nohandle": "Sans poignée", "gallery.meterpizza": "Pizza au mètre", "gallery.upcycled": "Upcyclé", "gallery.engraved": "Avec gravure",
         "gallery.item1.name": "Grande Planche", "gallery.item2.name": "Planche Ovale", "gallery.item3.name": "Planche avec Poignée", "gallery.item4.name": "Planche Moyenne", "gallery.item5.name": "Planche Personnalisée", "gallery.item6.name": "Petite Planche Ovale",
         "process.label": "Dans l'atelier", "process.title": "Du bois à la <em>planche</em>", "process.sub": "Chaque forme naît de la sélection du bois, passe par l'établi et reçoit une finition à la main.", "process.step1": "Choix des formes", "process.step2": "Travail en atelier", "process.step3": "Sélection du bois", "process.step4": "Façonnage à la main",
+        "engraving.label": "Personnalisation", "engraving.title": "Quelles images se <em>gravent le mieux ?</em>", "engraving.sub": "Un laser n'imprime pas les couleurs : il traduit une image en zones claires et foncées. Des formes simples et un contraste marqué donnent un résultat plus net sur le bois que des photos riches en couleurs et en détails.",
+        "engraving.color.status": "Déconseillée", "engraving.color.title": "Photographie en couleurs", "engraving.color.desc": "Les couleurs, les ombres, les dégradés et les textures doivent être convertis en une seule tonalité gravée. De nombreuses informations se perdent et le résultat peut paraître plat ou peu lisible.", "engraving.color.alt": "Photographie en couleurs très détaillée d'un olivier",
+        "engraving.detail.status": "À simplifier", "engraving.detail.title": "Trop de détails fins", "engraving.detail.desc": "Même une image noire peut être trop complexe. Les branches fines, les racines et les petits espaces peuvent fusionner ou disparaître, surtout sur une petite gravure.", "engraving.detail.alt": "Arbre noir très détaillé avec de fines racines et branches",
+        "engraving.good.status": "Recommandée", "engraving.good.title": "Silhouette bicolore", "engraving.good.desc": "Un noir et blanc franc, des contours nets et de grandes formes produisent une gravure précise et lisible. Ce format est idéal pour les logos, symboles, textes et illustrations.", "engraving.good.alt": "Silhouette d'arbre en noir et blanc aux formes nettes",
+        "engraving.tips.title": "Comment préparer une image idéale", "engraving.tip1": "Utilisez un noir et blanc franc, sans couleurs, ombres ni dégradés.", "engraving.tip2": "Privilégiez des contours épais, de grandes formes et des espaces bien séparés.", "engraving.tip3": "Si possible, envoyez un fichier SVG ou un PNG en haute résolution.", "engraving.note": "Votre fichier n'a pas besoin d'être parfait : je vérifie chaque image avant la gravure et vous conseille pour la simplifier.",
         "pricing.label": "Investissement", "pricing.sub": "Chaque pièce est unique — les prix varient selon le bois, les dimensions et la complexité. Ce sont des fourchettes indicatives.", "pricing.from": "à partir de", "pricing.popular": "Le plus demandé",
         "pricing.s.title": "Petit", "pricing.s.desc": "Planches compactes, parfaites pour le pain, le fromage et les apéritifs. Dimensions jusqu'à 30 × 20 cm.", "pricing.s.f1": "✦ Érable ou Frêne", "pricing.s.f2": "✦ Fini à l'huile naturelle", "pricing.s.f3": "✦ Bords polis à la main",
         "pricing.m.title": "Moyen", "pricing.m.desc": "Le format idéal pour un usage quotidien. Dimensions entre 30 × 20 cm et 45 × 30 cm.", "pricing.m.f1": "✦ Noyer, Cerisier ou Chêne", "pricing.m.f2": "✦ Fini à l'huile de lin", "pricing.m.f3": "✦ Personnalisation disponible", "pricing.m.f4": "✦ Pieds antidérapants",
@@ -1382,7 +1594,15 @@
       fr: { flag: '🇫🇷', code: 'FR', htmlLang: 'fr' },
     };
 
+    const categoryTranslationKeys = {
+      'con-manico': 'gallery.handle',
+      'senza-manico': 'gallery.nohandle',
+      'pizza-al-metro': 'gallery.meterpizza',
+      upcycled: 'gallery.upcycled',
+    };
+
     let currentLang = localStorage.getItem('lang') || 'it';
+    let languageSwitchTimer;
 
     function applyLanguage(lang) {
       const t = translations[lang];
@@ -1390,12 +1610,31 @@
 
       document.body.classList.add('lang-switching');
 
-      setTimeout(() => {
+      clearTimeout(languageSwitchTimer);
+      languageSwitchTimer = setTimeout(() => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           if (t[key] !== undefined) {
             el.innerHTML = t[key];
           }
+        });
+
+        document.querySelectorAll('[data-i18n-alt]').forEach(image => {
+          const key = image.getAttribute('data-i18n-alt');
+          if (t[key] !== undefined) image.alt = t[key];
+        });
+
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
+          const key = categoryTranslationKeys[button.dataset.filter];
+          if (key && t[key] !== undefined) button.textContent = t[key];
+        });
+
+        document.querySelectorAll('.gallery-item[data-cat]').forEach(item => {
+          const key = categoryTranslationKeys[item.dataset.cat];
+          if (!key || t[key] === undefined) return;
+          item.querySelectorAll('.gallery-overlay > span, .gallery-caption > strong').forEach(label => {
+            label.textContent = t[key];
+          });
         });
 
         document.documentElement.lang = langMeta[lang].htmlLang;
