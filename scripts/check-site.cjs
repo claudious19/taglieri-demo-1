@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const crypto = require('node:crypto');
 
 const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -26,7 +27,19 @@ for (const match of html.matchAll(/(?:src|href)="([^"#:]+)"/g)) {
   assert.ok(fs.existsSync(path.join(root, match[1])), `Fehlende Datei: ${match[1]}`);
 }
 for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
-  assert.equal(JSON.parse(match[1]).telephone, '+41 78 754 40 17');
+  assert.ok(!JSON.parse(match[1]).telephone, 'Telefonkontakt darf nicht in den Metadaten stehen.');
+}
+assert.ok(!html.includes('href="tel:'), 'Telefonlink darf nicht angezeigt werden.');
+const imageHashes = new Set();
+for (const match of html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)) {
+  const file = path.join(root, decodeURIComponent(match[1]));
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+  assert.ok(!imageHashes.has(hash), `Bild wird mehrfach angezeigt: ${match[1]}`);
+  imageHashes.add(hash);
+}
+for (const name of fs.readdirSync(path.join(root, 'images')).filter(name => /^WhatsApp Image.*\.jpeg$/.test(name))) {
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'images', name))).digest('hex');
+  assert.ok(imageHashes.has(hash), `Neues Motiv fehlt: ${name}`);
 }
 assert.ok(!html.includes('roby_logo_golden') && !html.includes('logo_roby'), 'Logo darf nicht eingebunden sein.');
 assert.ok(html.includes('CHF 160'), 'Preis für Pizza al metro fehlt.');

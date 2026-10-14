@@ -45,16 +45,16 @@ const translations = {
     "engraving.sub": "Nomi, date, dediche, loghi e immagini possono trasformare un tagliere in un ricordo unico. Puoi inviare una silhouette o una foto normale: verifico io che i dettagli importanti restino riconoscibili nella conversione in bianco e nero.",
     "engraving.examples.label": "Idee regalo",
     "engraving.examples.title": "Esempi di <em>incisioni personalizzate</em>",
-    "engraving.examples.sub": "Un nome, una dedica o un simbolo: scopri alcune idee per un regalo personale. Le fotografie delle incisioni saranno aggiunte qui.",
+    "engraving.examples.sub": "Piccoli messaggi, loghi e regali da condividere: scopri alcune creazioni realizzate nella mia bottega.",
     "engraving.placeholder": "Foto in arrivo",
-    "engraving.example1.title": "Nomi, date e dediche",
-    "engraving.example1.desc": "Per matrimoni, anniversari, compleanni, nascite e momenti da ricordare.",
+    "engraving.example1.title": "Parole che contano",
+    "engraving.example1.desc": "Un nome, una dedica o una frase speciale: un dettaglio inciso che rende il regalo personale.",
     "engraving.example1.aria": "Spazio per una fotografia di un tagliere con nomi, data o dedica",
     "engraving.example2.title": "Loghi e immagini",
     "engraving.example2.desc": "Per aziende, ristoranti, associazioni, famiglie e illustrazioni personali.",
     "engraving.example2.aria": "Spazio per una fotografia di un tagliere con logo o illustrazione",
-    "engraving.example3.title": "Regali per occasioni speciali",
-    "engraving.example3.desc": "Un oggetto utile e personale, creato su misura per chi lo riceve.",
+    "engraving.example3.title": "Un regalo da condividere",
+    "engraving.example3.desc": "Un tagliere artigianale diventa la base per un regalo con prodotti da gustare e momenti da condividere.",
     "engraving.example3.aria": "Spazio per una fotografia di una confezione regalo personalizzata",
     "engraving.color.status": "Da valutare",
     "engraving.color.title": "Fotografia normale",
@@ -119,14 +119,13 @@ const translations = {
     "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita. Con le giuste cure, migliorerà con il tempo, proprio come il vino.",
     "contact.label": "Parliamoci",
     "contact.sub": "Compila il modulo: verrà preparato un messaggio con tutti i dettagli e si aprirà direttamente la chat WhatsApp di Roby.",
-    "contact.phone": "Telefono",
     "contact.form.title": "Richiedi il tuo regalo personalizzato",
     "contact.form.intro": "Scegli tagliere, legno e incisione. Potrai controllare e modificare la richiesta prima di inviarla su WhatsApp.",
     "contact.firstName": "Nome",
     "contact.lastName": "Cognome",
     "contact.email": "Email di backup",
     "contact.email.placeholder": "nome@esempio.ch",
-    "contact.email.help": "La tua email viene inclusa nel messaggio come contatto alternativo. Se WhatsApp non si apre, puoi contattare Roby tramite email o telefono.",
+    "contact.email.help": "La tua email viene inclusa nel messaggio come contatto alternativo. Se WhatsApp non si apre, puoi contattare Roby tramite email.",
     "contact.choose": "Seleziona",
     "contact.size": "Misura del tagliere",
     "contact.size.small": "Piccola",
@@ -198,7 +197,31 @@ const translations = {
     "gallery.reclaimed": "Legno recuperato",
     "gallery.customEngraving": "Incisione personalizzata",
     "gallery.reclaimedHandles": "Maniglie recuperate",
-    "gallery.trays": "Vassoi da portata"
+    "gallery.trays": "Vassoi da portata",
+    "hero.secondary": "Richiedi il tuo regalo",
+    "gallery.sub": "Forme naturali, pezzi unici e dettagli realizzati a mano. Scegli una categoria per scoprire la tua creazione preferita.",
+    "gallery.results": "creazioni",
+    "gallery.tables": "Tavoli",
+    "gallery.humor": "Incisione con un sorriso",
+    "gallery.cleanLines": "Linee essenziali",
+    "gallery.batch": "Una serie di pezzi unici",
+    "gallery.pizzaReady": "Pizza da condividere",
+    "gallery.barkEdge": "Bordi in corteccia",
+    "gallery.oliveTable": "Tavolino in legno d'olivo",
+    "gallery.oliveGrain": "Venature dell'olivo",
+    "gallery.barkBoard.alt": "Tagliere rettangolare senza manico con bordi in corteccia naturale",
+    "gallery.oliveTableSide.alt": "Tavolino in legno d'olivo con bordo naturale e gambe nere",
+    "gallery.oliveTableTop.alt": "Vista dall'alto del tavolino in legno d'olivo con venature marcate",
+    "gallery.newServing.alt": "Tagliere con manico apparecchiato con formaggi e salumi",
+    "gallery.newHumor.alt": "Tagliere inciso con una frase divertente e quattro portauova",
+    "gallery.newSquare.alt": "Tagliere senza manico con linee dritte su un tavolo scuro",
+    "gallery.newLong.alt": "Tagliere rettangolare senza manico visto di lato",
+    "gallery.newBatch.alt": "Serie di taglieri senza manico con forme e venature diverse",
+    "gallery.newPizza.alt": "Tagliere extra lungo con una pizza al metro appena servita",
+    "gift.text.alt": "Tagliere con la scritta incisa Taglia e sorridi",
+    "gift.logo.alt": "Dettaglio del logo Hand Made by Roby inciso nel legno",
+    "gift.hamper.alt": "Tagliere confezionato come regalo con prodotti da gustare",
+    "contact.direct": "Scrivimi direttamente"
   },
   "en": {
     "nav.home": "Home",
@@ -224,7 +247,7 @@ const translations = {
     "gallery.all": "All",
     "gallery.handle": "With handle",
     "gallery.nohandle": "Without handle",
-    "gallery.meterpizza": "Meter pizza",
+    "gallery.meterpizza": "Meter-long pizza",
     "gallery.upcycled": "Upcycled",
     "gallery.engraved": "With engraving",
     "gallery.item1.name": "Large Cutting Board",
@@ -245,16 +268,16 @@ const translations = {
     "engraving.sub": "Names, dates, dedications, logos, and images can turn a cutting board into a unique keepsake. Send a silhouette or a normal photo: I check that important details remain recognizable after conversion to black and white.",
     "engraving.examples.label": "Gift ideas",
     "engraving.examples.title": "Examples of <em>personalized engravings</em>",
-    "engraving.examples.sub": "A name, a dedication or a symbol: explore ideas for a personal gift. Photos of the engravings will be added here.",
+    "engraving.examples.sub": "Personal messages, logos and gifts to share: discover pieces made in my workshop.",
     "engraving.placeholder": "Photo coming soon",
-    "engraving.example1.title": "Names, dates, and dedications",
-    "engraving.example1.desc": "For weddings, anniversaries, birthdays, births, and moments worth remembering.",
+    "engraving.example1.title": "Meaningful words",
+    "engraving.example1.desc": "A name, a dedication or a special phrase: an engraved detail that makes your gift personal.",
     "engraving.example1.aria": "Space for a photo of a cutting board with names, a date, or a dedication",
     "engraving.example2.title": "Logos and images",
     "engraving.example2.desc": "For companies, restaurants, associations, families, and personal illustrations.",
     "engraving.example2.aria": "Space for a photo of a cutting board engraved with a logo or illustration",
-    "engraving.example3.title": "Gifts for special occasions",
-    "engraving.example3.desc": "A useful, personal object made especially for the person receiving it.",
+    "engraving.example3.title": "A gift to share",
+    "engraving.example3.desc": "A handcrafted board becomes the centerpiece of a gift filled with food specialties and moments to share.",
     "engraving.example3.aria": "Space for a photo of personalized gift packaging",
     "engraving.color.status": "To be assessed",
     "engraving.color.title": "Normal photograph",
@@ -319,14 +342,13 @@ const translations = {
     "maint.tip.text": "A wooden cutting board is not just a kitchen tool — it's a companion for life.",
     "contact.label": "Let's talk",
     "contact.sub": "Complete the form to prepare a message with all the details and open Roby's WhatsApp chat directly.",
-    "contact.phone": "Phone",
     "contact.form.title": "Request your personalized gift",
     "contact.form.intro": "Choose the board, wood, and engraving. You can review and edit the request before sending it on WhatsApp.",
     "contact.firstName": "First name",
     "contact.lastName": "Last name",
     "contact.email": "Backup email",
     "contact.email.placeholder": "name@example.ch",
-    "contact.email.help": "Your email is included in the message as an alternative contact. If WhatsApp does not open, you can contact Roby by email or phone.",
+    "contact.email.help": "Your email is included in the message as an alternative contact. If WhatsApp does not open, you can contact Roby by email.",
     "contact.choose": "Select",
     "contact.size": "Cutting board size",
     "contact.size.small": "Small",
@@ -398,7 +420,31 @@ const translations = {
     "gallery.reclaimed": "Reclaimed wood",
     "gallery.customEngraving": "Custom engraving",
     "gallery.reclaimedHandles": "Reclaimed handles",
-    "gallery.trays": "Serving trays"
+    "gallery.trays": "Serving trays",
+    "hero.secondary": "Request your gift",
+    "gallery.sub": "Natural shapes, unique pieces and handcrafted details. Choose a category to find your favourite creation.",
+    "gallery.results": "creations",
+    "gallery.tables": "Tables",
+    "gallery.humor": "Engraving with a smile",
+    "gallery.cleanLines": "Clean lines",
+    "gallery.batch": "A collection of unique pieces",
+    "gallery.pizzaReady": "Pizza to share",
+    "gallery.barkEdge": "Natural bark edges",
+    "gallery.oliveTable": "Olive wood side table",
+    "gallery.oliveGrain": "Olive wood grain",
+    "gallery.barkBoard.alt": "Rectangular board without a handle and with natural bark edges",
+    "gallery.oliveTableSide.alt": "Olive wood side table with a natural edge and black legs",
+    "gallery.oliveTableTop.alt": "Top view of the olive wood side table showing its distinctive grain",
+    "gallery.newServing.alt": "Serving board with a handle, cheese and cured meats",
+    "gallery.newHumor.alt": "Board engraved with a humorous saying and four egg holders",
+    "gallery.newSquare.alt": "Straight-edged board without a handle on a dark table",
+    "gallery.newLong.alt": "Rectangular board without a handle viewed from the side",
+    "gallery.newBatch.alt": "Collection of boards without handles with different shapes and wood grain",
+    "gallery.newPizza.alt": "Extra-long board serving a meter-long pizza",
+    "gift.text.alt": "Board engraved with the Italian phrase Taglia e sorridi",
+    "gift.logo.alt": "Detail of the Hand Made by Roby logo engraved in wood",
+    "gift.hamper.alt": "Board wrapped as a gift with food specialties",
+    "contact.direct": "Message me directly"
   },
   "de": {
     "nav.home": "Startseite",
@@ -445,16 +491,16 @@ const translations = {
     "engraving.sub": "Namen, Daten, Widmungen, Logos und Bilder machen aus einem Schneidebrett ein einzigartiges Erinnerungsstück. Sende eine Silhouette oder ein normales Foto: Ich prüfe, ob wichtige Details bei der Umwandlung in Schwarz-Weiß erhalten bleiben.",
     "engraving.examples.label": "Geschenkideen",
     "engraving.examples.title": "Beispiele für <em>persönliche Gravuren</em>",
-    "engraving.examples.sub": "Ein Name, eine Widmung oder ein Symbol: Entdecke Ideen für ein persönliches Geschenk. Fotos der Gravuren folgen hier.",
+    "engraving.examples.sub": "Persönliche Botschaften, Logos und Geschenke zum Teilen: Entdecke echte Arbeiten aus meiner Werkstatt.",
     "engraving.placeholder": "Foto folgt",
-    "engraving.example1.title": "Namen, Daten und Widmungen",
-    "engraving.example1.desc": "Für Hochzeiten, Jubiläen, Geburtstage, Geburten und besondere Erinnerungen.",
+    "engraving.example1.title": "Worte mit Bedeutung",
+    "engraving.example1.desc": "Ein Name, eine Widmung oder ein besonderer Spruch: Eine Gravur macht dein Geschenk persönlich.",
     "engraving.example1.aria": "Platz für ein Foto eines Schneidebretts mit Namen, Datum oder Widmung",
     "engraving.example2.title": "Logos und Bilder",
     "engraving.example2.desc": "Für Unternehmen, Restaurants, Vereine, Familien und persönliche Illustrationen.",
     "engraving.example2.aria": "Platz für ein Foto eines Schneidebretts mit graviertem Logo oder Bild",
-    "engraving.example3.title": "Geschenke für besondere Anlässe",
-    "engraving.example3.desc": "Ein nützlicher, persönlicher Gegenstand, eigens für den Beschenkten gefertigt.",
+    "engraving.example3.title": "Ein Geschenk zum Teilen",
+    "engraving.example3.desc": "Ein handgefertigtes Brett wird zur Grundlage eines Geschenks mit Spezialitäten und gemeinsamen Genussmomenten.",
     "engraving.example3.aria": "Platz für ein Foto einer personalisierten Geschenkverpackung",
     "engraving.color.status": "Wird geprüft",
     "engraving.color.title": "Normales Foto",
@@ -519,14 +565,13 @@ const translations = {
     "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
     "contact.label": "Lass uns sprechen",
     "contact.sub": "Fülle das Formular aus: Eine Nachricht mit allen Angaben wird vorbereitet und Robys WhatsApp-Chat geöffnet.",
-    "contact.phone": "Telefon",
     "contact.form.title": "Persönliches Geschenk anfragen",
     "contact.form.intro": "Wähle Brett, Holz und Gravur. Die Anfrage kann vor dem Senden über WhatsApp geprüft und geändert werden.",
     "contact.firstName": "Vorname",
     "contact.lastName": "Nachname",
     "contact.email": "E-Mail als Ersatzkontakt",
     "contact.email.placeholder": "name@beispiel.ch",
-    "contact.email.help": "Deine E-Mail wird als Ersatzkontakt in die Nachricht aufgenommen. Öffnet sich WhatsApp nicht, erreichst du Roby per E-Mail oder Telefon.",
+    "contact.email.help": "Deine E-Mail wird als Ersatzkontakt in die Nachricht aufgenommen. Öffnet sich WhatsApp nicht, erreichst du Roby per E-Mail.",
     "contact.choose": "Auswählen",
     "contact.size": "Größe des Schneidebretts",
     "contact.size.small": "Klein",
@@ -598,7 +643,31 @@ const translations = {
     "gallery.reclaimed": "Wiederverwendetes Holz",
     "gallery.customEngraving": "Persönliche Gravur",
     "gallery.reclaimedHandles": "Wiederverwendete Griffe",
-    "gallery.trays": "Serviertabletts"
+    "gallery.trays": "Serviertabletts",
+    "hero.secondary": "Dein Geschenk anfragen",
+    "gallery.sub": "Natürliche Formen, Einzelstücke und handgefertigte Details. Wähle eine Kategorie und entdecke dein Lieblingsstück.",
+    "gallery.results": "Kreationen",
+    "gallery.tables": "Tische",
+    "gallery.humor": "Gravur mit einem Augenzwinkern",
+    "gallery.cleanLines": "Klare Linien",
+    "gallery.batch": "Eine Reihe von Einzelstücken",
+    "gallery.pizzaReady": "Pizza zum Teilen",
+    "gallery.barkEdge": "Natürliche Rindenkante",
+    "gallery.oliveTable": "Beistelltisch aus Olivenholz",
+    "gallery.oliveGrain": "Maserung des Olivenholzes",
+    "gallery.barkBoard.alt": "Rechteckiges Brett ohne Griff mit natürlichen Rindenkanten",
+    "gallery.oliveTableSide.alt": "Beistelltisch aus Olivenholz mit Naturkante und schwarzen Beinen",
+    "gallery.oliveTableTop.alt": "Draufsicht auf den Olivenholztisch mit markanter Maserung",
+    "gallery.newServing.alt": "Servierbrett mit Griff, Käse und Wurstspezialitäten",
+    "gallery.newHumor.alt": "Brett mit humorvoller Gravur und vier Eierhaltern",
+    "gallery.newSquare.alt": "Geradliniges Brett ohne Griff auf einem dunklen Tisch",
+    "gallery.newLong.alt": "Rechteckiges Brett ohne Griff in seitlicher Ansicht",
+    "gallery.newBatch.alt": "Bretter ohne Griff mit unterschiedlichen Formen und Maserungen",
+    "gallery.newPizza.alt": "Extralanges Servierbrett mit frisch servierter Meterpizza",
+    "gift.text.alt": "Brett mit dem eingravierten italienischen Spruch Taglia e sorridi",
+    "gift.logo.alt": "Detail des ins Holz gravierten Schriftzugs Hand Made by Roby",
+    "gift.hamper.alt": "Als Geschenk verpacktes Brett mit kulinarischen Spezialitäten",
+    "contact.direct": "Schreib mir direkt"
   },
   "fr": {
     "nav.home": "Accueil",
@@ -644,16 +713,16 @@ const translations = {
     "engraving.sub": "Noms, dates, dédicaces, logos et images transforment une planche en souvenir unique. Envoyez une silhouette ou une photo normale : je vérifie que les détails importants restent reconnaissables après la conversion en noir et blanc.",
     "engraving.examples.label": "Idées cadeaux",
     "engraving.examples.title": "Exemples de <em>gravures personnalisées</em>",
-    "engraving.examples.sub": "Un nom, une dédicace ou un symbole : découvrez des idées de cadeaux personnels. Les photos des gravures seront ajoutées ici.",
+    "engraving.examples.sub": "Messages personnels, logos et cadeaux à partager : découvrez des créations réalisées dans mon atelier.",
     "engraving.placeholder": "Photo à venir",
-    "engraving.example1.title": "Noms, dates et dédicaces",
-    "engraving.example1.desc": "Pour les mariages, anniversaires, naissances et les moments à ne pas oublier.",
+    "engraving.example1.title": "Des mots qui comptent",
+    "engraving.example1.desc": "Un nom, une dédicace ou une phrase particulière : une gravure rend votre cadeau personnel.",
     "engraving.example1.aria": "Espace pour une photo de planche avec noms, date ou dédicace",
     "engraving.example2.title": "Logos et images",
     "engraving.example2.desc": "Pour les entreprises, restaurants, associations, familles et illustrations personnelles.",
     "engraving.example2.aria": "Espace pour une photo de planche gravée avec un logo ou une illustration",
-    "engraving.example3.title": "Cadeaux pour occasions spéciales",
-    "engraving.example3.desc": "Un objet utile et personnel, créé spécialement pour la personne qui le reçoit.",
+    "engraving.example3.title": "Un cadeau à partager",
+    "engraving.example3.desc": "Une planche artisanale devient la base d’un cadeau gourmand et de moments à partager.",
     "engraving.example3.aria": "Espace pour une photo d'un emballage cadeau personnalisé",
     "engraving.color.status": "À évaluer",
     "engraving.color.title": "Photographie normale",
@@ -718,14 +787,13 @@ const translations = {
     "maint.tip.text": "Une planche à découper en bois n'est pas seulement un outil de cuisine — c'est un compagnon de vie.",
     "contact.label": "Parlons-en",
     "contact.sub": "Remplissez le formulaire : un message contenant tous les détails sera préparé et la discussion WhatsApp de Roby s'ouvrira directement.",
-    "contact.phone": "Téléphone",
     "contact.form.title": "Demandez votre cadeau personnalisé",
     "contact.form.intro": "Choisissez la planche, le bois et la gravure. Vous pourrez vérifier et modifier la demande avant de l'envoyer sur WhatsApp.",
     "contact.firstName": "Prénom",
     "contact.lastName": "Nom",
     "contact.email": "E-mail de secours",
     "contact.email.placeholder": "nom@exemple.ch",
-    "contact.email.help": "Votre e-mail est inclus dans le message comme contact alternatif. Si WhatsApp ne s’ouvre pas, contactez Roby par e-mail ou téléphone.",
+    "contact.email.help": "Votre e-mail est inclus dans le message comme contact alternatif. Si WhatsApp ne s’ouvre pas, contactez Roby par e-mail.",
     "contact.choose": "Sélectionner",
     "contact.size": "Dimensions de la planche",
     "contact.size.small": "Petite",
@@ -798,7 +866,31 @@ const translations = {
     "gallery.reclaimed": "Bois récupéré",
     "gallery.customEngraving": "Gravure personnalisée",
     "gallery.reclaimedHandles": "Poignées récupérées",
-    "gallery.trays": "Plateaux de service"
+    "gallery.trays": "Plateaux de service",
+    "hero.secondary": "Demander votre cadeau",
+    "gallery.sub": "Formes naturelles, pièces uniques et détails faits main. Choisissez une catégorie pour découvrir votre création préférée.",
+    "gallery.results": "créations",
+    "gallery.tables": "Tables",
+    "gallery.humor": "Une gravure pleine d’humour",
+    "gallery.cleanLines": "Lignes épurées",
+    "gallery.batch": "Une collection de pièces uniques",
+    "gallery.pizzaReady": "Pizza à partager",
+    "gallery.barkEdge": "Bords en écorce naturelle",
+    "gallery.oliveTable": "Table d'appoint en olivier",
+    "gallery.oliveGrain": "Veinage du bois d'olivier",
+    "gallery.barkBoard.alt": "Planche rectangulaire sans poignée avec bords en écorce naturelle",
+    "gallery.oliveTableSide.alt": "Table d'appoint en olivier aux bords naturels et pieds noirs",
+    "gallery.oliveTableTop.alt": "Vue de dessus de la table en olivier et de son veinage marqué",
+    "gallery.newServing.alt": "Planche avec poignée garnie de fromages et de charcuterie",
+    "gallery.newHumor.alt": "Planche avec une gravure humoristique et quatre supports à œufs",
+    "gallery.newSquare.alt": "Planche sans poignée aux lignes droites sur une table sombre",
+    "gallery.newLong.alt": "Planche rectangulaire sans poignée vue de côté",
+    "gallery.newBatch.alt": "Collection de planches sans poignée aux formes et veinages variés",
+    "gallery.newPizza.alt": "Planche extra-longue avec une pizza au mètre prête à servir",
+    "gift.text.alt": "Planche gravée avec la phrase italienne Taglia e sorridi",
+    "gift.logo.alt": "Détail du logo Hand Made by Roby gravé dans le bois",
+    "gift.hamper.alt": "Planche emballée en cadeau avec des spécialités gourmandes",
+    "contact.direct": "Écrivez-moi directement"
   }
 };
 
@@ -814,6 +906,7 @@ const categoryTranslationKeys = {
   'senza-manico': 'gallery.nohandle',
   'pizza-al-metro': 'gallery.meterpizza',
   upcycled: 'gallery.upcycled',
+  tables: 'gallery.tables',
 };
 
 let currentLang = 'it';
@@ -853,7 +946,7 @@ function applyLanguage(lang) {
 
   document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
     const key = categoryTranslationKeys[button.dataset.filter];
-    if (key && t[key] !== undefined) button.textContent = t[key];
+    if (key && t[key] !== undefined) button.querySelector('.filter-label').textContent = t[key];
   });
 
   document.querySelectorAll('.gallery-item[data-cat]').forEach(item => {
@@ -867,7 +960,9 @@ function applyLanguage(lang) {
   document.querySelectorAll('.gallery-item').forEach(item => {
     const image = item.querySelector('img');
     const caption = item.querySelector('.gallery-caption em');
-    image.alt = `${t[categoryTranslationKeys[item.dataset.cat]]}: ${caption.textContent.trim()}`;
+    if (!image.hasAttribute('data-i18n-alt')) {
+      image.alt = `${t[categoryTranslationKeys[item.dataset.cat]]}: ${caption.textContent.trim()}`;
+    }
   });
   document.title = t['meta.title'];
   document.querySelector('meta[name="description"]').content = t['meta.description'];
@@ -884,6 +979,7 @@ function applyLanguage(lang) {
   });
 
   currentLang = lang;
+  updateGallerySummary();
   try { localStorage.setItem('lang', lang); } catch (_) {}
 }
 
@@ -998,6 +1094,10 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealEls.forEach(el => revealObserver.observe(el));
 
 // Gallery filter
+function updateGallerySummary() {
+  const visible = document.querySelectorAll('.gallery-item:not(.hidden)').length;
+  document.getElementById('gallery-results').textContent = `${visible} ${translations[currentLang]['gallery.results']}`;
+}
 const filterBtns = document.querySelectorAll('.filter-btn');
 const galleryItems = document.querySelectorAll('.gallery-item');
 filterBtns.forEach(btn => {
@@ -1009,9 +1109,15 @@ filterBtns.forEach(btn => {
     galleryItems.forEach(item => {
       item.classList.toggle('hidden', filter !== 'all' && item.getAttribute('data-cat') !== filter);
     });
+    updateGallerySummary();
   });
 });
 filterBtns.forEach(button => button.setAttribute('aria-pressed', String(button.classList.contains('active'))));
+filterBtns.forEach(button => {
+  const filter = button.dataset.filter;
+  const count = [...galleryItems].filter(item => filter === 'all' || item.dataset.cat === filter).length;
+  button.querySelector('.filter-count').textContent = count;
+});
 
 // WhatsApp order form
 const whatsappOrderForm = document.getElementById('whatsapp-order-form');
