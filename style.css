@@ -1,5 +1,5 @@
 /* =========================================
-   I Taglieri di Roby ΓÇö Stylesheet
+   I Taglieri di Roby — Stylesheet
    Aesthetic: Warm Wood Minimalism
    ========================================= */
 
@@ -35,7 +35,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ✦✦ Grain Overlay ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 .grain {
   position: fixed;
   inset: 0;
@@ -46,7 +45,6 @@ body {
   background-size: 200px;
 }
 
-/* ✦✦ Typography ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
@@ -55,7 +53,6 @@ h1, h2, h3 {
 
 em { font-style: italic; color: var(--walnut); }
 
-/* ✦✦ Navigation ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -151,7 +148,6 @@ em { font-style: italic; color: var(--walnut); }
   width: 100%;
 }
 
-/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -179,7 +175,7 @@ em { font-style: italic; color: var(--walnut); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-@media (min-width: 1025px) {
+@media (min-width: 1280px) {
   #navbar {
     top: 14px;
     left: clamp(1rem, 3vw, 2.5rem);
@@ -192,15 +188,12 @@ em { font-style: italic; color: var(--walnut); }
     backdrop-filter: blur(16px) saturate(120%);
     box-shadow: 0 12px 32px rgba(24,16,10,0.18);
   }
-
   #navbar.scrolled {
     background: rgba(234,220,199,0.93);
     border-color: rgba(74,41,18,0.14);
     box-shadow: 0 10px 30px rgba(74,41,18,0.14);
   }
-
   .nav-links { gap: 0.35rem; }
-
   .nav-link {
     display: inline-flex;
     align-items: center;
@@ -209,28 +202,30 @@ em { font-style: italic; color: var(--walnut); }
     border-radius: 10px;
     transition: color 0.25s, background 0.25s, transform 0.25s;
   }
-
   .nav-link::after { display: none; }
-
   #navbar:not(.scrolled) .nav-link:hover,
   #navbar:not(.scrolled) .nav-link.active {
     color: var(--cream);
     background: rgba(255,255,255,0.12);
   }
-
   #navbar.scrolled .nav-link:hover,
   #navbar.scrolled .nav-link.active {
     color: var(--walnut-dark);
     background: rgba(107,62,38,0.1);
   }
-
   .nav-link:hover { transform: translateY(-1px); }
 }
 
-/* ✦✦ Section Base ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 .section {
-  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
-  min-height: 100vh;
+  /* FIX: le sezioni normali non devono comportarsi come slide fullscreen.
+     Prima: padding enorme + min-height: 100vh + centratura verticale.
+     Effetto: il sito sembrava zoomato anche al 100%.
+  */
+  padding: clamp(3.5rem, 6vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+.section-fullscreen {
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -265,7 +260,45 @@ em { font-style: italic; color: var(--walnut); }
 
 .section-header .section-sub { margin: 0 auto 3rem; }
 
-/* ✦✦ Reveal Animations ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
+@media (min-width: 1280px) {
+  .gallery,
+  .process,
+  .engraving,
+  .pricing,
+  .maintenance,
+  .contact {
+    min-height: auto;
+  }
+}
+
+@media (max-height: 800px) and (min-width: 1280px) {
+  .section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header .section-sub {
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+  }
+
+  .hero-sub {
+    margin-bottom: 1.75rem;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -277,15 +310,9 @@ em { font-style: italic; color: var(--walnut); }
   transform: translateY(0);
 }
 
-/* Stagger children */
-.reveal:nth-child(2) { transition-delay: 0.1s; }
-.reveal:nth-child(3) { transition-delay: 0.2s; }
-.reveal:nth-child(4) { transition-delay: 0.3s; }
-
-/* ✦✦ HERO ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background: var(--charcoal);
@@ -297,7 +324,6 @@ em { font-style: italic; color: var(--walnut); }
   inset: 0;
   background: var(--charcoal);
 }
-
 .hero-bg::after {
   content: '';
   position: absolute;
@@ -306,7 +332,6 @@ em { font-style: italic; color: var(--walnut); }
     linear-gradient(90deg, rgba(42,31,20,0.94) 0%, rgba(42,31,20,0.72) 42%, rgba(42,31,20,0.2) 75%, rgba(42,31,20,0.42) 100%),
     linear-gradient(0deg, rgba(42,31,20,0.6), transparent 45%);
 }
-
 .hero-image {
   width: 100%;
   height: 100%;
@@ -315,7 +340,6 @@ em { font-style: italic; color: var(--walnut); }
   object-position: right center;
 }
 
-/* Wood ring decorations */
 .wood-ring {
   position: absolute;
   border-radius: 50%;
@@ -340,6 +364,8 @@ em { font-style: italic; color: var(--walnut); }
   z-index: 2;
   max-width: 620px;
   padding-top: var(--nav-h);
+  will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
 .hero-eyebrow {
@@ -386,45 +412,6 @@ em { font-style: italic; color: var(--walnut); }
   box-shadow: 0 8px 24px rgba(196,150,74,0.35);
 }
 
-/* Rotating badge */
-.hero-badge {
-  position: absolute;
-  right: clamp(2rem, 8vw, 8rem);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.badge-ring {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  animation: spin-slow 20s linear infinite;
-  fill: none;
-}
-
-.badge-ring text {
-  fill: var(--gold);
-  font-size: 9px;
-  font-family: 'DM Sans', sans-serif;
-  letter-spacing: 2px;
-}
-
-.badge-center {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--gold);
-  position: relative;
-  z-index: 1;
-}
-
-/* Scroll cue */
 .scroll-cue {
   position: absolute;
   bottom: 2.5rem;
@@ -453,9 +440,7 @@ em { font-style: italic; color: var(--walnut); }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* ✦✦ ABOUT ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 .about { background: var(--cream); }
-
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
@@ -465,7 +450,6 @@ em { font-style: italic; color: var(--walnut); }
   margin: 0 auto;
   width: 100%;
 }
-
 .about-img-frame {
   position: relative;
   width: min(100%, 420px);
@@ -473,7 +457,6 @@ em { font-style: italic; color: var(--walnut); }
   max-width: 420px;
   isolation: isolate;
 }
-
 .about-img-frame::after {
   content: '';
   position: absolute;
@@ -482,7 +465,6 @@ em { font-style: italic; color: var(--walnut); }
   background: var(--linen);
   border-radius: 4px;
 }
-
 .about-img-placeholder {
   width: 100%;
   height: 100%;
@@ -492,7 +474,6 @@ em { font-style: italic; color: var(--walnut); }
   background: var(--parchment);
   border: 1px solid rgba(107,62,38,0.12);
 }
-
 .about-img-placeholder img {
   width: 100%;
   height: 100%;
@@ -500,17 +481,12 @@ em { font-style: italic; color: var(--walnut); }
   object-fit: contain;
   object-position: center;
 }
-
-.about-body {
-  margin-bottom: 2.5rem;
-}
-
+.about-body { margin-bottom: 2.5rem; }
 .about-body p {
   color: var(--text-muted);
   margin-bottom: 1rem;
   font-size: 1rem;
 }
-
 .about-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -518,7 +494,6 @@ em { font-style: italic; color: var(--walnut); }
   border-top: 1px solid var(--linen);
   padding-top: 2rem;
 }
-
 .stat-num {
   display: block;
   font-family: 'Cormorant Garamond', serif;
@@ -528,7 +503,6 @@ em { font-style: italic; color: var(--walnut); }
   line-height: 1;
   margin-bottom: 0.3rem;
 }
-
 .stat-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -536,13 +510,11 @@ em { font-style: italic; color: var(--walnut); }
   color: var(--text-muted);
 }
 
-/* ✦✦ GALLERY ✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦ */
 .gallery {
   background: var(--parchment);
   min-height: auto;
-  padding-bottom: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
 }
-
 .gallery-filters {
   display: flex;
   gap: 0.75rem;
@@ -550,7 +522,6 @@ em { font-style: italic; color: var(--walnut); }
   flex-wrap: wrap;
   margin-bottom: 3rem;
 }
-
 .filter-btn {
   padding: 0.5rem 1.4rem;
   border: 1px solid var(--linen);
@@ -564,21 +535,18 @@ em { font-style: italic; color: var(--walnut); }
   border-radius: 100px;
   transition: all 0.3s;
 }
-
 .filter-btn:hover,
 .filter-btn.active {
   background: var(--walnut-dark);
   border-color: var(--walnut-dark);
   color: var(--cream);
 }
-
 .gallery-grid {
   columns: 3;
   column-gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .gallery-item {
   display: inline-block;
   width: 100%;
@@ -589,17 +557,14 @@ em { font-style: italic; color: var(--walnut); }
   background: var(--linen);
   transition: opacity 0.4s, transform 0.3s var(--transition);
 }
-
 .gallery-item.hidden {
   display: none;
 }
-
 .gallery-img {
   position: relative;
   overflow: hidden;
   cursor: pointer;
 }
-
 .img-placeholder {
   width: 100%;
   height: auto;
@@ -607,7 +572,6 @@ em { font-style: italic; color: var(--walnut); }
   object-fit: contain;
   transition: filter 0.35s var(--transition);
 }
-
 .gallery-overlay {
   position: absolute;
   inset: 0;
@@ -623,27 +587,22 @@ em { font-style: italic; color: var(--walnut); }
   text-align: center;
   padding: 1rem;
 }
-
 .gallery-overlay span {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
   font-style: italic;
 }
-
 .gallery-overlay small {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--maple);
 }
-
 .gallery-img:hover .img-placeholder { filter: brightness(0.78); }
 .gallery-img:hover .gallery-overlay { opacity: 1; }
-
 .gallery-caption {
   padding: 1rem 1.25rem;
 }
-
 .gallery-caption strong {
   display: block;
   font-family: 'Cormorant Garamond', serif;
@@ -651,7 +610,6 @@ em { font-style: italic; color: var(--walnut); }
   color: var(--walnut-dark);
   font-weight: 600;
 }
-
 .gallery-caption em {
   font-size: 0.82rem;
   color: var(--text-muted);
@@ -662,7 +620,6 @@ em { font-style: italic; color: var(--walnut); }
   background: var(--cream);
   min-height: auto;
 }
-
 .process-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -671,14 +628,12 @@ em { font-style: italic; color: var(--walnut); }
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .process-photo {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--linen);
 }
-
 .process-photo img {
   width: 100%;
   height: auto;
@@ -686,9 +641,7 @@ em { font-style: italic; color: var(--walnut); }
   object-fit: contain;
   transition: filter 0.35s var(--transition);
 }
-
 .process-photo:hover img { filter: brightness(0.86); }
-
 .process-photo figcaption {
   position: absolute;
   left: 1rem;
@@ -707,7 +660,6 @@ em { font-style: italic; color: var(--walnut); }
   background: var(--parchment);
   min-height: auto;
 }
-
 .engraving-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -717,7 +669,6 @@ em { font-style: italic; color: var(--walnut); }
   margin: 0 auto;
   align-items: stretch;
 }
-
 .engraving-card {
   display: flex;
   min-width: 0;
@@ -729,12 +680,10 @@ em { font-style: italic; color: var(--walnut); }
   border-radius: var(--radius);
   box-shadow: 0 14px 34px rgba(74,41,18,0.08);
 }
-
 .engraving-card.recommended {
   border-color: rgba(126,142,88,0.55);
   box-shadow: 0 18px 42px rgba(79,96,45,0.14);
 }
-
 .engraving-media {
   position: relative;
   display: grid;
@@ -747,7 +696,6 @@ em { font-style: italic; color: var(--walnut); }
   background: #fffdf8;
   border-bottom: 1px solid var(--linen);
 }
-
 .engraving-media img {
   width: auto;
   max-width: calc(100% - 1rem);
@@ -761,7 +709,6 @@ em { font-style: italic; color: var(--walnut); }
   border-radius: 3px;
   box-shadow: 0 8px 20px rgba(62,39,24,0.12);
 }
-
 .engraving-status {
   position: absolute;
   top: 0.85rem;
@@ -776,18 +723,15 @@ em { font-style: italic; color: var(--walnut); }
   text-transform: uppercase;
   box-shadow: 0 5px 16px rgba(42,31,20,0.18);
 }
-
 .engraving-status.bad { background: #8d493e; }
 .engraving-status.caution { background: #a26d2f; }
 .engraving-status.good { background: #647447; }
-
 .engraving-card-body {
   display: flex;
   flex: 1;
   flex-direction: column;
   padding: 1.4rem 1.5rem 1.6rem;
 }
-
 .engraving-card-body h3 {
   margin-bottom: 0.65rem;
   color: var(--walnut-dark);
@@ -795,13 +739,11 @@ em { font-style: italic; color: var(--walnut); }
   font-size: 1.45rem;
   line-height: 1.1;
 }
-
 .engraving-card-body p {
   color: var(--text-muted);
   font-size: 0.92rem;
   line-height: 1.65;
 }
-
 .engraving-tips {
   width: 100%;
   max-width: 1080px;
@@ -812,14 +754,12 @@ em { font-style: italic; color: var(--walnut); }
   border-radius: var(--radius);
   box-shadow: 0 16px 34px rgba(42,31,20,0.15);
 }
-
 .engraving-tips h3 {
   margin-bottom: 1.2rem;
   color: var(--maple);
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.55rem;
 }
-
 .engraving-tips ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -829,7 +769,6 @@ em { font-style: italic; color: var(--walnut); }
   list-style: none;
   counter-reset: engraving-tip;
 }
-
 .engraving-tips li {
   position: relative;
   padding-left: 2.2rem;
@@ -838,7 +777,6 @@ em { font-style: italic; color: var(--walnut); }
   line-height: 1.55;
   counter-increment: engraving-tip;
 }
-
 .engraving-tips li::before {
   content: counter(engraving-tip);
   position: absolute;
@@ -854,7 +792,6 @@ em { font-style: italic; color: var(--walnut); }
   font-size: 0.7rem;
   font-weight: 600;
 }
-
 .engraving-note {
   padding-top: 1rem;
   border-top: 1px solid rgba(245,237,224,0.14);
@@ -862,109 +799,48 @@ em { font-style: italic; color: var(--walnut); }
   font-size: 0.82rem;
 }
 
-.engraving-showcase {
-  width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto 0;
-  padding-top: clamp(2.5rem, 5vw, 4.5rem);
-}
-
-.engraving-showcase-heading {
-  max-width: 720px;
-  margin: 0 auto 2rem;
-  text-align: center;
-}
-
+.engraving-showcase { width: 100%; max-width: 1200px; margin: 2rem auto 0; padding-top: clamp(2.5rem, 5vw, 4.5rem); }
+.engraving-showcase-heading { max-width: 720px; margin: 0 auto 2rem; text-align: center; }
 .engraving-showcase-heading .section-label { margin-bottom: 0.65rem; }
-
 .engraving-showcase-heading h3 {
-  margin-bottom: 0.8rem;
-  color: var(--walnut);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 500;
-  line-height: 1.08;
+  margin-bottom: 0.8rem; color: var(--walnut); font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.08;
 }
-
 .engraving-showcase-heading h3 em { color: var(--warm-brown); }
-
-.engraving-showcase-heading p:last-child {
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-.engraving-placeholder-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
+.engraving-showcase-heading p:last-child { color: var(--text-muted); line-height: 1.7; }
+.engraving-placeholder-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .engraving-placeholder {
-  overflow: hidden;
-  background: var(--cream);
-  border: 1px solid rgba(76,48,29,0.16);
-  border-radius: 18px;
-  box-shadow: 0 16px 36px rgba(62,39,24,0.08);
+  overflow: hidden; background: var(--cream); border: 1px solid rgba(76,48,29,0.16);
+  border-radius: 18px; box-shadow: 0 16px 36px rgba(62,39,24,0.08);
 }
-
 .engraving-placeholder-media {
-  display: flex;
-  aspect-ratio: 4 / 3;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.75rem;
-  color: var(--warm-brown);
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.42), transparent),
+  display: flex; aspect-ratio: 4 / 3; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.75rem; color: var(--warm-brown);
+  background: linear-gradient(135deg, rgba(255,255,255,0.42), transparent),
     repeating-linear-gradient(45deg, rgba(125,82,48,0.055) 0 10px, transparent 10px 20px);
-  border-bottom: 1px dashed rgba(76,48,29,0.25);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  border-bottom: 1px dashed rgba(76,48,29,0.25); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
 }
-
 .engraving-placeholder-icon {
-  display: grid;
-  width: 64px;
-  height: 64px;
-  place-items: center;
-  color: var(--cream);
-  background: var(--walnut);
-  border-radius: 50%;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.65rem;
-  font-weight: 600;
+  display: grid; width: 64px; height: 64px; place-items: center; color: var(--cream);
+  background: var(--walnut); border-radius: 50%; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem; font-weight: 600;
 }
-
 .engraving-placeholder-copy { padding: 1.35rem 1.4rem 1.5rem; }
-
-.engraving-placeholder-copy h4 {
-  margin-bottom: 0.45rem;
-  color: var(--walnut);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem;
-  font-weight: 600;
+.engraving-placeholder-copy h3 {
+  margin-bottom: 0.45rem; color: var(--walnut); font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem; font-weight: 600;
 }
+.engraving-placeholder-copy p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
 
-.engraving-placeholder-copy p {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.65;
-}
-
-/* —— PRICING —————————————————————————————— */
 .pricing {
   background: var(--walnut-dark);
   min-height: auto;
-  padding-bottom: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
 }
-
 .pricing .section-label { color: var(--maple); }
 .pricing .section-title { color: var(--cream); }
 .pricing .section-sub { color: rgba(245,237,224,0.6); }
-
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -972,7 +848,6 @@ em { font-style: italic; color: var(--walnut); }
   max-width: 1280px;
   margin: 0 auto 2.5rem;
 }
-
 .pricing-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(245,237,224,0.1);
@@ -981,22 +856,15 @@ em { font-style: italic; color: var(--walnut); }
   position: relative;
   transition: transform 0.3s var(--transition), border-color 0.3s;
 }
-
 .pricing-card:hover {
   transform: translateY(-6px);
   border-color: rgba(196,150,74,0.4);
 }
-
 .pricing-card.featured {
   background: rgba(196,150,74,0.12);
   border-color: rgba(196,150,74,0.4);
   transform: translateY(-8px);
 }
-
-.pricing-card.featured:hover {
-  transform: translateY(-14px);
-}
-
 .pricing-popular {
   position: absolute;
   top: -1px;
@@ -1011,39 +879,30 @@ em { font-style: italic; color: var(--walnut); }
   padding: 0.3rem 1rem;
   border-radius: 0 0 4px 4px;
 }
-
-.pricing-wood-badge {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
+.pricing-wood-badge { font-size: 2rem; margin-bottom: 1rem; }
 .pricing-card h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   color: var(--cream);
   margin-bottom: 0.75rem;
 }
-
 .pricing-desc {
   font-size: 0.88rem;
   color: rgba(245,237,224,0.55);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
-
 .pricing-range {
   display: flex;
   align-items: baseline;
   gap: 0.4rem;
   margin-bottom: 1.5rem;
 }
-
 .price-from {
   font-size: 0.8rem;
   color: rgba(245,237,224,0.5);
   letter-spacing: 0.05em;
 }
-
 .price-amount {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.5rem;
@@ -1051,20 +910,17 @@ em { font-style: italic; color: var(--walnut); }
   color: var(--gold);
   line-height: 1;
 }
-
 .pricing-features {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
-
 .pricing-features li {
   font-size: 0.85rem;
   color: rgba(245,237,224,0.7);
   padding-left: 0.2rem;
 }
-
 .pricing-note {
   text-align: center;
   color: rgba(245,237,224,0.45);
@@ -1074,13 +930,11 @@ em { font-style: italic; color: var(--walnut); }
   margin: 0 auto;
 }
 
-/* —— MAINTENANCE ————————————————————————— */
 .maintenance {
   background: var(--cream);
   min-height: auto;
-  padding-bottom: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
 }
-
 .maintenance-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1088,7 +942,6 @@ em { font-style: italic; color: var(--walnut); }
   max-width: 1200px;
   margin: 0 auto 3rem;
 }
-
 .maint-step {
   background: var(--parchment);
   border-radius: 8px;
@@ -1097,11 +950,7 @@ em { font-style: italic; color: var(--walnut); }
   overflow: hidden;
   transition: transform 0.3s var(--transition);
 }
-
-.maint-step:hover {
-  transform: translateY(-4px);
-}
-
+.maint-step:hover { transform: translateY(-4px); }
 .maint-step::before {
   content: '';
   position: absolute;
@@ -1112,9 +961,7 @@ em { font-style: italic; color: var(--walnut); }
   transform-origin: left;
   transition: transform 0.4s var(--transition);
 }
-
 .maint-step:hover::before { transform: scaleX(1); }
-
 .maint-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4rem;
@@ -1125,26 +972,19 @@ em { font-style: italic; color: var(--walnut); }
   top: 1rem;
   right: 1.25rem;
 }
-
-.maint-icon {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
+.maint-icon { font-size: 1.8rem; margin-bottom: 1rem; }
 .maint-step h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
   color: var(--walnut-dark);
   margin-bottom: 0.75rem;
 }
-
 .maint-step p {
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.65;
   margin-bottom: 1.25rem;
 }
-
 .maint-bar {
   height: 3px;
   background: var(--linen);
@@ -1152,7 +992,6 @@ em { font-style: italic; color: var(--walnut); }
   overflow: hidden;
   margin-bottom: 0.5rem;
 }
-
 .maint-bar span {
   display: block;
   height: 100%;
@@ -1161,18 +1000,13 @@ em { font-style: italic; color: var(--walnut); }
   border-radius: 100px;
   transition: width 1.2s var(--transition);
 }
-
-.maint-step.visible .maint-bar span {
-  width: var(--w);
-}
-
+.maint-step.visible .maint-bar span { width: var(--w); }
 .maint-step small {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--gold);
 }
-
 .maint-tip {
   max-width: 800px;
   margin: 0 auto;
@@ -1183,43 +1017,31 @@ em { font-style: italic; color: var(--walnut); }
   gap: 1.5rem;
   align-items: flex-start;
 }
-
 .tip-icon {
   color: var(--gold);
   font-size: 1.4rem;
   flex-shrink: 0;
   margin-top: 0.1rem;
 }
-
 .maint-tip p {
   color: rgba(245,237,224,0.8);
   font-size: 0.95rem;
   line-height: 1.7;
 }
+.maint-tip strong { color: var(--gold); }
 
-.maint-tip strong {
-  color: var(--gold);
-}
-
-/* —— CONTACT —————————————————————————————— */
 .contact {
   background: var(--parchment);
   min-height: auto;
-  padding-bottom: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
   text-align: center;
 }
-
-.contact-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
+.contact-inner { max-width: 1180px; margin: 0 auto; }
 .contact-sub {
   color: var(--text-muted);
   margin-bottom: 3rem;
   font-size: 1rem;
 }
-
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
@@ -1227,7 +1049,6 @@ em { font-style: italic; color: var(--walnut); }
   align-items: start;
   text-align: left;
 }
-
 .contact-form-card {
   padding: clamp(1.5rem, 4vw, 2.5rem);
   background: var(--cream);
@@ -1235,9 +1056,7 @@ em { font-style: italic; color: var(--walnut); }
   border-radius: 12px;
   box-shadow: 0 18px 45px rgba(74,41,18,0.09);
 }
-
 .contact-form-heading { margin-bottom: 1.8rem; }
-
 .contact-form-heading h3 {
   margin-bottom: 0.45rem;
   color: var(--walnut-dark);
@@ -1245,29 +1064,24 @@ em { font-style: italic; color: var(--walnut); }
   font-size: clamp(1.7rem, 3vw, 2.15rem);
   line-height: 1.1;
 }
-
 .contact-form-heading p {
   color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.65;
 }
-
 .contact-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.15rem;
 }
-
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
 }
-
 .form-group.full { grid-column: 1 / -1; }
 .form-group[hidden],
 .engraving-upload-note[hidden] { display: none; }
-
 .form-group label {
   color: var(--walnut-dark);
   font-size: 0.75rem;
@@ -1275,7 +1089,6 @@ em { font-style: italic; color: var(--walnut); }
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -1289,12 +1102,10 @@ em { font-style: italic; color: var(--walnut); }
   font: inherit;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
-
 .form-group textarea {
   min-height: 110px;
   resize: vertical;
 }
-
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -1303,13 +1114,11 @@ em { font-style: italic; color: var(--walnut); }
   box-shadow: 0 0 0 3px rgba(196,150,74,0.16);
   outline: none;
 }
-
 .form-help {
   color: var(--text-muted);
   font-size: 0.76rem;
   line-height: 1.5;
 }
-
 .wood-price-note,
 .engraving-upload-note {
   padding: 0.75rem 0.9rem;
@@ -1320,7 +1129,6 @@ em { font-style: italic; color: var(--walnut); }
   font-size: 0.8rem;
   line-height: 1.55;
 }
-
 .whatsapp-submit {
   grid-column: 1 / -1;
   min-height: 52px;
@@ -1337,18 +1145,15 @@ em { font-style: italic; color: var(--walnut); }
   cursor: pointer;
   transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
 }
-
 .whatsapp-submit:hover {
   background: #1f583b;
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(39,106,72,0.24);
 }
-
 .whatsapp-submit:focus-visible {
   outline: 3px solid rgba(39,106,72,0.25);
   outline-offset: 3px;
 }
-
 .contact-privacy {
   grid-column: 1 / -1;
   color: var(--text-muted);
@@ -1356,18 +1161,8 @@ em { font-style: italic; color: var(--walnut); }
   line-height: 1.5;
   text-align: center;
 }
-
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-methods .whatsapp-submit {
-  width: 100%;
-  margin-top: 0.15rem;
-}
-
+.contact-methods { display: flex; flex-direction: column; gap: 1rem; }
+.contact-methods .whatsapp-submit { width: 100%; margin-top: 0.15rem; }
 .contact-item {
   display: flex;
   align-items: center;
@@ -1381,18 +1176,12 @@ em { font-style: italic; color: var(--walnut); }
   transition: all 0.3s var(--transition);
   text-align: left;
 }
-
 .contact-item:hover {
   background: var(--walnut-dark);
   border-color: var(--walnut-dark);
   color: var(--cream);
   transform: translateX(6px);
 }
-
-.contact-item:hover .contact-icon { color: var(--gold); }
-.contact-item:hover strong { color: var(--gold); }
-.contact-item:hover span:last-child { color: rgba(245,237,224,0.7); }
-
 .contact-icon {
   font-size: 1.4rem;
   color: var(--walnut);
@@ -1401,13 +1190,7 @@ em { font-style: italic; color: var(--walnut); }
   width: 32px;
   text-align: center;
 }
-
-.contact-item > div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
+.contact-item > div { display: flex; flex-direction: column; gap: 0.15rem; }
 .contact-item strong {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
@@ -1415,7 +1198,6 @@ em { font-style: italic; color: var(--walnut); }
   color: var(--text-muted);
   transition: color 0.3s;
 }
-
 .contact-item span:last-child {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
@@ -1423,13 +1205,11 @@ em { font-style: italic; color: var(--walnut); }
   transition: color 0.3s;
 }
 
-/* —— FOOTER ——————————————————————————————— */
 .footer {
   background: var(--charcoal);
   padding: 3rem clamp(1.5rem, 5vw, 4rem);
   text-align: center;
 }
-
 .footer-brand {
   display: flex;
   align-items: center;
@@ -1440,7 +1220,6 @@ em { font-style: italic; color: var(--walnut); }
   color: var(--cream);
   margin-bottom: 0.75rem;
 }
-
 .footer-tagline {
   font-size: 0.78rem;
   letter-spacing: 0.15em;
@@ -1448,14 +1227,108 @@ em { font-style: italic; color: var(--walnut); }
   color: rgba(245,237,224,0.4);
   margin-bottom: 1.5rem;
 }
-
 .footer-copy {
   font-size: 0.78rem;
   color: rgba(245,237,224,0.25);
 }
 
-/* —— RESPONSIVE ——————————————————————————— */
-@media (max-width: 1024px) {
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+.lang-switcher { position: relative; }
+.lang-current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 72px;
+  background: transparent;
+  border: 1px solid rgba(168, 124, 56, 0.5);
+  border-radius: 100px;
+  padding: 0.3rem 0.75rem 0.3rem 0.5rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #a87c38;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+#navbar.scrolled .lang-current {
+  border-color: rgba(107,62,38,0.3);
+}
+#navbar:not(.scrolled) .lang-current {
+  border-color: rgba(245,237,224,0.3);
+  color: var(--cream);
+}
+.lang-current:hover {
+  background: rgba(196, 150, 74, 0.12);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.lang-flag { font-size: 1rem; line-height: 1; }
+.lang-code { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; min-width: 20px; text-align: center; }
+.lang-arrow {
+  width: 8px;
+  height: 5px;
+  stroke: currentColor;
+  transition: transform 0.25s var(--transition);
+  flex-shrink: 0;
+}
+.lang-switcher.open .lang-arrow { transform: rotate(180deg); }
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--cream);
+  border: 1px solid var(--linen);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(42,31,20,0.15), 0 2px 8px rgba(42,31,20,0.08);
+  overflow: hidden;
+  min-width: 140px;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.2s var(--transition), transform 0.2s var(--transition);
+  transform-origin: top right;
+  z-index: 300;
+}
+.lang-switcher.open .lang-dropdown {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  border-bottom: 1px solid transparent;
+}
+.lang-option:not(:last-child) { border-bottom-color: var(--linen); }
+.lang-option:hover { background: var(--parchment); color: var(--walnut-dark); }
+.lang-option.active {
+  color: var(--walnut-dark);
+  font-weight: 500;
+  background: var(--linen);
+}
+.lang-option span:first-child { font-size: 1.1rem; }
+body.lang-switching [data-i18n] { opacity: 0; transition: opacity 0.15s; }
+body [data-i18n] { transition: opacity 0.15s; }
+
+@media (max-width: 1279px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-img-frame { max-width: 340px; margin: 0 auto; }
   .about-img-frame::after { inset: 12px -12px -12px 12px; }
@@ -1464,18 +1337,13 @@ em { font-style: italic; color: var(--walnut); }
   .engraving-card.recommended { transform: none; }
   .engraving-tips ul { grid-template-columns: 1fr; }
   .engraving-tips { max-width: 620px; }
-  .engraving-placeholder-grid {
-    grid-template-columns: 1fr;
-    max-width: 620px;
-    margin: 0 auto;
-  }
+  .engraving-placeholder-grid { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; }
   .contact-layout { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
   .pricing-card.featured { transform: none; }
   .maintenance-steps { grid-template-columns: repeat(2, 1fr); }
 }
-
-@media (min-width: 1025px) and (max-width: 1250px) {
+@media (min-width: 1280px) and (max-width: 1250px) {
   .nav-logo span:last-child { display: none; }
   .nav-link {
     padding-inline: 0.55rem;
@@ -1483,16 +1351,14 @@ em { font-style: italic; color: var(--walnut); }
     letter-spacing: 0.06em;
   }
 }
-
-@media (min-width: 1025px) and (max-width: 1366px) {
+@media (min-width: 1280px) and (max-width: 1366px) {
   .hero-image {
     object-fit: cover;
     object-position: 58% center;
     transform: scale(1.01);
   }
 }
-
-@media (max-width: 1024px) {
+@media (max-width: 1279px) {
   #navbar { justify-content: space-between; }
   #navbar.menu-open {
     height: 100dvh;
@@ -1514,7 +1380,6 @@ em { font-style: italic; color: var(--walnut); }
   }
   .nav-right { margin-left: auto; }
   .hamburger { display: flex; }
-
   .nav-links {
     position: absolute;
     inset: 0;
@@ -1527,10 +1392,8 @@ em { font-style: italic; color: var(--walnut); }
     transition: transform 0.4s var(--transition);
     z-index: 150;
   }
-
   .nav-links.open { transform: translateX(0); }
   .nav-links li { width: min(78vw, 300px); }
-
   .nav-link {
     display: flex;
     align-items: center;
@@ -1543,9 +1406,7 @@ em { font-style: italic; color: var(--walnut); }
     border-radius: 999px;
     transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   }
-
   .nav-link::after { display: none; }
-
   #navbar.menu-open .nav-link:hover,
   #navbar.menu-open .nav-link:focus-visible,
   #navbar.menu-open .nav-link.active {
@@ -1556,62 +1417,48 @@ em { font-style: italic; color: var(--walnut); }
     transform: translateX(5px);
     outline: none;
   }
-
   #navbar.menu-open .nav-link:active {
     transform: translateX(5px) scale(0.98);
   }
-
-  .hero-badge {
-    display: none;
-  }
-
+  .hero-badge { display: none; }
   .wood-ring { display: none; }
-
   .hero {
     min-height: 100svh;
   }
-
   .hero-image {
     object-fit: cover;
     object-position: 58% center;
     transform: scale(1.01);
   }
-
   .hero-bg::after {
     background:
       linear-gradient(90deg, rgba(42,31,20,0.91) 0%, rgba(42,31,20,0.62) 62%, rgba(42,31,20,0.34) 100%),
       linear-gradient(0deg, rgba(42,31,20,0.68) 0%, transparent 48%, rgba(42,31,20,0.2) 100%);
   }
-
   .gallery-grid { columns: 1; }
   .process-grid { grid-template-columns: 1fr; }
-
   .maintenance-steps { grid-template-columns: 1fr; }
-
   .maint-tip { flex-direction: column; }
-
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-
   .contact-item { padding: 1.25rem 1.5rem; }
+  .lang-code { display: none; }
+  .lang-current { width: 42px; padding: 0.3rem 0.5rem; gap: 0.2rem; }
+  .lang-dropdown { right: 0; }
 }
-
 @media (max-width: 480px) {
   .hero {
     min-height: 100svh;
   }
-
   .hero-image {
     object-fit: cover;
     object-position: 58% center;
     transform: scale(1.015);
   }
-
   .hero-bg::after {
     background:
       linear-gradient(90deg, rgba(42,31,20,0.9) 0%, rgba(42,31,20,0.58) 72%, rgba(42,31,20,0.42) 100%),
       linear-gradient(0deg, rgba(42,31,20,0.72) 0%, transparent 48%, rgba(42,31,20,0.24) 100%);
   }
-
   .hero-title { font-size: 3rem; }
   .engraving-media { height: clamp(190px, 68vw, 250px); }
   .engraving-media img {
@@ -1626,22 +1473,915 @@ em { font-style: italic; color: var(--walnut); }
   .pricing-grid { max-width: 100%; }
 }
 
-/* Final engraving image sizing: preserve every source image completely. */
-@media (min-width: 1025px) {
-  section:not(#gallery) {
-    min-height: calc(100dvh + 2px);
-    background-clip: padding-box;
+
+/* =========================================================
+   MATHEMATICAL VIEWPORT FIT FIX
+   Goal: avoid the 100% zoom feeling in Edge and on low-height screens.
+   Formula used on desktop:
+   usable vertical space = 100dvh - navbar - browser/edge safety margin
+   ========================================================= */
+
+:root {
+  --edge-safe-y: clamp(18px, 3dvh, 34px);
+  --desktop-nav-visible-h: 88px; /* 60px navbar + 14px top offset + 14px safety */
+  --usable-view-h: calc(100dvh - var(--desktop-nav-visible-h) - var(--edge-safe-y));
+  --section-pad-y: clamp(2rem, 5dvh, 4.25rem);
+  --section-pad-x: clamp(1.25rem, 4vw, 3.5rem);
+  --tight-gap: clamp(1rem, 2.2dvh, 1.75rem);
+  --title-fit: clamp(2.15rem, 4.2vw, 3.45rem);
+  --copy-fit: clamp(0.88rem, 1.35vw, 0.98rem);
+}
+
+html { scroll-padding-top: 0; }
+
+/*
+  ANCHOR LANDING FIX
+  Mathematical rule:
+  sectionTopAfterScroll = sectionTop - scrollY
+  To prevent the previous section from appearing above the floating navbar,
+  force sectionTopAfterScroll <= 0 by scrolling to sectionTop + anchorOverlap.
+  The extra top padding keeps the section heading below the fixed navbar.
+*/
+:root {
+  --anchor-overlap: 2px;
+  --section-anchor-pad-top: max(var(--section-pad-y), calc(var(--desktop-nav-visible-h) + 0.75rem));
+}
+
+section[id] {
+  scroll-margin-top: 0;
+}
+
+.section:not(.hero) {
+  padding-top: var(--section-anchor-pad-top);
+}
+
+.section {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  min-height: auto;
+}
+
+.section-title {
+  font-size: var(--title-fit);
+  margin-bottom: clamp(0.85rem, 1.8dvh, 1.35rem);
+}
+
+.section-sub {
+  font-size: var(--copy-fit);
+  line-height: 1.58;
+  margin-bottom: var(--tight-gap);
+}
+
+.section-header {
+  margin-bottom: var(--tight-gap);
+}
+
+.section-header .section-sub {
+  margin-bottom: var(--tight-gap);
+}
+
+.hero {
+  min-height: 100dvh;
+  padding-top: calc(var(--desktop-nav-visible-h) + var(--edge-safe-y));
+  padding-bottom: var(--edge-safe-y);
+}
+
+.hero-content {
+  padding-top: 0;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6.8vw, 6.25rem);
+  margin-bottom: clamp(0.9rem, 2dvh, 1.35rem);
+}
+
+.hero-eyebrow {
+  margin-bottom: clamp(0.75rem, 2dvh, 1.25rem);
+}
+
+.hero-sub {
+  font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+  line-height: 1.55;
+  margin-bottom: clamp(1.3rem, 3dvh, 2rem);
+}
+
+.scroll-cue {
+  bottom: max(1rem, var(--edge-safe-y));
+}
+
+.gallery,
+.pricing,
+.maintenance,
+.contact {
+  padding-bottom: var(--section-pad-y);
+}
+
+.about-grid,
+.engraving-grid,
+.pricing-grid,
+.maintenance-steps,
+.contact-layout {
+  gap: var(--tight-gap);
+}
+
+.about-grid {
+  max-height: none;
+}
+
+.about-img-frame {
+  width: min(360px, 28vw, calc((var(--usable-view-h) - 2rem) * 0.75));
+  max-width: none;
+  max-height: none;
+}
+
+.about-body {
+  margin-bottom: var(--tight-gap);
+}
+
+.about-body p {
+  font-size: var(--copy-fit);
+  line-height: 1.58;
+  margin-bottom: 0.75rem;
+}
+
+.about-stats {
+  padding-top: clamp(1rem, 2dvh, 1.5rem);
+  gap: clamp(0.75rem, 1.8dvh, 1.25rem);
+}
+
+.stat-num {
+  font-size: clamp(2rem, 4vw, 2.55rem);
+}
+
+.gallery-filters {
+  margin-bottom: var(--tight-gap);
+  gap: 0.55rem;
+}
+
+.filter-btn {
+  padding: 0.42rem 1.05rem;
+  font-size: 0.74rem;
+}
+
+.gallery-grid {
+  column-gap: 1rem;
+}
+
+.gallery-item {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .gallery-img {
+    max-height: min(360px, 46dvh);
   }
 
-  .about-img-frame {
-    width: min(360px, 28vw, calc((100dvh - 122px) * 0.75));
-    max-width: none;
-    max-height: none;
+  .gallery-img .img-placeholder {
+    width: 100%;
+    height: 100%;
+    max-height: min(360px, 46dvh);
+    object-fit: cover;
   }
 }
 
+.engraving-grid,
+.engraving-placeholder-grid,
+.pricing-grid,
+.maintenance-steps {
+  align-items: stretch;
+}
+
+.engraving-media {
+  aspect-ratio: 16 / 10;
+  padding: clamp(0.55rem, 1.5dvh, 0.9rem);
+}
+
+.engraving-card-body,
+.engraving-placeholder-copy {
+  padding: clamp(1rem, 2.2dvh, 1.25rem);
+}
+
+.engraving-card-body h3,
+.engraving-placeholder-copy h3 {
+  font-size: clamp(1.2rem, 2.3vw, 1.38rem);
+  margin-bottom: 0.45rem;
+}
+
+.engraving-card-body p,
+.engraving-placeholder-copy p {
+  font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+  line-height: 1.5;
+}
+
+.engraving-tips {
+  padding: clamp(1rem, 2.5dvh, 1.6rem);
+}
+
+.engraving-tips h3 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.45rem);
+}
+
+.engraving-tips ul {
+  gap: 0.8rem;
+  margin-bottom: 0.85rem;
+}
+
+.engraving-tips li {
+  font-size: clamp(0.78rem, 1.1vw, 0.84rem);
+  line-height: 1.45;
+}
+
+.engraving-showcase {
+  margin-top: var(--tight-gap);
+  padding-top: clamp(1.5rem, 3dvh, 2.5rem);
+}
+
+.engraving-showcase-heading {
+  margin-bottom: var(--tight-gap);
+}
+
+.engraving-placeholder-media {
+  aspect-ratio: 16 / 10;
+}
+
+.pricing-grid {
+  margin-bottom: var(--tight-gap);
+}
+
+.pricing-card {
+  padding: clamp(1.35rem, 3dvh, 2rem) clamp(1.15rem, 2.5vw, 1.6rem);
+}
+
+.pricing-wood-badge {
+  font-size: 1.55rem;
+  margin-bottom: 0.55rem;
+}
+
+.pricing-card h3 {
+  font-size: clamp(1.45rem, 2.8vw, 1.7rem);
+  margin-bottom: 0.45rem;
+}
+
+.pricing-desc,
+.pricing-range {
+  margin-bottom: 0.9rem;
+}
+
+.price-amount {
+  font-size: clamp(2rem, 4vw, 2.35rem);
+}
+
+.pricing-features {
+  gap: 0.42rem;
+}
+
+.pricing-features li,
+.pricing-note {
+  font-size: clamp(0.78rem, 1.1vw, 0.84rem);
+  line-height: 1.45;
+}
+
+.maintenance-steps {
+  margin-bottom: var(--tight-gap);
+}
+
+.maint-step {
+  padding: clamp(1.2rem, 2.6dvh, 1.65rem) clamp(1rem, 2vw, 1.35rem);
+}
+
+.maint-num {
+  font-size: clamp(2.7rem, 5vw, 3.45rem);
+  top: 0.75rem;
+  right: 1rem;
+}
+
+.maint-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.maint-step h3 {
+  font-size: clamp(1.15rem, 2.2vw, 1.3rem);
+  margin-bottom: 0.45rem;
+}
+
+.maint-step p {
+  font-size: clamp(0.78rem, 1.1vw, 0.84rem);
+  line-height: 1.48;
+  margin-bottom: 0.75rem;
+}
+
+.maint-tip {
+  padding: clamp(1.1rem, 2.5dvh, 1.6rem) clamp(1.25rem, 3vw, 2rem);
+  gap: 1rem;
+}
+
+.maint-tip p {
+  font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+  line-height: 1.55;
+}
+
+.contact-sub {
+  margin-bottom: var(--tight-gap);
+  font-size: var(--copy-fit);
+}
+
+.contact-form-card {
+  padding: clamp(1.2rem, 3dvh, 2rem);
+}
+
+.contact-form-heading {
+  margin-bottom: var(--tight-gap);
+}
+
+.contact-form {
+  gap: clamp(0.75rem, 1.7dvh, 1rem);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  min-height: 42px;
+  padding: 0.62rem 0.8rem;
+}
+
+.form-group textarea {
+  min-height: 86px;
+}
+
+.whatsapp-submit {
+  min-height: 46px;
+  padding: 0.72rem 1.2rem;
+}
+
+.contact-methods {
+  gap: 0.75rem;
+}
+
+.contact-item {
+  padding: clamp(1rem, 2.3dvh, 1.25rem) clamp(1.15rem, 2.5vw, 1.5rem);
+  gap: 1rem;
+}
+
+.footer {
+  padding-top: clamp(1.8rem, 4dvh, 2.5rem);
+  padding-bottom: clamp(1.8rem, 4dvh, 2.5rem);
+}
+
+@media (min-width: 1280px) and (max-height: 850px) {
+  :root {
+    --edge-safe-y: clamp(22px, 4dvh, 42px);
+    --section-pad-y: clamp(1.45rem, 3.6dvh, 2.7rem);
+    --tight-gap: clamp(0.75rem, 1.8dvh, 1.2rem);
+    --title-fit: clamp(1.95rem, 3.6vw, 2.9rem);
+    --copy-fit: 0.86rem;
+  }
+
+  body { line-height: 1.55; }
+
+  .hero-title {
+    font-size: clamp(2.65rem, 5.7vw, 4.9rem);
+  }
+
+  .btn-primary {
+    padding: 0.72rem 1.75rem;
+  }
+
+  .scroll-line {
+    height: 32px;
+  }
+
+  .about-grid {
+    grid-template-columns: 0.8fr 1.4fr;
+  }
+
+  .about-img-frame {
+    max-width: min(300px, 24vw);
+  }
+
+  .engraving-grid,
+  .pricing-grid,
+  .maintenance-steps {
+    gap: 0.9rem;
+  }
+
+  .engraving-media,
+  .engraving-placeholder-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .pricing-card.featured,
+  .engraving-card.recommended {
+    transform: none;
+  }
+
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.55fr);
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 720px) {
+  :root {
+    --edge-safe-y: 44px;
+    --section-pad-y: 1.25rem;
+    --tight-gap: 0.75rem;
+    --title-fit: clamp(1.75rem, 3.2vw, 2.45rem);
+    --copy-fit: 0.82rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.35rem, 5vw, 4.2rem);
+  }
+
+  .hero-sub {
+    margin-bottom: 1rem;
+  }
+
+  .section-label {
+    margin-bottom: 0.45rem;
+  }
+
+  .about-img-frame {
+    display: block;
+  }
+
+  .about-grid {
+    grid-template-columns: 0.8fr 1.4fr;
+    max-width: 980px;
+  }
+
+  .engraving-tips ul {
+    grid-template-columns: 1fr;
+  }
+
+  .maintenance-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .maint-bar,
+  .maint-step small {
+    display: block;
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --section-pad-y: clamp(2.5rem, 7svh, 4.5rem);
+    --section-pad-x: clamp(1.1rem, 5vw, 2rem);
+    --tight-gap: clamp(1rem, 3svh, 1.75rem);
+  }
+
+  :root {
+    --section-anchor-pad-top: max(var(--section-pad-y), calc(var(--nav-h) + 0.75rem));
+  }
+
+  html { scroll-padding-top: 0; }
+
+  .section {
+    padding: var(--section-pad-y) var(--section-pad-x);
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding-top: var(--nav-h);
+  }
+
+  .gallery-img .img-placeholder {
+    object-fit: contain;
+  }
+}
+
+
+
+/* =========================================================
+   ENGRAVING + GIFT IDEAS FIT
+   Two independent snap stops. Content is scaled smaller while
+   preserving original aspect ratios and grid geometry.
+   ========================================================= */
+
+@media (min-width: 1280px) {
+  #engraving,
+  #gift-ideas {
+    padding-top: calc(var(--desktop-nav-visible-h) + clamp(0.75rem, 1.8dvh, 1.35rem));
+    padding-bottom: clamp(1.35rem, 2.8dvh, 2.4rem);
+  }
+
+  #engraving .section-header,
+  #gift-ideas .section-header {
+    max-width: 820px;
+    margin: 0 auto clamp(1rem, 2.2dvh, 1.6rem);
+  }
+
+  #engraving .section-label,
+  #gift-ideas .section-label {
+    margin-bottom: 0.45rem;
+    font-size: clamp(0.62rem, 0.82vw, 0.72rem);
+  }
+
+  #engraving .section-title,
+  #gift-ideas .section-title {
+    margin-bottom: 0.65rem;
+    font-size: clamp(2rem, 3.45vw, 2.85rem);
+    line-height: 1.04;
+  }
+
+  #engraving .section-sub,
+  #gift-ideas .section-sub,
+  #gift-ideas .engraving-showcase-heading p:last-child {
+    max-width: 76ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    font-size: clamp(0.82rem, 0.98vw, 0.92rem);
+    line-height: 1.5;
+  }
+
+  #engraving .engraving-grid,
+  #gift-ideas .engraving-placeholder-grid {
+    max-width: min(980px, 78vw);
+    gap: clamp(0.8rem, 1.5dvh, 1.15rem);
+  }
+
+  #engraving .engraving-grid {
+    margin-bottom: clamp(0.95rem, 2dvh, 1.35rem);
+  }
+
+  #engraving .engraving-card.recommended {
+    transform: translateY(-0.25rem);
+  }
+
+  #engraving .engraving-card,
+  #gift-ideas .engraving-placeholder {
+    border-radius: 10px;
+  }
+
+  #engraving .engraving-media,
+  #gift-ideas .engraving-placeholder-media {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    padding: clamp(0.55rem, 1.1dvh, 0.85rem);
+  }
+
+  #engraving .engraving-media img {
+    width: auto;
+    max-width: calc(100% - 1rem);
+    height: auto;
+    max-height: calc(100% - 1rem);
+    box-sizing: border-box;
+    object-fit: contain;
+  }
+
+  #engraving .engraving-card-body,
+  #gift-ideas .engraving-placeholder-copy {
+    padding: clamp(0.8rem, 1.55dvh, 1.1rem) clamp(0.9rem, 1.4vw, 1.15rem);
+  }
+
+  #engraving .engraving-card-body h3,
+  #gift-ideas .engraving-placeholder-copy h3 {
+    margin-bottom: 0.35rem;
+    font-size: clamp(1.12rem, 1.6vw, 1.35rem);
+    line-height: 1.08;
+  }
+
+  #engraving .engraving-card-body p,
+  #gift-ideas .engraving-placeholder-copy p {
+    font-size: clamp(0.76rem, 0.9vw, 0.86rem);
+    line-height: 1.42;
+  }
+
+  #engraving .engraving-status {
+    top: 0.55rem;
+    left: 0.55rem;
+    padding: 0.35rem 0.58rem;
+    font-size: 0.6rem;
+  }
+
+  #engraving .engraving-tips {
+    max-width: min(980px, 78vw);
+    padding: clamp(0.9rem, 1.8dvh, 1.25rem) clamp(1rem, 1.7vw, 1.35rem);
+  }
+
+  #engraving .engraving-tips h3 {
+    margin-bottom: 0.65rem;
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    line-height: 1.08;
+  }
+
+  #engraving .engraving-tips ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.65rem, 1.35dvh, 0.95rem);
+    margin-bottom: 0.75rem;
+  }
+
+  #engraving .engraving-tips li {
+    padding-left: 1.8rem;
+    font-size: clamp(0.74rem, 0.86vw, 0.82rem);
+    line-height: 1.38;
+  }
+
+  #engraving .engraving-tips li::before {
+    width: 1.28rem;
+    height: 1.28rem;
+    font-size: 0.6rem;
+  }
+
+  #engraving .engraving-note {
+    padding-top: 0.65rem;
+    font-size: clamp(0.72rem, 0.85vw, 0.8rem);
+    line-height: 1.42;
+  }
+
+  #gift-ideas .engraving-showcase {
+    max-width: none;
+    margin: 0 auto;
+    padding-top: 0;
+  }
+
+  #gift-ideas .engraving-showcase-heading {
+    margin-bottom: clamp(1rem, 2.2dvh, 1.5rem);
+  }
+
+  #gift-ideas .engraving-placeholder-icon {
+    width: clamp(44px, 5.2dvh, 58px);
+    height: clamp(44px, 5.2dvh, 58px);
+    font-size: clamp(1.15rem, 2.1dvh, 1.45rem);
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 760px) {
+  #engraving,
+  #gift-ideas {
+    padding-top: calc(var(--desktop-nav-visible-h) + 0.55rem);
+    padding-bottom: 1rem;
+  }
+
+  #engraving .section-header,
+  #gift-ideas .section-header {
+    margin-bottom: 0.8rem;
+  }
+
+  #engraving .section-title,
+  #gift-ideas .section-title {
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    margin-bottom: 0.45rem;
+  }
+
+  #engraving .section-sub,
+  #gift-ideas .section-sub,
+  #gift-ideas .engraving-showcase-heading p:last-child {
+    font-size: clamp(0.76rem, 0.9vw, 0.84rem);
+    line-height: 1.38;
+  }
+
+  #engraving .engraving-grid,
+  #gift-ideas .engraving-placeholder-grid,
+  #engraving .engraving-tips {
+    max-width: min(900px, 76vw);
+  }
+
+  #engraving .engraving-card-body,
+  #gift-ideas .engraving-placeholder-copy {
+    padding: 0.7rem 0.82rem;
+  }
+
+  #engraving .engraving-card-body h3,
+  #gift-ideas .engraving-placeholder-copy h3 {
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+  }
+
+  #engraving .engraving-card-body p,
+  #gift-ideas .engraving-placeholder-copy p {
+    font-size: clamp(0.68rem, 0.78vw, 0.76rem);
+    line-height: 1.32;
+  }
+
+  #engraving .engraving-tips {
+    padding: 0.75rem 0.9rem;
+  }
+
+  #engraving .engraving-tips h3 {
+    margin-bottom: 0.45rem;
+    font-size: clamp(1rem, 1.45vw, 1.18rem);
+  }
+
+  #engraving .engraving-tips ul {
+    gap: 0.55rem;
+    margin-bottom: 0.55rem;
+  }
+
+  #engraving .engraving-tips li {
+    font-size: clamp(0.66rem, 0.76vw, 0.74rem);
+    line-height: 1.26;
+  }
+
+  #engraving .engraving-note {
+    font-size: clamp(0.66rem, 0.74vw, 0.74rem);
+    line-height: 1.3;
+  }
+}
+
+/* =========================================================
+   STRUCTURED MANUAL SCROLL
+   Native page scroll stays available inside #gallery.
+   Every other section behaves like a controlled stop.
+   ========================================================= */
+
+html.structured-scroll-enabled,
+html.structured-scroll-enabled body {
+  overscroll-behavior-y: contain;
+}
+
+section,
+.footer {
+  scroll-snap-stop: always;
+}
+
+#gallery {
+  scroll-snap-stop: normal;
+}
+
+
+/* =========================================================
+   FINAL LAYOUT PATCH
+   - Navbar labels must never wrap on desktop.
+   - Engraving and Gift Ideas are full snap stops.
+   - Gift Ideas content is centered and isolated from Pricing.
+   - Image/card proportions are kept; only scale is reduced.
+   ========================================================= */
+
+@media (min-width: 1280px) {
+  #navbar {
+    column-gap: clamp(0.35rem, 0.8vw, 0.9rem);
+  }
+
+  .nav-left {
+    min-width: 0;
+  }
+
+  .nav-logo {
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    min-width: 0;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: clamp(0.12rem, 0.35vw, 0.32rem);
+  }
+
+  .nav-links li {
+    flex: 0 0 auto;
+  }
+
+  .nav-link {
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    min-height: 34px;
+    padding: 0.45rem clamp(0.42rem, 0.58vw, 0.68rem);
+    font-size: clamp(0.62rem, 0.68vw, 0.76rem);
+    letter-spacing: clamp(0.035em, 0.055vw, 0.075em);
+    line-height: 1;
+  }
+
+  .nav-right {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1520px) {
+  .nav-logo span:last-child {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1180px) {
+  .lang-current {
+    width: 46px;
+    padding-inline: 0.45rem;
+  }
+
+  .lang-code {
+    display: none;
+  }
+
+  .nav-link {
+    padding-inline: 0.34rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+@media (min-width: 1280px) {
+  section:not(#gallery) {
+    /*
+      The controller lands 2px inside the section:
+      visible background = section height - anchor overlap.
+      100dvh + 2px therefore leaves exactly one full viewport.
+    */
+    min-height: calc(100dvh + var(--anchor-overlap));
+    background-clip: padding-box;
+  }
+
+  #engraving {
+    padding-top: calc(var(--desktop-nav-visible-h) + clamp(1.25rem, 3dvh, 2.35rem));
+    padding-bottom: clamp(2rem, 4dvh, 3.25rem);
+  }
+
+  #engraving .engraving-grid,
+  #engraving .engraving-tips {
+    max-width: min(1040px, 82vw);
+  }
+
+  #engraving .engraving-media {
+    aspect-ratio: 4 / 3;
+    max-height: min(26dvh, 245px);
+  }
+
+  #engraving .engraving-media img {
+    object-fit: contain;
+  }
+
+  #gift-ideas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: calc(var(--desktop-nav-visible-h) + clamp(1rem, 2.2dvh, 1.7rem));
+    padding-bottom: clamp(2.25rem, 5dvh, 4rem);
+    overflow: hidden;
+  }
+
+  #gift-ideas .engraving-showcase {
+    width: 100%;
+    max-width: min(1040px, 82vw);
+    margin-inline: auto;
+  }
+
+  #gift-ideas .engraving-showcase-heading {
+    max-width: 760px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  #gift-ideas .engraving-placeholder-grid {
+    width: 100%;
+    max-width: min(980px, 78vw);
+    margin-inline: auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #gift-ideas .engraving-placeholder {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #gift-ideas .engraving-placeholder-media {
+    aspect-ratio: 4 / 3;
+    max-height: min(24dvh, 220px);
+  }
+
+  #gift-ideas + #pricing {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 760px) {
+  #engraving {
+    padding-top: calc(var(--desktop-nav-visible-h) + 0.9rem);
+    padding-bottom: 1.35rem;
+  }
+
+  #engraving .engraving-media {
+    max-height: min(23dvh, 185px);
+  }
+
+  #gift-ideas {
+    padding-top: calc(var(--desktop-nav-visible-h) + 0.75rem);
+    padding-bottom: 1.5rem;
+  }
+
+  #gift-ideas .engraving-placeholder {
+    max-width: 270px;
+  }
+
+  #gift-ideas .engraving-placeholder-media {
+    max-height: min(22dvh, 170px);
+  }
+}
+
+/* Bilder vollständig anzeigen, Beschriftungen außerhalb der Bildfläche halten. */
 #engraving .engraving-media {
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   width: 100%;
   height: auto;
   min-height: 0;
@@ -1652,6 +2392,72 @@ em { font-style: italic; color: var(--walnut); }
   padding: 1rem;
   overflow: visible;
   background: #fffdf8;
+}
+
+#engraving .engraving-status {
+  position: static;
+  align-self: flex-start;
+  order: -1;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+.nav-logo { text-decoration: none; }
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--cream);
+  color: var(--walnut-dark);
+  border-radius: var(--radius);
+  transform: translateY(-150%);
+}
+.skip-link:focus { transform: none; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.lang-dropdown { visibility: hidden; left: 0; right: auto; transform-origin: top left; }
+.lang-switcher.open .lang-dropdown { visibility: visible; }
+.footer-copy, .footer-tagline { color: rgba(245,237,224,0.78); }
+.contact-item { overflow-wrap: anywhere; min-width: 0; }
+.form-group { min-width: 0; }
+
+@media (max-width: 1279px) {
+  .nav-links {
+    visibility: hidden;
+    overflow-y: auto;
+    padding: calc(var(--nav-h) + 1rem) 1rem max(1rem, env(safe-area-inset-bottom));
+    justify-content: flex-start;
+    gap: clamp(0.25rem, 1.5svh, 1rem);
+  }
+  .nav-links.open { visibility: visible; }
+  .nav-link { min-height: 44px; font-size: 1rem; padding: 0.7rem 1rem; }
+  .lang-current { min-height: 44px; }
+  .hamburger { min-width: 44px; min-height: 44px; justify-content: center; }
+  .hero-title { font-size: clamp(2.5rem, 9vw, 4rem); overflow-wrap: anywhere; }
+  .form-group input, .form-group select, .form-group textarea { font-size: 1rem; }
+  .gallery-grid { columns: 2; }
+  .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid { columns: 1; }
+  .process-grid { grid-template-columns: 1fr; }
+  .scroll-cue { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media (min-width: 1280px) {
+  .nav-logo span:last-child { display: inline; }
+  .nav-link { font-size: 0.72rem; letter-spacing: 0.03em; padding-inline: 0.45rem; }
+  #engraving .engraving-card-body p,
+  #gift-ideas .engraving-placeholder-copy p { font-size: 0.9rem; line-height: 1.55; }
+  .hero-title { overflow-wrap: anywhere; }
 }
 
 #engraving .engraving-media img {
@@ -1677,148 +2483,3 @@ em { font-style: italic; color: var(--walnut); }
     max-height: 230px;
   }
 }
-
-/* =========================================
-   Language Switcher
-   ========================================= */
-.nav-right {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-}
-
-.lang-switcher {
-  position: relative;
-}
-
-.lang-current {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  width: 72px;
-  background: transparent;
-  border: 1px solid rgba(168, 124, 56, 0.5);
-  border-radius: 100px;
-  padding: 0.3rem 0.75rem 0.3rem 0.5rem;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: #a87c38;
-  /* slightly darker gold ΓÇö resting state */
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-  white-space: nowrap;
-}
-
-#navbar.scrolled .lang-current {
-  border-color: rgba(107,62,38,0.3);
-}
-
-/* On dark hero (not scrolled), make it light */
-#navbar:not(.scrolled) .lang-current {
-  border-color: rgba(245,237,224,0.3);
-  color: var(--cream);
-}
-
-.lang-current:hover {
-  background: rgba(196, 150, 74, 0.12);
-  border-color: var(--gold);
-  color: var(--gold);
-  /* full gold on hover */
-}
-
-#navbar:not(.scrolled) .lang-current:hover {
-  background: rgba(196, 150, 74, 0.15);
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-.lang-flag { font-size: 1rem; line-height: 1; }
-.lang-code { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; }
-
-.lang-arrow {
-  width: 8px;
-  height: 5px;
-  stroke: currentColor;
-  transition: transform 0.25s var(--transition);
-  flex-shrink: 0;
-}
-
-.lang-switcher.open .lang-arrow { transform: rotate(180deg); }
-
-.lang-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: var(--cream);
-  border: 1px solid var(--linen);
-  border-radius: 10px;
-  box-shadow: 0 12px 40px rgba(42,31,20,0.15), 0 2px 8px rgba(42,31,20,0.08);
-  overflow: hidden;
-  min-width: 140px;
-  opacity: 0;
-  transform: translateY(-8px) scale(0.97);
-  pointer-events: none;
-  transition: opacity 0.2s var(--transition), transform 0.2s var(--transition);
-  transform-origin: top right;
-  z-index: 300;
-}
-
-.lang-switcher.open .lang-dropdown {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: all;
-}
-
-.lang-option {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 0.7rem 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  color: var(--text);
-  text-align: left;
-  transition: background 0.15s, color 0.15s;
-  border-bottom: 1px solid transparent;
-}
-
-.lang-option:not(:last-child) { border-bottom-color: var(--linen); }
-
-.lang-option:hover { background: var(--parchment); color: var(--walnut-dark); }
-
-.lang-option.active {
-  color: var(--walnut-dark);
-  font-weight: 500;
-  background: var(--linen);
-}
-
-.lang-option span:first-child { font-size: 1.1rem; }
-
-/* Language transition flash */
-body.lang-switching [data-i18n] {
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-
-body [data-i18n] {
-  transition: opacity 0.15s;
-}
-
-/* Mobile adjustments */
-@media (max-width: 1024px) {
-  #navbar { justify-content: space-between; }
-  .nav-left { gap: 0.6rem; }
-  .nav-logo { font-size: 1rem; }
-  .nav-right { margin-left: auto; }
-  .lang-code { display: none; }
-  .lang-current { width: 42px; padding: 0.3rem 0.5rem; gap: 0.2rem; }
-  .lang-dropdown { right: 0; }
-}
-

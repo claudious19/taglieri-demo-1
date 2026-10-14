@@ -28,10 +28,19 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Validate website
+        run: node scripts/check-site.cjs
+
+      - name: Prepare published files
+        run: |
+          mkdir _site
+          cp index.html style.css main.js _site/
+          cp -R images _site/images
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment

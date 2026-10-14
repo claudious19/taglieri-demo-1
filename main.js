@@ -1,14 +1,11 @@
-/* =========================================
-   I Taglieri di Roby — main.js (FULLY WORKING)
-   ========================================= */
-
-// ✦ Complete Translations ✦
+// Texte und Bildbeschreibungen für alle vier Sprachen.
 const translations = {
-  it: {
+  "it": {
     "nav.home": "Home",
     "nav.about": "Chi sono",
     "nav.gallery": "Galleria",
     "nav.engraving": "Incisione laser",
+    "nav.gifts": "Idee regalo",
     "nav.pricing": "Prezzi",
     "nav.maintenance": "Manutenzione",
     "nav.contact": "Contatti",
@@ -48,8 +45,8 @@ const translations = {
     "engraving.sub": "Nomi, date, dediche, loghi e immagini possono trasformare un tagliere in un ricordo unico. Puoi inviare una silhouette o una foto normale: verifico io che i dettagli importanti restino riconoscibili nella conversione in bianco e nero.",
     "engraving.examples.label": "Idee regalo",
     "engraving.examples.title": "Esempi di <em>incisioni personalizzate</em>",
-    "engraving.examples.sub": "Questi spazi sono pronti per mostrare fotografie di lavori reali e aiutare ogni cliente a immaginare il proprio regalo.",
-    "engraving.placeholder": "Foto incisione",
+    "engraving.examples.sub": "Un nome, una dedica o un simbolo: scopri alcune idee per un regalo personale. Le fotografie delle incisioni saranno aggiunte qui.",
+    "engraving.placeholder": "Foto in arrivo",
     "engraving.example1.title": "Nomi, date e dediche",
     "engraving.example1.desc": "Per matrimoni, anniversari, compleanni, nascite e momenti da ricordare.",
     "engraving.example1.aria": "Spazio per una fotografia di un tagliere con nomi, data o dedica",
@@ -77,7 +74,7 @@ const translations = {
     "engraving.tip3": "Qualsiasi foto normale: la valuto io e ti comunico se è adatta o se necessita di modifiche.",
     "engraving.note": "Non devi convertire o modificare la foto da solo. Prima dell'incisione verifico che il passaggio al bianco e nero conservi gli elementi che vuoi vedere sul legno.",
     "pricing.label": "Investimento",
-    "pricing.sub": "Ogni pezzo è unico — i prezzi variano in base al legno, alle dimensioni e alla complessità. Questi sono range indicativi.",
+    "pricing.sub": "Ogni pezzo è unico. I prezzi indicati variano in base al legno, alle dimensioni e alla personalizzazione. Il tagliere per pizza al metro costa CHF 160.",
     "pricing.from": "da",
     "pricing.popular": "Più richiesto",
     "pricing.s.title": "Piccolo",
@@ -86,7 +83,7 @@ const translations = {
     "pricing.s.f2": "✦ Finitura con olio naturale",
     "pricing.s.f3": "✦ Bordi levigati a mano",
     "pricing.m.title": "Medio",
-    "pricing.m.desc": "Formato ideale per uso quotidiano. Dimensioni tra 30 × 20 cm e 45 × 30 cm.",
+    "pricing.m.desc": "Il formato ideale per uso quotidiano. Dimensioni tra 30 × 20 cm e 45 × 30 cm.",
     "pricing.m.f1": "✦ Noce, Ciliegio o Rovere",
     "pricing.m.f2": "✦ Finitura con olio di lino",
     "pricing.m.f3": "✦ Personalizzazione disponibile",
@@ -103,23 +100,23 @@ const translations = {
     "pricing.l.f2": "✦ Incisione personalizzata",
     "pricing.l.f3": "✦ Cofanetto regalo incluso",
     "pricing.l.f4": "✦ Certificato di autenticità",
-    "pricing.note": "Contattami per un preventivo personalizzato. Realizzo anche pezzi su commissione per regali e occasioni speciali.",
+    "pricing.note": "Contattami per un preventivo personalizzato. Creo anche pezzi su commissione per regali e occasioni speciali.",
     "maint.label": "Cura del prodotto",
     "maint.sub": "Un tagliere in legno ben curato dura una vita. Segui questi semplici consigli.",
     "maint.1.title": "Lavaggio",
-    "maint.1.desc": "Lava a mano con acqua tiepida e sapone neutro. Non immergere mai in acqua e non mettere in lavastoviglie — il legno potrebbe screpolarsi.",
+    "maint.1.desc": "Lava a mano con acqua tiepida e sapone neutro. Non immergere il tagliere in acqua e non metterlo in lavastoviglie: il legno potrebbe screpolarsi.",
     "maint.1.freq": "Dopo ogni utilizzo",
     "maint.2.title": "Asciugatura",
-    "maint.2.desc": "Asciuga subito con un panno morbido e lascia asciugare il tagliere in verticale. Evita sole diretto e fonti di calore.",
-    "maint.2.freq": "Subito dopo il lavaggio",
+    "maint.2.desc": "Asciuga subito con un panno morbido e lascia il tagliere in verticale ad asciugare all'aria aperta. Evita il contatto diretto con il sole o fonti di calore.",
+    "maint.2.freq": "Immediatamente dopo il lavaggio",
     "maint.3.title": "Oliatura",
-    "maint.3.desc": "Ogni 4–6 settimane applica un sottile strato di olio di lino o olio minerale alimentare.",
+    "maint.3.desc": "Ogni 4–6 settimane, o quando il legno appare asciutto, applica un olio specifico per taglieri e idoneo al contatto alimentare, seguendo le istruzioni del prodotto.",
     "maint.3.freq": "Ogni 4–6 settimane",
     "maint.4.title": "Rigenerazione",
-    "maint.4.desc": "Se il legno mostra segni d'usura, levigalo delicatamente con carta abrasiva fine (grana 220) seguendo la venatura e applica nuovamente l'olio.",
+    "maint.4.desc": "Se il legno si segna con il tempo, levigalo delicatamente con carta vetrata fine (grana 220) seguendo la venatura, poi riapplica l'olio. Tornerà come nuovo.",
     "maint.4.freq": "Quando necessario",
     "maint.tip.label": "Consiglio di Roby:",
-    "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita.",
+    "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita. Con le giuste cure, migliorerà con il tempo, proprio come il vino.",
     "contact.label": "Parliamoci",
     "contact.sub": "Compila il modulo: verrà preparato un messaggio con tutti i dettagli e si aprirà direttamente la chat WhatsApp di Roby.",
     "contact.phone": "Telefono",
@@ -129,7 +126,7 @@ const translations = {
     "contact.lastName": "Cognome",
     "contact.email": "Email di backup",
     "contact.email.placeholder": "nome@esempio.ch",
-    "contact.email.help": "Viene inclusa nel messaggio come contatto alternativo nel caso WhatsApp non dovesse funzionare.",
+    "contact.email.help": "La tua email viene inclusa nel messaggio come contatto alternativo. Se WhatsApp non si apre, puoi contattare Roby tramite email o telefono.",
     "contact.choose": "Seleziona",
     "contact.size": "Misura del tagliere",
     "contact.size.small": "Piccola",
@@ -158,7 +155,7 @@ const translations = {
     "contact.submit": "Prepara il messaggio WhatsApp",
     "contact.privacy": "I dati non vengono salvati: servono soltanto a comporre il messaggio che aprirai su WhatsApp.",
     "contact.whatsapp.greeting": "Ciao Roby!",
-    "contact.whatsapp.intro": "Vorrei richiedere informazioni per un regalo personalizzato con incisione.",
+    "contact.whatsapp.intro": "Vorrei informazioni per un tagliere o un regalo personalizzato.",
     "contact.whatsapp.name": "Nome e cognome",
     "contact.whatsapp.email": "Email di backup",
     "contact.whatsapp.size": "Misura",
@@ -167,14 +164,48 @@ const translations = {
     "contact.whatsapp.notes": "Altri dettagli",
     "contact.whatsapp.attachment": "Aggiungerò manualmente in questa chat la foto o il file per l'incisione.",
     "footer.tagline": "Regali personalizzati in legno & incisioni laser · Svizzera",
-    "footer.copy": "© 2025 Roberto — Tutti i diritti riservati"
+    "footer.copy": "© 2025 Roberto — Tutti i diritti riservati",
+    "access.skip": "Vai al contenuto",
+    "access.language": "Cambia lingua",
+    "access.menu": "Menu di navigazione",
+    "meta.title": "I Taglieri di Roby | Regali in legno e incisioni laser",
+    "meta.description": "Taglieri artigianali, regali personalizzati e incisioni laser realizzati a mano in Svizzera.",
+    "hero.alt": "Collezione di taglieri artigianali in legno",
+    "about.alt": "Banco da lavoro di Roberto con tavole e taglieri in preparazione",
+    "process.alt1": "Forme diverse di taglieri grezzi in bottega",
+    "process.alt2": "Banco da falegname con tavole, utensili e segatura",
+    "process.alt3": "Tavole e sagome di legno selezionate per nuovi taglieri",
+    "process.alt4": "Taglieri appena sagomati sul banco di lavoro",
+    "gallery.solidOak": "Rovere massello",
+    "gallery.naturalShape": "Forma naturale",
+    "gallery.liveEdge": "Bordo naturale",
+    "gallery.handEngraving": "Incisione artigianale",
+    "gallery.signature": "Firma di Roby",
+    "gallery.slim": "Profilo sottile",
+    "gallery.pair": "Coppia coordinata",
+    "gallery.grain": "Venatura intensa",
+    "gallery.shapes": "Forme naturali",
+    "gallery.feetDetail": "Dettaglio dei piedini",
+    "gallery.feet": "Con piedini",
+    "gallery.compact": "Formato compatto",
+    "gallery.unique": "Pezzo unico",
+    "gallery.table": "In tavola",
+    "gallery.serving": "Tagliere da portata",
+    "gallery.shaped": "Sagomati a mano",
+    "gallery.organic": "Forma organica",
+    "gallery.long": "Formato lungo",
+    "gallery.extraLong": "Extra lungo",
+    "gallery.reclaimed": "Legno recuperato",
+    "gallery.customEngraving": "Incisione personalizzata",
+    "gallery.reclaimedHandles": "Maniglie recuperate",
+    "gallery.trays": "Vassoi da portata"
   },
-
-  en: {
+  "en": {
     "nav.home": "Home",
     "nav.about": "About me",
     "nav.gallery": "Gallery",
     "nav.engraving": "Laser engraving",
+    "nav.gifts": "Gift ideas",
     "nav.pricing": "Pricing",
     "nav.maintenance": "Care",
     "nav.contact": "Contact",
@@ -211,11 +242,11 @@ const translations = {
     "process.step4": "Shaped by hand",
     "engraving.label": "Engraving & gifts",
     "engraving.title": "Your idea becomes a <em>personal gift</em>",
-    "engraving.sub": "Names, dates, dedications, logos, and images can turn a cutting board into a unique keepsake. Send a silhouette or a normal photo: I check that the important details remain recognizable after conversion to black and white.",
+    "engraving.sub": "Names, dates, dedications, logos, and images can turn a cutting board into a unique keepsake. Send a silhouette or a normal photo: I check that important details remain recognizable after conversion to black and white.",
     "engraving.examples.label": "Gift ideas",
     "engraving.examples.title": "Examples of <em>personalized engravings</em>",
-    "engraving.examples.sub": "These spaces are ready for photos of real work, helping each customer picture their own gift.",
-    "engraving.placeholder": "Engraving photo",
+    "engraving.examples.sub": "A name, a dedication or a symbol: explore ideas for a personal gift. Photos of the engravings will be added here.",
+    "engraving.placeholder": "Photo coming soon",
     "engraving.example1.title": "Names, dates, and dedications",
     "engraving.example1.desc": "For weddings, anniversaries, birthdays, births, and moments worth remembering.",
     "engraving.example1.aria": "Space for a photo of a cutting board with names, a date, or a dedication",
@@ -243,7 +274,7 @@ const translations = {
     "engraving.tip3": "Any normal photo: I assess it and tell you whether it is suitable or needs adjustments.",
     "engraving.note": "You do not need to convert or edit the photo yourself. Before engraving, I check that the black-and-white conversion preserves the elements you want to see on the wood.",
     "pricing.label": "Investment",
-    "pricing.sub": "Each piece is unique — prices vary based on wood type, size, and complexity. These are indicative ranges.",
+    "pricing.sub": "Each piece is unique. The listed prices vary with wood, size and customization. The meter-long pizza board costs CHF 160.",
     "pricing.from": "from",
     "pricing.popular": "Most requested",
     "pricing.s.title": "Small",
@@ -279,7 +310,7 @@ const translations = {
     "maint.2.desc": "Dry immediately with a soft cloth and let the board dry vertically. Avoid direct sunlight and heat sources.",
     "maint.2.freq": "Immediately after washing",
     "maint.3.title": "Oiling",
-    "maint.3.desc": "Every 4–6 weeks, apply a thin layer of linseed oil or food-grade mineral oil.",
+    "maint.3.desc": "Every 4–6 weeks, or when the wood looks dry, apply an oil made for cutting boards and suitable for food contact, following the product instructions.",
     "maint.3.freq": "Every 4–6 weeks",
     "maint.4.title": "Regeneration",
     "maint.4.desc": "If the wood shows signs of wear, gently sand it with fine abrasive paper (220 grit) following the grain, then reapply oil.",
@@ -295,7 +326,7 @@ const translations = {
     "contact.lastName": "Last name",
     "contact.email": "Backup email",
     "contact.email.placeholder": "name@example.ch",
-    "contact.email.help": "It is included as an alternative contact in case the customer's WhatsApp does not work.",
+    "contact.email.help": "Your email is included in the message as an alternative contact. If WhatsApp does not open, you can contact Roby by email or phone.",
     "contact.choose": "Select",
     "contact.size": "Cutting board size",
     "contact.size.small": "Small",
@@ -324,7 +355,7 @@ const translations = {
     "contact.submit": "Prepare WhatsApp message",
     "contact.privacy": "Your data is not stored. It is used only to compose the message you will open in WhatsApp.",
     "contact.whatsapp.greeting": "Hello Roby!",
-    "contact.whatsapp.intro": "I would like information about a personalized engraved gift.",
+    "contact.whatsapp.intro": "I would like information about a cutting board or a personalized gift.",
     "contact.whatsapp.name": "Full name",
     "contact.whatsapp.email": "Backup email",
     "contact.whatsapp.size": "Size",
@@ -333,14 +364,48 @@ const translations = {
     "contact.whatsapp.notes": "Other details",
     "contact.whatsapp.attachment": "I will manually attach the engraving photo or file in this chat.",
     "footer.tagline": "Personalized wooden gifts & laser engraving · Switzerland",
-    "footer.copy": "© 2025 Roberto — All rights reserved"
+    "footer.copy": "© 2025 Roberto — All rights reserved",
+    "access.skip": "Skip to content",
+    "access.language": "Change language",
+    "access.menu": "Navigation menu",
+    "meta.title": "I Taglieri di Roby | Wooden gifts and laser engraving",
+    "meta.description": "Handcrafted cutting boards, personalized wooden gifts and laser engraving made in Switzerland.",
+    "hero.alt": "Collection of handcrafted wooden cutting boards",
+    "about.alt": "Roberto’s workbench with wood and cutting boards in progress",
+    "process.alt1": "Different shapes of unfinished boards in the workshop",
+    "process.alt2": "Carpenter’s workbench with boards, tools and sawdust",
+    "process.alt3": "Wood and templates selected for new cutting boards",
+    "process.alt4": "Newly shaped cutting boards on the workbench",
+    "gallery.solidOak": "Solid oak",
+    "gallery.naturalShape": "Natural shape",
+    "gallery.liveEdge": "Live edge",
+    "gallery.handEngraving": "Artisan engraving",
+    "gallery.signature": "Roby’s signature",
+    "gallery.slim": "Slim profile",
+    "gallery.pair": "Matching pair",
+    "gallery.grain": "Distinctive grain",
+    "gallery.shapes": "Natural shapes",
+    "gallery.feetDetail": "Detail of the feet",
+    "gallery.feet": "With feet",
+    "gallery.compact": "Compact size",
+    "gallery.unique": "One of a kind",
+    "gallery.table": "At the table",
+    "gallery.serving": "Serving board",
+    "gallery.shaped": "Shaped by hand",
+    "gallery.organic": "Organic shape",
+    "gallery.long": "Long format",
+    "gallery.extraLong": "Extra long",
+    "gallery.reclaimed": "Reclaimed wood",
+    "gallery.customEngraving": "Custom engraving",
+    "gallery.reclaimedHandles": "Reclaimed handles",
+    "gallery.trays": "Serving trays"
   },
-
-  de: {
+  "de": {
     "nav.home": "Startseite",
     "nav.about": "Über mich",
     "nav.gallery": "Galerie",
     "nav.engraving": "Lasergravur",
+    "nav.gifts": "Geschenkideen",
     "nav.pricing": "Preise",
     "nav.maintenance": "Pflege",
     "nav.contact": "Kontakt",
@@ -363,10 +428,10 @@ const translations = {
     "gallery.upcycled": "Upcycled",
     "gallery.engraved": "Mit Gravur",
     "gallery.item1.name": "Großes Schneidebrett",
-    "gallery.item2.name": "Ovale Schneidebrett",
+    "gallery.item2.name": "Ovales Schneidebrett",
     "gallery.item3.name": "Schneidebrett mit Griff",
     "gallery.item4.name": "Mittleres Schneidebrett",
-    "gallery.item5.name": "Personalisierte Schneidebrett",
+    "gallery.item5.name": "Personalisiertes Schneidebrett",
     "gallery.item6.name": "Kleines ovales Schneidebrett",
     "process.label": "In der Werkstatt",
     "process.title": "Vom Holz zum <em>Schneidebrett</em>",
@@ -380,8 +445,8 @@ const translations = {
     "engraving.sub": "Namen, Daten, Widmungen, Logos und Bilder machen aus einem Schneidebrett ein einzigartiges Erinnerungsstück. Sende eine Silhouette oder ein normales Foto: Ich prüfe, ob wichtige Details bei der Umwandlung in Schwarz-Weiß erhalten bleiben.",
     "engraving.examples.label": "Geschenkideen",
     "engraving.examples.title": "Beispiele für <em>persönliche Gravuren</em>",
-    "engraving.examples.sub": "Diese Flächen sind für Fotos echter Arbeiten vorbereitet und helfen Kunden, sich ihr eigenes Geschenk vorzustellen.",
-    "engraving.placeholder": "Gravurfoto",
+    "engraving.examples.sub": "Ein Name, eine Widmung oder ein Symbol: Entdecke Ideen für ein persönliches Geschenk. Fotos der Gravuren folgen hier.",
+    "engraving.placeholder": "Foto folgt",
     "engraving.example1.title": "Namen, Daten und Widmungen",
     "engraving.example1.desc": "Für Hochzeiten, Jubiläen, Geburtstage, Geburten und besondere Erinnerungen.",
     "engraving.example1.aria": "Platz für ein Foto eines Schneidebretts mit Namen, Datum oder Widmung",
@@ -409,7 +474,7 @@ const translations = {
     "engraving.tip3": "Ein beliebiges normales Foto: Ich prüfe, ob es geeignet ist oder angepasst werden muss.",
     "engraving.note": "Du musst das Foto nicht selbst umwandeln oder bearbeiten. Vor der Gravur prüfe ich, ob bei der Schwarz-Weiß-Umwandlung die gewünschten Elemente erhalten bleiben.",
     "pricing.label": "Investition",
-    "pricing.sub": "Jedes Stück ist einzigartig — die Preise variieren je nach Holzart, Größe und Komplexität. Dies sind Richtwerte.",
+    "pricing.sub": "Jedes Stück ist einzigartig. Die angegebenen Preise variieren je nach Holz, Größe und Personalisierung. Das Meterpizza-Brett kostet CHF 160.",
     "pricing.from": "ab",
     "pricing.popular": "Am gefragtesten",
     "pricing.s.title": "Klein",
@@ -435,9 +500,9 @@ const translations = {
     "pricing.l.f2": "✦ Individuelle Gravur",
     "pricing.l.f3": "✦ Geschenkbox inklusive",
     "pricing.l.f4": "✦ Echtheitszertifikat",
-    "pricing.note": "Kontaktieren Sie mich für ein individuelles Angebot. Ich fertige auch Auftragsarbeiten für Geschenke und besondere Anlässe an.",
+    "pricing.note": "Kontaktiere mich für ein individuelles Angebot. Ich fertige auch Auftragsarbeiten für Geschenke und besondere Anlässe an.",
     "maint.label": "Produktpflege",
-    "maint.sub": "Ein gut gepflegtes Holzschneidebrett hält ein Leben lang. Befolgen Sie diese einfachen Tipps.",
+    "maint.sub": "Ein gut gepflegtes Holzschneidebrett hält lange. Beachte diese einfachen Pflegetipps.",
     "maint.1.title": "Reinigung",
     "maint.1.desc": "Mit lauwarmem Wasser und milder Seife von Hand waschen. Niemals in Wasser einweichen oder in die Spülmaschine geben — das Holz könnte reißen.",
     "maint.1.freq": "Nach jedem Gebrauch",
@@ -445,15 +510,15 @@ const translations = {
     "maint.2.desc": "Sofort mit einem weichen Tuch trocknen und das Brett senkrecht trocknen lassen. Direkte Sonneneinstrahlung und Wärmequellen vermeiden.",
     "maint.2.freq": "Sofort nach dem Waschen",
     "maint.3.title": "Ölen",
-    "maint.3.desc": "Alle 4–6 Wochen eine dünne Schicht Leinöl oder lebensmittelechtes Mineralöl auftragen.",
+    "maint.3.desc": "Trage alle 4–6 Wochen oder bei trocken wirkendem Holz ein für Schneidebretter geeignetes, lebensmittelechtes Pflegeöl nach Herstellerangaben auf.",
     "maint.3.freq": "Alle 4–6 Wochen",
     "maint.4.title": "Regenerierung",
     "maint.4.desc": "Wenn das Holz Abnutzungserscheinungen zeigt, vorsichtig mit feinem Schleifpapier (Körnung 220) entlang der Maserung schleifen und anschließend neu ölen.",
     "maint.4.freq": "Bei Bedarf",
     "maint.tip.label": "Robys Tipp:",
     "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
-    "contact.label": "Sprechen wir",
-    "contact.sub": "Füllen Sie das Formular aus: Eine Nachricht mit allen Angaben wird vorbereitet und Robys WhatsApp-Chat direkt geöffnet.",
+    "contact.label": "Lass uns sprechen",
+    "contact.sub": "Fülle das Formular aus: Eine Nachricht mit allen Angaben wird vorbereitet und Robys WhatsApp-Chat geöffnet.",
     "contact.phone": "Telefon",
     "contact.form.title": "Persönliches Geschenk anfragen",
     "contact.form.intro": "Wähle Brett, Holz und Gravur. Die Anfrage kann vor dem Senden über WhatsApp geprüft und geändert werden.",
@@ -461,7 +526,7 @@ const translations = {
     "contact.lastName": "Nachname",
     "contact.email": "E-Mail als Ersatzkontakt",
     "contact.email.placeholder": "name@beispiel.ch",
-    "contact.email.help": "Sie wird als alternativer Kontakt angegeben, falls WhatsApp beim Kunden nicht funktionieren sollte.",
+    "contact.email.help": "Deine E-Mail wird als Ersatzkontakt in die Nachricht aufgenommen. Öffnet sich WhatsApp nicht, erreichst du Roby per E-Mail oder Telefon.",
     "contact.choose": "Auswählen",
     "contact.size": "Größe des Schneidebretts",
     "contact.size.small": "Klein",
@@ -481,16 +546,16 @@ const translations = {
     "contact.customWood": "Gewünschte Holzart",
     "contact.customWood.placeholder": "Holzart angeben",
     "contact.wood.note": "Der Preis kann je nach Holzart und Verfügbarkeit variieren, besonders bei speziellen Wünschen.",
-    "contact.engraving": "Möchten Sie eine Gravur?",
+    "contact.engraving": "Möchtest du eine Gravur?",
     "contact.no": "Nein",
     "contact.yes": "Ja",
-    "contact.engraving.note": "Fügen Sie nach dem Öffnen von WhatsApp das Foto oder die Datei für die Gravur manuell im Chat hinzu.",
+    "contact.engraving.note": "Füge nach dem Öffnen von WhatsApp das Foto oder die Datei für die Gravur manuell im Chat hinzu.",
     "contact.notes": "Weitere Angaben",
     "contact.notes.placeholder": "Form, Verwendungszweck, gewünschter Termin oder andere Wünsche",
     "contact.submit": "WhatsApp-Nachricht vorbereiten",
     "contact.privacy": "Die Daten werden nicht gespeichert. Sie dienen nur zum Erstellen der Nachricht, die in WhatsApp geöffnet wird.",
     "contact.whatsapp.greeting": "Hallo Roby!",
-    "contact.whatsapp.intro": "Ich interessiere mich für ein personalisiertes Geschenk mit Gravur.",
+    "contact.whatsapp.intro": "Ich interessiere mich für ein Schneidebrett oder ein persönliches Geschenk.",
     "contact.whatsapp.name": "Vor- und Nachname",
     "contact.whatsapp.email": "E-Mail als Ersatzkontakt",
     "contact.whatsapp.size": "Größe",
@@ -499,10 +564,43 @@ const translations = {
     "contact.whatsapp.notes": "Weitere Angaben",
     "contact.whatsapp.attachment": "Ich füge das Foto oder die Datei für die Gravur manuell in diesem Chat hinzu.",
     "footer.tagline": "Personalisierte Holzgeschenke & Lasergravuren · Schweiz",
-    "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten"
+    "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten",
+    "access.skip": "Zum Inhalt springen",
+    "access.language": "Sprache ändern",
+    "access.menu": "Navigationsmenü",
+    "meta.title": "I Taglieri di Roby | Holzgeschenke und Lasergravuren",
+    "meta.description": "Handgefertigte Schneidebretter, persönliche Holzgeschenke und Lasergravuren aus der Schweiz.",
+    "hero.alt": "Sammlung handgefertigter Holzschneidebretter",
+    "about.alt": "Robertos Werkbank mit Holz und Schneidebrettern in Arbeit",
+    "process.alt1": "Verschiedene Formen unbearbeiteter Bretter in der Werkstatt",
+    "process.alt2": "Werkbank mit Brettern, Werkzeugen und Sägespänen",
+    "process.alt3": "Holz und Schablonen für neue Schneidebretter",
+    "process.alt4": "Frisch geformte Schneidebretter auf der Werkbank",
+    "gallery.solidOak": "Massive Eiche",
+    "gallery.naturalShape": "Natürliche Form",
+    "gallery.liveEdge": "Naturkante",
+    "gallery.handEngraving": "Handwerkliche Gravur",
+    "gallery.signature": "Robys Signatur",
+    "gallery.slim": "Schlankes Profil",
+    "gallery.pair": "Passendes Paar",
+    "gallery.grain": "Ausdrucksvolle Maserung",
+    "gallery.shapes": "Natürliche Formen",
+    "gallery.feetDetail": "Detail der Füße",
+    "gallery.feet": "Mit Füßen",
+    "gallery.compact": "Kompaktes Format",
+    "gallery.unique": "Einzelstück",
+    "gallery.table": "Auf dem Tisch",
+    "gallery.serving": "Servierbrett",
+    "gallery.shaped": "Von Hand geformt",
+    "gallery.organic": "Organische Form",
+    "gallery.long": "Langes Format",
+    "gallery.extraLong": "Extralang",
+    "gallery.reclaimed": "Wiederverwendetes Holz",
+    "gallery.customEngraving": "Persönliche Gravur",
+    "gallery.reclaimedHandles": "Wiederverwendete Griffe",
+    "gallery.trays": "Serviertabletts"
   },
-
-  fr: {
+  "fr": {
     "nav.home": "Accueil",
     "nav.about": "À propos",
     "nav.gallery": "Galerie",
@@ -546,8 +644,8 @@ const translations = {
     "engraving.sub": "Noms, dates, dédicaces, logos et images transforment une planche en souvenir unique. Envoyez une silhouette ou une photo normale : je vérifie que les détails importants restent reconnaissables après la conversion en noir et blanc.",
     "engraving.examples.label": "Idées cadeaux",
     "engraving.examples.title": "Exemples de <em>gravures personnalisées</em>",
-    "engraving.examples.sub": "Ces espaces sont prêts à accueillir des photos de réalisations et à aider chaque client à imaginer son cadeau.",
-    "engraving.placeholder": "Photo de gravure",
+    "engraving.examples.sub": "Un nom, une dédicace ou un symbole : découvrez des idées de cadeaux personnels. Les photos des gravures seront ajoutées ici.",
+    "engraving.placeholder": "Photo à venir",
     "engraving.example1.title": "Noms, dates et dédicaces",
     "engraving.example1.desc": "Pour les mariages, anniversaires, naissances et les moments à ne pas oublier.",
     "engraving.example1.aria": "Espace pour une photo de planche avec noms, date ou dédicace",
@@ -575,7 +673,7 @@ const translations = {
     "engraving.tip3": "N'importe quelle photo normale : je vérifie si elle convient ou si elle nécessite des adaptations.",
     "engraving.note": "Vous n'avez pas besoin de convertir ou modifier la photo vous-même. Avant la gravure, je vérifie que la conversion en noir et blanc conserve les éléments que vous souhaitez voir sur le bois.",
     "pricing.label": "Investissement",
-    "pricing.sub": "Chaque pièce est unique — les prix varient selon le bois, les dimensions et la complexité. Ce sont des fourchettes indicatives.",
+    "pricing.sub": "Chaque pièce est unique. Les prix indiqués varient selon le bois, les dimensions et la personnalisation. La planche pour pizza au mètre coûte CHF 160.",
     "pricing.from": "à partir de",
     "pricing.popular": "Le plus demandé",
     "pricing.s.title": "Petit",
@@ -611,7 +709,7 @@ const translations = {
     "maint.2.desc": "Séchez immédiatement avec un chiffon doux et laissez la planche sécher verticalement. Évitez le soleil direct et les sources de chaleur.",
     "maint.2.freq": "Immédiatement après le lavage",
     "maint.3.title": "Huilage",
-    "maint.3.desc": "Toutes les 4 à 6 semaines, appliquez une fine couche d'huile de lin ou d'huile minérale alimentaire.",
+    "maint.3.desc": "Toutes les 4 à 6 semaines, ou lorsque le bois semble sec, appliquez une huile adaptée aux planches et au contact alimentaire, en suivant les instructions du produit.",
     "maint.3.freq": "Toutes les 4 à 6 semaines",
     "maint.4.title": "Régénération",
     "maint.4.desc": "Si le bois montre des signes d'usure, poncez-le délicatement avec du papier abrasif fin (grain 220) en suivant le grain, puis réappliquez l'huile.",
@@ -627,7 +725,7 @@ const translations = {
     "contact.lastName": "Nom",
     "contact.email": "E-mail de secours",
     "contact.email.placeholder": "nom@exemple.ch",
-    "contact.email.help": "Il est inclus comme contact alternatif si le WhatsApp du client ne fonctionne pas.",
+    "contact.email.help": "Votre e-mail est inclus dans le message comme contact alternatif. Si WhatsApp ne s’ouvre pas, contactez Roby par e-mail ou téléphone.",
     "contact.choose": "Sélectionner",
     "contact.size": "Dimensions de la planche",
     "contact.size.small": "Petite",
@@ -656,7 +754,7 @@ const translations = {
     "contact.submit": "Préparer le message WhatsApp",
     "contact.privacy": "Les données ne sont pas enregistrées. Elles servent uniquement à composer le message ouvert dans WhatsApp.",
     "contact.whatsapp.greeting": "Bonjour Roby !",
-    "contact.whatsapp.intro": "Je souhaite obtenir des informations pour un cadeau personnalisé avec gravure.",
+    "contact.whatsapp.intro": "Je souhaite des informations sur une planche ou un cadeau personnalisé.",
     "contact.whatsapp.name": "Nom complet",
     "contact.whatsapp.email": "E-mail de secours",
     "contact.whatsapp.size": "Dimensions",
@@ -665,11 +763,45 @@ const translations = {
     "contact.whatsapp.notes": "Autres détails",
     "contact.whatsapp.attachment": "J'ajouterai manuellement dans cette discussion la photo ou le fichier pour la gravure.",
     "footer.tagline": "Cadeaux personnalisés en bois & gravure laser · Suisse",
-    "footer.copy": "© 2025 Roberto — Tous droits réservés"
+    "footer.copy": "© 2025 Roberto — Tous droits réservés",
+    "access.skip": "Aller au contenu",
+    "access.language": "Changer de langue",
+    "access.menu": "Menu de navigation",
+    "nav.gifts": "Idées cadeaux",
+    "meta.title": "I Taglieri di Roby | Cadeaux en bois et gravure laser",
+    "meta.description": "Planches artisanales, cadeaux personnalisés en bois et gravures laser réalisés à la main en Suisse.",
+    "hero.alt": "Collection de planches artisanales en bois",
+    "about.alt": "Établi de Roberto avec du bois et des planches en préparation",
+    "process.alt1": "Différentes formes de planches brutes dans l’atelier",
+    "process.alt2": "Établi avec des planches, des outils et de la sciure",
+    "process.alt3": "Bois et gabarits sélectionnés pour de nouvelles planches",
+    "process.alt4": "Planches fraîchement façonnées sur l’établi",
+    "gallery.solidOak": "Chêne massif",
+    "gallery.naturalShape": "Forme naturelle",
+    "gallery.liveEdge": "Bord naturel",
+    "gallery.handEngraving": "Gravure artisanale",
+    "gallery.signature": "Signature de Roby",
+    "gallery.slim": "Profil fin",
+    "gallery.pair": "Paire assortie",
+    "gallery.grain": "Veinage marqué",
+    "gallery.shapes": "Formes naturelles",
+    "gallery.feetDetail": "Détail des pieds",
+    "gallery.feet": "Avec pieds",
+    "gallery.compact": "Format compact",
+    "gallery.unique": "Pièce unique",
+    "gallery.table": "À table",
+    "gallery.serving": "Planche de service",
+    "gallery.shaped": "Façonnés à la main",
+    "gallery.organic": "Forme organique",
+    "gallery.long": "Format long",
+    "gallery.extraLong": "Très long",
+    "gallery.reclaimed": "Bois récupéré",
+    "gallery.customEngraving": "Gravure personnalisée",
+    "gallery.reclaimedHandles": "Poignées récupérées",
+    "gallery.trays": "Plateaux de service"
   }
 };
 
-// Language system with proper emojis
 const langMeta = {
   it: { flag: '🇮🇹', code: 'IT', htmlLang: 'it' },
   en: { flag: '🇬🇧', code: 'EN', htmlLang: 'en' },
@@ -684,186 +816,202 @@ const categoryTranslationKeys = {
   upcycled: 'gallery.upcycled',
 };
 
-let currentLang = localStorage.getItem('lang') || 'it';
-let languageSwitchTimer;
+let currentLang = 'it';
+try {
+  const savedLang = localStorage.getItem('lang');
+  if (Object.hasOwn(translations, savedLang)) currentLang = savedLang;
+} catch (_) {
+  // Die Website bleibt auch bei gesperrtem Browserspeicher nutzbar.
+}
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function applyLanguage(lang) {
   const t = translations[lang];
   if (!t) return;
 
-  document.body.classList.add('lang-switching');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
 
-  clearTimeout(languageSwitchTimer);
-  languageSwitchTimer = setTimeout(() => {
-    // Update all data-i18n elements
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) {
-        el.innerHTML = t[key];
-      }
+  document.querySelectorAll('[data-i18n-alt]').forEach(image => {
+    const key = image.getAttribute('data-i18n-alt');
+    if (t[key] !== undefined) image.alt = t[key];
+  });
+
+  document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+    const key = element.getAttribute('data-i18n-aria');
+    if (t[key] !== undefined) element.setAttribute('aria-label', t[key]);
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(field => {
+    const key = field.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) field.placeholder = t[key];
+  });
+
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
+    const key = categoryTranslationKeys[button.dataset.filter];
+    if (key && t[key] !== undefined) button.textContent = t[key];
+  });
+
+  document.querySelectorAll('.gallery-item[data-cat]').forEach(item => {
+    const key = categoryTranslationKeys[item.dataset.cat];
+    if (!key || t[key] === undefined) return;
+    item.querySelectorAll('.gallery-overlay > span, .gallery-caption > strong').forEach(label => {
+      label.textContent = t[key];
     });
+  });
 
-    document.querySelectorAll('[data-i18n-alt]').forEach(image => {
-      const key = image.getAttribute('data-i18n-alt');
-      if (t[key] !== undefined) image.alt = t[key];
-    });
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const image = item.querySelector('img');
+    const caption = item.querySelector('.gallery-caption em');
+    image.alt = `${t[categoryTranslationKeys[item.dataset.cat]]}: ${caption.textContent.trim()}`;
+  });
+  document.title = t['meta.title'];
+  document.querySelector('meta[name="description"]').content = t['meta.description'];
+  document.querySelector('meta[property="og:description"]').content = t['meta.description'];
+  document.querySelector('meta[property="og:title"]').content = t['meta.title'];
+  document.querySelector('[data-i18n="footer.copy"]').textContent = t['footer.copy'].replace('2025', new Date().getFullYear());
+  document.documentElement.lang = langMeta[lang].htmlLang;
+  document.getElementById('lang-flag').textContent = langMeta[lang].flag;
+  document.getElementById('lang-code').textContent = langMeta[lang].code;
 
-    document.querySelectorAll('[data-i18n-aria]').forEach(element => {
-      const key = element.getAttribute('data-i18n-aria');
-      if (t[key] !== undefined) element.setAttribute('aria-label', t[key]);
-    });
+  document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+  });
 
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(field => {
-      const key = field.getAttribute('data-i18n-placeholder');
-      if (t[key] !== undefined) field.placeholder = t[key];
-    });
-
-    document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
-      const key = categoryTranslationKeys[button.dataset.filter];
-      if (key && t[key] !== undefined) button.textContent = t[key];
-    });
-
-    document.querySelectorAll('.gallery-item[data-cat]').forEach(item => {
-      const key = categoryTranslationKeys[item.dataset.cat];
-      if (!key || t[key] === undefined) return;
-      item.querySelectorAll('.gallery-overlay > span, .gallery-caption > strong').forEach(label => {
-        label.textContent = t[key];
-      });
-    });
-
-    // Update html lang attribute
-    document.documentElement.lang = langMeta[lang].htmlLang;
-
-    // Update language button display
-    document.getElementById('lang-flag').textContent = langMeta[lang].flag;
-    document.getElementById('lang-code').textContent = langMeta[lang].code;
-
-    // Mark active option
-    document.querySelectorAll('.lang-option').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-    });
-
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-
-    document.body.classList.remove('lang-switching');
-  }, 120);
+  currentLang = lang;
+  try { localStorage.setItem('lang', lang); } catch (_) {}
 }
 
 // Lang dropdown toggle
 const langSwitcher = document.getElementById('lang-switcher');
-
+const languageButton = document.getElementById('lang-current');
+const setLanguageMenu = (open) => {
+  langSwitcher.classList.toggle('open', open);
+  languageButton.setAttribute('aria-expanded', String(open));
+};
 document.getElementById('lang-current').addEventListener('click', (e) => {
   e.stopPropagation();
-  langSwitcher.classList.toggle('open');
+  setLanguageMenu(!langSwitcher.classList.contains('open'));
 });
 
 document.querySelectorAll('.lang-option').forEach(btn => {
   btn.addEventListener('click', () => {
     const lang = btn.getAttribute('data-lang');
     applyLanguage(lang);
-    langSwitcher.classList.remove('open');
+    setLanguageMenu(false);
+    languageButton.focus({ preventScroll: true });
   });
 });
 
 document.addEventListener('click', (e) => {
   if (!langSwitcher.contains(e.target)) {
-    langSwitcher.classList.remove('open');
+    setLanguageMenu(false);
   }
 });
 
-// Apply saved language on load
 applyLanguage(currentLang);
 
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('.section');
-
+const navigationLinks = document.querySelectorAll('.nav-link');
 const updateNavbarScrollState = () => {
   if (!navbar.classList.contains('menu-open')) {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   }
+  const currentSection = [...document.querySelectorAll('section[id]')].findLast(section =>
+    section.getBoundingClientRect().top <= navbar.offsetHeight + window.innerHeight * 0.2);
+  navigationLinks.forEach(link => {
+    const active = link.hash === `#${currentSection?.id}`;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
 };
-
-window.addEventListener('scroll', () => {
-  updateNavbarScrollState();
-  updateActiveNav();
-});
+window.addEventListener('scroll', updateNavbarScrollState, { passive: true });
 updateNavbarScrollState();
-
-function updateActiveNav() {
-  let current = '';
-  sections.forEach(section => {
-    if (section.getBoundingClientRect().top <= window.innerHeight * 0.4) {
-      current = section.getAttribute('id');
-    }
-  });
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-  });
-}
 
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const navLinksEl = document.getElementById('nav-links');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinksEl.classList.toggle('open');
-      const menuIsOpen = navLinksEl.classList.contains('open');
-      navbar.classList.toggle('menu-open', menuIsOpen);
-      navbar.classList.toggle('scrolled', !menuIsOpen && window.scrollY > 60);
-      hamburger.setAttribute('aria-expanded', String(menuIsOpen));
-      document.body.style.overflow = menuIsOpen ? 'hidden' : '';
-    });
-
-navLinksEl.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinksEl.classList.remove('open');
-        navbar.classList.remove('menu-open');
-        updateNavbarScrollState();
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+const setNavigationMenu = (open) => {
+  hamburger.classList.toggle('open', open);
+  navLinksEl.classList.toggle('open', open);
+  navbar.classList.toggle('menu-open', open);
+  navbar.classList.toggle('scrolled', !open && window.scrollY > 60);
+  hamburger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+if (hamburger && navLinksEl) {
+  hamburger.addEventListener('click', () => {
+    setNavigationMenu(!navLinksEl.classList.contains('open'));
   });
+  navLinksEl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      setNavigationMenu(false);
+      updateNavbarScrollState();
+    });
+  });
+}
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    if (langSwitcher.classList.contains('open')) {
+      setLanguageMenu(false);
+      languageButton.focus();
+    } else if (navbar.classList.contains('menu-open')) {
+      setNavigationMenu(false);
+      hamburger.focus();
+    }
+  }
+  if (event.key === 'Tab' && navbar.classList.contains('menu-open')) {
+    const controls = [...navbar.querySelectorAll('a, button')].filter(el =>
+      getComputedStyle(el).visibility !== 'hidden' && el.getClientRects().length);
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+});
+window.matchMedia('(min-width: 1280px)').addEventListener('change', event => {
+  if (event.matches) setNavigationMenu(false);
 });
 
 // Intersection Observer for reveals
 const revealEls = document.querySelectorAll('.reveal');
-
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const container = entry.target.closest('.about-grid, .pricing-grid, .gallery-grid, .maintenance-steps, .contact-methods, .hero-content');
-      if (container) {
-        container.querySelectorAll('.reveal:not(.visible)').forEach((el, idx) => {
-          setTimeout(() => el.classList.add('visible'), idx * 80);
-        });
-      } else {
-        entry.target.classList.add('visible');
-      }
+      entry.target.classList.add('visible');
       revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
 revealEls.forEach(el => revealObserver.observe(el));
 
 // Gallery filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const galleryItems = document.querySelectorAll('.gallery-item');
-
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    filterBtns.forEach(button => button.setAttribute('aria-pressed', String(button === btn)));
     const filter = btn.getAttribute('data-filter');
     galleryItems.forEach(item => {
       item.classList.toggle('hidden', filter !== 'all' && item.getAttribute('data-cat') !== filter);
     });
   });
 });
+filterBtns.forEach(button => button.setAttribute('aria-pressed', String(button.classList.contains('active'))));
 
 // WhatsApp order form
 const whatsappOrderForm = document.getElementById('whatsapp-order-form');
@@ -881,11 +1029,19 @@ const setConditionalField = (select, expectedValue, container, input) => {
   container.hidden = !isActive;
   if (input) {
     input.required = isActive;
-    if (!isActive) input.value = '';
+    input.disabled = !isActive;
   }
 };
 
 if (whatsappOrderForm) {
+  const syncOrderFields = () => {
+    setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
+    setConditionalField(woodTypeSelect, 'specific', customWoodGroup, customWoodInput);
+    engravingUploadNote.hidden = engravingSelect.value !== 'yes';
+  };
+  syncOrderFields();
+  window.addEventListener('pageshow', syncOrderFields);
+  whatsappOrderForm.addEventListener('reset', () => setTimeout(syncOrderFields, 0));
   boardSizeSelect.addEventListener('change', () => {
     setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
   });
@@ -958,25 +1114,225 @@ if (whatsappOrderForm) {
   });
 }
 
-// Smooth scroll
+// Smooth scroll: align every target section at the viewport top.
+// This guarantees the area above the floating navbar belongs to the new section, not the previous one.
+const getRootPxVar = (name, fallback = 0) => {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const value = parseFloat(raw);
+  return Number.isFinite(value) ? value : fallback;
+};
+
+const getHashTarget = (hash) => {
+  if (!hash || hash === '#') return null;
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch (_) {
+    return document.getElementById(hash.slice(1));
+  }
+};
+
+const scrollSectionCleanly = (target, updateHash = true) => {
+  const absoluteTop = target.getBoundingClientRect().top + window.scrollY;
+  const overlap = getRootPxVar('--anchor-overlap', 2);
+  const top = Math.max(0, Math.round(absoluteTop + overlap));
+
+  window.scrollTo({ top, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+  if (target.id === 'main-content') target.focus({ preventScroll: true });
+
+  if (updateHash && target.id && history.pushState) {
+    history.pushState(null, '', `#${target.id}`);
+  }
+};
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
+    const target = getHashTarget(anchor.getAttribute('href'));
     if (target) {
       e.preventDefault();
-      const offset = navbar.offsetHeight;
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      scrollSectionCleanly(target);
     }
   });
 });
 
-// Parallax rings
-const heroRings = document.querySelectorAll('.wood-ring');
-window.addEventListener('scroll', () => {
-  heroRings.forEach((ring, i) => {
-    ring.style.transform = `translateY(calc(-50% + ${window.scrollY * (i + 1) * 0.08}px))`;
-  });
+window.addEventListener('load', () => {
+  const target = getHashTarget(window.location.hash);
+  if (target) {
+    requestAnimationFrame(() => scrollSectionCleanly(target, false));
+  }
 });
+
+// Structured manual scroll: one physical gesture = one section stop.
+// Exception: #gallery keeps native scrolling while there is gallery content above/below.
+// The important part is the lock: wheel/trackpad fires many events per gesture, so we must
+// ignore all follow-up events until the smooth scroll has settled.
+const structuredScroll = (() => {
+  const supportsFingerScrolling =
+    navigator.maxTouchPoints > 0 ||
+    'ontouchstart' in window ||
+    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  // Touch-capable devices keep completely native finger scrolling.
+  if (supportsFingerScrolling || reducedMotion.matches) {
+    document.documentElement.classList.remove('structured-scroll-enabled');
+    return;
+  }
+
+  const footer = document.querySelector('.footer');
+  const sections = [
+    ...document.querySelectorAll('section'),
+    ...(footer ? [footer] : []),
+  ];
+  if (!sections.length) return;
+
+  document.documentElement.classList.add('structured-scroll-enabled');
+
+  const WHEEL_THRESHOLD = 82;
+  const EDGE_EPSILON = 10;
+  const LOCK_TIMEOUT = 1350;
+  const SETTLE_FRAMES_REQUIRED = 8;
+  const SETTLE_DELTA = 0.75;
+
+  let wheelAccum = 0;
+  let isSnapping = false;
+  let unlockTimer = null;
+
+  const isInteractive = (el) => Boolean(el?.closest?.(
+    'input, textarea, select, button, a, [contenteditable="true"], .lang-dropdown, .gallery-filters'
+  ));
+
+  const normalizeWheelDelta = (event) => {
+    if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
+    if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight;
+    return event.deltaY;
+  };
+
+  const canScrollWithinSection = (deltaY) => {
+    const section = sections[getActiveIndex()];
+    if (!section) return false;
+    const rect = section.getBoundingClientRect();
+    if (deltaY > 0) return rect.bottom > window.innerHeight + EDGE_EPSILON;
+    if (deltaY < 0) return rect.top < -EDGE_EPSILON;
+    return false;
+  };
+
+  const getActiveIndex = () => {
+    const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+    if (window.scrollY >= maxScrollY - EDGE_EPSILON) {
+      return sections.length - 1;
+    }
+
+    const viewportProbe = Math.min(window.innerHeight * 0.35, 260);
+    let bestIndex = 0;
+    let bestScore = Infinity;
+
+    sections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect();
+      const containsProbe = rect.top <= viewportProbe && rect.bottom > viewportProbe;
+      const score = containsProbe ? 0 : Math.abs(rect.top);
+      if (score < bestScore) {
+        bestScore = score;
+        bestIndex = index;
+      }
+    });
+
+    return bestIndex;
+  };
+
+  const releaseSnapLockWhenSettled = () => {
+    clearTimeout(unlockTimer);
+
+    let lastY = window.scrollY;
+    let stableFrames = 0;
+    const startedAt = performance.now();
+
+    const tick = () => {
+      const currentY = window.scrollY;
+      if (Math.abs(currentY - lastY) <= SETTLE_DELTA) {
+        stableFrames += 1;
+      } else {
+        stableFrames = 0;
+      }
+      lastY = currentY;
+
+      if (stableFrames >= SETTLE_FRAMES_REQUIRED || performance.now() - startedAt > LOCK_TIMEOUT) {
+        isSnapping = false;
+        wheelAccum = 0;
+        return;
+      }
+
+      requestAnimationFrame(tick);
+    };
+
+    unlockTimer = setTimeout(() => {
+      isSnapping = false;
+      wheelAccum = 0;
+    }, LOCK_TIMEOUT + 150);
+
+    requestAnimationFrame(tick);
+  };
+
+  const snapByDirection = (direction) => {
+    if (!direction || isSnapping) return;
+
+    const currentIndex = getActiveIndex();
+    const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+    if (targetIndex === currentIndex) {
+      wheelAccum = 0;
+      return;
+    }
+
+    isSnapping = true;
+    wheelAccum = 0;
+    scrollSectionCleanly(sections[targetIndex], true);
+    releaseSnapLockWhenSettled();
+  };
+
+  window.addEventListener('wheel', (event) => {
+    if (navbar.classList.contains('menu-open') || reducedMotion.matches) return;
+    if (isInteractive(event.target)) return;
+    if (event.ctrlKey || event.metaKey) return;
+    if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+
+    const deltaY = normalizeWheelDelta(event);
+
+    if (isSnapping) {
+      event.preventDefault();
+      return;
+    }
+
+    if (canScrollWithinSection(deltaY)) {
+      wheelAccum = 0;
+      return;
+    }
+
+    event.preventDefault();
+    wheelAccum += deltaY;
+
+    if (Math.abs(wheelAccum) >= WHEEL_THRESHOLD) {
+      snapByDirection(Math.sign(wheelAccum));
+    }
+  }, { passive: false });
+
+  window.addEventListener('keydown', (event) => {
+    if (navbar.classList.contains('menu-open') || reducedMotion.matches) return;
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    if (isInteractive(event.target)) return;
+    const downKeys = ['ArrowDown', 'PageDown', 'Space'];
+    const upKeys = ['ArrowUp', 'PageUp'];
+    const direction = event.code === 'Space' && event.shiftKey ? -1
+      : downKeys.includes(event.code) ? 1 : upKeys.includes(event.code) ? -1 : 0;
+    if (!direction) return;
+    if (isSnapping) {
+      event.preventDefault();
+      return;
+    }
+
+    if (canScrollWithinSection(direction)) return;
+
+    event.preventDefault();
+    snapByDirection(direction);
+  });
+})();
 
 // Count-up stats
 const stats = document.querySelectorAll('.stat-num');
@@ -986,15 +1342,16 @@ const countObserver = new IntersectionObserver((entries) => {
       const el = entry.target;
       const num = parseInt(el.textContent.replace(/[^0-9]/g, ''));
       const suffix = el.textContent.replace(/[0-9]/g, '');
-      if (!isNaN(num)) {
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / 1200, 1);
-          const v = Math.round(num * (1 - Math.pow(1 - p, 3)));
-          el.textContent = v + suffix;
-          if (p < 1) requestAnimationFrame(tick);
+      if (!isNaN(num) && !reducedMotion.matches) {
+        let start = null;
+        const step = (timestamp) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / 1200, 1);
+          const val = Math.round(num * (1 - Math.pow(1 - progress, 3)));
+          el.textContent = val + suffix;
+          if (progress < 1) requestAnimationFrame(step);
         };
-        requestAnimationFrame(tick);
+        requestAnimationFrame(step);
       }
       countObserver.unobserve(el);
     }
@@ -1007,6 +1364,7 @@ const hero = document.querySelector('.hero');
 const heroContent = document.querySelector('.hero-content');
 if (hero) {
   hero.addEventListener('mousemove', (e) => {
+    if (reducedMotion.matches || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     const r = hero.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
     const y = (e.clientY - r.top) / r.height - 0.5;
