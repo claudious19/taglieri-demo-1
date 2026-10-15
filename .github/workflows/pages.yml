@@ -32,10 +32,7 @@ jobs:
         run: node scripts/check-site.cjs
 
       - name: Prepare published files
-        run: |
-          mkdir _site
-          cp index.html style.css main.js _site/
-          cp -R images _site/images
+        run: node scripts/build-site.cjs
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4

@@ -3,10 +3,26 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { loadConfig } = require('./site-config.cjs');
+const { renderHtml } = require('./build-site.cjs');
 
 const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const javascript = fs.readFileSync(path.join(root, 'main.js'), 'utf8');
+const envSource = fs.readFileSync(path.join(root, '.env'), 'utf8');
+const siteConfig = loadConfig(envSource);
+const renderedHtml = renderHtml(html, siteConfig);
+assert.deepEqual(JSON.parse(renderedHtml.match(/<script id="site-config" type="application\/json">([\s\S]*?)<\/script>/)[1]), siteConfig);
+const changedConfig = loadConfig(envSource
+  .replace('PRICE_PIZZA_CHF=160', 'PRICE_PIZZA_CHF=170')
+  .replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')
+  .replace('SIZE_SMALL_WIDTH_CM=', 'SIZE_SMALL_WIDTH_CM=20')
+  .replace('CONTACT_EMAIL=claudio.italy05@gmail.com', 'CONTACT_EMAIL=test@example.com'));
+assert.equal(changedConfig.sizes.pizza.priceChf, 170);
+assert.equal(changedConfig.sizes.small.lengthCm, 30);
+assert.equal(changedConfig.contactEmail, 'test@example.com');
+assert.throws(() => loadConfig(envSource.replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')), /gemeinsam/);
+assert.equal(siteConfig.woods.length, 5);
 new vm.Script(javascript);
 
 const context = {};
@@ -30,6 +46,8 @@ for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*
   assert.ok(!JSON.parse(match[1]).telephone, 'Telefonkontakt darf nicht in den Metadaten stehen.');
 }
 assert.ok(!html.includes('href="tel:'), 'Telefonlink darf nicht angezeigt werden.');
+assert.ok(!html.includes('wa.me/') && !javascript.includes('wa.me/'), 'WhatsApp-Link darf nicht angezeigt werden.');
+assert.ok(!/https?:\/\/wa\.me\//.test(renderedHtml), 'WhatsApp-Link darf nicht im Build stehen.');
 const imageHashes = new Set();
 for (const match of html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)) {
   const file = path.join(root, decodeURIComponent(match[1]));
@@ -42,40 +60,54 @@ for (const name of fs.readdirSync(path.join(root, 'images')).filter(name => /^Wh
   assert.ok(imageHashes.has(hash), `Neues Motiv fehlt: ${name}`);
 }
 assert.ok(!html.includes('roby_logo_golden') && !html.includes('logo_roby'), 'Logo darf nicht eingebunden sein.');
-assert.ok(html.includes('CHF 160'), 'Preis für Pizza al metro fehlt.');
+assert.equal(siteConfig.sizes.pizza.priceChf, 160, 'Preis für Pizza al metro fehlt.');
 
-// Nachricht im isolierten Kontext prüfen, ohne WhatsApp zu öffnen oder Daten zu senden.
-const formCode = javascript.slice(javascript.indexOf('// WhatsApp order form'), javascript.indexOf('// Smooth scroll:'));
+// Nachricht im isolierten Kontext prüfen, ohne Daten zu senden.
+const formCode = javascript.slice(javascript.indexOf('// E-Mail-Anfrage'), javascript.indexOf('// Smooth scroll:'));
+const dimensionCode = javascript.slice(javascript.indexOf('function formatDimensions'), javascript.indexOf('function updateConfiguredContent'));
 for (const language of Object.keys(dictionary)) {
-  for (const engraving of ['yes', 'no']) {
+  for (const [engraving, config, size, wood] of [
+    ['yes', siteConfig, 'custom', 'specific'],
+    ['no', siteConfig, 'custom', 'specific'],
+    ['no', changedConfig, 'small', 'wood-0'],
+  ]) {
     let submit;
-    let openedUrl;
-    const values = new Map(Object.entries({firstName: 'Test', lastName: 'Person', email: 'test@example.com', size: 'custom', customSize: '60 × 30 cm', wood: 'specific', customWood: 'Olivo', engraving, notes: 'Test & Prüfung'}));
+    const values = new Map(Object.entries({firstName: 'Test', lastName: 'Person', email: 'test@example.com', size, customSize: '60 × 30 cm', wood, customWood: 'Olivo', engraving, notes: 'Test & Prüfung'}));
     const elements = new Map();
     const document = {getElementById(id) {
       if (!elements.has(id)) elements.set(id, {
-        value: id === 'board-size' ? 'custom' : id === 'wood-type' ? 'specific' : engraving,
-        addEventListener(type, handler) { if (id === 'whatsapp-order-form' && type === 'submit') submit = handler; },
+        value: id === 'board-size' ? size : id === 'wood-type' ? wood : engraving,
+        files: id === 'engraving-file' && engraving === 'yes' ? [{size: 1000}] : [],
+        addEventListener(type, handler) { if (id === 'email-order-form' && type === 'submit') submit = handler; },
+        setCustomValidity(value) { this.validationMessage = value; },
         reportValidity: () => true,
       });
       return elements.get(id);
     }};
-    const window = {addEventListener() {}, open() {
-      return {set opener(value) {}, location: {set href(value) { openedUrl = value; }}};
-    }};
-    vm.runInNewContext(formCode, {
+    const window = {addEventListener() {}};
+    vm.runInNewContext(dimensionCode + formCode, {
       document, window, translations: dictionary, currentLang: language, setTimeout,
+      siteConfig: config,
       FormData: class { get(key) { return values.get(key); } },
     });
-    assert.equal(elements.get('custom-size').required, true);
-    assert.equal(elements.get('custom-wood').disabled, false);
-    submit({preventDefault() {}});
-    const url = new URL(openedUrl);
-    const message = url.searchParams.get('text');
-    assert.equal(url.pathname, '/41787544017');
-    assert.ok(message.includes('60 × 30 cm') && message.includes('Olivo') && message.includes('test@example.com'));
+    assert.equal(elements.get('custom-size').required, size === 'custom');
+    assert.equal(elements.get('custom-wood').disabled, wood !== 'specific');
+    assert.equal(elements.get('email-order-form').action, `https://formsubmit.co/${config.contactEmail}`);
+    let prevented = false;
+    submit({preventDefault() { prevented = true; }});
+    assert.equal(prevented, false);
+    const message = elements.get('order-message').value;
+    assert.ok(message.includes('test@example.com'));
+    assert.ok(size === 'custom' ? message.includes('60 × 30 cm') : message.includes('30 × 20 cm'));
+    assert.ok(wood === 'specific' ? message.includes('Olivo') : message.includes(config.woods[0][language]));
     assert.ok(!message.includes('undefined'));
     assert.equal(message.includes(dictionary[language]['contact.whatsapp.attachment']), engraving === 'yes');
+    if (engraving === 'yes') {
+      elements.get('engraving-file').files = [{size: 11 * 1024 * 1024}];
+      submit({preventDefault() { prevented = true; }});
+      assert.equal(prevented, true);
+      assert.equal(elements.get('engraving-file').validationMessage, dictionary[language]['contact.fileTooLarge']);
+    }
   }
 }
-console.log('Vier Sprachen, Dateien, Sprungziele und acht WhatsApp-Anfragen erfolgreich geprüft.');
+console.log('Vier Sprachen, Konfiguration, Dateien, Sprungziele und zwölf E-Mail-Anfragen erfolgreich geprüft.');

@@ -74,17 +74,20 @@ const translations = {
     "engraving.tip3": "Qualsiasi foto normale: la valuto io e ti comunico se è adatta o se necessita di modifiche.",
     "engraving.note": "Non devi convertire o modificare la foto da solo. Prima dell'incisione verifico che il passaggio al bianco e nero conservi gli elementi che vuoi vedere sul legno.",
     "pricing.label": "Investimento",
-    "pricing.sub": "Ogni pezzo è unico. I prezzi indicati variano in base al legno, alle dimensioni e alla personalizzazione. Il tagliere per pizza al metro costa CHF 160.",
+    "pricing.sub": "Ogni pezzo è unico. I prezzi indicati variano in base al legno, alle dimensioni e alla personalizzazione.",
+    "pricing.length": "Lunghezza",
+    "pricing.width": "Larghezza",
+    "pricing.sizeOnRequest": "Misure su richiesta",
     "pricing.from": "da",
     "pricing.popular": "Più richiesto",
     "pricing.s.title": "Piccolo",
-    "pricing.s.desc": "Taglieri compatti, perfetti per pane, formaggi e antipasti. Dimensioni fino a 30 × 20 cm.",
-    "pricing.s.f1": "✦ Acero o Frassino",
+    "pricing.s.desc": "Taglieri compatti, perfetti per pane, formaggi e antipasti.",
+    "pricing.s.f1": "✦ Legno a scelta",
     "pricing.s.f2": "✦ Finitura con olio naturale",
     "pricing.s.f3": "✦ Bordi levigati a mano",
     "pricing.m.title": "Medio",
-    "pricing.m.desc": "Il formato ideale per uso quotidiano. Dimensioni tra 30 × 20 cm e 45 × 30 cm.",
-    "pricing.m.f1": "✦ Noce, Ciliegio o Rovere",
+    "pricing.m.desc": "Il formato ideale per uso quotidiano.",
+    "pricing.m.f1": "✦ Legno a scelta",
     "pricing.m.f2": "✦ Finitura con olio di lino",
     "pricing.m.f3": "✦ Personalizzazione disponibile",
     "pricing.m.f4": "✦ Piedini antiscivolo",
@@ -94,8 +97,8 @@ const translations = {
     "pricing.pizza.f2": "✦ Legno massello selezionato",
     "pricing.pizza.f3": "✦ Finitura alimentare naturale",
     "pricing.pizza.f4": "✦ Incisione disponibile",
-    "pricing.l.title": "Speciale",
-    "pricing.l.desc": "Pezzi da esposizione, incisioni personalizzate o formati extra-large su richiesta.",
+    "pricing.l.title": "Grande",
+    "pricing.l.desc": "Un tagliere generoso per servire e condividere in compagnia.",
     "pricing.l.f1": "✦ Legni pregiati selezionati",
     "pricing.l.f2": "✦ Incisione personalizzata",
     "pricing.l.f3": "✦ Cofanetto regalo incluso",
@@ -118,14 +121,14 @@ const translations = {
     "maint.tip.label": "Consiglio di Roby:",
     "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita. Con le giuste cure, migliorerà con il tempo, proprio come il vino.",
     "contact.label": "Parliamoci",
-    "contact.sub": "Compila il modulo: verrà preparato un messaggio con tutti i dettagli e si aprirà direttamente la chat WhatsApp di Roby.",
+    "contact.sub": "Compila il modulo per inviare la tua richiesta via email.",
     "contact.form.title": "Richiedi il tuo regalo personalizzato",
-    "contact.form.intro": "Scegli tagliere, legno e incisione. Potrai controllare e modificare la richiesta prima di inviarla su WhatsApp.",
+    "contact.form.intro": "Scegli tagliere, legno e incisione. La richiesta arriverà via email.",
     "contact.firstName": "Nome",
     "contact.lastName": "Cognome",
-    "contact.email": "Email di backup",
+    "contact.email": "La tua email",
     "contact.email.placeholder": "nome@esempio.ch",
-    "contact.email.help": "La tua email viene inclusa nel messaggio come contatto alternativo. Se WhatsApp non si apre, puoi contattare Roby tramite email.",
+    "contact.email.help": "Usiamo questo indirizzo per risponderti alla richiesta.",
     "contact.choose": "Seleziona",
     "contact.size": "Misura del tagliere",
     "contact.size.small": "Piccola",
@@ -148,20 +151,22 @@ const translations = {
     "contact.engraving": "Desideri un'incisione?",
     "contact.no": "No",
     "contact.yes": "Sì",
-    "contact.engraving.note": "Dopo l'apertura di WhatsApp, aggiungi manualmente nella chat la foto o il file da incidere.",
+    "contact.engraving.file": "Immagine per l'incisione (facoltativa)",
+    "contact.engraving.note": "Puoi allegare un'immagine o un PDF fino a 10 MB.",
     "contact.notes": "Altri dettagli",
     "contact.notes.placeholder": "Forma, utilizzo, scadenza desiderata o altre richieste",
-    "contact.submit": "Prepara il messaggio WhatsApp",
-    "contact.privacy": "I dati non vengono salvati: servono soltanto a comporre il messaggio che aprirai su WhatsApp.",
+    "contact.submit": "Invia richiesta via email",
+    "contact.privacy": "I dati vengono inviati tramite FormSubmit all'indirizzo email di Roby. Il servizio conserva le richieste per 30 giorni.",
+    "contact.fileTooLarge": "Il file non può superare 10 MB.",
     "contact.whatsapp.greeting": "Ciao Roby!",
     "contact.whatsapp.intro": "Vorrei informazioni per un tagliere o un regalo personalizzato.",
     "contact.whatsapp.name": "Nome e cognome",
-    "contact.whatsapp.email": "Email di backup",
+    "contact.whatsapp.email": "Email per la risposta",
     "contact.whatsapp.size": "Misura",
     "contact.whatsapp.wood": "Legno",
     "contact.whatsapp.engraving": "Incisione",
     "contact.whatsapp.notes": "Altri dettagli",
-    "contact.whatsapp.attachment": "Aggiungerò manualmente in questa chat la foto o il file per l'incisione.",
+    "contact.whatsapp.attachment": "La foto per l'incisione è allegata, se disponibile.",
     "footer.tagline": "Regali personalizzati in legno & incisioni laser · Svizzera",
     "footer.copy": "© 2025 Roberto — Tutti i diritti riservati",
     "access.skip": "Vai al contenuto",
@@ -297,17 +302,20 @@ const translations = {
     "engraving.tip3": "Any normal photo: I assess it and tell you whether it is suitable or needs adjustments.",
     "engraving.note": "You do not need to convert or edit the photo yourself. Before engraving, I check that the black-and-white conversion preserves the elements you want to see on the wood.",
     "pricing.label": "Investment",
-    "pricing.sub": "Each piece is unique. The listed prices vary with wood, size and customization. The meter-long pizza board costs CHF 160.",
+    "pricing.sub": "Each piece is unique. The listed prices vary with wood, size and customization.",
+    "pricing.length": "Length",
+    "pricing.width": "Width",
+    "pricing.sizeOnRequest": "Dimensions on request",
     "pricing.from": "from",
     "pricing.popular": "Most requested",
     "pricing.s.title": "Small",
-    "pricing.s.desc": "Compact boards, perfect for bread, cheese, and appetizers. Dimensions up to 30 × 20 cm.",
-    "pricing.s.f1": "✦ Maple or Ash",
+    "pricing.s.desc": "Compact boards, perfect for bread, cheese, and appetizers.",
+    "pricing.s.f1": "✦ Wood of your choice",
     "pricing.s.f2": "✦ Natural oil finish",
     "pricing.s.f3": "✦ Hand-sanded edges",
     "pricing.m.title": "Medium",
-    "pricing.m.desc": "The ideal size for daily use. Dimensions between 30 × 20 cm and 45 × 30 cm.",
-    "pricing.m.f1": "✦ Walnut, Cherry or Oak",
+    "pricing.m.desc": "The ideal size for daily use.",
+    "pricing.m.f1": "✦ Wood of your choice",
     "pricing.m.f2": "✦ Linseed oil finish",
     "pricing.m.f3": "✦ Customization available",
     "pricing.m.f4": "✦ Non-slip feet",
@@ -317,8 +325,8 @@ const translations = {
     "pricing.pizza.f2": "✦ Selected solid wood",
     "pricing.pizza.f3": "✦ Natural food-safe finish",
     "pricing.pizza.f4": "✦ Engraving available",
-    "pricing.l.title": "Special",
-    "pricing.l.desc": "Display pieces, custom engravings, or extra-large sizes upon request.",
+    "pricing.l.title": "Large",
+    "pricing.l.desc": "A generous board for serving and sharing with others.",
     "pricing.l.f1": "✦ Selected fine woods",
     "pricing.l.f2": "✦ Custom engraving",
     "pricing.l.f3": "✦ Gift box included",
@@ -341,14 +349,14 @@ const translations = {
     "maint.tip.label": "Roby's tip:",
     "maint.tip.text": "A wooden cutting board is not just a kitchen tool — it's a companion for life.",
     "contact.label": "Let's talk",
-    "contact.sub": "Complete the form to prepare a message with all the details and open Roby's WhatsApp chat directly.",
+    "contact.sub": "Complete the form to send your request by email.",
     "contact.form.title": "Request your personalized gift",
-    "contact.form.intro": "Choose the board, wood, and engraving. You can review and edit the request before sending it on WhatsApp.",
+    "contact.form.intro": "Choose the board, wood, and engraving. Your request will arrive by email.",
     "contact.firstName": "First name",
     "contact.lastName": "Last name",
-    "contact.email": "Backup email",
+    "contact.email": "Your email",
     "contact.email.placeholder": "name@example.ch",
-    "contact.email.help": "Your email is included in the message as an alternative contact. If WhatsApp does not open, you can contact Roby by email.",
+    "contact.email.help": "We use this address to reply to your request.",
     "contact.choose": "Select",
     "contact.size": "Cutting board size",
     "contact.size.small": "Small",
@@ -371,20 +379,22 @@ const translations = {
     "contact.engraving": "Would you like an engraving?",
     "contact.no": "No",
     "contact.yes": "Yes",
-    "contact.engraving.note": "After WhatsApp opens, manually attach the photo or file to be engraved in the chat.",
+    "contact.engraving.file": "Engraving image (optional)",
+    "contact.engraving.note": "You can attach an image or PDF up to 10 MB.",
     "contact.notes": "Other details",
     "contact.notes.placeholder": "Shape, intended use, preferred deadline, or other requests",
-    "contact.submit": "Prepare WhatsApp message",
-    "contact.privacy": "Your data is not stored. It is used only to compose the message you will open in WhatsApp.",
+    "contact.submit": "Send request by email",
+    "contact.privacy": "Your details are sent to Roby by email through FormSubmit. The service retains submissions for 30 days.",
+    "contact.fileTooLarge": "The file must not exceed 10 MB.",
     "contact.whatsapp.greeting": "Hello Roby!",
     "contact.whatsapp.intro": "I would like information about a cutting board or a personalized gift.",
     "contact.whatsapp.name": "Full name",
-    "contact.whatsapp.email": "Backup email",
+    "contact.whatsapp.email": "Reply email",
     "contact.whatsapp.size": "Size",
     "contact.whatsapp.wood": "Wood",
     "contact.whatsapp.engraving": "Engraving",
     "contact.whatsapp.notes": "Other details",
-    "contact.whatsapp.attachment": "I will manually attach the engraving photo or file in this chat.",
+    "contact.whatsapp.attachment": "The engraving image is attached if available.",
     "footer.tagline": "Personalized wooden gifts & laser engraving · Switzerland",
     "footer.copy": "© 2025 Roberto — All rights reserved",
     "access.skip": "Skip to content",
@@ -520,17 +530,20 @@ const translations = {
     "engraving.tip3": "Ein beliebiges normales Foto: Ich prüfe, ob es geeignet ist oder angepasst werden muss.",
     "engraving.note": "Du musst das Foto nicht selbst umwandeln oder bearbeiten. Vor der Gravur prüfe ich, ob bei der Schwarz-Weiß-Umwandlung die gewünschten Elemente erhalten bleiben.",
     "pricing.label": "Investition",
-    "pricing.sub": "Jedes Stück ist einzigartig. Die angegebenen Preise variieren je nach Holz, Größe und Personalisierung. Das Meterpizza-Brett kostet CHF 160.",
+    "pricing.sub": "Jedes Stück ist einzigartig. Die angegebenen Preise variieren je nach Holz, Größe und Personalisierung.",
+    "pricing.length": "Länge",
+    "pricing.width": "Breite",
+    "pricing.sizeOnRequest": "Maße auf Anfrage",
     "pricing.from": "ab",
     "pricing.popular": "Am gefragtesten",
     "pricing.s.title": "Klein",
-    "pricing.s.desc": "Kompakte Bretter, perfekt für Brot, Käse und Vorspeisen. Maße bis zu 30 × 20 cm.",
-    "pricing.s.f1": "✦ Ahorn oder Esche",
+    "pricing.s.desc": "Kompakte Bretter, perfekt für Brot, Käse und Vorspeisen.",
+    "pricing.s.f1": "✦ Holzart nach Wahl",
     "pricing.s.f2": "✦ Naturöl-Finish",
     "pricing.s.f3": "✦ Handgeschliffene Kanten",
     "pricing.m.title": "Mittel",
-    "pricing.m.desc": "Das ideale Format für den täglichen Gebrauch. Maße zwischen 30 × 20 cm und 45 × 30 cm.",
-    "pricing.m.f1": "✦ Walnuss, Kirsche oder Eiche",
+    "pricing.m.desc": "Das ideale Format für den täglichen Gebrauch.",
+    "pricing.m.f1": "✦ Holzart nach Wahl",
     "pricing.m.f2": "✦ Leinöl-Finish",
     "pricing.m.f3": "✦ Personalisierung möglich",
     "pricing.m.f4": "✦ Rutschfeste Füße",
@@ -540,8 +553,8 @@ const translations = {
     "pricing.pizza.f2": "✦ Ausgewähltes Massivholz",
     "pricing.pizza.f3": "✦ Natürliche lebensmittelechte Oberfläche",
     "pricing.pizza.f4": "✦ Gravur möglich",
-    "pricing.l.title": "Spezial",
-    "pricing.l.desc": "Ausstellungsstücke, individuelle Gravuren oder Sonderformate auf Anfrage.",
+    "pricing.l.title": "Groß",
+    "pricing.l.desc": "Ein großzügiges Brett zum Servieren und gemeinsamen Genießen.",
     "pricing.l.f1": "✦ Ausgewählte Edelhölzer",
     "pricing.l.f2": "✦ Individuelle Gravur",
     "pricing.l.f3": "✦ Geschenkbox inklusive",
@@ -564,14 +577,14 @@ const translations = {
     "maint.tip.label": "Robys Tipp:",
     "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
     "contact.label": "Lass uns sprechen",
-    "contact.sub": "Fülle das Formular aus: Eine Nachricht mit allen Angaben wird vorbereitet und Robys WhatsApp-Chat geöffnet.",
+    "contact.sub": "Fülle das Formular aus und sende deine Anfrage per E-Mail.",
     "contact.form.title": "Persönliches Geschenk anfragen",
-    "contact.form.intro": "Wähle Brett, Holz und Gravur. Die Anfrage kann vor dem Senden über WhatsApp geprüft und geändert werden.",
+    "contact.form.intro": "Wähle Brett, Holz und Gravur. Deine Anfrage kommt per E-Mail an.",
     "contact.firstName": "Vorname",
     "contact.lastName": "Nachname",
-    "contact.email": "E-Mail als Ersatzkontakt",
+    "contact.email": "Deine E-Mail-Adresse",
     "contact.email.placeholder": "name@beispiel.ch",
-    "contact.email.help": "Deine E-Mail wird als Ersatzkontakt in die Nachricht aufgenommen. Öffnet sich WhatsApp nicht, erreichst du Roby per E-Mail.",
+    "contact.email.help": "Über diese Adresse antworten wir auf deine Anfrage.",
     "contact.choose": "Auswählen",
     "contact.size": "Größe des Schneidebretts",
     "contact.size.small": "Klein",
@@ -594,20 +607,22 @@ const translations = {
     "contact.engraving": "Möchtest du eine Gravur?",
     "contact.no": "Nein",
     "contact.yes": "Ja",
-    "contact.engraving.note": "Füge nach dem Öffnen von WhatsApp das Foto oder die Datei für die Gravur manuell im Chat hinzu.",
+    "contact.engraving.file": "Gravurvorlage (optional)",
+    "contact.engraving.note": "Du kannst ein Bild oder PDF bis 10 MB anhängen.",
     "contact.notes": "Weitere Angaben",
     "contact.notes.placeholder": "Form, Verwendungszweck, gewünschter Termin oder andere Wünsche",
-    "contact.submit": "WhatsApp-Nachricht vorbereiten",
-    "contact.privacy": "Die Daten werden nicht gespeichert. Sie dienen nur zum Erstellen der Nachricht, die in WhatsApp geöffnet wird.",
+    "contact.submit": "Anfrage per E-Mail senden",
+    "contact.privacy": "Deine Angaben werden über FormSubmit per E-Mail an Roby gesendet. Der Dienst speichert Anfragen 30 Tage lang.",
+    "contact.fileTooLarge": "Die Datei darf höchstens 10 MB groß sein.",
     "contact.whatsapp.greeting": "Hallo Roby!",
     "contact.whatsapp.intro": "Ich interessiere mich für ein Schneidebrett oder ein persönliches Geschenk.",
     "contact.whatsapp.name": "Vor- und Nachname",
-    "contact.whatsapp.email": "E-Mail als Ersatzkontakt",
+    "contact.whatsapp.email": "E-Mail für die Antwort",
     "contact.whatsapp.size": "Größe",
     "contact.whatsapp.wood": "Holz",
     "contact.whatsapp.engraving": "Gravur",
     "contact.whatsapp.notes": "Weitere Angaben",
-    "contact.whatsapp.attachment": "Ich füge das Foto oder die Datei für die Gravur manuell in diesem Chat hinzu.",
+    "contact.whatsapp.attachment": "Die Gravurvorlage ist angehängt, falls vorhanden.",
     "footer.tagline": "Personalisierte Holzgeschenke & Lasergravuren · Schweiz",
     "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten",
     "access.skip": "Zum Inhalt springen",
@@ -742,17 +757,20 @@ const translations = {
     "engraving.tip3": "N'importe quelle photo normale : je vérifie si elle convient ou si elle nécessite des adaptations.",
     "engraving.note": "Vous n'avez pas besoin de convertir ou modifier la photo vous-même. Avant la gravure, je vérifie que la conversion en noir et blanc conserve les éléments que vous souhaitez voir sur le bois.",
     "pricing.label": "Investissement",
-    "pricing.sub": "Chaque pièce est unique. Les prix indiqués varient selon le bois, les dimensions et la personnalisation. La planche pour pizza au mètre coûte CHF 160.",
+    "pricing.sub": "Chaque pièce est unique. Les prix indiqués varient selon le bois, les dimensions et la personnalisation.",
+    "pricing.length": "Longueur",
+    "pricing.width": "Largeur",
+    "pricing.sizeOnRequest": "Dimensions sur demande",
     "pricing.from": "à partir de",
     "pricing.popular": "Le plus demandé",
     "pricing.s.title": "Petit",
-    "pricing.s.desc": "Planches compactes, parfaites pour le pain, le fromage et les apéritifs. Dimensions jusqu'à 30 × 20 cm.",
-    "pricing.s.f1": "✦ Érable ou Frêne",
+    "pricing.s.desc": "Planches compactes, parfaites pour le pain, le fromage et les apéritifs.",
+    "pricing.s.f1": "✦ Bois au choix",
     "pricing.s.f2": "✦ Fini à l'huile naturelle",
     "pricing.s.f3": "✦ Bords polis à la main",
     "pricing.m.title": "Moyen",
-    "pricing.m.desc": "Le format idéal pour un usage quotidien. Dimensions entre 30 × 20 cm et 45 × 30 cm.",
-    "pricing.m.f1": "✦ Noyer, Cerisier ou Chêne",
+    "pricing.m.desc": "Le format idéal pour un usage quotidien.",
+    "pricing.m.f1": "✦ Bois au choix",
     "pricing.m.f2": "✦ Fini à l'huile de lin",
     "pricing.m.f3": "✦ Personnalisation disponible",
     "pricing.m.f4": "✦ Pieds antidérapants",
@@ -762,8 +780,8 @@ const translations = {
     "pricing.pizza.f2": "✦ Bois massif sélectionné",
     "pricing.pizza.f3": "✦ Finition naturelle alimentaire",
     "pricing.pizza.f4": "✦ Gravure disponible",
-    "pricing.l.title": "Spécial",
-    "pricing.l.desc": "Pièces d'exposition, gravures personnalisées ou formats extra-large sur demande.",
+    "pricing.l.title": "Grand",
+    "pricing.l.desc": "Une grande planche pour servir et partager à plusieurs.",
     "pricing.l.f1": "✦ Bois précieux sélectionnés",
     "pricing.l.f2": "✦ Gravure personnalisée",
     "pricing.l.f3": "✦ Coffret cadeau inclus",
@@ -786,14 +804,14 @@ const translations = {
     "maint.tip.label": "Conseil de Roby :",
     "maint.tip.text": "Une planche à découper en bois n'est pas seulement un outil de cuisine — c'est un compagnon de vie.",
     "contact.label": "Parlons-en",
-    "contact.sub": "Remplissez le formulaire : un message contenant tous les détails sera préparé et la discussion WhatsApp de Roby s'ouvrira directement.",
+    "contact.sub": "Remplissez le formulaire pour envoyer votre demande par e-mail.",
     "contact.form.title": "Demandez votre cadeau personnalisé",
-    "contact.form.intro": "Choisissez la planche, le bois et la gravure. Vous pourrez vérifier et modifier la demande avant de l'envoyer sur WhatsApp.",
+    "contact.form.intro": "Choisissez la planche, le bois et la gravure. Votre demande arrivera par e-mail.",
     "contact.firstName": "Prénom",
     "contact.lastName": "Nom",
-    "contact.email": "E-mail de secours",
+    "contact.email": "Votre e-mail",
     "contact.email.placeholder": "nom@exemple.ch",
-    "contact.email.help": "Votre e-mail est inclus dans le message comme contact alternatif. Si WhatsApp ne s’ouvre pas, contactez Roby par e-mail.",
+    "contact.email.help": "Nous utilisons cette adresse pour répondre à votre demande.",
     "contact.choose": "Sélectionner",
     "contact.size": "Dimensions de la planche",
     "contact.size.small": "Petite",
@@ -816,20 +834,22 @@ const translations = {
     "contact.engraving": "Souhaitez-vous une gravure ?",
     "contact.no": "Non",
     "contact.yes": "Oui",
-    "contact.engraving.note": "Après l'ouverture de WhatsApp, ajoutez manuellement dans la discussion la photo ou le fichier à graver.",
+    "contact.engraving.file": "Image pour la gravure (facultatif)",
+    "contact.engraving.note": "Vous pouvez joindre une image ou un PDF de 10 Mo maximum.",
     "contact.notes": "Autres détails",
     "contact.notes.placeholder": "Forme, utilisation, délai souhaité ou autres demandes",
-    "contact.submit": "Préparer le message WhatsApp",
-    "contact.privacy": "Les données ne sont pas enregistrées. Elles servent uniquement à composer le message ouvert dans WhatsApp.",
+    "contact.submit": "Envoyer la demande par e-mail",
+    "contact.privacy": "Vos données sont envoyées à Roby par e-mail via FormSubmit. Le service conserve les demandes pendant 30 jours.",
+    "contact.fileTooLarge": "Le fichier ne doit pas dépasser 10 Mo.",
     "contact.whatsapp.greeting": "Bonjour Roby !",
     "contact.whatsapp.intro": "Je souhaite des informations sur une planche ou un cadeau personnalisé.",
     "contact.whatsapp.name": "Nom complet",
-    "contact.whatsapp.email": "E-mail de secours",
+    "contact.whatsapp.email": "E-mail pour la réponse",
     "contact.whatsapp.size": "Dimensions",
     "contact.whatsapp.wood": "Bois",
     "contact.whatsapp.engraving": "Gravure",
     "contact.whatsapp.notes": "Autres détails",
-    "contact.whatsapp.attachment": "J'ajouterai manuellement dans cette discussion la photo ou le fichier pour la gravure.",
+    "contact.whatsapp.attachment": "L'image pour la gravure est jointe si disponible.",
     "footer.tagline": "Cadeaux personnalisés en bois & gravure laser · Suisse",
     "footer.copy": "© 2025 Roberto — Tous droits réservés",
     "access.skip": "Aller au contenu",
@@ -909,6 +929,58 @@ const categoryTranslationKeys = {
   tables: 'gallery.tables',
 };
 
+const configNode = document.getElementById('site-config');
+if (!configNode?.textContent.trim()) {
+  throw new Error('Website-Konfiguration fehlt. Bitte zuerst node scripts/build-site.cjs ausführen.');
+}
+const siteConfig = JSON.parse(configNode.textContent);
+document.getElementById('email-direct').href = `mailto:${siteConfig.contactEmail}`;
+document.getElementById('contact-email-label').textContent = siteConfig.contactEmail;
+
+function formatDimensions(size, lang) {
+  if (size.lengthCm === null) return '';
+  const number = new Intl.NumberFormat(lang);
+  return `${number.format(size.lengthCm)} × ${number.format(size.widthCm)} cm`;
+}
+
+function updateConfiguredContent(lang, t) {
+  document.querySelector('[data-config-stat="pieces"]').textContent = siteConfig.stats.pieces;
+  document.querySelector('[data-config-stat="years"]').textContent = siteConfig.stats.years;
+
+  document.querySelectorAll('.pricing-card[data-config-size]').forEach(card => {
+    const size = siteConfig.sizes[card.dataset.configSize];
+    card.querySelector('.price-amount').textContent = `CHF ${new Intl.NumberFormat(lang).format(size.priceChf)}`;
+    let dimensions = card.querySelector('.pricing-dimensions');
+    if (!dimensions) {
+      dimensions = document.createElement('p');
+      dimensions.className = 'pricing-dimensions';
+      card.querySelector('.pricing-desc').after(dimensions);
+    }
+    dimensions.textContent = size.lengthCm === null
+      ? t['pricing.sizeOnRequest']
+      : `${t['pricing.length']} ${new Intl.NumberFormat(lang).format(size.lengthCm)} cm · ${t['pricing.width']} ${new Intl.NumberFormat(lang).format(size.widthCm)} cm`;
+  });
+
+  for (const size of ['small', 'medium', 'pizza', 'large']) {
+    const option = document.querySelector(`#board-size option[value="${size}"]`);
+    const dimensions = formatDimensions(siteConfig.sizes[size], lang);
+    option.textContent = `${t[`contact.size.${size}`]}${dimensions ? ` · ${dimensions}` : ''}`;
+  }
+
+  const woodSelect = document.getElementById('wood-type');
+  const selectedWood = woodSelect.value;
+  woodSelect.querySelectorAll('option[data-config-wood]').forEach(option => option.remove());
+  const customWood = woodSelect.querySelector('option[value="specific"]');
+  siteConfig.woods.forEach((wood, index) => {
+    const option = document.createElement('option');
+    option.value = `wood-${index}`;
+    option.dataset.configWood = '';
+    option.textContent = wood[lang];
+    woodSelect.insertBefore(option, customWood);
+  });
+  woodSelect.value = selectedWood;
+}
+
 let currentLang = 'it';
 try {
   const savedLang = localStorage.getItem('lang');
@@ -943,6 +1015,8 @@ function applyLanguage(lang) {
     const key = field.getAttribute('data-i18n-placeholder');
     if (t[key] !== undefined) field.placeholder = t[key];
   });
+
+  updateConfiguredContent(lang, t);
 
   document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
     const key = categoryTranslationKeys[button.dataset.filter];
@@ -1119,8 +1193,8 @@ filterBtns.forEach(button => {
   button.querySelector('.filter-count').textContent = count;
 });
 
-// WhatsApp order form
-const whatsappOrderForm = document.getElementById('whatsapp-order-form');
+// E-Mail-Anfrage
+const emailOrderForm = document.getElementById('email-order-form');
 const boardSizeSelect = document.getElementById('board-size');
 const customSizeGroup = document.getElementById('custom-size-group');
 const customSizeInput = document.getElementById('custom-size');
@@ -1129,6 +1203,8 @@ const customWoodGroup = document.getElementById('custom-wood-group');
 const customWoodInput = document.getElementById('custom-wood');
 const engravingSelect = document.getElementById('engraving-request');
 const engravingUploadNote = document.getElementById('engraving-upload-note');
+const engravingFile = document.getElementById('engraving-file');
+const orderMessage = document.getElementById('order-message');
 
 const setConditionalField = (select, expectedValue, container, input) => {
   const isActive = select.value === expectedValue;
@@ -1139,15 +1215,18 @@ const setConditionalField = (select, expectedValue, container, input) => {
   }
 };
 
-if (whatsappOrderForm) {
+if (emailOrderForm) {
+  emailOrderForm.action = `https://formsubmit.co/${siteConfig.contactEmail}`;
   const syncOrderFields = () => {
     setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
     setConditionalField(woodTypeSelect, 'specific', customWoodGroup, customWoodInput);
-    engravingUploadNote.hidden = engravingSelect.value !== 'yes';
+    const hasEngraving = engravingSelect.value === 'yes';
+    engravingUploadNote.hidden = !hasEngraving;
+    engravingFile.disabled = !hasEngraving;
   };
   syncOrderFields();
   window.addEventListener('pageshow', syncOrderFields);
-  whatsappOrderForm.addEventListener('reset', () => setTimeout(syncOrderFields, 0));
+  emailOrderForm.addEventListener('reset', () => setTimeout(syncOrderFields, 0));
   boardSizeSelect.addEventListener('change', () => {
     setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
   });
@@ -1157,15 +1236,24 @@ if (whatsappOrderForm) {
   });
 
   engravingSelect.addEventListener('change', () => {
-    engravingUploadNote.hidden = engravingSelect.value !== 'yes';
+    syncOrderFields();
   });
+  engravingFile.addEventListener('change', () => engravingFile.setCustomValidity(''));
 
-  whatsappOrderForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!whatsappOrderForm.reportValidity()) return;
+  emailOrderForm.addEventListener('submit', (event) => {
+    if (!emailOrderForm.reportValidity()) {
+      event.preventDefault();
+      return;
+    }
 
     const t = translations[currentLang] || translations.it;
-    const data = new FormData(whatsappOrderForm);
+    if (engravingFile.files?.[0]?.size > 10 * 1024 * 1024) {
+      event.preventDefault();
+      engravingFile.setCustomValidity(t['contact.fileTooLarge']);
+      engravingFile.reportValidity();
+      return;
+    }
+    const data = new FormData(emailOrderForm);
     const sizeKeys = {
       small: 'contact.size.small',
       medium: 'contact.size.medium',
@@ -1173,24 +1261,17 @@ if (whatsappOrderForm) {
       large: 'contact.size.large',
       custom: 'contact.size.custom',
     };
-    const woodKeys = {
-      oak: 'contact.wood.oak',
-      walnut: 'contact.wood.walnut',
-      cherry: 'contact.wood.cherry',
-      maple: 'contact.wood.maple',
-      ash: 'contact.wood.ash',
-      specific: 'contact.wood.specific',
-    };
-
     const sizeValue = data.get('size');
     const woodValue = data.get('wood');
     const engravingValue = data.get('engraving');
+    const dimensions = siteConfig.sizes[sizeValue]
+      ? formatDimensions(siteConfig.sizes[sizeValue], currentLang) : '';
     const sizeLabel = sizeValue === 'custom'
       ? `${t[sizeKeys[sizeValue]]}: ${data.get('customSize')}`
-      : t[sizeKeys[sizeValue]];
+      : `${t[sizeKeys[sizeValue]]}${dimensions ? ` (${dimensions})` : ''}`;
     const woodLabel = woodValue === 'specific'
-      ? `${t[woodKeys[woodValue]]}: ${data.get('customWood')}`
-      : t[woodKeys[woodValue]];
+      ? `${t['contact.wood.specific']}: ${data.get('customWood')}`
+      : siteConfig.woods[Number(String(woodValue).replace('wood-', ''))]?.[currentLang];
 
     const messageLines = [
       t['contact.whatsapp.greeting'],
@@ -1205,18 +1286,10 @@ if (whatsappOrderForm) {
 
     const notes = String(data.get('notes') || '').trim();
     if (notes) messageLines.push(`${t['contact.whatsapp.notes']}: ${notes}`);
-    if (engravingValue === 'yes') {
+    if (engravingValue === 'yes' && engravingFile.files?.length) {
       messageLines.push('', t['contact.whatsapp.attachment']);
     }
-
-    const whatsappUrl = `https://wa.me/41787544017?text=${encodeURIComponent(messageLines.join('\n'))}`;
-    const whatsappWindow = window.open('about:blank', '_blank');
-    if (whatsappWindow) {
-      whatsappWindow.opener = null;
-      whatsappWindow.location.href = whatsappUrl;
-    } else {
-      window.location.href = whatsappUrl;
-    }
+    orderMessage.value = messageLines.join('\n');
   });
 }
 
