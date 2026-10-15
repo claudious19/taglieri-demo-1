@@ -443,7 +443,7 @@ em { font-style: italic; color: var(--walnut); }
 .about { background: var(--cream); }
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: 1.3fr 1fr;
   gap: clamp(3rem, 6vw, 7rem);
   align-items: center;
   max-width: 1200px;
@@ -1852,7 +1852,7 @@ section[id] {
   }
 
   .about-grid {
-    grid-template-columns: 0.8fr 1.4fr;
+    grid-template-columns: 1.4fr 0.8fr;
   }
 
   .about-img-frame {
@@ -1906,7 +1906,7 @@ section[id] {
   }
 
   .about-grid {
-    grid-template-columns: 0.8fr 1.4fr;
+    grid-template-columns: 1.4fr 0.8fr;
     max-width: 980px;
   }
 
