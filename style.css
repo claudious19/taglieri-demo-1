@@ -2621,3 +2621,27 @@ section,
 @media (prefers-reduced-motion: reduce) {
   .gallery-item:hover { transform: none; }
 }
+
+@media (min-width: 900px) {
+  #about .about-grid {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    align-items: start;
+    gap: clamp(2rem, 4vw, 4rem);
+    max-width: 1100px;
+  }
+
+  #about .about-img-col {
+    justify-self: center;
+    margin-top: 2.25rem;
+  }
+
+  #about .about-img-frame {
+    width: 220px;
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1279px) {
+  #about { min-height: 100svh; }
+}
