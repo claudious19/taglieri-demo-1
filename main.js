@@ -955,31 +955,19 @@ document.getElementById('contact-email-label').textContent = siteConfig.contactE
 document.getElementById('instagram-direct').href = `https://www.instagram.com/${siteConfig.instagramUsername}/`;
 document.getElementById('instagram-label').textContent = `@${siteConfig.instagramUsername}`;
 
-// Google Analytics wird erst nach einer aktiven Zustimmung geladen.
+// Der Google-Tag startet mit verweigerter Speicherung und wird erst nach Zustimmung freigegeben.
 const analyticsConsentKey = 'robywood-analytics-consent';
 const analyticsBanner = document.getElementById('analytics-consent');
 const analyticsSettings = document.getElementById('analytics-settings');
 
-function loadGoogleAnalytics() {
-  const measurementId = siteConfig.ga4MeasurementId;
-  if (!measurementId || window.__robywoodGa4Loaded) return;
-
-  window.__robywoodGa4Loaded = true;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
-  window.gtag('consent', 'default', {
-    analytics_storage: 'granted',
+function updateGoogleAnalyticsConsent(value) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('consent', 'update', {
+    analytics_storage: value === 'granted' ? 'granted' : 'denied',
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
   });
-  window.gtag('js', new Date());
-  window.gtag('config', measurementId, { anonymize_ip: true });
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
-  document.head.append(script);
 }
 
 function getAnalyticsConsent() {
@@ -997,13 +985,13 @@ function showAnalyticsChoice() {
 if (siteConfig.ga4MeasurementId) {
   analyticsSettings.hidden = false;
   const savedAnalyticsConsent = getAnalyticsConsent();
-  if (savedAnalyticsConsent === 'granted') loadGoogleAnalytics();
+  if (savedAnalyticsConsent === 'granted') updateGoogleAnalyticsConsent('granted');
   else if (savedAnalyticsConsent !== 'denied') showAnalyticsChoice();
 
   document.getElementById('analytics-allow').addEventListener('click', () => {
     setAnalyticsConsent('granted');
     analyticsBanner.hidden = true;
-    loadGoogleAnalytics();
+    updateGoogleAnalyticsConsent('granted');
   });
   document.getElementById('analytics-deny').addEventListener('click', () => {
     setAnalyticsConsent('denied');
@@ -1011,6 +999,7 @@ if (siteConfig.ga4MeasurementId) {
   });
   analyticsSettings.addEventListener('click', () => {
     try { localStorage.removeItem(analyticsConsentKey); } catch (_) {}
+    updateGoogleAnalyticsConsent('denied');
     showAnalyticsChoice();
   });
 }

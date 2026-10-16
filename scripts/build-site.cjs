@@ -4,9 +4,21 @@ const { loadConfig, root } = require('./site-config.cjs');
 
 function renderHtml(html, config) {
   const marker = '<script id="site-config" type="application/json"></script>';
+  const ga4Marker = '<script id="ga4-google-tag"></script>';
   if (!html.includes(marker)) throw new Error('Konfigurationsplatzhalter fehlt in index.html.');
+  if (!html.includes(ga4Marker)) throw new Error('GA4-Platzhalter fehlt in index.html.');
   const json = JSON.stringify(config).replace(/</g, '\\u003c');
-  return html.replace(marker, `<script id="site-config" type="application/json">${json}</script>`);
+  const googleTag = config.ga4MeasurementId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${config.ga4MeasurementId}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    gtag('js', new Date());
+    gtag('config', '${config.ga4MeasurementId}', { anonymize_ip: true });
+  </script>` : '';
+  return html
+    .replace(ga4Marker, googleTag)
+    .replace(marker, `<script id="site-config" type="application/json">${json}</script>`);
 }
 
 function buildSite() {
