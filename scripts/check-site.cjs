@@ -57,8 +57,9 @@ assert.ok(!/formsubmit/i.test(html + javascript), 'Das Formular darf FormSubmit 
 assert.ok(!html.includes('type="file"'), 'Dateianhänge müssen im E-Mail-Programm ergänzt werden.');
 assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(html + fs.readFileSync(path.join(root, 'style.css'), 'utf8')), 'Google Fonts dürfen nicht geladen werden.');
 assert.ok(renderedHtml.includes(`googletagmanager.com/gtag/js?id=${siteConfig.ga4MeasurementId}`), 'GA4-Tag muss im Produktions-Build enthalten sein.');
-assert.ok(renderedHtml.includes("analytics_storage: 'denied'"), 'GA4 muss ohne Zustimmung mit verweigerter Speicherung starten.');
+assert.ok(renderedHtml.includes("analyticsConsent = localStorage.getItem('robywood-analytics-consent') === 'granted' ? 'granted' : 'denied'"), 'GA4 muss die gespeicherte Zustimmung beim Laden berücksichtigen.');
 assert.ok(javascript.includes("analytics_storage: value === 'granted' ? 'granted' : 'denied'"), 'GA4-Zustimmung muss aktualisierbar sein.');
+assert.ok(javascript.includes('function removeGoogleAnalyticsCookies()'), 'GA4-Cookies müssen beim Widerruf entfernt werden.');
 for (const font of ['dm-sans.woff2', 'cormorant-garamond-roman.woff2', 'cormorant-garamond-italic.woff2', 'OFL-DM-Sans.txt', 'OFL-Cormorant-Garamond.txt']) {
   assert.ok(fs.existsSync(path.join(root, 'fonts', font)), `Lokale Schriftdatei fehlt: ${font}`);
 }

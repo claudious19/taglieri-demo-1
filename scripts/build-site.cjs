@@ -12,7 +12,9 @@ function renderHtml(html, config) {
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    var analyticsConsent = 'denied';
+    try { analyticsConsent = localStorage.getItem('robywood-analytics-consent') === 'granted' ? 'granted' : 'denied'; } catch (_) {}
+    gtag('consent', 'default', { analytics_storage: analyticsConsent, ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     gtag('js', new Date());
     gtag('config', '${config.ga4MeasurementId}', { anonymize_ip: true });
   </script>` : '';

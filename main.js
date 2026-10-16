@@ -970,6 +970,15 @@ function updateGoogleAnalyticsConsent(value) {
   });
 }
 
+function removeGoogleAnalyticsCookies() {
+  document.cookie.split(';').forEach(cookie => {
+    const name = cookie.trim().split('=')[0];
+    if (name === '_ga' || name.startsWith('_ga_')) {
+      document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
+    }
+  });
+}
+
 function getAnalyticsConsent() {
   try { return localStorage.getItem(analyticsConsentKey); } catch (_) { return null; }
 }
@@ -996,10 +1005,13 @@ if (siteConfig.ga4MeasurementId) {
   document.getElementById('analytics-deny').addEventListener('click', () => {
     setAnalyticsConsent('denied');
     analyticsBanner.hidden = true;
+    updateGoogleAnalyticsConsent('denied');
+    removeGoogleAnalyticsCookies();
   });
   analyticsSettings.addEventListener('click', () => {
     try { localStorage.removeItem(analyticsConsentKey); } catch (_) {}
     updateGoogleAnalyticsConsent('denied');
+    removeGoogleAnalyticsCookies();
     showAnalyticsChoice();
   });
 }
