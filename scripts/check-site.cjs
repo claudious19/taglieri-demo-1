@@ -17,10 +17,12 @@ const changedConfig = loadConfig(envSource
   .replace('PRICE_PIZZA_CHF=160', 'PRICE_PIZZA_CHF=170')
   .replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')
   .replace('SIZE_SMALL_WIDTH_CM=', 'SIZE_SMALL_WIDTH_CM=20')
-  .replace('CONTACT_EMAIL=claudio.italy05@gmail.com', 'CONTACT_EMAIL=test@example.com'));
+  .replace('CONTACT_EMAIL=claudio.italy05@gmail.com', 'CONTACT_EMAIL=test@example.com')
+  .replace('INSTAGRAM_USERNAME=itaglieridi_roby', 'INSTAGRAM_USERNAME=@RobywoodTest'));
 assert.equal(changedConfig.sizes.pizza.priceChf, 170);
 assert.equal(changedConfig.sizes.small.lengthCm, 30);
 assert.equal(changedConfig.contactEmail, 'test@example.com');
+assert.equal(changedConfig.instagramUsername, 'RobywoodTest');
 assert.throws(() => loadConfig(envSource.replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')), /gemeinsam/);
 assert.equal(siteConfig.woods.length, 5);
 new vm.Script(javascript);

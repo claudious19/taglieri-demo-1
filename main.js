@@ -932,6 +932,8 @@ if (!configNode?.textContent.trim()) {
 const siteConfig = JSON.parse(configNode.textContent);
 document.getElementById('email-direct').href = `mailto:${siteConfig.contactEmail}`;
 document.getElementById('contact-email-label').textContent = siteConfig.contactEmail;
+document.getElementById('instagram-direct').href = `https://www.instagram.com/${siteConfig.instagramUsername}/`;
+document.getElementById('instagram-label').textContent = `@${siteConfig.instagramUsername}`;
 
 function formatDimensions(size, lang) {
   if (size.lengthCm === null) return '';

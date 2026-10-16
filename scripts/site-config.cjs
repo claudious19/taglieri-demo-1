@@ -31,6 +31,10 @@ function loadConfig(source = fs.readFileSync(path.join(root, '.env'), 'utf8')) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail)) {
     throw new Error('CONTACT_EMAIL muss eine gültige E-Mail-Adresse sein.');
   }
+  const instagramUsername = required('INSTAGRAM_USERNAME').replace(/^@/, '');
+  if (!/^[A-Za-z0-9._]+$/.test(instagramUsername)) {
+    throw new Error('INSTAGRAM_USERNAME enthält ungültige Zeichen.');
+  }
 
   const configuredSizes = Object.fromEntries(sizes.map(size => {
     const prefix = size.toUpperCase();
@@ -59,6 +63,7 @@ function loadConfig(source = fs.readFileSync(path.join(root, '.env'), 'utf8')) {
   return {
     stats: { pieces: stat('PIECES_CREATED'), years: stat('YEARS_EXPERIENCE') },
     contactEmail,
+    instagramUsername,
     sizes: configuredSizes,
     woods: Array.from({ length: woodCount }, (_, index) =>
       Object.fromEntries(languages.map(lang => [lang, woodLists[lang][index]]))),
