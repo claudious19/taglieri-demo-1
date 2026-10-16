@@ -1297,7 +1297,7 @@ em { font-style: italic; color: var(--walnut); }
 .analytics-consent p { margin: 0; color: rgba(245,237,224,0.8); font-size: 0.84rem; line-height: 1.55; }
 .analytics-consent-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
 .analytics-consent button { min-height: 2.55rem; padding: 0.5rem 0.9rem; border-radius: 0.35rem; font: inherit; font-size: 0.76rem; font-weight: 700; cursor: pointer; }
-.analytics-deny { border: 1px solid rgba(245,237,224,0.45); background: transparent; color: var(--cream); }
+.analytics-deny { border: 1px solid rgba(245,237,224,0.6); background: transparent; color: var(--cream); font-weight: 400 !important; }
 .analytics-allow { border: 1px solid var(--gold); background: var(--gold); color: var(--charcoal); }
 .analytics-consent button:hover, .analytics-consent button:focus-visible { transform: translateY(-1px); filter: brightness(1.06); }
 
