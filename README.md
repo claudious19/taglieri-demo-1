@@ -24,6 +24,8 @@ Für jede Größe gibt es ein Wertepaar `SIZE_<GRÖSSE>_LENGTH_CM` und `SIZE_<GR
 
 `CONTACT_EMAIL` legt die Empfängeradresse für Formular und direkten E-Mail-Kontakt fest. `INSTAGRAM_USERNAME` steuert den sichtbaren Instagram-Namen und dessen Link; ein vorangestelltes `@` ist optional. Der Formularbutton öffnet über `mailto:` einen Entwurf im lokal eingerichteten E-Mail-Programm. Ohne eingerichtetes E-Mail-Programm funktioniert dieser Weg möglicherweise nicht; Kunden können die sichtbare Adresse kopieren und selbst eine E-Mail schreiben. Anhänge können technisch nicht über `mailto:` übergeben werden und müssen manuell hinzugefügt werden. **Die `.env` ist öffentlich:** keine Passwörter oder geheimen Schlüssel eintragen. Die bisherige Telefonnummer kann außerdem in älteren Git-Versionen und veröffentlichten Seiten enthalten sein.
 
+`GA4_MEASUREMENT_ID` aktiviert optional Google Analytics 4. Hier gehört ausschließlich eine öffentliche Mess-ID im Format `G-XXXXXXXXXX` hinein. Solange der Wert leer ist, lädt die Website kein Analytics-Skript. Mit Mess-ID erscheint ein Zustimmungsdialog: Google Analytics wird erst nach Zustimmung geladen; die Auswahl kann über „Analyse-Einstellungen“ im Footer widerrufen oder geändert werden. Eine Datenschutzerklärung und die rechtliche Ausgestaltung bleiben Sache des Website-Betreibers.
+
 ## Veröffentlichung
 
 Änderungen auf `main` werden mit `.github/workflows/pages.yml` geprüft, aus `.env` gebaut und über GitHub Actions auf GitHub Pages veröffentlicht. Die `.env` selbst wird nicht in die fertige Website kopiert; ihre Werte erscheinen aber im öffentlichen Seitencode.

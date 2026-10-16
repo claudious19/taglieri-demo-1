@@ -18,12 +18,15 @@ const changedConfig = loadConfig(envSource
   .replace(/^SIZE_SMALL_LENGTH_CM=.*$/m, 'SIZE_SMALL_LENGTH_CM=30')
   .replace(/^SIZE_SMALL_WIDTH_CM=.*$/m, 'SIZE_SMALL_WIDTH_CM=20')
   .replace(/^CONTACT_EMAIL=.*$/m, 'CONTACT_EMAIL=test@example.com')
-  .replace(/^INSTAGRAM_USERNAME=.*$/m, 'INSTAGRAM_USERNAME=@RobywoodTest'));
+  .replace(/^INSTAGRAM_USERNAME=.*$/m, 'INSTAGRAM_USERNAME=@RobywoodTest')
+  .replace(/^GA4_MEASUREMENT_ID=.*$/m, 'GA4_MEASUREMENT_ID=G-TEST12345'));
 assert.equal(changedConfig.sizes.pizza.priceChf, 170);
 assert.equal(changedConfig.sizes.small.lengthCm, 30);
 assert.equal(changedConfig.contactEmail, 'test@example.com');
 assert.equal(changedConfig.instagramUsername, 'RobywoodTest');
+assert.equal(changedConfig.ga4MeasurementId, 'G-TEST12345');
 assert.throws(() => loadConfig(envSource.replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')), /gemeinsam/);
+assert.throws(() => loadConfig(envSource.replace(/^GA4_MEASUREMENT_ID=.*$/m, 'GA4_MEASUREMENT_ID=invalid')), /Mess-ID/);
 assert.equal(siteConfig.woods.length, 5);
 new vm.Script(javascript);
 
@@ -53,6 +56,9 @@ assert.ok(!/https?:\/\/wa\.me\//.test(renderedHtml), 'WhatsApp-Link darf nicht i
 assert.ok(!/formsubmit/i.test(html + javascript), 'Das Formular darf FormSubmit nicht mehr verwenden.');
 assert.ok(!html.includes('type="file"'), 'Dateianhänge müssen im E-Mail-Programm ergänzt werden.');
 assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(html + fs.readFileSync(path.join(root, 'style.css'), 'utf8')), 'Google Fonts dürfen nicht geladen werden.');
+assert.ok(javascript.includes('googletagmanager.com/gtag/js?id='), 'GA4-Skript muss nach Zustimmung nachgeladen werden.');
+assert.ok(javascript.includes("analytics_storage: 'granted'"), 'GA4 muss erst nach Zustimmung aktiviert werden.');
+assert.ok(!html.includes('googletagmanager.com/gtag/js'), 'GA4 darf nicht vor der Zustimmung im HTML geladen werden.');
 for (const font of ['dm-sans.woff2', 'cormorant-garamond-roman.woff2', 'cormorant-garamond-italic.woff2', 'OFL-DM-Sans.txt', 'OFL-Cormorant-Garamond.txt']) {
   assert.ok(fs.existsSync(path.join(root, 'fonts', font)), `Lokale Schriftdatei fehlt: ${font}`);
 }

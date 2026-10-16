@@ -35,6 +35,10 @@ function loadConfig(source = fs.readFileSync(path.join(root, '.env'), 'utf8')) {
   if (!/^[A-Za-z0-9._]+$/.test(instagramUsername)) {
     throw new Error('INSTAGRAM_USERNAME enthält ungültige Zeichen.');
   }
+  const ga4MeasurementId = (env.GA4_MEASUREMENT_ID || '').trim().toUpperCase();
+  if (ga4MeasurementId && !/^G-[A-Z0-9]{6,}$/.test(ga4MeasurementId)) {
+    throw new Error('GA4_MEASUREMENT_ID muss eine gültige GA4-Mess-ID sein.');
+  }
 
   const configuredSizes = Object.fromEntries(sizes.map(size => {
     const prefix = size.toUpperCase();
@@ -64,6 +68,7 @@ function loadConfig(source = fs.readFileSync(path.join(root, '.env'), 'utf8')) {
     stats: { pieces: stat('PIECES_CREATED'), years: stat('YEARS_EXPERIENCE') },
     contactEmail,
     instagramUsername,
+    ga4MeasurementId,
     sizes: configuredSizes,
     woods: Array.from({ length: woodCount }, (_, index) =>
       Object.fromEntries(languages.map(lang => [lang, woodLists[lang][index]]))),
