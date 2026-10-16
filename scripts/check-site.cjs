@@ -13,6 +13,8 @@ const envSource = fs.readFileSync(path.join(root, '.env'), 'utf8');
 const siteConfig = loadConfig(envSource);
 const renderedHtml = renderHtml(html, siteConfig);
 assert.deepEqual(JSON.parse(renderedHtml.match(/<script id="site-config" type="application\/json">([\s\S]*?)<\/script>/)[1]), siteConfig);
+const disabledConfig = loadConfig(envSource.replace(/^UMAMI_WEBSITE_ID=.*$/m, 'UMAMI_WEBSITE_ID='));
+const renderedDisabledHtml = renderHtml(html, disabledConfig);
 const changedConfig = loadConfig(envSource
   .replace(/^PRICE_PIZZA_CHF=.*$/m, 'PRICE_PIZZA_CHF=170')
   .replace(/^SIZE_SMALL_LENGTH_CM=.*$/m, 'SIZE_SMALL_LENGTH_CM=30')
@@ -57,7 +59,8 @@ assert.ok(!/formsubmit/i.test(html + javascript), 'Das Formular darf FormSubmit 
 assert.ok(!html.includes('type="file"'), 'Dateianhänge müssen im E-Mail-Programm ergänzt werden.');
 assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(html + fs.readFileSync(path.join(root, 'style.css'), 'utf8')), 'Google Fonts dürfen nicht geladen werden.');
 assert.ok(!/(googletagmanager|google-analytics|gtag\()/i.test(renderedHtml + javascript), 'Google Analytics darf nicht mehr ausgeliefert werden.');
-assert.ok(!/<script[^>]+src="https:\/\/cloud\.umami\.is\/script\.js"/.test(renderedHtml), 'Umami darf ohne Website-ID nicht geladen werden.');
+assert.ok(renderedHtml.includes(`data-website-id="${siteConfig.umami.websiteId}"`), 'Die konfigurierte Umami-Website-ID fehlt im Produktions-Build.');
+assert.ok(!/<script[^>]+src="https:\/\/cloud\.umami\.is\/script\.js"/.test(renderedDisabledHtml), 'Umami darf ohne Website-ID nicht geladen werden.');
 const renderedUmamiHtml = renderHtml(html, changedConfig);
 assert.ok(renderedUmamiHtml.includes('src="https://cloud.umami.is/script.js"'), 'Umami-Skript fehlt im Produktions-Build.');
 assert.ok(renderedUmamiHtml.includes('data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"'), 'Umami-Website-ID fehlt im Produktions-Build.');
