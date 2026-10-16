@@ -60,6 +60,7 @@ for (const name of fs.readdirSync(path.join(root, 'images')).filter(name => /^Wh
   assert.ok(imageHashes.has(hash), `Neues Motiv fehlt: ${name}`);
 }
 assert.ok(!html.includes('roby_logo_golden') && !html.includes('logo_roby'), 'Logo darf nicht eingebunden sein.');
+assert.ok(!html.includes('I Taglieri di Roby') && !javascript.includes('I Taglieri di Roby'), 'Alter Markenname darf nicht angezeigt werden.');
 assert.equal(siteConfig.sizes.pizza.priceChf, 160, 'Preis für Pizza al metro fehlt.');
 
 // Nachricht im isolierten Kontext prüfen, ohne Daten zu senden.
