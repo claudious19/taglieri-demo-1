@@ -20,12 +20,10 @@ const changedConfig = loadConfig(envSource
   .replace(/^SIZE_SMALL_LENGTH_CM=.*$/m, 'SIZE_SMALL_LENGTH_CM=30')
   .replace(/^SIZE_SMALL_WIDTH_CM=.*$/m, 'SIZE_SMALL_WIDTH_CM=20')
   .replace(/^CONTACT_EMAIL=.*$/m, 'CONTACT_EMAIL=test@example.com')
-  .replace(/^INSTAGRAM_USERNAME=.*$/m, 'INSTAGRAM_USERNAME=@RobywoodTest')
   .replace(/^UMAMI_WEBSITE_ID=.*$/m, 'UMAMI_WEBSITE_ID=94db1cb1-74f4-4a40-ad6c-962362670409'));
 assert.equal(changedConfig.sizes.pizza.priceChf, 170);
 assert.equal(changedConfig.sizes.small.lengthCm, 30);
 assert.equal(changedConfig.contactEmail, 'test@example.com');
-assert.equal(changedConfig.instagramUsername, 'RobywoodTest');
 assert.equal(changedConfig.umami.websiteId, '94db1cb1-74f4-4a40-ad6c-962362670409');
 assert.throws(() => loadConfig(envSource.replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')), /gemeinsam/);
 assert.throws(() => loadConfig(envSource.replace(/^UMAMI_WEBSITE_ID=.*$/m, 'UMAMI_WEBSITE_ID=invalid')), /ungültige Zeichen/);
