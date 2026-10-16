@@ -26,4 +26,4 @@ Für jede Größe gibt es ein Wertepaar `SIZE_<GRÖSSE>_LENGTH_CM` und `SIZE_<GR
 
 Änderungen auf `main` werden mit `.github/workflows/pages.yml` geprüft, aus `.env` gebaut und über GitHub Actions auf GitHub Pages veröffentlicht. Die `.env` selbst wird nicht in die fertige Website kopiert; ihre Werte erscheinen aber im öffentlichen Seitencode.
 
-Website: https://claudious19.github.io/taglieri-demo-1/
+Website: https://claudious19.github.io/robywood/
