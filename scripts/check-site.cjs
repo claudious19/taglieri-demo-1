@@ -19,14 +19,14 @@ const changedConfig = loadConfig(envSource
   .replace(/^SIZE_SMALL_WIDTH_CM=.*$/m, 'SIZE_SMALL_WIDTH_CM=20')
   .replace(/^CONTACT_EMAIL=.*$/m, 'CONTACT_EMAIL=test@example.com')
   .replace(/^INSTAGRAM_USERNAME=.*$/m, 'INSTAGRAM_USERNAME=@RobywoodTest')
-  .replace(/^GA4_MEASUREMENT_ID=.*$/m, 'GA4_MEASUREMENT_ID=G-TEST12345'));
+  .replace(/^UMAMI_WEBSITE_ID=.*$/m, 'UMAMI_WEBSITE_ID=94db1cb1-74f4-4a40-ad6c-962362670409'));
 assert.equal(changedConfig.sizes.pizza.priceChf, 170);
 assert.equal(changedConfig.sizes.small.lengthCm, 30);
 assert.equal(changedConfig.contactEmail, 'test@example.com');
 assert.equal(changedConfig.instagramUsername, 'RobywoodTest');
-assert.equal(changedConfig.ga4MeasurementId, 'G-TEST12345');
+assert.equal(changedConfig.umami.websiteId, '94db1cb1-74f4-4a40-ad6c-962362670409');
 assert.throws(() => loadConfig(envSource.replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')), /gemeinsam/);
-assert.throws(() => loadConfig(envSource.replace(/^GA4_MEASUREMENT_ID=.*$/m, 'GA4_MEASUREMENT_ID=invalid')), /Mess-ID/);
+assert.throws(() => loadConfig(envSource.replace(/^UMAMI_WEBSITE_ID=.*$/m, 'UMAMI_WEBSITE_ID=invalid')), /ungültige Zeichen/);
 assert.equal(siteConfig.woods.length, 5);
 new vm.Script(javascript);
 
@@ -56,12 +56,12 @@ assert.ok(!/https?:\/\/wa\.me\//.test(renderedHtml), 'WhatsApp-Link darf nicht i
 assert.ok(!/formsubmit/i.test(html + javascript), 'Das Formular darf FormSubmit nicht mehr verwenden.');
 assert.ok(!html.includes('type="file"'), 'Dateianhänge müssen im E-Mail-Programm ergänzt werden.');
 assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(html + fs.readFileSync(path.join(root, 'style.css'), 'utf8')), 'Google Fonts dürfen nicht geladen werden.');
-assert.ok(renderedHtml.includes(`googletagmanager.com/gtag/js?id=${siteConfig.ga4MeasurementId}`), 'GA4-Tag muss im Produktions-Build enthalten sein.');
-assert.ok(renderedHtml.includes("analyticsConsent = localStorage.getItem('robywood-analytics-consent') === 'granted' ? 'granted' : 'denied'"), 'GA4 muss die gespeicherte Zustimmung beim Laden berücksichtigen.');
-assert.ok(renderedHtml.indexOf("gtag('consent', 'default'") < renderedHtml.indexOf(`googletagmanager.com/gtag/js?id=${siteConfig.ga4MeasurementId}`), 'Der Standard-Consent muss vor dem Google-Tag gesetzt werden.');
-assert.ok(renderedHtml.indexOf(`googletagmanager.com/gtag/js?id=${siteConfig.ga4MeasurementId}`) < renderedHtml.indexOf(`gtag('config', '${siteConfig.ga4MeasurementId}'`), 'Der Google-Tag muss vor der GA4-Konfiguration geladen werden.');
-assert.ok(javascript.includes("analytics_storage: value === 'granted' ? 'granted' : 'denied'"), 'GA4-Zustimmung muss aktualisierbar sein.');
-assert.ok(javascript.includes('function removeGoogleAnalyticsCookies()'), 'GA4-Cookies müssen beim Widerruf entfernt werden.');
+assert.ok(!/(googletagmanager|google-analytics|gtag\()/i.test(renderedHtml + javascript), 'Google Analytics darf nicht mehr ausgeliefert werden.');
+assert.ok(!/<script[^>]+src="https:\/\/cloud\.umami\.is\/script\.js"/.test(renderedHtml), 'Umami darf ohne Website-ID nicht geladen werden.');
+const renderedUmamiHtml = renderHtml(html, changedConfig);
+assert.ok(renderedUmamiHtml.includes('src="https://cloud.umami.is/script.js"'), 'Umami-Skript fehlt im Produktions-Build.');
+assert.ok(renderedUmamiHtml.includes('data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"'), 'Umami-Website-ID fehlt im Produktions-Build.');
+assert.ok(renderedUmamiHtml.includes('data-do-not-track="true"'), 'Umami muss Do Not Track respektieren.');
 for (const font of ['dm-sans.woff2', 'cormorant-garamond-roman.woff2', 'cormorant-garamond-italic.woff2', 'OFL-DM-Sans.txt', 'OFL-Cormorant-Garamond.txt']) {
   assert.ok(fs.existsSync(path.join(root, 'fonts', font)), `Lokale Schriftdatei fehlt: ${font}`);
 }

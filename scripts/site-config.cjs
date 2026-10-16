@@ -35,9 +35,16 @@ function loadConfig(source = fs.readFileSync(path.join(root, '.env'), 'utf8')) {
   if (!/^[A-Za-z0-9._]+$/.test(instagramUsername)) {
     throw new Error('INSTAGRAM_USERNAME enthält ungültige Zeichen.');
   }
-  const ga4MeasurementId = (env.GA4_MEASUREMENT_ID || '').trim().toUpperCase();
-  if (ga4MeasurementId && !/^G-[A-Z0-9]{6,}$/.test(ga4MeasurementId)) {
-    throw new Error('GA4_MEASUREMENT_ID muss eine gültige GA4-Mess-ID sein.');
+  const umamiWebsiteId = (env.UMAMI_WEBSITE_ID || '').trim();
+  if (umamiWebsiteId && !/^[A-Za-z0-9-]{8,}$/.test(umamiWebsiteId)) {
+    throw new Error('UMAMI_WEBSITE_ID enthält ungültige Zeichen.');
+  }
+  const umamiScriptUrl = (env.UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js').trim();
+  try {
+    const url = new URL(umamiScriptUrl);
+    if (url.protocol !== 'https:') throw new Error();
+  } catch (_) {
+    throw new Error('UMAMI_SCRIPT_URL muss eine gültige HTTPS-URL sein.');
   }
 
   const configuredSizes = Object.fromEntries(sizes.map(size => {
@@ -68,7 +75,7 @@ function loadConfig(source = fs.readFileSync(path.join(root, '.env'), 'utf8')) {
     stats: { pieces: stat('PIECES_CREATED'), years: stat('YEARS_EXPERIENCE') },
     contactEmail,
     instagramUsername,
-    ga4MeasurementId,
+    umami: { websiteId: umamiWebsiteId, scriptUrl: umamiScriptUrl },
     sizes: configuredSizes,
     woods: Array.from({ length: woodCount }, (_, index) =>
       Object.fromEntries(languages.map(lang => [lang, woodLists[lang][index]]))),

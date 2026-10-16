@@ -4,24 +4,13 @@ const { loadConfig, root } = require('./site-config.cjs');
 
 function renderHtml(html, config) {
   const marker = '<script id="site-config" type="application/json"></script>';
-  const ga4Marker = '<script id="ga4-google-tag"></script>';
+  const umamiMarker = '<script id="umami-tracker"></script>';
   if (!html.includes(marker)) throw new Error('Konfigurationsplatzhalter fehlt in index.html.');
-  if (!html.includes(ga4Marker)) throw new Error('GA4-Platzhalter fehlt in index.html.');
+  if (!html.includes(umamiMarker)) throw new Error('Umami-Platzhalter fehlt in index.html.');
   const json = JSON.stringify(config).replace(/</g, '\\u003c');
-  const googleTag = config.ga4MeasurementId ? `<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    var analyticsConsent = 'denied';
-    try { analyticsConsent = localStorage.getItem('robywood-analytics-consent') === 'granted' ? 'granted' : 'denied'; } catch (_) {}
-    gtag('consent', 'default', { analytics_storage: analyticsConsent, ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=${config.ga4MeasurementId}"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', '${config.ga4MeasurementId}', { anonymize_ip: true });
-  </script>` : '';
+  const umamiTag = config.umami.websiteId ? `<script defer src="${config.umami.scriptUrl}" data-website-id="${config.umami.websiteId}" data-domains="claudious19.github.io" data-do-not-track="true"></script>` : '';
   return html
-    .replace(ga4Marker, googleTag)
+    .replace(umamiMarker, umamiTag)
     .replace(marker, `<script id="site-config" type="application/json">${json}</script>`);
 }
 

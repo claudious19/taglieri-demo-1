@@ -168,11 +168,6 @@ const translations = {
     "contact.whatsapp.attachment": "Se disponibile, aggiungo un'immagine per l'incisione come allegato.",
     "footer.tagline": "Regali personalizzati in legno & incisioni laser · Svizzera",
     "footer.copy": "© 2025 Roberto — Tutti i diritti riservati",
-    "analytics.title": "Analisi del sito",
-    "analytics.text": "Con il tuo consenso usiamo Google Analytics per capire come viene usato il sito e migliorarlo. Puoi modificare la scelta in qualsiasi momento.",
-    "analytics.deny": "Solo necessari",
-    "analytics.allow": "Consenti analisi",
-    "analytics.settings": "Impostazioni analisi",
     "access.skip": "Vai al contenuto",
     "access.language": "Cambia lingua",
     "access.menu": "Menu di navigazione",
@@ -400,11 +395,6 @@ const translations = {
     "contact.whatsapp.attachment": "If available, I will attach an engraving image to this email.",
     "footer.tagline": "Personalized wooden gifts & laser engraving · Switzerland",
     "footer.copy": "© 2025 Roberto — All rights reserved",
-    "analytics.title": "Website analytics",
-    "analytics.text": "With your consent, we use Google Analytics to understand how the site is used and improve it. You can change your choice at any time.",
-    "analytics.deny": "Necessary only",
-    "analytics.allow": "Allow analytics",
-    "analytics.settings": "Analytics settings",
     "access.skip": "Skip to content",
     "access.language": "Change language",
     "access.menu": "Navigation menu",
@@ -632,11 +622,6 @@ const translations = {
     "contact.whatsapp.attachment": "Falls vorhanden, füge ich ein Bild für die Gravur als Anhang hinzu.",
     "footer.tagline": "Personalisierte Holzgeschenke & Lasergravuren · Schweiz",
     "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten",
-    "analytics.title": "Website-Analyse",
-    "analytics.text": "Mit deiner Zustimmung verwenden wir Google Analytics, um die Nutzung der Website zu verstehen und sie zu verbessern. Du kannst deine Auswahl jederzeit ändern.",
-    "analytics.deny": "Nur notwendige",
-    "analytics.allow": "Analysen erlauben",
-    "analytics.settings": "Analyse-Einstellungen",
     "access.skip": "Zum Inhalt springen",
     "access.language": "Sprache ändern",
     "access.menu": "Navigationsmenü",
@@ -863,11 +848,6 @@ const translations = {
     "contact.whatsapp.attachment": "Si disponible, je joindrai une image pour la gravure à cet e-mail.",
     "footer.tagline": "Cadeaux personnalisés en bois & gravure laser · Suisse",
     "footer.copy": "© 2025 Roberto — Tous droits réservés",
-    "analytics.title": "Analyse du site",
-    "analytics.text": "Avec votre accord, nous utilisons Google Analytics pour comprendre l'utilisation du site et l'améliorer. Vous pouvez modifier votre choix à tout moment.",
-    "analytics.deny": "Nécessaires uniquement",
-    "analytics.allow": "Autoriser l'analyse",
-    "analytics.settings": "Paramètres d'analyse",
     "access.skip": "Aller au contenu",
     "access.language": "Changer de langue",
     "access.menu": "Menu de navigation",
@@ -954,67 +934,6 @@ document.getElementById('email-direct').href = `mailto:${siteConfig.contactEmail
 document.getElementById('contact-email-label').textContent = siteConfig.contactEmail;
 document.getElementById('instagram-direct').href = `https://www.instagram.com/${siteConfig.instagramUsername}/`;
 document.getElementById('instagram-label').textContent = `@${siteConfig.instagramUsername}`;
-
-// Der Google-Tag startet mit verweigerter Speicherung und wird erst nach Zustimmung freigegeben.
-const analyticsConsentKey = 'robywood-analytics-consent';
-const analyticsBanner = document.getElementById('analytics-consent');
-const analyticsSettings = document.getElementById('analytics-settings');
-
-function updateGoogleAnalyticsConsent(value) {
-  if (typeof window.gtag !== 'function') return;
-  window.gtag('consent', 'update', {
-    analytics_storage: value === 'granted' ? 'granted' : 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  });
-}
-
-function removeGoogleAnalyticsCookies() {
-  document.cookie.split(';').forEach(cookie => {
-    const name = cookie.trim().split('=')[0];
-    if (name === '_ga' || name.startsWith('_ga_')) {
-      document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
-    }
-  });
-}
-
-function getAnalyticsConsent() {
-  try { return localStorage.getItem(analyticsConsentKey); } catch (_) { return null; }
-}
-
-function setAnalyticsConsent(value) {
-  try { localStorage.setItem(analyticsConsentKey, value); } catch (_) {}
-}
-
-function showAnalyticsChoice() {
-  analyticsBanner.hidden = false;
-}
-
-if (siteConfig.ga4MeasurementId) {
-  analyticsSettings.hidden = false;
-  const savedAnalyticsConsent = getAnalyticsConsent();
-  if (savedAnalyticsConsent === 'granted') updateGoogleAnalyticsConsent('granted');
-  else if (savedAnalyticsConsent !== 'denied') showAnalyticsChoice();
-
-  document.getElementById('analytics-allow').addEventListener('click', () => {
-    setAnalyticsConsent('granted');
-    analyticsBanner.hidden = true;
-    updateGoogleAnalyticsConsent('granted');
-  });
-  document.getElementById('analytics-deny').addEventListener('click', () => {
-    setAnalyticsConsent('denied');
-    analyticsBanner.hidden = true;
-    updateGoogleAnalyticsConsent('denied');
-    removeGoogleAnalyticsCookies();
-  });
-  analyticsSettings.addEventListener('click', () => {
-    try { localStorage.removeItem(analyticsConsentKey); } catch (_) {}
-    updateGoogleAnalyticsConsent('denied');
-    removeGoogleAnalyticsCookies();
-    showAnalyticsChoice();
-  });
-}
 
 function formatDimensions(size, lang) {
   if (size.lengthCm === null) return '';
