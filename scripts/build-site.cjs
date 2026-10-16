@@ -8,13 +8,15 @@ function renderHtml(html, config) {
   if (!html.includes(marker)) throw new Error('Konfigurationsplatzhalter fehlt in index.html.');
   if (!html.includes(ga4Marker)) throw new Error('GA4-Platzhalter fehlt in index.html.');
   const json = JSON.stringify(config).replace(/</g, '\\u003c');
-  const googleTag = config.ga4MeasurementId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${config.ga4MeasurementId}"></script>
-  <script>
+  const googleTag = config.ga4MeasurementId ? `<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     var analyticsConsent = 'denied';
     try { analyticsConsent = localStorage.getItem('robywood-analytics-consent') === 'granted' ? 'granted' : 'denied'; } catch (_) {}
     gtag('consent', 'default', { analytics_storage: analyticsConsent, ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${config.ga4MeasurementId}"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', '${config.ga4MeasurementId}', { anonymize_ip: true });
   </script>` : '';
