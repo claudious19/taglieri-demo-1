@@ -94,7 +94,7 @@ for (const language of Object.keys(dictionary)) {
     ['no', changedConfig, 'small', 'wood-0'],
   ]) {
     let submit;
-    const values = new Map(Object.entries({firstName: 'Test', lastName: 'Person', email: 'test@example.com', size, customSize: '60 × 30 cm', wood, customWood: 'Olivo', engraving, notes: 'Test & Prüfung'}));
+    const values = new Map(Object.entries({firstName: 'Test', lastName: 'Person', size, customSize: '60 × 30 cm', wood, customWood: 'Olivo', engraving, notes: 'Test & Prüfung'}));
     const elements = new Map();
     const document = {getElementById(id) {
       if (!elements.has(id)) elements.set(id, {
@@ -120,7 +120,7 @@ for (const language of Object.keys(dictionary)) {
     assert.equal(url.pathname, config.contactEmail);
     assert.equal(url.searchParams.get('subject'), dictionary[language]['contact.mail.subject']);
     const message = url.searchParams.get('body');
-    assert.ok(message.includes('test@example.com'));
+    assert.ok(message.includes('Test Person'));
     assert.ok(size === 'custom' ? message.includes('60 × 30 cm') : message.includes('30 × 20 cm'));
     assert.ok(wood === 'specific' ? message.includes('Olivo') : message.includes(config.woods[0][language]));
     assert.ok(!message.includes('undefined'));
