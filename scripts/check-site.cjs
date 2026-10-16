@@ -65,6 +65,7 @@ const renderedUmamiHtml = renderHtml(html, changedConfig);
 assert.ok(renderedUmamiHtml.includes('src="https://cloud.umami.is/script.js"'), 'Umami-Skript fehlt im Produktions-Build.');
 assert.ok(renderedUmamiHtml.includes('data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"'), 'Umami-Website-ID fehlt im Produktions-Build.');
 assert.ok(renderedUmamiHtml.includes('data-do-not-track="true"'), 'Umami muss Do Not Track respektieren.');
+assert.ok(renderedUmamiHtml.includes('data-exclude-search="true"'), 'Umami darf keine URL-Parameter erfassen.');
 for (const font of ['dm-sans.woff2', 'cormorant-garamond-roman.woff2', 'cormorant-garamond-italic.woff2', 'OFL-DM-Sans.txt', 'OFL-Cormorant-Garamond.txt']) {
   assert.ok(fs.existsSync(path.join(root, 'fonts', font)), `Lokale Schriftdatei fehlt: ${font}`);
 }

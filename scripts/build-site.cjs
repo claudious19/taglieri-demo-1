@@ -8,7 +8,7 @@ function renderHtml(html, config) {
   if (!html.includes(marker)) throw new Error('Konfigurationsplatzhalter fehlt in index.html.');
   if (!html.includes(umamiMarker)) throw new Error('Umami-Platzhalter fehlt in index.html.');
   const json = JSON.stringify(config).replace(/</g, '\\u003c');
-  const umamiTag = config.umami.websiteId ? `<script defer src="${config.umami.scriptUrl}" data-website-id="${config.umami.websiteId}" data-domains="claudious19.github.io" data-do-not-track="true"></script>` : '';
+  const umamiTag = config.umami.websiteId ? `<script defer src="${config.umami.scriptUrl}" data-website-id="${config.umami.websiteId}" data-domains="claudious19.github.io" data-do-not-track="true" data-exclude-search="true"></script>` : '';
   return html
     .replace(umamiMarker, umamiTag)
     .replace(marker, `<script id="site-config" type="application/json">${json}</script>`);
