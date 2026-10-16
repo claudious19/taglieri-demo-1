@@ -121,9 +121,9 @@ const translations = {
     "maint.tip.label": "Consiglio di Roby:",
     "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita. Con le giuste cure, migliorerà con il tempo, proprio come il vino.",
     "contact.label": "Parliamoci",
-    "contact.sub": "Compila il modulo per inviare la tua richiesta via email.",
+    "contact.sub": "Compila il modulo per preparare un'email con tutti i dettagli.",
     "contact.form.title": "Richiedi il tuo regalo personalizzato",
-    "contact.form.intro": "Scegli tagliere, legno e incisione. La richiesta arriverà via email.",
+    "contact.form.intro": "Scegli tagliere, legno e incisione. Controlla l'email e inviala dal tuo programma di posta.",
     "contact.firstName": "Nome",
     "contact.lastName": "Cognome",
     "contact.email": "La tua email",
@@ -151,13 +151,12 @@ const translations = {
     "contact.engraving": "Desideri un'incisione?",
     "contact.no": "No",
     "contact.yes": "Sì",
-    "contact.engraving.file": "Immagine per l'incisione (facoltativa)",
-    "contact.engraving.note": "Puoi allegare un'immagine o un PDF fino a 10 MB.",
+    "contact.engraving.note": "Aggiungi l'immagine per l'incisione manualmente come allegato nell'email che si aprirà.",
     "contact.notes": "Altri dettagli",
     "contact.notes.placeholder": "Forma, utilizzo, scadenza desiderata o altre richieste",
-    "contact.submit": "Invia richiesta via email",
-    "contact.privacy": "I dati vengono inviati tramite FormSubmit all'indirizzo email di Roby. Il servizio conserva le richieste per 30 giorni.",
-    "contact.fileTooLarge": "Il file non può superare 10 MB.",
+    "contact.submit": "Apri email precompilata",
+    "contact.privacy": "Il modulo apre un'email precompilata nel tuo programma di posta. Controllala e inviala tu; il sito non invia né salva i dati.",
+    "contact.mail.subject": "Richiesta dal sito Robywood",
     "contact.whatsapp.greeting": "Ciao Roby!",
     "contact.whatsapp.intro": "Vorrei informazioni per un tagliere o un regalo personalizzato.",
     "contact.whatsapp.name": "Nome e cognome",
@@ -166,7 +165,7 @@ const translations = {
     "contact.whatsapp.wood": "Legno",
     "contact.whatsapp.engraving": "Incisione",
     "contact.whatsapp.notes": "Altri dettagli",
-    "contact.whatsapp.attachment": "La foto per l'incisione è allegata, se disponibile.",
+    "contact.whatsapp.attachment": "Aggiungerò manualmente l'immagine per l'incisione come allegato a questa email.",
     "footer.tagline": "Regali personalizzati in legno & incisioni laser · Svizzera",
     "footer.copy": "© 2025 Roberto — Tutti i diritti riservati",
     "access.skip": "Vai al contenuto",
@@ -349,9 +348,9 @@ const translations = {
     "maint.tip.label": "Roby's tip:",
     "maint.tip.text": "A wooden cutting board is not just a kitchen tool — it's a companion for life.",
     "contact.label": "Let's talk",
-    "contact.sub": "Complete the form to send your request by email.",
+    "contact.sub": "Complete the form to prepare an email with all the details.",
     "contact.form.title": "Request your personalized gift",
-    "contact.form.intro": "Choose the board, wood, and engraving. Your request will arrive by email.",
+    "contact.form.intro": "Choose the board, wood, and engraving. Review the email and send it from your mail app.",
     "contact.firstName": "First name",
     "contact.lastName": "Last name",
     "contact.email": "Your email",
@@ -379,13 +378,12 @@ const translations = {
     "contact.engraving": "Would you like an engraving?",
     "contact.no": "No",
     "contact.yes": "Yes",
-    "contact.engraving.file": "Engraving image (optional)",
-    "contact.engraving.note": "You can attach an image or PDF up to 10 MB.",
+    "contact.engraving.note": "Attach the engraving image manually in the email that opens.",
     "contact.notes": "Other details",
     "contact.notes.placeholder": "Shape, intended use, preferred deadline, or other requests",
-    "contact.submit": "Send request by email",
-    "contact.privacy": "Your details are sent to Roby by email through FormSubmit. The service retains submissions for 30 days.",
-    "contact.fileTooLarge": "The file must not exceed 10 MB.",
+    "contact.submit": "Open prepared email",
+    "contact.privacy": "The form opens a prepared email in your mail app. Review and send it yourself; the site does not send or store your details.",
+    "contact.mail.subject": "Request from the Robywood website",
     "contact.whatsapp.greeting": "Hello Roby!",
     "contact.whatsapp.intro": "I would like information about a cutting board or a personalized gift.",
     "contact.whatsapp.name": "Full name",
@@ -394,7 +392,7 @@ const translations = {
     "contact.whatsapp.wood": "Wood",
     "contact.whatsapp.engraving": "Engraving",
     "contact.whatsapp.notes": "Other details",
-    "contact.whatsapp.attachment": "The engraving image is attached if available.",
+    "contact.whatsapp.attachment": "I will manually attach the engraving image to this email.",
     "footer.tagline": "Personalized wooden gifts & laser engraving · Switzerland",
     "footer.copy": "© 2025 Roberto — All rights reserved",
     "access.skip": "Skip to content",
@@ -577,9 +575,9 @@ const translations = {
     "maint.tip.label": "Robys Tipp:",
     "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
     "contact.label": "Lass uns sprechen",
-    "contact.sub": "Fülle das Formular aus und sende deine Anfrage per E-Mail.",
+    "contact.sub": "Fülle das Formular aus, um eine E-Mail mit allen Angaben vorzubereiten.",
     "contact.form.title": "Persönliches Geschenk anfragen",
-    "contact.form.intro": "Wähle Brett, Holz und Gravur. Deine Anfrage kommt per E-Mail an.",
+    "contact.form.intro": "Wähle Brett, Holz und Gravur. Prüfe die E-Mail und sende sie in deinem E-Mail-Programm ab.",
     "contact.firstName": "Vorname",
     "contact.lastName": "Nachname",
     "contact.email": "Deine E-Mail-Adresse",
@@ -607,13 +605,12 @@ const translations = {
     "contact.engraving": "Möchtest du eine Gravur?",
     "contact.no": "Nein",
     "contact.yes": "Ja",
-    "contact.engraving.file": "Gravurvorlage (optional)",
-    "contact.engraving.note": "Du kannst ein Bild oder PDF bis 10 MB anhängen.",
+    "contact.engraving.note": "Hänge das Bild für die Gravur in der geöffneten E-Mail selbst an.",
     "contact.notes": "Weitere Angaben",
     "contact.notes.placeholder": "Form, Verwendungszweck, gewünschter Termin oder andere Wünsche",
-    "contact.submit": "Anfrage per E-Mail senden",
-    "contact.privacy": "Deine Angaben werden über FormSubmit per E-Mail an Roby gesendet. Der Dienst speichert Anfragen 30 Tage lang.",
-    "contact.fileTooLarge": "Die Datei darf höchstens 10 MB groß sein.",
+    "contact.submit": "Vorbereitete E-Mail öffnen",
+    "contact.privacy": "Das Formular öffnet eine vorausgefüllte E-Mail in deinem E-Mail-Programm. Prüfe und sende sie selbst; die Website sendet oder speichert deine Angaben nicht.",
+    "contact.mail.subject": "Anfrage über die Robywood-Website",
     "contact.whatsapp.greeting": "Hallo Roby!",
     "contact.whatsapp.intro": "Ich interessiere mich für ein Schneidebrett oder ein persönliches Geschenk.",
     "contact.whatsapp.name": "Vor- und Nachname",
@@ -622,7 +619,7 @@ const translations = {
     "contact.whatsapp.wood": "Holz",
     "contact.whatsapp.engraving": "Gravur",
     "contact.whatsapp.notes": "Weitere Angaben",
-    "contact.whatsapp.attachment": "Die Gravurvorlage ist angehängt, falls vorhanden.",
+    "contact.whatsapp.attachment": "Ich hänge das Bild für die Gravur selbst an diese E-Mail an.",
     "footer.tagline": "Personalisierte Holzgeschenke & Lasergravuren · Schweiz",
     "footer.copy": "© 2025 Roberto — Alle Rechte vorbehalten",
     "access.skip": "Zum Inhalt springen",
@@ -804,9 +801,9 @@ const translations = {
     "maint.tip.label": "Conseil de Roby :",
     "maint.tip.text": "Une planche à découper en bois n'est pas seulement un outil de cuisine — c'est un compagnon de vie.",
     "contact.label": "Parlons-en",
-    "contact.sub": "Remplissez le formulaire pour envoyer votre demande par e-mail.",
+    "contact.sub": "Remplissez le formulaire pour préparer un e-mail avec tous les détails.",
     "contact.form.title": "Demandez votre cadeau personnalisé",
-    "contact.form.intro": "Choisissez la planche, le bois et la gravure. Votre demande arrivera par e-mail.",
+    "contact.form.intro": "Choisissez la planche, le bois et la gravure. Vérifiez l'e-mail et envoyez-le depuis votre messagerie.",
     "contact.firstName": "Prénom",
     "contact.lastName": "Nom",
     "contact.email": "Votre e-mail",
@@ -834,13 +831,12 @@ const translations = {
     "contact.engraving": "Souhaitez-vous une gravure ?",
     "contact.no": "Non",
     "contact.yes": "Oui",
-    "contact.engraving.file": "Image pour la gravure (facultatif)",
-    "contact.engraving.note": "Vous pouvez joindre une image ou un PDF de 10 Mo maximum.",
+    "contact.engraving.note": "Joignez vous-même l'image pour la gravure dans l'e-mail qui s'ouvrira.",
     "contact.notes": "Autres détails",
     "contact.notes.placeholder": "Forme, utilisation, délai souhaité ou autres demandes",
-    "contact.submit": "Envoyer la demande par e-mail",
-    "contact.privacy": "Vos données sont envoyées à Roby par e-mail via FormSubmit. Le service conserve les demandes pendant 30 jours.",
-    "contact.fileTooLarge": "Le fichier ne doit pas dépasser 10 Mo.",
+    "contact.submit": "Ouvrir l'e-mail préparé",
+    "contact.privacy": "Le formulaire ouvre un e-mail prérempli dans votre messagerie. Vérifiez-le et envoyez-le vous-même ; le site n'envoie ni ne conserve vos données.",
+    "contact.mail.subject": "Demande depuis le site Robywood",
     "contact.whatsapp.greeting": "Bonjour Roby !",
     "contact.whatsapp.intro": "Je souhaite des informations sur une planche ou un cadeau personnalisé.",
     "contact.whatsapp.name": "Nom complet",
@@ -849,7 +845,7 @@ const translations = {
     "contact.whatsapp.wood": "Bois",
     "contact.whatsapp.engraving": "Gravure",
     "contact.whatsapp.notes": "Autres détails",
-    "contact.whatsapp.attachment": "L'image pour la gravure est jointe si disponible.",
+    "contact.whatsapp.attachment": "Je joindrai moi-même l'image pour la gravure à cet e-mail.",
     "footer.tagline": "Cadeaux personnalisés en bois & gravure laser · Suisse",
     "footer.copy": "© 2025 Roberto — Tous droits réservés",
     "access.skip": "Aller au contenu",
@@ -1203,8 +1199,6 @@ const customWoodGroup = document.getElementById('custom-wood-group');
 const customWoodInput = document.getElementById('custom-wood');
 const engravingSelect = document.getElementById('engraving-request');
 const engravingUploadNote = document.getElementById('engraving-upload-note');
-const engravingFile = document.getElementById('engraving-file');
-const orderMessage = document.getElementById('order-message');
 
 const setConditionalField = (select, expectedValue, container, input) => {
   const isActive = select.value === expectedValue;
@@ -1216,13 +1210,10 @@ const setConditionalField = (select, expectedValue, container, input) => {
 };
 
 if (emailOrderForm) {
-  emailOrderForm.action = `https://formsubmit.co/${siteConfig.contactEmail}`;
   const syncOrderFields = () => {
     setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
     setConditionalField(woodTypeSelect, 'specific', customWoodGroup, customWoodInput);
-    const hasEngraving = engravingSelect.value === 'yes';
-    engravingUploadNote.hidden = !hasEngraving;
-    engravingFile.disabled = !hasEngraving;
+    engravingUploadNote.hidden = engravingSelect.value !== 'yes';
   };
   syncOrderFields();
   window.addEventListener('pageshow', syncOrderFields);
@@ -1238,21 +1229,11 @@ if (emailOrderForm) {
   engravingSelect.addEventListener('change', () => {
     syncOrderFields();
   });
-  engravingFile.addEventListener('change', () => engravingFile.setCustomValidity(''));
-
   emailOrderForm.addEventListener('submit', (event) => {
-    if (!emailOrderForm.reportValidity()) {
-      event.preventDefault();
-      return;
-    }
+    event.preventDefault();
+    if (!emailOrderForm.reportValidity()) return;
 
     const t = translations[currentLang] || translations.it;
-    if (engravingFile.files?.[0]?.size > 10 * 1024 * 1024) {
-      event.preventDefault();
-      engravingFile.setCustomValidity(t['contact.fileTooLarge']);
-      engravingFile.reportValidity();
-      return;
-    }
     const data = new FormData(emailOrderForm);
     const sizeKeys = {
       small: 'contact.size.small',
@@ -1286,10 +1267,12 @@ if (emailOrderForm) {
 
     const notes = String(data.get('notes') || '').trim();
     if (notes) messageLines.push(`${t['contact.whatsapp.notes']}: ${notes}`);
-    if (engravingValue === 'yes' && engravingFile.files?.length) {
+    if (engravingValue === 'yes') {
       messageLines.push('', t['contact.whatsapp.attachment']);
     }
-    orderMessage.value = messageLines.join('\n');
+    const subject = encodeURIComponent(t['contact.mail.subject']);
+    const body = encodeURIComponent(messageLines.join('\n'));
+    window.location.href = `mailto:${siteConfig.contactEmail}?subject=${subject}&body=${body}`;
   });
 }
 

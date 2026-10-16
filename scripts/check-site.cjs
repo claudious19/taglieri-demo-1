@@ -48,6 +48,8 @@ for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*
 assert.ok(!html.includes('href="tel:'), 'Telefonlink darf nicht angezeigt werden.');
 assert.ok(!html.includes('wa.me/') && !javascript.includes('wa.me/'), 'WhatsApp-Link darf nicht angezeigt werden.');
 assert.ok(!/https?:\/\/wa\.me\//.test(renderedHtml), 'WhatsApp-Link darf nicht im Build stehen.');
+assert.ok(!/formsubmit/i.test(html + javascript), 'Das Formular darf FormSubmit nicht mehr verwenden.');
+assert.ok(!html.includes('type="file"'), 'Dateianhänge müssen im E-Mail-Programm ergänzt werden.');
 const imageHashes = new Set();
 for (const match of html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)) {
   const file = path.join(root, decodeURIComponent(match[1]));
@@ -78,14 +80,12 @@ for (const language of Object.keys(dictionary)) {
     const document = {getElementById(id) {
       if (!elements.has(id)) elements.set(id, {
         value: id === 'board-size' ? size : id === 'wood-type' ? wood : engraving,
-        files: id === 'engraving-file' && engraving === 'yes' ? [{size: 1000}] : [],
         addEventListener(type, handler) { if (id === 'email-order-form' && type === 'submit') submit = handler; },
-        setCustomValidity(value) { this.validationMessage = value; },
         reportValidity: () => true,
       });
       return elements.get(id);
     }};
-    const window = {addEventListener() {}};
+    const window = {addEventListener() {}, location: {href: ''}};
     vm.runInNewContext(dimensionCode + formCode, {
       document, window, translations: dictionary, currentLang: language, setTimeout,
       siteConfig: config,
@@ -93,22 +93,19 @@ for (const language of Object.keys(dictionary)) {
     });
     assert.equal(elements.get('custom-size').required, size === 'custom');
     assert.equal(elements.get('custom-wood').disabled, wood !== 'specific');
-    assert.equal(elements.get('email-order-form').action, `https://formsubmit.co/${config.contactEmail}`);
     let prevented = false;
     submit({preventDefault() { prevented = true; }});
-    assert.equal(prevented, false);
-    const message = elements.get('order-message').value;
+    assert.equal(prevented, true);
+    const url = new URL(window.location.href);
+    assert.equal(url.protocol, 'mailto:');
+    assert.equal(url.pathname, config.contactEmail);
+    assert.equal(url.searchParams.get('subject'), dictionary[language]['contact.mail.subject']);
+    const message = url.searchParams.get('body');
     assert.ok(message.includes('test@example.com'));
     assert.ok(size === 'custom' ? message.includes('60 × 30 cm') : message.includes('30 × 20 cm'));
     assert.ok(wood === 'specific' ? message.includes('Olivo') : message.includes(config.woods[0][language]));
     assert.ok(!message.includes('undefined'));
     assert.equal(message.includes(dictionary[language]['contact.whatsapp.attachment']), engraving === 'yes');
-    if (engraving === 'yes') {
-      elements.get('engraving-file').files = [{size: 11 * 1024 * 1024}];
-      submit({preventDefault() { prevented = true; }});
-      assert.equal(prevented, true);
-      assert.equal(elements.get('engraving-file').validationMessage, dictionary[language]['contact.fileTooLarge']);
-    }
   }
 }
 console.log('Vier Sprachen, Konfiguration, Dateien, Sprungziele und zwölf E-Mail-Anfragen erfolgreich geprüft.');

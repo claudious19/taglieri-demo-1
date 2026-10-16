@@ -312,16 +312,14 @@
     <div class="contact-inner">
       <p class="section-label reveal" data-i18n="contact.label">Parliamoci</p>
       <h2 class="section-title reveal" data-i18n="nav.contact">Contatti</h2>
-      <p class="contact-sub reveal" data-i18n="contact.sub">Compila il modulo per inviare la tua richiesta via email.</p>
+      <p class="contact-sub reveal" data-i18n="contact.sub">Compila il modulo per preparare un'email con tutti i dettagli.</p>
       <div class="contact-layout">
         <div class="contact-form-card reveal">
           <div class="contact-form-heading">
             <h3 data-i18n="contact.form.title">Richiedi il tuo regalo personalizzato</h3>
-            <p data-i18n="contact.form.intro">Scegli tagliere, legno e incisione. La richiesta arriverà via email.</p>
+            <p data-i18n="contact.form.intro">Scegli tagliere, legno e incisione. Controlla l'email e inviala dal tuo programma di posta.</p>
           </div>
-          <form class="contact-form" id="email-order-form" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_subject" value="Nuova richiesta dal sito Robywood" />
-            <input type="hidden" name="message" id="order-message" />
+          <form class="contact-form" id="email-order-form">
             <div class="form-group">
               <label for="customer-first-name" data-i18n="contact.firstName">Nome</label>
               <input id="customer-first-name" name="firstName" type="text" autocomplete="given-name" required />
@@ -370,22 +368,18 @@
                 <option value="yes" data-i18n="contact.yes">Sì</option>
               </select>
             </div>
-            <div class="form-group full" id="engraving-upload-note" hidden>
-              <label for="engraving-file" data-i18n="contact.engraving.file">Immagine per l'incisione (facoltativa)</label>
-              <input id="engraving-file" name="attachment" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" disabled />
-              <small class="form-help" data-i18n="contact.engraving.note">Puoi allegare un'immagine o un PDF fino a 10 MB.</small>
-            </div>
+            <p class="engraving-upload-note form-group full" id="engraving-upload-note" hidden data-i18n="contact.engraving.note">Aggiungi l'immagine per l'incisione manualmente come allegato nell'email che si aprirà.</p>
             <div class="form-group full">
               <label for="order-notes" data-i18n="contact.notes">Altri dettagli</label>
               <textarea id="order-notes" name="notes" data-i18n-placeholder="contact.notes.placeholder" placeholder="Forma, utilizzo, scadenza desiderata o altre richieste"></textarea>
             </div>
-            <p class="contact-privacy" data-i18n="contact.privacy">I dati vengono inviati tramite FormSubmit all'indirizzo email di Roby. Il servizio conserva le richieste per 30 giorni.</p>
+            <p class="contact-privacy" data-i18n="contact.privacy">Il modulo apre un'email precompilata nel tuo programma di posta. Controllala e inviala tu; il sito non invia né salva i dati.</p>
           </form>
         </div>
         <div class="contact-methods reveal">
           <a href="mailto:claudio.italy05@gmail.com" id="email-direct" class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><span id="contact-email-label">claudio.italy05@gmail.com</span></div></a>
           <a href="https://www.instagram.com/itaglieridi_roby/" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-icon">◈</span><div><strong>Instagram</strong><span>@itaglieridi_roby</span></div></a>
-          <button class="contact-submit" type="submit" form="email-order-form" data-i18n="contact.submit">Invia richiesta via email</button>
+          <button class="contact-submit" type="submit" form="email-order-form" data-i18n="contact.submit">Apri email precompilata</button>
         </div>
       </div>
     </div>
