@@ -14,11 +14,11 @@ const siteConfig = loadConfig(envSource);
 const renderedHtml = renderHtml(html, siteConfig);
 assert.deepEqual(JSON.parse(renderedHtml.match(/<script id="site-config" type="application\/json">([\s\S]*?)<\/script>/)[1]), siteConfig);
 const changedConfig = loadConfig(envSource
-  .replace('PRICE_PIZZA_CHF=160', 'PRICE_PIZZA_CHF=170')
-  .replace('SIZE_SMALL_LENGTH_CM=', 'SIZE_SMALL_LENGTH_CM=30')
-  .replace('SIZE_SMALL_WIDTH_CM=', 'SIZE_SMALL_WIDTH_CM=20')
-  .replace('CONTACT_EMAIL=claudio.italy05@gmail.com', 'CONTACT_EMAIL=test@example.com')
-  .replace('INSTAGRAM_USERNAME=itaglieridi_roby', 'INSTAGRAM_USERNAME=@RobywoodTest'));
+  .replace(/^PRICE_PIZZA_CHF=.*$/m, 'PRICE_PIZZA_CHF=170')
+  .replace(/^SIZE_SMALL_LENGTH_CM=.*$/m, 'SIZE_SMALL_LENGTH_CM=30')
+  .replace(/^SIZE_SMALL_WIDTH_CM=.*$/m, 'SIZE_SMALL_WIDTH_CM=20')
+  .replace(/^CONTACT_EMAIL=.*$/m, 'CONTACT_EMAIL=test@example.com')
+  .replace(/^INSTAGRAM_USERNAME=.*$/m, 'INSTAGRAM_USERNAME=@RobywoodTest'));
 assert.equal(changedConfig.sizes.pizza.priceChf, 170);
 assert.equal(changedConfig.sizes.small.lengthCm, 30);
 assert.equal(changedConfig.contactEmail, 'test@example.com');
