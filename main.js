@@ -121,9 +121,14 @@ const translations = {
     "maint.tip.label": "Consiglio di Roby:",
     "maint.tip.text": "Un tagliere in legno non è solo uno strumento da cucina — è un compagno di vita. Con le giuste cure, migliorerà con il tempo, proprio come il vino.",
     "contact.label": "Parliamoci",
-    "contact.sub": "Compila il modulo per preparare un'email con tutti i dettagli.",
-    "contact.form.title": "Richiedi il tuo regalo personalizzato",
-    "contact.form.intro": "Scegli tagliere, legno e incisione. Controlla l'email e inviala dal tuo programma di posta.",
+    "contact.sub": "Scrivi un messaggio oppure prepara una richiesta con tutti i dettagli.",
+    "contact.form.title": "Scrivimi",
+    "contact.form.intro": "Invia un messaggio libero o scegli tagliere, legno e incisione per una richiesta completa.",
+    "contact.type": "Come posso aiutarti?",
+    "contact.type.message": "Messaggio",
+    "contact.type.order": "Richiesta per un regalo",
+    "contact.message": "Il tuo messaggio",
+    "contact.message.placeholder": "Scrivi qui il tuo messaggio",
     "contact.firstName": "Nome",
     "contact.lastName": "Cognome",
     "contact.choose": "Seleziona",
@@ -154,6 +159,7 @@ const translations = {
     "contact.submit": "Apri email precompilata",
     "contact.privacy": "Il modulo apre un'email precompilata nel tuo programma di posta. Controllala e inviala tu; il sito non invia né salva i dati.",
     "contact.mail.subject": "Richiesta dal sito woodbyroby",
+    "contact.mail.subject.message": "Messaggio dal sito woodbyroby",
     "contact.whatsapp.greeting": "Ciao Roby!",
     "contact.whatsapp.intro": "Vorrei informazioni per un tagliere o un regalo personalizzato.",
     "contact.whatsapp.name": "Nome e cognome",
@@ -344,9 +350,14 @@ const translations = {
     "maint.tip.label": "Roby's tip:",
     "maint.tip.text": "A wooden cutting board is not just a kitchen tool — it's a companion for life.",
     "contact.label": "Let's talk",
-    "contact.sub": "Complete the form to prepare an email with all the details.",
-    "contact.form.title": "Request your personalized gift",
-    "contact.form.intro": "Choose the board, wood, and engraving. Review the email and send it from your mail app.",
+    "contact.sub": "Write a message or prepare a request with all the details.",
+    "contact.form.title": "Get in touch",
+    "contact.form.intro": "Send a simple message or choose the board, wood, and engraving for a full request.",
+    "contact.type": "How can I help?",
+    "contact.type.message": "Message",
+    "contact.type.order": "Gift request",
+    "contact.message": "Your message",
+    "contact.message.placeholder": "Write your message here",
     "contact.firstName": "First name",
     "contact.lastName": "Last name",
     "contact.choose": "Select",
@@ -377,6 +388,7 @@ const translations = {
     "contact.submit": "Open prepared email",
     "contact.privacy": "The form opens a prepared email in your mail app. Review and send it yourself; the site does not send or store your details.",
     "contact.mail.subject": "Request from the woodbyroby website",
+    "contact.mail.subject.message": "Message from the woodbyroby website",
     "contact.whatsapp.greeting": "Hello Roby!",
     "contact.whatsapp.intro": "I would like information about a cutting board or a personalized gift.",
     "contact.whatsapp.name": "Full name",
@@ -567,9 +579,14 @@ const translations = {
     "maint.tip.label": "Robys Tipp:",
     "maint.tip.text": "Ein Holzschneidebrett ist nicht nur ein Küchenwerkzeug — es ist ein Begleiter fürs Leben.",
     "contact.label": "Lass uns sprechen",
-    "contact.sub": "Fülle das Formular aus, um eine E-Mail mit allen Angaben vorzubereiten.",
-    "contact.form.title": "Persönliches Geschenk anfragen",
-    "contact.form.intro": "Wähle Brett, Holz und Gravur. Prüfe die E-Mail und sende sie in deinem E-Mail-Programm ab.",
+    "contact.sub": "Schreibe eine Nachricht oder bereite eine Anfrage mit allen Angaben vor.",
+    "contact.form.title": "Schreib mir",
+    "contact.form.intro": "Sende eine freie Nachricht oder wähle Brett, Holz und Gravur für eine vollständige Anfrage.",
+    "contact.type": "Wobei kann ich helfen?",
+    "contact.type.message": "Nachricht",
+    "contact.type.order": "Geschenkanfrage",
+    "contact.message": "Deine Nachricht",
+    "contact.message.placeholder": "Schreibe hier deine Nachricht",
     "contact.firstName": "Vorname",
     "contact.lastName": "Nachname",
     "contact.choose": "Auswählen",
@@ -600,6 +617,7 @@ const translations = {
     "contact.submit": "Vorbereitete E-Mail öffnen",
     "contact.privacy": "Das Formular öffnet eine vorausgefüllte E-Mail in deinem E-Mail-Programm. Prüfe und sende sie selbst; die Website sendet oder speichert deine Angaben nicht.",
     "contact.mail.subject": "Anfrage über die woodbyroby-Website",
+    "contact.mail.subject.message": "Nachricht über die woodbyroby-Website",
     "contact.whatsapp.greeting": "Hallo Roby!",
     "contact.whatsapp.intro": "Ich interessiere mich für ein Schneidebrett oder ein persönliches Geschenk.",
     "contact.whatsapp.name": "Vor- und Nachname",
@@ -789,9 +807,14 @@ const translations = {
     "maint.tip.label": "Conseil de Roby :",
     "maint.tip.text": "Une planche à découper en bois n'est pas seulement un outil de cuisine — c'est un compagnon de vie.",
     "contact.label": "Parlons-en",
-    "contact.sub": "Remplissez le formulaire pour préparer un e-mail avec tous les détails.",
-    "contact.form.title": "Demandez votre cadeau personnalisé",
-    "contact.form.intro": "Choisissez la planche, le bois et la gravure. Vérifiez l'e-mail et envoyez-le depuis votre messagerie.",
+    "contact.sub": "Écrivez un message ou préparez une demande avec tous les détails.",
+    "contact.form.title": "Écrivez-moi",
+    "contact.form.intro": "Envoyez un message libre ou choisissez la planche, le bois et la gravure pour une demande complète.",
+    "contact.type": "Comment puis-je vous aider ?",
+    "contact.type.message": "Message",
+    "contact.type.order": "Demande de cadeau",
+    "contact.message": "Votre message",
+    "contact.message.placeholder": "Écrivez votre message ici",
     "contact.firstName": "Prénom",
     "contact.lastName": "Nom",
     "contact.choose": "Sélectionner",
@@ -822,6 +845,7 @@ const translations = {
     "contact.submit": "Ouvrir l'e-mail préparé",
     "contact.privacy": "Le formulaire ouvre un e-mail prérempli dans votre messagerie. Vérifiez-le et envoyez-le vous-même ; le site n'envoie ni ne conserve vos données.",
     "contact.mail.subject": "Demande depuis le site woodbyroby",
+    "contact.mail.subject.message": "Message depuis le site woodbyroby",
     "contact.whatsapp.greeting": "Bonjour Roby !",
     "contact.whatsapp.intro": "Je souhaite des informations sur une planche ou un cadeau personnalisé.",
     "contact.whatsapp.name": "Nom complet",
@@ -1174,6 +1198,10 @@ filterBtns.forEach(button => {
 
 // E-Mail-Anfrage
 const emailOrderForm = document.getElementById('email-order-form');
+const contactTypeSelect = document.getElementById('contact-type');
+const messageGroup = document.getElementById('message-group');
+const messageInput = document.getElementById('contact-message');
+const orderFields = document.getElementById('order-fields');
 const boardSizeSelect = document.getElementById('board-size');
 const customSizeGroup = document.getElementById('custom-size-group');
 const customSizeInput = document.getElementById('custom-size');
@@ -1194,6 +1222,18 @@ const setConditionalField = (select, expectedValue, container, input) => {
 
 if (emailOrderForm) {
   const syncOrderFields = () => {
+    const isOrderRequest = contactTypeSelect.value === 'order';
+    orderFields.hidden = !isOrderRequest;
+    messageGroup.hidden = isOrderRequest;
+    messageInput.required = !isOrderRequest;
+    messageInput.disabled = isOrderRequest;
+    orderFields.querySelectorAll('input, select, textarea').forEach(field => {
+      field.disabled = !isOrderRequest;
+    });
+    if (!isOrderRequest) {
+      engravingUploadNote.hidden = true;
+      return;
+    }
     setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
     setConditionalField(woodTypeSelect, 'specific', customWoodGroup, customWoodInput);
     engravingUploadNote.hidden = engravingSelect.value !== 'yes';
@@ -1201,6 +1241,7 @@ if (emailOrderForm) {
   syncOrderFields();
   window.addEventListener('pageshow', syncOrderFields);
   emailOrderForm.addEventListener('reset', () => setTimeout(syncOrderFields, 0));
+  contactTypeSelect.addEventListener('change', syncOrderFields);
   boardSizeSelect.addEventListener('change', () => {
     setConditionalField(boardSizeSelect, 'custom', customSizeGroup, customSizeInput);
   });
@@ -1218,6 +1259,13 @@ if (emailOrderForm) {
 
     const t = translations[currentLang] || translations.it;
     const data = new FormData(emailOrderForm);
+    const isOrderRequest = data.get('type') === 'order';
+    if (!isOrderRequest) {
+      const subject = encodeURIComponent(t['contact.mail.subject.message']);
+      const body = encodeURIComponent(`${t['contact.whatsapp.greeting']}\n\n${data.get('message')}`);
+      window.location.href = `mailto:${siteConfig.contactEmail}?subject=${subject}&body=${body}`;
+      return;
+    }
     const sizeKeys = {
       small: 'contact.size.small',
       medium: 'contact.size.medium',

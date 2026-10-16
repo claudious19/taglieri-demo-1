@@ -86,38 +86,52 @@ assert.equal(siteConfig.sizes.pizza.priceChf, 160, 'Preis für Pizza al metro fe
 const formCode = javascript.slice(javascript.indexOf('// E-Mail-Anfrage'), javascript.indexOf('// Smooth scroll:'));
 const dimensionCode = javascript.slice(javascript.indexOf('function formatDimensions'), javascript.indexOf('function updateConfiguredContent'));
 for (const language of Object.keys(dictionary)) {
-  for (const [engraving, config, size, wood] of [
-    ['yes', siteConfig, 'custom', 'specific'],
-    ['no', siteConfig, 'custom', 'specific'],
-    ['no', changedConfig, 'small', 'wood-0'],
+  for (const {type, engraving, config, size, wood, message: freeMessage} of [
+    {type: 'order', engraving: 'yes', config: siteConfig, size: 'custom', wood: 'specific'},
+    {type: 'order', engraving: 'no', config: siteConfig, size: 'custom', wood: 'specific'},
+    {type: 'order', engraving: 'no', config: changedConfig, size: 'small', wood: 'wood-0'},
+    {type: 'message', engraving: 'no', config: siteConfig, size: '', wood: '', message: 'Vorrei sapere qualcosa sui vostri lavori.'},
   ]) {
     let submit;
-    const values = new Map(Object.entries({firstName: 'Test', lastName: 'Person', size, customSize: '60 × 30 cm', wood, customWood: 'Olivo', engraving, notes: 'Test & Prüfung'}));
+    const values = new Map(Object.entries({type, message: freeMessage ?? '', firstName: 'Test', lastName: 'Person', size, customSize: '60 × 30 cm', wood, customWood: 'Olivo', engraving, notes: 'Test & Prüfung'}));
     const elements = new Map();
-    const document = {getElementById(id) {
+    const orderControlIds = ['customer-first-name', 'customer-last-name', 'board-size', 'custom-size', 'wood-type', 'custom-wood', 'engraving-request', 'order-notes'];
+    const elementFor = (id) => {
       if (!elements.has(id)) elements.set(id, {
-        value: id === 'board-size' ? size : id === 'wood-type' ? wood : engraving,
+        value: id === 'contact-type' ? type : id === 'contact-message' ? freeMessage ?? '' : id === 'board-size' ? size : id === 'wood-type' ? wood : engraving,
+        hidden: false,
+        disabled: false,
+        required: false,
         addEventListener(type, handler) { if (id === 'email-order-form' && type === 'submit') submit = handler; },
         reportValidity: () => true,
+        querySelectorAll: () => orderControlIds.map(elementFor),
       });
       return elements.get(id);
-    }};
+    };
+    const document = {getElementById: elementFor};
     const window = {addEventListener() {}, location: {href: ''}};
     vm.runInNewContext(dimensionCode + formCode, {
       document, window, translations: dictionary, currentLang: language, setTimeout,
       siteConfig: config,
       FormData: class { get(key) { return values.get(key); } },
     });
-    assert.equal(elements.get('custom-size').required, size === 'custom');
-    assert.equal(elements.get('custom-wood').disabled, wood !== 'specific');
+    assert.equal(elements.get('contact-message').required, type === 'message');
+    assert.equal(elements.get('board-size').disabled, type === 'message');
+    assert.equal(elements.get('custom-size').required, type === 'order' && size === 'custom');
+    assert.equal(elements.get('custom-wood').disabled, type === 'message' || wood !== 'specific');
     let prevented = false;
     submit({preventDefault() { prevented = true; }});
     assert.equal(prevented, true);
     const url = new URL(window.location.href);
     assert.equal(url.protocol, 'mailto:');
     assert.equal(url.pathname, config.contactEmail);
-    assert.equal(url.searchParams.get('subject'), dictionary[language]['contact.mail.subject']);
+    assert.equal(url.searchParams.get('subject'), dictionary[language][type === 'message' ? 'contact.mail.subject.message' : 'contact.mail.subject']);
     const message = url.searchParams.get('body');
+    if (type === 'message') {
+      assert.ok(message.includes(freeMessage));
+      assert.ok(!message.includes('undefined'));
+      continue;
+    }
     assert.ok(message.includes('Test Person'));
     assert.ok(size === 'custom' ? message.includes('60 × 30 cm') : message.includes('30 × 20 cm'));
     assert.ok(wood === 'specific' ? message.includes('Olivo') : message.includes(config.woods[0][language]));
@@ -125,4 +139,4 @@ for (const language of Object.keys(dictionary)) {
     assert.equal(message.includes(dictionary[language]['contact.whatsapp.attachment']), engraving === 'yes');
   }
 }
-console.log('Vier Sprachen, Konfiguration, Dateien, Sprungziele und zwölf E-Mail-Anfragen erfolgreich geprüft.');
+console.log('Vier Sprachen, Konfiguration, Dateien, Sprungziele und sechzehn E-Mail-Anfragen erfolgreich geprüft.');

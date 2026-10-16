@@ -1137,6 +1137,8 @@ em { font-style: italic; color: var(--walnut); }
   min-height: 110px;
   resize: vertical;
 }
+.order-fields { display: contents; }
+.order-fields[hidden] { display: none; }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
