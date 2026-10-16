@@ -52,6 +52,10 @@ assert.ok(!html.includes('wa.me/') && !javascript.includes('wa.me/'), 'WhatsApp-
 assert.ok(!/https?:\/\/wa\.me\//.test(renderedHtml), 'WhatsApp-Link darf nicht im Build stehen.');
 assert.ok(!/formsubmit/i.test(html + javascript), 'Das Formular darf FormSubmit nicht mehr verwenden.');
 assert.ok(!html.includes('type="file"'), 'Dateianhänge müssen im E-Mail-Programm ergänzt werden.');
+assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(html + fs.readFileSync(path.join(root, 'style.css'), 'utf8')), 'Google Fonts dürfen nicht geladen werden.');
+for (const font of ['dm-sans.woff2', 'cormorant-garamond-roman.woff2', 'cormorant-garamond-italic.woff2', 'OFL-DM-Sans.txt', 'OFL-Cormorant-Garamond.txt']) {
+  assert.ok(fs.existsSync(path.join(root, 'fonts', font)), `Lokale Schriftdatei fehlt: ${font}`);
+}
 const imageHashes = new Set();
 for (const match of html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)) {
   const file = path.join(root, decodeURIComponent(match[1]));

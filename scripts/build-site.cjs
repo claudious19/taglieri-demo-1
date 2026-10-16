@@ -17,7 +17,9 @@ function buildSite() {
   for (const file of ['style.css', 'main.js']) {
     fs.copyFileSync(path.join(root, file), path.join(output, file));
   }
-  fs.cpSync(path.join(root, 'images'), path.join(output, 'images'), { recursive: true });
+  for (const directory of ['images', 'fonts']) {
+    fs.cpSync(path.join(root, directory), path.join(output, directory), { recursive: true });
+  }
   return output;
 }
 

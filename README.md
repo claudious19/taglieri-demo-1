@@ -4,6 +4,8 @@ Mehrsprachige Website für handgefertigte Schneidebretter, persönliche Holzgesc
 
 Die Website unterstützt Italienisch, Deutsch, Englisch und Französisch. Das Kontaktformular öffnet eine vorausgefüllte E-Mail; Kunden hängen eine Gravurvorlage im E-Mail-Programm selbst an und senden die Nachricht dort ab.
 
+Die Schriftarten `DM Sans` und `Cormorant Garamond` werden lokal aus `fonts/` geladen. Beide stehen unter der SIL Open Font License 1.1; die vollständigen Lizenztexte liegen im selben Ordner. Es werden keine Google-Fonts-Server kontaktiert.
+
 ## Entwicklung
 
 `index.html` enthält die Seitenstruktur, `style.css` die Gestaltung und `main.js` die Übersetzungen und Funktionen. Bilder liegen in `images/`. Änderbare Geschäftsdaten stehen in `.env`.
